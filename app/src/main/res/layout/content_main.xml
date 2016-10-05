@@ -1,107 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true"
-    android:background="@color/colorBg"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.MainActivity">
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.activity.MainActivity"
+    tools:showIn="@layout/activity_main">
 
-    <RelativeLayout
-        android:id="@+id/content"
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="48dp" />
-    <View
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/bottomBarBgColor"
-        />
-    <TextView
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/menu_add"
-        android:layout_width="100dp"
-        android:layout_height="68dp"
-        android:drawablePadding="4dp"
-        android:drawableTop="@drawable/publish_icon_selector"
-        android:gravity="center"
-        android:text="@string/publish"
-        android:textColor="@drawable/text_color_selector"
-        android:textSize="12dp" />
-    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/menu_add"
-        android:background="@color/bottomBarBgColor"
-        android:orientation="horizontal"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="2dp"
-            android:drawableTop="@drawable/home_icon_selector"
-            android:gravity="center"
-            android:selectAllOnFocus="true"
-            android:text="@string/home"
-            android:textColor="@drawable/text_color_selector"
-            android:textSize="12dp" />
-
-        <TextView
-            android:id="@+id/near_by"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="2dp"
-            android:drawableTop="@drawable/near_by_icon_selector"
-            android:gravity="center"
-            android:text="@string/near_by"
-            android:textColor="@drawable/text_color_selector"
-            android:textSize="12dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/menu_add"
-        android:background="@color/bottomBarBgColor"
-        android:orientation="horizontal"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/kind_sort"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="2dp"
-            android:drawableTop="@drawable/kind_sort_icon_selector"
-            android:gravity="center"
-            android:text="@string/kind_sort"
-            android:textColor="@drawable/text_color_selector"
-            android:textSize="12dp" />
-        <TextView
-            android:id="@+id/kind_sort1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="2dp"
-            android:drawableTop="@drawable/kind_sort_icon_selector"
-            android:gravity="center"
-            android:text="@string/kind_sort"
-            android:textColor="@drawable/text_color_selector"
-            android:textSize="12dp" />
-    </LinearLayout>
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+</LinearLayout>
