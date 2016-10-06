@@ -1,5 +1,6 @@
 package me.jcala.xmarket.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 
@@ -29,7 +30,9 @@ public class LoginActivity extends BaseActivity {
         ((DefaultLoginView)login.getLoginView()).setListener(new DefaultLoginView.DefaultLoginViewListener() {
             @Override
             public void onLogin(TextInputLayout loginUser, TextInputLayout loginPass) {
-                //Handle login
+                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
