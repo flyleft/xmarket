@@ -90,11 +90,6 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void loadData() {
-
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -140,11 +135,4 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-    }
 }
