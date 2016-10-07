@@ -45,10 +45,10 @@ public class MainActivity extends BaseActivity {
         }
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
-                .addItem(new BottomNavigationItem(R.mipmap.ic_news_24dp, "本校").setActiveColorResource(R.color.red))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_photo_24dp, "分类").setActiveColorResource(R.color.red))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_video_24dp, "募捐").setActiveColorResource(R.color.red))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_about_me, "志愿队").setActiveColorResource(R.color.red))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.red))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.red))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_donation, "募捐").setActiveColorResource(R.color.red))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.red))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
