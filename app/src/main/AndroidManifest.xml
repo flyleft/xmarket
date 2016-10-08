@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true">
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name=".mvp.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".mvp.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

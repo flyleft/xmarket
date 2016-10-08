@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.base;
+package me.jcala.xmarket.mvp.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
