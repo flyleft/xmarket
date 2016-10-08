@@ -1,12 +1,11 @@
-package me.jcala.xmarket.mvp.presenter.impl;
+package me.jcala.xmarket.mvp.login.presenter;
 
 import android.content.Context;
 
 import me.jcala.xmarket.domain.UserBean;
-import me.jcala.xmarket.mvp.model.LoginModel;
-import me.jcala.xmarket.mvp.model.impl.LoginModelImpl;
-import me.jcala.xmarket.mvp.presenter.LoginPre;
-import me.jcala.xmarket.mvp.view.LoginView;
+import me.jcala.xmarket.mvp.login.model.LoginModel;
+import me.jcala.xmarket.mvp.login.model.LoginModelImpl;
+import me.jcala.xmarket.mvp.login.view.LoginView;
 
 /**
  * Created by Administrator on 2016/10/8.

@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.activity;
+package me.jcala.xmarket.mvp.login.widget;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.mvp.base.BaseActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;

@@ -1,10 +1,9 @@
-package me.jcala.xmarket.mvp.model.impl;
+package me.jcala.xmarket.mvp.login.model;
 
 import javax.inject.Inject;
 
 import me.jcala.xmarket.data.entity.get.Result;
 import me.jcala.xmarket.domain.UserBean;
-import me.jcala.xmarket.mvp.model.LoginModel;
 import me.jcala.xmarket.service.UserSer;
 
 /**

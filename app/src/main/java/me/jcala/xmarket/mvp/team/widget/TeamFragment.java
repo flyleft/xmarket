@@ -1,20 +1,19 @@
-package me.jcala.xmarket.mvp.fragment;
+package me.jcala.xmarket.mvp.team.widget;
 
 import android.os.Bundle;
 import android.view.View;
 
 import me.jcala.xmarket.R;
-
 import me.jcala.xmarket.mvp.base.BaseFragment;
 
 /**
  * Created by Administrator on 2016/9/3.
  */
-public class AboutFragment extends BaseFragment {
+public class TeamFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.about_fragment;
+        return R.layout.team_fragment;
     }
 
     @Override

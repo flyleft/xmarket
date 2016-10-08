@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.presenter;
+package me.jcala.xmarket.mvp.login.presenter;
 
 import me.jcala.xmarket.domain.UserBean;
 

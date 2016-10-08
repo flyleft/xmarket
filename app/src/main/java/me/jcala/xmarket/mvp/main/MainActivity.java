@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.activity;
+package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.base.BaseActivity;
-import me.jcala.xmarket.mvp.fragment.AboutFragment;
+import me.jcala.xmarket.mvp.team.widget.TeamFragment;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -33,7 +33,7 @@ public class MainActivity  extends BaseActivity
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-    private AboutFragment mAboutFragment;
+    private TeamFragment teamFragment;
     private FragmentManager fm;
 
     @Override
@@ -124,11 +124,11 @@ public class MainActivity  extends BaseActivity
         FragmentTransaction ft = fm.beginTransaction();
         hideAllFragment(ft);
         switch (position) {
-            case 3 : if (mAboutFragment != null) {
-                        ft.show(mAboutFragment);
+            case 3 : if (teamFragment != null) {
+                        ft.show(teamFragment);
                     } else {
-                        mAboutFragment = new AboutFragment();
-                        ft.add(R.id.frame_layout, mAboutFragment);
+                teamFragment = new TeamFragment();
+                        ft.add(R.id.frame_layout, teamFragment);
                     }
                 break;
         }
@@ -150,8 +150,8 @@ public class MainActivity  extends BaseActivity
         if (mFeatureListFragment != null) {
             ft.hide(mFeatureListFragment);
         }*/
-        if (mAboutFragment != null) {
-            ft.hide(mAboutFragment);
+        if (teamFragment != null) {
+            ft.hide(teamFragment);
         }
     }
 

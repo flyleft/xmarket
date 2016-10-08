@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.view;
+package me.jcala.xmarket.mvp.login.view;
 
 /**
  * Created by Administrator on 2016/10/8.
