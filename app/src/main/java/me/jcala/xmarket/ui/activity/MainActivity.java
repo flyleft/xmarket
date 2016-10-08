@@ -3,6 +3,10 @@ package me.jcala.xmarket.ui.activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +20,8 @@ import butterknife.ButterKnife;
 import me.jcala.xmarket.ui.base.BaseActivity;
 import me.jcala.xmarket.ui.fragment.AboutFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity  extends BaseActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -24,7 +29,10 @@ public class MainActivity extends BaseActivity {
     TextView toolbarTitle;
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mBottomNavigationBar;
-
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
     private AboutFragment mAboutFragment;
     private FragmentManager fm;
 
@@ -35,9 +43,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
         try {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         } catch (NullPointerException e) {
@@ -118,6 +131,11 @@ public class MainActivity extends BaseActivity {
                 break;
         }
         ft.commit();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
     private void hideAllFragment(FragmentTransaction ft) {

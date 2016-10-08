@@ -1,11 +1,14 @@
 <resources>
-    <!-- APP名称  -->
+    <!-- APP名称 -->
     <string name="app_name">xmarket</string>
-    <!-- 主页面的bottom menu  -->
+    <!-- 主页面的bottom menu -->
     <string name="MainActivity_title_school">本校</string>
     <string name="MainActivity_title_sort">分类</string>
     <string name="MainActivity_title_team">志愿队</string>
     <string name="MainActivity_title_donation">募捐</string>
+    <!-- 主页面的侧栏 -->
+    <string name="navigation_drawer_open">Open navigation</string>
+    <string name="navigation_drawer_close">Close navigation</string>
     <!-- 登录页面  -->
     <string name="loginTitle">登录</string>
     <string name="loginHint">用户名</string>

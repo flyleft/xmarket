@@ -8,6 +8,6 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:loginView="@layout/custom_login_view"
-        app:registerView="@layout/custom_register_view"/>
+        app:loginView="@layout/login_login_view"
+        app:registerView="@layout/login_register_view"/>
 </FrameLayout>

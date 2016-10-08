@@ -22,7 +22,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
         handler();
     }
