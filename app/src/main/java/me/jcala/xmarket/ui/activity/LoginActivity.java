@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.login.widget;
+package me.jcala.xmarket.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,10 @@ import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.login.view.LoginView;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.mvp.base.BaseActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
-
+import me.jcala.xmarket.ui.base.BaseActivity;
 public class LoginActivity extends BaseActivity implements LoginView {
     @BindView(R.id.login)
     MaterialLoginView login;

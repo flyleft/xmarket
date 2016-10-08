@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.main;
+package me.jcala.xmarket.ui.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,8 +17,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.mvp.base.BaseActivity;
-import me.jcala.xmarket.mvp.team.widget.TeamFragment;
+import me.jcala.xmarket.ui.base.BaseActivity;
+import me.jcala.xmarket.ui.fragment.TeamFragment;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
