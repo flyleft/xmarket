@@ -30,6 +30,12 @@
             android:name=".ui.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <!-- 注册广播 -->
+        <receiver android:name=".util.NetState">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
