@@ -33,4 +33,5 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.shem8:material-login:2.1.0'
+    compile 'com.balysv.materialmenu:material-menu:2.0.0'
 }
