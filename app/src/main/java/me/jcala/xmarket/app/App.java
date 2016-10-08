@@ -1,4 +1,4 @@
-package me.jcala.xmarket;
+package me.jcala.xmarket.app;
 
 import android.app.Application;
 import android.content.Context;

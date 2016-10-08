@@ -10,4 +10,5 @@ import me.jcala.xmarket.domain.UserBean;
 @Module
 public interface UserSer {
     Result login(UserBean bean);
+    Result register(UserBean bean);
 }
