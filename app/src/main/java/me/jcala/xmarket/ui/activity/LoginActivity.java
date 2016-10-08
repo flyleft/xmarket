@@ -8,7 +8,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.login.view.LoginView;
-import me.jcala.xmarket.mvp.main.MainActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
