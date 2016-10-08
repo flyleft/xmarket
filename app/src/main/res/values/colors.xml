@@ -18,4 +18,5 @@
 
     <color name="black">#000000</color>
     <color name="material_login_register_color">#f383a9</color>
+    <color name="appFontColor">#f383a9</color>
 </resources>

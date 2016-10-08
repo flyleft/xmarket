@@ -14,7 +14,7 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_about;
+        return R.layout.about_fragment;
     }
 
     @Override

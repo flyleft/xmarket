@@ -20,10 +20,10 @@
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/appFontColor</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    
     <style name="AppTheme.NoStatusBarAndActionBar" parent="AppTheme.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>

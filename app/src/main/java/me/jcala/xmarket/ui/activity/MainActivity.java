@@ -2,6 +2,7 @@ package me.jcala.xmarket.ui.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -45,17 +46,19 @@ public class MainActivity  extends BaseActivity
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
+        initSlide();
+        initButtomMenu();
+    }
+    private void initSlide(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        try {
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+    }
+    private void initButtomMenu(){
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.red))
