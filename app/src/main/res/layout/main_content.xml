@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="me.jcala.xmarket.view.activity.MainActivity"
+    tools:context="me.jcala.xmarket.ui.activity.MainActivity"
     tools:showIn="@layout/main_bar">
 
     <FrameLayout

@@ -1,13 +1,11 @@
-package me.jcala.xmarket.view.activity;
+package me.jcala.xmarket.ui.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,11 +13,12 @@ import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import me.jcala.xmarket.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.jcala.xmarket.view.base.BaseActivity;
-import me.jcala.xmarket.view.fragment.AboutFragment;
+import me.jcala.xmarket.R;
+import me.jcala.xmarket.ui.base.BaseActivity;
+import me.jcala.xmarket.ui.fragment.AboutFragment;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
