@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="me.jcala.xmarket.ui.activity.MainActivity">
+    tools:context="me.jcala.xmarket.view.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -29,5 +29,4 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/main_content" />
-
 </android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.activity;
+package me.jcala.xmarket.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.design.widget.TextInputLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.ui.base.BaseActivity;
+import me.jcala.xmarket.view.base.BaseActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;

@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.base;
+package me.jcala.xmarket.view.base;
 
 import android.app.Fragment;
 import android.os.Bundle;
