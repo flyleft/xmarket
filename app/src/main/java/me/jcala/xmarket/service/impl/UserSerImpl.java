@@ -13,4 +13,9 @@ public class UserSerImpl implements UserSer {
     public Result login(UserBean bean) {
         return new Result(1,"");
     }
+
+    @Override
+    public Result register(UserBean bean) {
+        return null;
+    }
 }

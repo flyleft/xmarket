@@ -1,18 +1,16 @@
 package me.jcala.xmarket.mvp.login.model;
 
-import javax.inject.Inject;
-
 import me.jcala.xmarket.data.entity.get.Result;
 import me.jcala.xmarket.domain.UserBean;
 import me.jcala.xmarket.service.UserSer;
+import me.jcala.xmarket.service.impl.UserSerImpl;
 
 /**
  * Created by Administrator on 2016/10/8.
  */
 
 public class LoginModelImpl implements LoginModel {
-    @Inject
-    private UserSer userSer;
+    private UserSer userSer=new UserSerImpl();
     @Override
     public void login(UserBean user, LoginModelImpl.OnRegisterListener listener) {
           Result result=userSer.login(user);
