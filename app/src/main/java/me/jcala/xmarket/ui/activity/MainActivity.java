@@ -62,7 +62,7 @@ public class MainActivity  extends BaseActivity
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.red))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.red))
-                .addItem(new BottomNavigationItem(R.mipmap.menu_donation, "募捐").setActiveColorResource(R.color.red))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_donation1, "募捐").setActiveColorResource(R.color.red))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.red))
                 .setFirstSelectedPosition(0)
                 .initialise();
