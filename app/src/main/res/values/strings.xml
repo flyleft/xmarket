@@ -24,9 +24,10 @@
     <string name="info_username">jcala</string>
     <string name="info_phone">18200361857</string>
     <string name="info_school">电子科技大学(沙河校区)</string>
-    <string name="info_sell">我发布的</string>
-    <string name="info_buy">我买到的</string>
-    <string name="info_donation">我的募捐</string>
-    <string name="info_team">我的志愿队</string>
-    <string name="info_car">我的购物车</string>
+    <string name="info_sell">待售</string>
+    <string name="info_bought">已买</string>
+    <string name="info_sold">已售</string>
+    <string name="info_uncomplete">待确认</string>
+    <string name="info_donation">捐赠</string>
+    <string name="info_team">志愿队</string>
 </resources>

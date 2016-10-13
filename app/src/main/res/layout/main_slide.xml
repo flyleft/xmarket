@@ -42,7 +42,57 @@
             android:text="@string/info_phone"
             android:textSize="@dimen/font_size_small"/>
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/line_info_uncomplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/info_uncomplete"
+            android:textSize="@dimen/font_size_normal_high"
+            android:textColor="@color/gray_dark"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_arrow_right"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_info_sell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_line">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/info_sell"
+                android:textSize="@dimen/font_size_normal_high"
+                android:textColor="@color/gray_dark"
+                android:layout_gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_arrow_right"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,68 +120,7 @@
                 android:textSize="@dimen/font_size_normal_high"
                 android:textColor="@color/gray_dark"
                 android:layout_gravity="center_vertical"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_arrow_right"
-                android:layout_gravity="center_vertical"
-                />
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/line_info_buy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_line">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/info_buy"
-                android:textSize="@dimen/font_size_normal_high"
-                android:textColor="@color/gray_dark"
-                android:layout_gravity="center_vertical"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_arrow_right"
-                android:layout_gravity="center_vertical"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/line_info_sell"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_line">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/info_sell"
-                android:textSize="@dimen/font_size_normal_high"
-                android:textColor="@color/gray_dark"
-                android:layout_gravity="center_vertical"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_arrow_right"
-                android:layout_gravity="center_vertical"
-                />
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/line_info_donation"
             android:layout_width="match_parent"
@@ -157,9 +146,8 @@
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
-
         <LinearLayout
-            android:id="@+id/line_info_team"
+            android:id="@+id/line_info_sold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_line">
@@ -170,7 +158,7 @@
                 android:layout_weight="10"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/info_team"
+                android:text="@string/info_sold"
                 android:textSize="@dimen/font_size_normal_high"
                 android:textColor="@color/gray_dark"
                 android:layout_gravity="center_vertical"/>
@@ -184,7 +172,7 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/line_info_car"
+            android:id="@+id/line_info_buy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_line">
@@ -195,7 +183,32 @@
                 android:layout_weight="10"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/info_car"
+                android:text="@string/info_bought"
+                android:textSize="@dimen/font_size_normal_high"
+                android:textColor="@color/gray_dark"
+                android:layout_gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_arrow_right"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/line_info_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_line">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/info_team"
                 android:textSize="@dimen/font_size_normal_high"
                 android:textColor="@color/gray_dark"
                 android:layout_gravity="center_vertical"/>

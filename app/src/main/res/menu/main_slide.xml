@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/info_uncomplete"
+            android:icon="@mipmap/menu_uncomplete"
+            android:title="@string/info_uncomplete" />
+        <item
+            android:id="@+id/info_sell"
+            android:icon="@mipmap/menu_sell"
+            android:title="@string/info_sell" />
+        <item
+            android:id="@+id/info_bought"
+            android:icon="@mipmap/menu_bought"
+            android:title="@string/info_bought" />
+        <item
+            android:id="@+id/info_sold"
+            android:icon="@mipmap/menu_sold"
+            android:title="@string/info_sold" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/info_donation"
+            android:icon="@mipmap/menu_donation"
+            android:title="@string/info_donation" />
+        <item
+            android:id="@+id/info_team"
+            android:icon="@mipmap/menu_team"
+            android:title="@string/info_team" />
+    </group>
+
+
+</menu>
