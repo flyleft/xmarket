@@ -5,7 +5,7 @@
     <string name="MainActivity_title_school">本校</string>
     <string name="MainActivity_title_sort">分类</string>
     <string name="MainActivity_title_team">志愿队</string>
-    <string name="MainActivity_title_donation">募捐</string>
+    <string name="MainActivity_title_message">消息</string>
     <!-- 主页面的侧栏 -->
     <string name="navigation_drawer_open">Open navigation</string>
     <string name="navigation_drawer_close">Close navigation</string>

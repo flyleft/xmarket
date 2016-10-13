@@ -62,8 +62,8 @@ public class MainActivity  extends BaseActivity
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.menu_donation, "募捐").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_message, "消息").setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -79,11 +79,11 @@ public class MainActivity  extends BaseActivity
                         showFragment(1);
                         break;
                     case 2:
-                        toolbarTitle.setText(R.string.MainActivity_title_donation);
+                        toolbarTitle.setText(R.string.MainActivity_title_team);
                         showFragment(2);
                         break;
                     case 3:
-                        toolbarTitle.setText(R.string.MainActivity_title_team);
+                        toolbarTitle.setText(R.string.MainActivity_title_message);
                         showFragment(3);
                         break;
                 }

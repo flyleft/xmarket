@@ -1,8 +1,4 @@
-package me.jcala.xmarket.mvp.login.view;
-
-/**
- * Created by Administrator on 2016/10/8.
- */
+package me.jcala.xmarket.mvp.user.view;
 
 public interface LoginView {
     void showSuccessRegister();

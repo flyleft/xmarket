@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.login.model;
+package me.jcala.xmarket.mvp.user.model;
 
 import me.jcala.xmarket.data.entity.get.Result;
 import me.jcala.xmarket.domain.UserBean;

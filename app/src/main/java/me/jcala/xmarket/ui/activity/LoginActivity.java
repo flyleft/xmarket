@@ -3,11 +3,13 @@ package me.jcala.xmarket.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.mvp.login.view.LoginView;
+import me.jcala.xmarket.mvp.user.view.LoginView;
+import me.jcala.xmarket.util.Verifyutils;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
@@ -23,6 +25,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
+        String tokenRequest=new Verifyutils().getTokenRequest(LoginActivity.this);
+        Toast.makeText(LoginActivity.this,tokenRequest,Toast.LENGTH_LONG).show();
         handler();
     }
     private void handler(){

@@ -19,6 +19,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -26,8 +29,7 @@ android {
     sourceSets {
         main {
             proto {
-            }
-            java {
+                srcDir 'src/main/java/protobuf'
             }
         }
     }
@@ -55,5 +57,21 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-protobuf:2.1.0'
     compile ("com.squareup.retrofit2:adapter-rxjava:2.1.0"){
         exclude module: 'rxjava'
+    }
+}
+protobuf {
+    generatedFilesBaseDir = "$projectDir/src/"
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0-build2'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            javalite {}
+        }
     }
 }
