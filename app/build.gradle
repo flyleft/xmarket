@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.google.protobuf'
 android {
     compileSdkVersion 23
     buildToolsVersion "24.0.1"
@@ -26,13 +25,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            proto {
-                srcDir 'src/main/java/protobuf'
-            }
-        }
-    }
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -45,33 +37,15 @@ dependencies {
     //--------------------工具-------------------------------
     compile 'org.projectlombok:lombok:1.16.10'
     //------------------依赖注入------------------------------
-    compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.dagger:dagger:2.7'
     apt 'com.google.dagger:dagger-compiler:2.7'
     //-------------------RxJava-----------------------------
-    compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC1'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
+    compile "io.reactivex.rxjava2:rxjava:${rxjavaVersion}"
+    compile "io.reactivex.rxjava2:rxandroid:${rxjavaVersion}"
     //-------------------retrofit----------------------------
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-protobuf:2.1.0'
-    compile ("com.squareup.retrofit2:adapter-rxjava:2.1.0"){
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    compile ("com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"){
         exclude module: 'rxjava'
-    }
-}
-protobuf {
-    generatedFilesBaseDir = "$projectDir/src/"
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.1.0-build2'
-    }
-    plugins {
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    generateProtoTasks {
-        all()*.plugins {
-            javalite {}
-        }
     }
 }

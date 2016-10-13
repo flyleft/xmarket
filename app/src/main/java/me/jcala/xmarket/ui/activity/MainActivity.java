@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.ui.base.BaseActivity;
 import me.jcala.xmarket.ui.fragment.TeamFragment;
@@ -23,28 +21,27 @@ import me.jcala.xmarket.ui.fragment.TeamFragment;
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
-    @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mBottomNavigationBar;
-    @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
-    @BindView(R.id.nav_view)
     NavigationView navigationView;
     private TeamFragment teamFragment;
     private FragmentManager fm;
 
     @Override
     protected void initVariables() {
-        fm = getFragmentManager();
     }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
-        ButterKnife.bind(this);
+        fm = getFragmentManager();
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        mBottomNavigationBar=(BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);
+        drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
+        navigationView=(NavigationView)findViewById(R.id.nav_view);
         initSlide();
         initButtomMenu();
     }

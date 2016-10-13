@@ -7,7 +7,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
     }
 }
 
@@ -17,8 +16,15 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    configurations {
+    }
 }
-
+subprojects{
+    ext {
+        retrofitVersion='2.1.0'
+        rxjavaVersion="2.0.0-RC1"
+    }
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

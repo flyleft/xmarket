@@ -8,10 +8,6 @@ import android.view.WindowManager;
 
 import me.jcala.xmarket.R;
 
-/**
- * Created by Administrator on 2016/10/9.
- */
-
 public class SpashActivity extends Activity {
 
     @Override
