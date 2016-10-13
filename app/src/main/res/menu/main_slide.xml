@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/info_school"
+            android:icon="@mipmap/menu_school"
+            android:title="@string/info_school" />
+        <item
             android:id="@+id/info_uncomplete"
             android:icon="@mipmap/menu_uncomplete"
             android:title="@string/info_uncomplete" />
@@ -18,9 +22,6 @@
             android:id="@+id/info_sold"
             android:icon="@mipmap/menu_sold"
             android:title="@string/info_sold" />
-    </group>
-
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/info_donation"
             android:icon="@mipmap/menu_donation"
@@ -30,6 +31,16 @@
             android:icon="@mipmap/menu_team"
             android:title="@string/info_team" />
     </group>
-
-
+    <item android:title="@string/info_others">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@mipmap/menu_author"
+                android:title="@string/info_author" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@mipmap/menu_description"
+                android:title="@string/info_about_app" />
+        </menu>
+    </item>
 </menu>

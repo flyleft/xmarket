@@ -25,8 +25,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
-        String tokenRequest=new Verifyutils().getTokenRequest(LoginActivity.this);
-        Toast.makeText(LoginActivity.this,tokenRequest,Toast.LENGTH_LONG).show();
         handler();
     }
     private void handler(){
