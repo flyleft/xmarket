@@ -16,25 +16,25 @@ import me.jcala.xmarket.util.ViewHolder;
  */
 
 public abstract class CommonAdapter<T> extends BaseAdapter {
-    protected LayoutInflater mInflater;
-    protected Context mContext;
-    protected List<T> mDatas;
+     LayoutInflater inflater;
+     Context context;
+     List<T> data;
     private int layoutId;
-    public CommonAdapter(Context context, List<T> mDatas,int layoutId) {
-        mInflater=LayoutInflater.from(context);
-        this.mContext = context;
-        this.mDatas = mDatas;
+    public CommonAdapter(Context context, List<T> data,int layoutId) {
+        inflater=LayoutInflater.from(context);
+        this.context = context;
+        this.data = data;
         this.layoutId=layoutId;
     }
 
     @Override
     public int getCount() {
-        return mDatas.size();
+        return data.size();
     }
 
     @Override
     public T getItem(int position) {
-        return mDatas.get(position);
+        return data.get(position);
     }
 
     @Override
@@ -44,7 +44,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     @Override
     public  View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent,layoutId, position);
+        ViewHolder viewHolder = ViewHolder.get(context, convertView, parent,layoutId, position);
         convert(viewHolder,getItem(position));
         return viewHolder.getConvertView();
     }
