@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.entity.get;
+package me.jcala.xmarket.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,4 +12,5 @@ import lombok.Setter;
 public class Result {
     private int code;
     private String msg;
+    private String data;
 }

@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.entity.ordinary;
+package me.jcala.xmarket.data.entity;
 
 
 import java.util.List;

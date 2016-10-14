@@ -1,12 +1,11 @@
-package me.jcala.xmarket.data.entity.get;
-
+package me.jcala.xmarket.data.entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class Sort {
+public class SortTag {
     private String id;
     private String name;
     private String bgPic;

@@ -1,7 +1,7 @@
 package me.jcala.xmarket.mvp.user.model;
 
-import me.jcala.xmarket.data.entity.get.Result;
-import me.jcala.xmarket.data.entity.ordinary.UserBean;
+import me.jcala.xmarket.data.entity.Result;
+import me.jcala.xmarket.data.entity.UserBean;
 
 /**
  * Created by Administrator on 2016/10/8.

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.entity.ordinary.SortTag;
+import me.jcala.xmarket.data.entity.SortTag;
 import me.jcala.xmarket.ui.activity.MainActivity;
 import me.jcala.xmarket.ui.base.BaseFragment;
 import me.jcala.xmarket.ui.base.CommonAdapter;
