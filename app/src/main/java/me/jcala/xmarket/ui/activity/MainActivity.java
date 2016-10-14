@@ -16,8 +16,6 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.ui.base.BaseActivity;
-import me.jcala.xmarket.ui.fragment.SchoolFragment;
-import me.jcala.xmarket.ui.fragment.SortFragment;
 import me.jcala.xmarket.ui.fragment.TeamFragment;
 
 public class MainActivity  extends BaseActivity
@@ -29,8 +27,6 @@ public class MainActivity  extends BaseActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     private TeamFragment teamFragment;
-    private SortFragment sortFragment;
-    private SchoolFragment schoolFragment;
     private FragmentManager fm;
 
     @Override
@@ -125,20 +121,6 @@ public class MainActivity  extends BaseActivity
         FragmentTransaction ft = fm.beginTransaction();
         hideAllFragment(ft);
         switch (position) {
-            case 0 : if (schoolFragment != null) {
-                ft.show(schoolFragment);
-            } else {
-                schoolFragment = new SchoolFragment();
-                ft.add(R.id.frame_layout, schoolFragment);
-                break;
-            }
-            case 1 : if (sortFragment != null) {
-                ft.show(sortFragment);
-            } else {
-                sortFragment = new SortFragment();
-                ft.add(R.id.frame_layout, sortFragment);
-                break;
-            }
             case 3 : if (teamFragment != null) {
                         ft.show(teamFragment);
                     } else {
@@ -156,22 +138,15 @@ public class MainActivity  extends BaseActivity
     }
 
     private void hideAllFragment(FragmentTransaction ft) {
-        if (sortFragment != null) {
-            ft.hide(sortFragment);
-        }
         /*if (mNewsListFragment != null) {
             ft.hide(mNewsListFragment);
         }
         if (mGirlsFragment != null) {
             ft.hide(mGirlsFragment);
         }
-        */
-        /*if (sortFragment != null) {
-            ft.hide(sortFragment);
+        if (mFeatureListFragment != null) {
+            ft.hide(mFeatureListFragment);
         }*/
-        if (schoolFragment!= null) {
-            ft.hide(schoolFragment);
-        }
         if (teamFragment != null) {
             ft.hide(teamFragment);
         }
