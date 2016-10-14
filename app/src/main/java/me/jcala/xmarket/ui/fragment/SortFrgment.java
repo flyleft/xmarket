@@ -1,17 +1,15 @@
 package me.jcala.xmarket.ui.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import me.jcala.xmarket.R;
 import me.jcala.xmarket.ui.base.BaseFragment;
 
-
-public class SchoolFragment extends BaseFragment {
+public class SortFrgment extends BaseFragment {
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.sort_fragment;
     }
 
     @Override
