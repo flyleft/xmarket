@@ -24,79 +24,54 @@ public class SortFrgment extends BaseFragment {
     private String jsonStr="[\n" +
             "  {\n" +
             "    \"id\": \"26\",\n" +
-            "    \"name\": \"手机数码\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/ac6971c1b9fc942c7547d25fc6c60ad2.jpeg\"\n" +
+            "    \"name\": \"学习资料\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_book.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"28\",\n" +
-            "    \"name\": \"电脑\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/cd74ae49d45ab6999bcd55dbae6d550f.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"30\",\n" +
-            "    \"name\": \"书籍\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/2b7ac9d21ca06df7e39e80a3799a3fb6.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"32\",\n" +
-            "    \"name\": \"裤子\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/0117b9108c7cff43700db8af5e24f2bf.jpeg\"\n" +
+            "    \"name\": \"生活用品\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_life.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"34\",\n" +
-            "    \"name\": \"鞋\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/d7186edff72b6a6ddd03eff166ee4cd8.jpeg\"\n" +
+            "    \"name\": \"衣物鞋帽\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"36\",\n" +
-            "    \"name\": \"被子\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/924ebc6780d59925c8a346a5dafc90bb.jpeg\"\n" +
+            "    \"name\": \"运动健身\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_body.jpg\"\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"id\": \"30\",\n" +
+            "    \"name\": \"手机数码\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_phone.jpg\"\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"id\": \"32\",\n" +
+            "    \"name\": \"电脑办公\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_computer.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"38\",\n" +
-            "    \"name\": \"杯子\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/9f4c1559d54d4274e5463fba4262b284.jpeg\"\n" +
+            "    \"name\": \"电器\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_elec.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"4\",\n" +
-            "    \"name\": \"本子\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/5817f1bfdce61130204a24268160b619.jpeg\"\n" +
+            "    \"name\": \"数码配件\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_parts.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"8\",\n" +
-            "    \"name\": \"JAVA\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/003829087e85ce7310b2210d9575ce67.jpeg\"\n" +
+            "    \"name\": \"租赁\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_rent.jpg\"\n" +
             "  },\n" +
             "  {\n" +
             "    \"id\": \"14\",\n" +
-            "    \"name\": \"scala\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/98beab66d3885a139b54f21e91817c4f.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"22\",\n" +
-            "    \"name\": \"goLang\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/a2fc6d32ac0b4f2842fb3d545d06f09b.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"24\",\n" +
-            "    \"name\": \"oracle\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/22192a40de238fe853b992ed57f1f098.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"sd\",\n" +
-            "    \"name\": \"mysql\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/fd56db2b929132b883e9981ab843dfca.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"23\",\n" +
-            "    \"name\": \"mongo\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/c746d56db089909b1cdd933fa7c98ef8.jpeg\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"id\": \"sdsd\",\n" +
-            "    \"name\": \"日常用品\",\n" +
-            "    \"bgPic\": \"http://img.kaiyanapp.com/3d874b72aaad089836f3cc4a25b64bb5.jpeg\"\n" +
-            "  }\n" +
+            "    \"name\": \"其他\",\n" +
+            "    \"bgPic\": \"https://jcalaz.github.io/img/sort_other.jpg\"\n" +
+            "  }" +
             "]";
     private GridView gridView;
     private List<SortTag> dataEntities=new ArrayList<>();
