@@ -23,7 +23,6 @@ subprojects{
     ext {
         retrofitVersion='2.1.0'
         rxjavaVersion="2.0.0-RC1"
-        frescoVersion='0.14.1'
     }
 }
 task clean(type: Delete) {
