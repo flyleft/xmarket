@@ -1,4 +1,4 @@
-package me.jcala.xmarket.domain;
+package me.jcala.xmarket.data.entity.ordinary;
 
 
 import java.util.List;

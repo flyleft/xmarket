@@ -97,18 +97,16 @@ public class SortFrgment extends BaseFragment {
     protected void loadData() {
 
     }
+
     private void setListener(){
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SortTag entity = dataEntities.get(position);
-                Intent intent=new Intent(getActivity(),MainActivity.class);
-                intent.putExtra("name",entity.getName());
-                startActivity(intent);
-            }
-        });
+        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
+            SortTag entity = dataEntities.get(position);
+            Intent intent=new Intent(getActivity(),MainActivity.class);
+            intent.putExtra("sortId",entity.getId());
+            startActivity(intent);
+        };
+        gridView.setOnItemClickListener(listener);
     }
-    //设置适配器
     private void setAdapter(List<SortTag> dataEntities){
         gridView.setAdapter(new CommonAdapter<SortTag>(getActivity(),dataEntities,R.layout.sort_grid_item) {
             @Override
@@ -118,7 +116,6 @@ public class SortFrgment extends BaseFragment {
             }
         });
     }
-    //解析json数据
     private void parseJson(String jsonData){
         List<SortTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<SortTag>>(){}.getType());
         dataEntities.addAll(entities);
