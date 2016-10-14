@@ -127,7 +127,7 @@ public class SortFragment extends BaseFragment {
         try {
             parseJson(jsonStr);
             setAdapter(dataEntities);
-            setListener();
+//            setListener();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -139,17 +139,27 @@ public class SortFragment extends BaseFragment {
     }
     //设置适配器
     private void setAdapter(List<SortTag> dataEntities){
-            gridView.setAdapter(new CommonAdapter<SortTag>(getActivity(),dataEntities,R.layout.sort_grid_item) {
+        CommonAdapter<SortTag> adapter=new CommonAdapter<SortTag>(getActivity(),dataEntities,R.layout.sort_grid_item){
+             @Override
+             public void convert(ViewHolder viewHolder, SortTag dataEntity) {
+                 Log.e("===","dataEntities is null");
+                  viewHolder.setText(R.id.grid_tv, dataEntity.getName());
+                 viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
+             }
+        };
+        //gridView.setAdapter(adapter);
+           /* gridView.setAdapter(new CommonAdapter<SortTag>(getActivity(),dataEntities,R.layout.sort_grid_item) {
                 @Override
                 public void convert(ViewHolder viewHolder, SortTag dataEntity) {
-                    viewHolder.setText(R.id.grid_tv, dataEntity.getName());
-                    viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
+                   // viewHolder.setText(R.id.grid_tv, dataEntity.getName());
+                    //viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
                 }
-            });
+            });*/
     }
     //解析json数据
     private void parseJson(String jsonData){
         List<SortTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<SortTag>>(){}.getType());
         dataEntities.addAll(entities);
+        //给适配器设置数据
     }
 }
