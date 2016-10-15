@@ -1,12 +1,13 @@
-package me.jcala.xmarket.ui.activity;
+package me.jcala.xmarket.mvp.user;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.user.view.LoginView;
-import me.jcala.xmarket.ui.base.BaseActivity;
+import me.jcala.xmarket.mvp.main.MainActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;

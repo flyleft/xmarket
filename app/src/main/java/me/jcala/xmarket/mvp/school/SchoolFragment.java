@@ -1,11 +1,9 @@
-package me.jcala.xmarket.ui.fragment;
+package me.jcala.xmarket.mvp.school;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import me.jcala.xmarket.ui.base.BaseFragment;
+import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 
 public class SchoolFragment extends BaseFragment {

@@ -1,10 +1,10 @@
-package me.jcala.xmarket.ui.fragment;
+package me.jcala.xmarket.mvp.team;
 
 import android.os.Bundle;
 import android.view.View;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.ui.base.BaseFragment;
+import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 public class TeamFragment extends BaseFragment {
 

@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.activity;
+package me.jcala.xmarket.mvp.splash;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.mvp.main.MainActivity;
 
 public class SpashActivity extends Activity {
 

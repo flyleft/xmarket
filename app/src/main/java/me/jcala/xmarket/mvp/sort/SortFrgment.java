@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.fragment;
+package me.jcala.xmarket.mvp.sort;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +8,8 @@ import java.util.List;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.entity.SortTag;
-import me.jcala.xmarket.mvp.sort.SortTagPre;
-import me.jcala.xmarket.mvp.sort.SortTagPreImpl;
-import me.jcala.xmarket.mvp.sort.SortTagView;
-import me.jcala.xmarket.ui.base.BaseFragment;
-import me.jcala.xmarket.ui.base.CommonAdapter;
+import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.util.ViewHolder;
 
 public class SortFrgment extends BaseFragment implements SortTagView{

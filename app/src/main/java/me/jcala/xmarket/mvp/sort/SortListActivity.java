@@ -1,8 +1,8 @@
-package me.jcala.xmarket.ui.activity;
+package me.jcala.xmarket.mvp.sort;
 
 import android.os.Bundle;
 
-import me.jcala.xmarket.ui.base.BaseActivity;
+import me.jcala.xmarket.mvp.a_base.BaseActivity;
 
 public class SortListActivity extends BaseActivity {
     @Override

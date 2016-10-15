@@ -1,4 +1,4 @@
-package me.jcala.xmarket.ui.activity;
+package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,9 +15,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.ui.base.BaseActivity;
-import me.jcala.xmarket.ui.fragment.SortFrgment;
-import me.jcala.xmarket.ui.fragment.TeamFragment;
+import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.sort.SortFrgment;
+import me.jcala.xmarket.mvp.team.TeamFragment;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
