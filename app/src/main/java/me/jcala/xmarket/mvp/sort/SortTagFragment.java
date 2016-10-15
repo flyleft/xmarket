@@ -8,6 +8,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnItemClick;
+import butterknife.Unbinder;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.entity.SortTag;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
@@ -16,8 +20,10 @@ import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
 
 public class SortTagFragment extends BaseFragment implements SortTagView{
-    private GridView gridView;
+    @BindView(R.id.sort_grid)
+    GridView gridView;
     private SortTagPre presenter;
+    private Unbinder unbinder;
     @Override
     protected int getLayoutResId() {
         return R.layout.sort_fragment;
@@ -25,7 +31,7 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-        gridView=(GridView)view.findViewById(R.id.sort_grid);
+        unbinder=ButterKnife.bind(this,view);
         presenter = new SortTagPreImpl(this);
         presenter.doGetSortTag();
     }
@@ -39,6 +45,7 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
                 viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
             }
         });
+
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
             SortTag entity = tags.get(position);
             Intent intent=new Intent(getActivity(),MainActivity.class);
@@ -49,5 +56,11 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
     }
     @Override
     public void whenFail(String msg) {
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
