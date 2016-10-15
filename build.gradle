@@ -2,9 +2,6 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-//        maven {
-//            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
-//        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.1'
@@ -26,6 +23,9 @@ subprojects{
     ext {
         retrofitVersion='2.1.0'
         rxjavaVersion="1.2.1"
+        butterknifeVersion='8.4.0'
+        daggerVersion='2.7'
+        frescoVersion='0.13.0'//14.0及以上版本会报错
     }
 }
 task clean(type: Delete) {

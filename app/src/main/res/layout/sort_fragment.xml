@@ -1,7 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <GridView
         android:id="@+id/sort_grid"
@@ -12,5 +14,6 @@
         android:scrollbars="none"
         android:horizontalSpacing="3dp"
         android:gravity="center"
-        android:numColumns="2"/>
+        android:numColumns="2"
+        />
 </LinearLayout>

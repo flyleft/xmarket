@@ -18,9 +18,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,12 +31,15 @@ dependencies {
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //------------------图片加载-----------------------------
-    compile 'com.facebook.fresco:fresco:0.13.0'//14.0及以上版本会报错
+    compile "com.facebook.fresco:fresco:${frescoVersion}"
     //--------------------工具-------------------------------
     compile 'org.projectlombok:lombok:1.16.10'
+    compile 'com.intellij:annotations:12.0'
     //------------------依赖注入------------------------------
-    compile 'com.google.dagger:dagger:2.7'
-    apt 'com.google.dagger:dagger-compiler:2.7'
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    compile "com.jakewharton:butterknife:${butterknifeVersion}"
+    apt "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
     //-------------------RxJava-----------------------------
     compile "io.reactivex:rxjava:${rxjavaVersion}"
     compile "io.reactivex:rxandroid:${rxjavaVersion}"
