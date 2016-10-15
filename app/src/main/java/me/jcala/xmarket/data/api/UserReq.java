@@ -6,7 +6,7 @@ import android.database.Observable;
 import me.jcala.xmarket.conf.NetWorkConf;
 import retrofit2.http.GET;
 
-public interface UserService {
+public interface UserReq {
     @GET(NetWorkConf.login_url)
-    Observable<String> getBookTypes();
+    Observable<String> login();
 }

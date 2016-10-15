@@ -1,8 +1,10 @@
 package me.jcala.xmarket.conf;
 
-public class NetWorkConf {
-    public static final String BASEURL="http://127.0.0.1:8090/xmarket/";
-    public static final String login_url=BASEURL+"user/login";
-    public static final String register_url=BASEURL+"user/register";
-    public static final String school_url=BASEURL+"deal/school";
+public interface NetWorkConf {
+    String BASE_URL="http://127.0.0.1:8090/xmarket/";
+    int DEFAULT_TIMEOUT = 5;
+    String login_url="user/login";
+    String register_url="user/register";
+    String school_url="deal/school";
+    String sort_url="deal/sort";
 }
