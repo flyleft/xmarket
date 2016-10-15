@@ -1,7 +1,5 @@
 package me.jcala.xmarket.mvp.sort;
 
-import android.content.Context;
-
 import java.util.List;
 
 import me.jcala.xmarket.data.entity.SortTag;
@@ -16,7 +14,7 @@ public class SortTagPreImpl implements SortTagPre,SortTagModel.OnGetSortTagListe
 
     @Override
     public void doGetSortTag() {
-
+        mModel.getSortTag(this);
     }
 
     @Override

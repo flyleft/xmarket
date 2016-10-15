@@ -54,60 +54,59 @@ public class SortTagModelImpl implements SortTagModel {
 
     }
     public void excuteLocal(final OnGetSortTagListener listener){
-         String jsonStr="[" +
-                "  {" +
-                "    id: 26," +
-                "    name: 学习资料," +
-                "    bgPic: https://jcalaz.github.io/img/sort_book.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 28," +
-                "    name: 生活用品," +
-                "    bgPic: https://jcalaz.github.io/img/sort_life.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 34," +
-                "    name: 衣物鞋帽," +
-                "    bgPic: https://jcalaz.github.io/img/sort_clothes.jpeg" +
-                "  }," +
-                "  {" +
-                "    id: 36," +
-                "    name: 运动健身," +
-                "    bgPic: https://jcalaz.github.io/img/sort_body.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 30," +
-                "    name: 手机数码," +
-                "    bgPic: https://jcalaz.github.io/img/sort_phone.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 32," +
-                "    name: 电脑办公," +
-                "    bgPic: https://jcalaz.github.io/img/sort_computer.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 38," +
-                "    name: 电器," +
-                "    bgPic: https://jcalaz.github.io/img/sort_elec.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 4," +
-                "    name: 数码配件," +
-                "    bgPic: https://jcalaz.github.io/img/sort_parts.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 8," +
-                "    name: 租赁," +
-                "    bgPic: https://jcalaz.github.io/img/sort_rent.jpg" +
-                "  }," +
-                "  {" +
-                "    id: 14," +
-                "    name: 其他," +
-                "    bgPic: https://jcalaz.github.io/img/sort_other.jpg" +
+         String jsonStr="[\n" +
+                "  {\n" +
+                "    \"id\": \"26\",\n" +
+                "    \"name\": \"学习资料\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_book.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"28\",\n" +
+                "    \"name\": \"生活用品\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_life.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"34\",\n" +
+                "    \"name\": \"衣物鞋帽\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"36\",\n" +
+                "    \"name\": \"运动健身\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_body.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"30\",\n" +
+                "    \"name\": \"手机数码\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_phone.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"32\",\n" +
+                "    \"name\": \"电脑办公\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_computer.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"38\",\n" +
+                "    \"name\": \"电器\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_elec.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"4\",\n" +
+                "    \"name\": \"数码配件\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_parts.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"8\",\n" +
+                "    \"name\": \"租赁\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_rent.jpg\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"id\": \"14\",\n" +
+                "    \"name\": \"其他\",\n" +
+                "    \"bgPic\": \"https://jcalaz.github.io/img/sort_other.jpg\"\n" +
                 "  }" +
                 "]";
         List<SortTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<SortTag>>(){}.getType());
         listener.onSuccess(entities);
-
     }
 }
