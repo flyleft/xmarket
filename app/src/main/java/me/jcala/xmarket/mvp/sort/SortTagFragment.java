@@ -6,16 +6,20 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.di.components.SortTagComponent;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 public class SortTagFragment extends BaseFragment implements SortTagView{
     @BindView(R.id.sort_grid)
     GridView gridView;
-    private SortTagPresenter presenter;
+    @Inject
+    SortTagPresenter presenter;
     private Unbinder unbinder;
     @Override
     protected int getLayoutResId() {
@@ -25,13 +29,12 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder=ButterKnife.bind(this,view);
-        presenter = new SortTagPresenterImpl(getActivity(),this);
+        SortTagComponent.Initializer.init().inject(this);
         presenter.doGetSortTag();
     }
     @Override
     public void whenSuccess(BaseAdapter adapter,AdapterView.OnItemClickListener listener) {
         gridView.setAdapter(adapter);
-
         gridView.setOnItemClickListener(listener);
     }
     @Override

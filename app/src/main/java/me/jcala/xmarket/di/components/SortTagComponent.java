@@ -4,13 +4,17 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import me.jcala.xmarket.di.modules.SortTagModule;
-import me.jcala.xmarket.mvp.sort.SortTagPresenter;
-import me.jcala.xmarket.mvp.user.login.LoginActivity;
+import me.jcala.xmarket.mvp.sort.SortTagFragment;
 
 @Singleton
 @Component(modules = SortTagModule.class)
 public interface SortTagComponent {
-    void inject(LoginActivity activity);
+    void inject(SortTagFragment sortTagFragment);
 
-    SortTagPresenter presenter();
+    final class Initializer{
+        private Initializer(){}
+        public static SortTagComponent init(){
+            return DaggerSortTagComponent.builder().build();
+        }
+    }
 }
