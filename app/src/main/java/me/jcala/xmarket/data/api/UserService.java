@@ -1,11 +1,12 @@
 package me.jcala.xmarket.data.api;
 
-import io.reactivex.Observable;
+
+import android.database.Observable;
+
 import me.jcala.xmarket.conf.NetWorkConf;
-import me.jcala.xmarket.data.entity.Result;
 import retrofit2.http.GET;
 
-interface UserReq {
+public interface UserService {
     @GET(NetWorkConf.login_url)
-    Observable<Result<String>> login();
+    Observable<String> getBookTypes();
 }

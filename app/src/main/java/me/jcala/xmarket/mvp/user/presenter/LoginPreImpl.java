@@ -7,6 +7,9 @@ import me.jcala.xmarket.mvp.user.model.LoginModel;
 import me.jcala.xmarket.mvp.user.model.LoginModelImpl;
 import me.jcala.xmarket.mvp.user.view.LoginView;
 
+/**
+ * Created by Administrator on 2016/10/8.
+ */
 
 public class LoginPreImpl implements LoginPre,LoginModelImpl.OnRegisterListener {
     private LoginView mView;

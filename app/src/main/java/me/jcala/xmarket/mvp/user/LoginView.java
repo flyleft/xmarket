@@ -1,9 +1,9 @@
 package me.jcala.xmarket.mvp.user;
 
 public interface LoginView {
-    void whenUsernameError();
+    void usernameErrorView();
 
-    void whenPasswordError();
+    void passwordErrorView();
 
-    void whenSuccess();
+    void onSuccessView();
 }
