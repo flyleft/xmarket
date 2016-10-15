@@ -1,8 +1,10 @@
 package me.jcala.xmarket.mvp.sort;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import java.util.List;
 
@@ -10,9 +12,10 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.entity.SortTag;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
+import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
 
-public class SortFrgment extends BaseFragment implements SortTagView{
+public class SortTagFragment extends BaseFragment implements SortTagView{
     private GridView gridView;
     private SortTagPre presenter;
     @Override
@@ -36,8 +39,14 @@ public class SortFrgment extends BaseFragment implements SortTagView{
                 viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
             }
         });
+        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
+            SortTag entity = tags.get(position);
+            Intent intent=new Intent(getActivity(),MainActivity.class);
+            intent.putExtra("sortId",entity.getId());
+            startActivity(intent);
+        };
+        gridView.setOnItemClickListener(listener);
     }
-
     @Override
     public void whenFail(String msg) {
     }
