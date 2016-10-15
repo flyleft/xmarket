@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.sort;
+package me.jcala.xmarket.di.modules;
 
 import android.content.Context;
 
@@ -6,6 +6,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.jcala.xmarket.mvp.sort.SortTagPresenter;
+import me.jcala.xmarket.mvp.sort.SortTagPresenterImpl;
+import me.jcala.xmarket.mvp.sort.SortTagView;
 
 @Module
 public class SortTagModule {
@@ -19,7 +22,7 @@ public class SortTagModule {
 
     @Singleton
     @Provides
-    public SortTagPre providePre(){
-        return new SortTagPreImpl(context,view);
+    public SortTagPresenter providePre(){
+        return new SortTagPresenterImpl(context,view);
     }
 }

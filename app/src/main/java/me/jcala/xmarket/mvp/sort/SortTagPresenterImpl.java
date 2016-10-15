@@ -15,11 +15,11 @@ import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
 
-public class SortTagPreImpl implements SortTagPre,SortTagModel.OnGetSortTagListener{
+public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.OnGetSortTagListener{
     private SortTagModel mModel;
     private SortTagView mView;
     private Context mContext;
-    public SortTagPreImpl(Context context,SortTagView view){
+    public SortTagPresenterImpl(Context context, SortTagView view){
         mContext=context;
         mView = view;
         mModel = new SortTagModelImpl();

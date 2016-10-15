@@ -1,23 +1,26 @@
 package me.jcala.xmarket.app;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
-public class App extends Application {
+import me.jcala.xmarket.di.components.AppComponent;
+import me.jcala.xmarket.di.components.DaggerAppComponent;
 
-    private static Context context;
+public class App extends Application {
+    private static final String TAG="App";
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
-        context = getApplicationContext();
         super.onCreate();
+        appComponent = DaggerAppComponent.create();
+        initialize();
+    }
+    private void initialize(){
         Fresco.initialize(this);
     }
-
-    public static Context getContext() {
-        return context;
+    public AppComponent getComponent() {
+        return appComponent;
     }
-
 }

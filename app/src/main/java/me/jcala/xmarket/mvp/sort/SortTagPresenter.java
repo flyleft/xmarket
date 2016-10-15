@@ -1,5 +1,5 @@
 package me.jcala.xmarket.mvp.sort;
 
-public interface SortTagPre {
+public interface SortTagPresenter {
     void doGetSortTag();
 }

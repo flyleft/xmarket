@@ -15,7 +15,7 @@ import me.jcala.xmarket.mvp.a_base.BaseFragment;
 public class SortTagFragment extends BaseFragment implements SortTagView{
     @BindView(R.id.sort_grid)
     GridView gridView;
-    private SortTagPre presenter;
+    private SortTagPresenter presenter;
     private Unbinder unbinder;
     @Override
     protected int getLayoutResId() {
@@ -25,7 +25,7 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder=ButterKnife.bind(this,view);
-        presenter = new SortTagPreImpl(getActivity(),this);
+        presenter = new SortTagPresenterImpl(getActivity(),this);
         presenter.doGetSortTag();
     }
     @Override
