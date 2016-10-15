@@ -10,10 +10,6 @@ import java.util.List;
 
 import me.jcala.xmarket.util.ViewHolder;
 
-/**
- * Created by Administrator on 2016/10/9.
- */
-
 public abstract class CommonAdapter<T> extends BaseAdapter {
      LayoutInflater inflater;
      Context context;
