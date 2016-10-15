@@ -13,9 +13,6 @@ import shem.com.materiallogin.MaterialLoginView;
 public class LoginActivity extends BaseActivity implements LoginView {
     MaterialLoginView login;
     @Override
-    protected void initVariables() {
-    }
-    @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.login_activity);
         login=(MaterialLoginView)findViewById(R.id.login);

@@ -31,10 +31,6 @@ public class MainActivity  extends BaseActivity
     private FragmentManager fm;
     private SortFrgment sortFrgment;
     @Override
-    protected void initVariables() {
-    }
-
-    @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
         fm = getFragmentManager();

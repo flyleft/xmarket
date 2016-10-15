@@ -13,18 +13,9 @@ public class MessageFragment extends BaseFragment {
         return 0;
     }
 
-    @Override
-    protected void initVariables() {
-
-    }
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void loadData() {
 
     }
 }

@@ -15,17 +15,7 @@ public class SchoolFragment extends BaseFragment {
     }
 
     @Override
-    protected void initVariables() {
-
-    }
-
-    @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void loadData() {
 
     }
 }
