@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Result {
+public class Result<T> {
     private int code;
     private String msg;
-    private String data;
+    private T data;
 }
