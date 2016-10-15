@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.user;
+package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Intent;
 import android.os.Bundle;
