@@ -22,7 +22,7 @@ public class SortTagModelImpl implements SortTagModel {
     private void excete(){
         ReqExecutor
                 .INSTANCE()
-                .sortReq()
+                .allReq()
                 .sortTag()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

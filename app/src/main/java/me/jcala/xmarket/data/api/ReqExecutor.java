@@ -13,8 +13,7 @@ import static me.jcala.xmarket.conf.NetWorkConf.BASE_URL;
 import static me.jcala.xmarket.conf.NetWorkConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
-    private UserReq userReq;
-    private SortReq sortReq;
+    private AllReq allReq;
     private String token="";
     private ReqExecutor(){}
     private static class ReqExecutorBuilder {
@@ -40,16 +39,10 @@ public class ReqExecutor {
                 .baseUrl(BASE_URL)
                 .build();
     }
-   public UserReq userReq(){
-       if (userReq==null){
-           userReq=getRetrofit().create(UserReq.class);
+   public AllReq allReq(){
+       if (allReq==null){
+           allReq=getRetrofit().create(AllReq.class);
        }
-      return userReq;
+      return allReq;
    }
-    public SortReq sortReq(){
-        if (sortReq==null){
-            sortReq=getRetrofit().create(SortReq.class);
-        }
-        return sortReq;
-    }
 }
