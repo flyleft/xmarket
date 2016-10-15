@@ -40,8 +40,8 @@ dependencies {
     compile 'com.google.dagger:dagger:2.7'
     apt 'com.google.dagger:dagger-compiler:2.7'
     //-------------------RxJava-----------------------------
-    compile "io.reactivex.rxjava2:rxjava:${rxjavaVersion}"
-    compile "io.reactivex.rxjava2:rxandroid:${rxjavaVersion}"
+    compile "io.reactivex:rxjava:${rxjavaVersion}"
+    compile "io.reactivex:rxandroid:${rxjavaVersion}"
     //-------------------retrofit----------------------------
     compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"

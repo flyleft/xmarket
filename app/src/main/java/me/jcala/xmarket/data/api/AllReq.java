@@ -15,8 +15,11 @@ import retrofit2.http.Query;
 public interface AllReq {
     @NotNull
     @GET(NetWorkConf.login_url)
-    Observable<String> login(@Query("username") String username, @Query("password") String password);
+    Observable<String> login(
+            @Query("username") @NotNull String username,
+            @Query("password") @NotNull String password);
 
+    @NotNull
     @GET(NetWorkConf.sort_url)
-    io.reactivex.Observable<Result<List<SortTag>>> sortTag();
+    Observable<Result<List<SortTag>>> sortTag();
 }
