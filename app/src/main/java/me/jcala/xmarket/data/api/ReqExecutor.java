@@ -9,8 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static me.jcala.xmarket.conf.NetWorkConf.BASE_URL;
-import static me.jcala.xmarket.conf.NetWorkConf.DEFAULT_TIMEOUT;
+import static me.jcala.xmarket.conf.ApiConf.BASE_URL;
+import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
     private AllReq allReq;
