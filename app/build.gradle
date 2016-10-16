@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    compileSdkVersion TARGET_SDK
+    buildToolsVersion BUILD_TOOLS
 
     defaultConfig {
         applicationId "me.jcala.xmarket"
         minSdkVersion 19
-        targetSdkVersion 23
+        targetSdkVersion TARGET_SDK
         versionCode 1
         versionName "1.0"
     }
@@ -28,13 +28,16 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //--------------------组件-------------------------------
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
-    compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    //compile 'com.afollestad.material-dialogs:core:0.9.0.2'
+    compile 'com.afollestad.material-dialogs:commons:0.9.0.2'
+    compile "com.android.support:gridlayout-v7:$SUPPORT_LIBRARY_VERSION"
     //------------------图片加载-----------------------------
     compile "com.facebook.fresco:fresco:${frescoVersion}"
     //--------------------工具-------------------------------
     compile 'org.projectlombok:lombok:1.16.10'
     compile 'com.intellij:annotations:12.0'
+    compile 'com.orhanobut:logger:1.15'
     //------------------依赖注入------------------------------
     compile "com.google.dagger:dagger:${daggerVersion}"
     apt "com.google.dagger:dagger-compiler:${daggerVersion}"

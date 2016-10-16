@@ -33,4 +33,8 @@
     <string name="info_others">其他</string>
     <string name="info_author">作者</string>
     <string name="info_about_app">说明</string>
+    <!-- progress dialog -->
+    <string name="progress_dialog_login">正在登录</string>
+    <string name="progress_dialog_register">正在注册</string>
+    <string name="progress_dialog_wait">Please wait…</string>
 </resources>

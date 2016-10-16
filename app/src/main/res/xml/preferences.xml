@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.afollestad.materialdialogs.prefs.MaterialDialogPreference
+        android:dialogIcon="@mipmap/ic_launcher"
+        android:dialogMessage="@string/progress_dialog_wait"
+        android:dialogTitle="@string/progress_dialog_login"
+        android:key="unused_key00"
+        android:negativeButtonText="@android:string/cancel"
+        android:positiveButtonText="@android:string/ok"
+        android:summary="@string/progress_dialog_wait"
+        android:title="@string/progress_dialog_login" />
+
+    <com.afollestad.materialdialogs.prefs.MaterialListPreference
+        android:entries="@array/preference_values"
+        android:entryValues="@array/preference_values"
+        android:key="unused_key01"
+        android:persistent="true"
+        android:summary="@string/progress_dialog_login"
+        android:title="@string/progress_dialog_login" />
+
+    <com.afollestad.materialdialogs.prefs.MaterialEditTextPreference
+        android:defaultValue="@string/progress_dialog_login"
+        android:dialogMessage="@string/progress_dialog_login"
+        android:dialogTitle="@string/progress_dialog_login"
+        android:inputType="textPersonName"
+        android:key="unused_key03"
+        android:persistent="true"
+        android:summary="@string/progress_dialog_login"
+        android:title="@string/progress_dialog_login" />
+
+</PreferenceScreen>

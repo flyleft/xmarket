@@ -10,11 +10,4 @@ import me.jcala.xmarket.mvp.sort.SortTagFragment;
 @Component(modules = SortTagModule.class)
 public interface SortTagComponent {
     void inject(SortTagFragment sortTagFragment);
-
-    final class Initializer{
-        private Initializer(){}
-        public static SortTagComponent init(){
-            return DaggerSortTagComponent.builder().build();
-        }
-    }
 }

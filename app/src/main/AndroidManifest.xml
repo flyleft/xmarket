@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true">
         <activity
-            android:name=".mvp.user.login.LoginActivity"
+            android:name=".mvp.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+       <!-- <activity
             android:name=".mvp.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        </activity>-->
         <!-- 注册广播 -->
         <receiver android:name=".util.NetState">
             <intent-filter>
