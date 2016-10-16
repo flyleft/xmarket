@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <shem.com.materiallogin.MaterialLoginView
-        android:id="@+id/login"
+        android:id="@+id/login_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:loginView="@layout/login_login_view"

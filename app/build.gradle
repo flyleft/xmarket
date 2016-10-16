@@ -30,6 +30,8 @@ dependencies {
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.sdsmdg.tastytoast:tastytoast:0.1.0'
+    compile 'com.orhanobut:logger:1.15'
     //------------------图片加载-----------------------------
     compile "com.facebook.fresco:fresco:${frescoVersion}"
     //--------------------工具-------------------------------

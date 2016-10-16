@@ -5,16 +5,15 @@ import org.jetbrains.annotations.NotNull;
 import me.jcala.xmarket.data.entity.UserBean;
 
 public interface LoginRegisterModel {
-    interface onLoginListener{
-        void loginSuccess(String errorMsg);
-        void loginPwErr(String errorMsg);
-        void lpginUmErr(String errorMsg);
-    }
-    interface onRegisterListener{
+    interface onLoginRegisterListener{
+        void loginSuccess();
+        void loginPwErr();
+        void loginUmErr();
         void registerSuccess();
-        void regPhoneExist(String errorMsg);
+        void regPhoneExist();
         void regUmExist();
+        void hasNull();
     }
-    void loginRequest(@NotNull UserBean userBean,onLoginListener listener);
-    void registerRequest(@NotNull UserBean bean,onRegisterListener listener);
+    void loginRequest(@NotNull UserBean userBean,onLoginRegisterListener listener);
+    void registerRequest(@NotNull UserBean bean,onLoginRegisterListener listener);
 }

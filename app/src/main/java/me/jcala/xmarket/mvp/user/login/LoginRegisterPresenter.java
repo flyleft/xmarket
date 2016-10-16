@@ -1,9 +1,9 @@
 package me.jcala.xmarket.mvp.user.login;
 
 
-import me.jcala.xmarket.data.entity.UserBean;
+import shem.com.materiallogin.MaterialLoginView;
 
 public interface LoginRegisterPresenter {
-    void login(UserBean userBean);
-    void register(UserBean userBean);
+    void login(MaterialLoginView view);
+    void register(MaterialLoginView view);
 }
