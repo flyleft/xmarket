@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
@@ -42,7 +41,6 @@ public class MainActivity  extends BaseActivity
         navigationView=(NavigationView)findViewById(R.id.nav_view);
         initSlide();
         initButtomMenu();
-        getProgressDialog().show();
     }
     private void initSlide(){
         setSupportActionBar(toolbar);
@@ -99,15 +97,7 @@ public class MainActivity  extends BaseActivity
         toolbarTitle.setText(R.string.MainActivity_title_school);
         showFragment(0);
     }
-    private MaterialDialog getProgressDialog(){
-        MaterialDialog dialog=new MaterialDialog.Builder(this)
-                .title(R.string.progress_dialog_login)
-                .content(R.string.progress_dialog_register)
-                .progress(true, 0)
-                .progressIndeterminateStyle(false)
-                .build();
-        return dialog;
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_top, menu);
