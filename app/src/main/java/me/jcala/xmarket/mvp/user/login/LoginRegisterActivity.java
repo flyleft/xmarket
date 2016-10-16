@@ -3,7 +3,7 @@ package me.jcala.xmarket.mvp.user.login;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.orhanobut.logger.Logger;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import me.jcala.xmarket.R;

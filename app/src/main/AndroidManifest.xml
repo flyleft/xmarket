@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="me.jcala.xmarket">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -15,10 +16,12 @@
     <application
         android:name=".app.App"
         android:allowBackup="true"
-        android:icon="@mipmap/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:vmSafeMode="true"
+        tools:ignore="UnusedAttribute"
         android:largeHeap="true">
         <activity
             android:name=".mvp.user.login.LoginRegisterActivity"

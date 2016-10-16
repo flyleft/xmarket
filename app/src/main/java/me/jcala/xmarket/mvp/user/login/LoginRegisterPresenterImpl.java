@@ -1,7 +1,6 @@
 package me.jcala.xmarket.mvp.user.login;
 
 import android.support.design.widget.TextInputLayout;
-import com.orhanobut.logger.Logger;
 import org.jetbrains.annotations.NotNull;
 import me.jcala.xmarket.data.entity.UserBean;
 import me.jcala.xmarket.util.CheckUtils;
@@ -27,7 +26,6 @@ public class LoginRegisterPresenterImpl implements
                     UserBean bean=new UserBean();
                     bean.setUsername(username.getEditText().getText().toString());
                     bean.setPassword(password.getEditText().getText().toString());
-                    Logger.d(bean.toString());
                     if (!CheckUtils.checkLoginBean(bean)){
                         hasNull();
                     }else{

@@ -31,6 +31,8 @@ dependencies {
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.sdsmdg.tastytoast:tastytoast:0.1.0'
+    compile 'com.afollestad.material-dialogs:core:0.9.0.1'
+    //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
     //------------------图片加载-----------------------------
     compile "com.facebook.fresco:fresco:${frescoVersion}"
