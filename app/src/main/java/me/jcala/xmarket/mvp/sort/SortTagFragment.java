@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSortTagComponent;
-import me.jcala.xmarket.di.modules.SortTagModule;
+import me.jcala.xmarket.di.components.SortTagComponent;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 public class SortTagFragment extends BaseFragment implements SortTagView{
@@ -32,7 +32,6 @@ public class SortTagFragment extends BaseFragment implements SortTagView{
         unbinder=ButterKnife.bind(this,view);
         DaggerSortTagComponent
                 .builder()
-                .sortTagModule(new SortTagModule(getActivity(),this))
                 .build()
                 .inject(this);
         presenter.doGetSortTag();
