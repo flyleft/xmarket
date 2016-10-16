@@ -7,7 +7,9 @@ import me.jcala.xmarket.di.modules.SortTagModule;
 import me.jcala.xmarket.mvp.sort.SortTagFragment;
 
 @Singleton
-@Component(modules = SortTagModule.class)
+@Component(
+        modules = SortTagModule.class
+)
 public interface SortTagComponent {
     void inject(SortTagFragment sortTagFragment);
 }
