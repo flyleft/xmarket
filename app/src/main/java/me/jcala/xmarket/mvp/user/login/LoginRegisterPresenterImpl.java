@@ -2,13 +2,28 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Context;
 
-public class LoginRegisterPresenterImpl implements LoginRegisterModel.onLoginRegisterListener {
+import me.jcala.xmarket.data.entity.UserBean;
+
+public class LoginRegisterPresenterImpl implements
+        LoginRegisterPresenter,
+        LoginRegisterModel.onLoginListener,
+        LoginRegisterModel.onRegisterListener{
     private LoginRegisterView view;
     private Context context;
 
     public LoginRegisterPresenterImpl(Context context, LoginRegisterView view) {
         this.context = context;
         this.view = view;
+    }
+
+    @Override
+    public void login(UserBean userBean) {
+
+    }
+
+    @Override
+    public void register(UserBean userBean) {
+
     }
 
     @Override
