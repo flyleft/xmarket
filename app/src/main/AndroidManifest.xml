@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true">
         <activity
-            android:name=".mvp.user.login.LoginActivity"
+            android:name=".mvp.user.login.LoginRegisterActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

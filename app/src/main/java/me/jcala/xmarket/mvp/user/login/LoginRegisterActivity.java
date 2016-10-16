@@ -6,12 +6,11 @@ import android.support.design.widget.TextInputLayout;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
-import me.jcala.xmarket.mvp.user.view.LoginView;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
-public class LoginActivity extends BaseActivity implements LoginView {
+public class LoginRegisterActivity extends BaseActivity implements LoginRegisterView {
     MaterialLoginView login;
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         ((DefaultLoginView)login.getLoginView()).setListener(new DefaultLoginView.DefaultLoginViewListener() {
             @Override
             public void onLogin(TextInputLayout loginUser, TextInputLayout loginPass) {
-                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -36,13 +35,34 @@ public class LoginActivity extends BaseActivity implements LoginView {
             }
         });
     }
+
     @Override
-    public void showSuccessRegister() {
+    public void whenRegisterSuccess() {
 
     }
 
     @Override
-    public void showFailureRegister(String errorMsg) {
+    public void whenRegPhoneExist(String errorMsg) {
+
+    }
+
+    @Override
+    public void whenRegUmExist() {
+
+    }
+
+    @Override
+    public void whenLoginSuccess(String errorMsg) {
+
+    }
+
+    @Override
+    public void whenLoginPwErr(String errorMsg) {
+
+    }
+
+    @Override
+    public void whenLpginUmErr(String errorMsg) {
 
     }
 }
