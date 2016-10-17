@@ -2,6 +2,8 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import javax.inject.Inject;
@@ -45,18 +47,29 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
     public void whenErr(String errorMsg) {
         /*TastyToast.makeText(getApplicationContext(), errorMsg,
                 TastyToast.LENGTH_SHORT, TastyToast.ERROR);*/
-        Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
+        /*Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
         startActivity(intent);
-        finish();
+        finish();*/
+        new MaterialDialog.Builder(this)
+                .title(R.string.no_content)
+                .content(R.string.login_dialog_content)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .show();
     }
 
     @Override
-    public void showProgress() {
-
+    public void showProgress(int which) {
+        new MaterialDialog.Builder(this)
+                .title(R.string.no_content)
+                .content(R.string.login_dialog_content)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .show();
     }
 
     @Override
-    public void stopProgress() {
+    public void hideProgress() {
 
     }
 }

@@ -19,13 +19,13 @@ public class SortTagModelImpl implements SortTagModel {
     @Override
     public void getSortTag(final OnGetSortTagListener listener) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
-            excute(listener);
+            execute(listener);
         }else {
-            excuteLocal(listener);
+            executeLocal(listener);
         }
 
     }
-    public void excute(final OnGetSortTagListener listener){
+    public void execute(final OnGetSortTagListener listener){
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -53,7 +53,7 @@ public class SortTagModelImpl implements SortTagModel {
                 });
 
     }
-    public void excuteLocal(final OnGetSortTagListener listener){
+    public void executeLocal(final OnGetSortTagListener listener){
          String jsonStr="[\n" +
                 "  {\n" +
                 "    \"id\": \"26\",\n" +

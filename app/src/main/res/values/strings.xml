@@ -1,6 +1,7 @@
 <resources>
     <!-- APP名称 -->
     <string name="app_name">xmarket</string>
+    <string name="no_content"></string>
     <!-- 主页面的bottom menu -->
     <string name="MainActivity_title_school">本校</string>
     <string name="MainActivity_title_sort">分类</string>
@@ -14,6 +15,7 @@
     <string name="loginHint">用户名</string>
     <string name="loginPasswordHint">密码</string>
     <string name="loginActionText">GO</string>
+    <string name="login_dialog_content">请稍等</string>
     <!-- 注册页面  -->
     <string name="registerHint">用户名</string>
     <string name="registerPasswordHint">手机号</string>
@@ -33,4 +35,5 @@
     <string name="info_others">其他</string>
     <string name="info_author">作者</string>
     <string name="info_about_app">说明</string>
+
 </resources>
