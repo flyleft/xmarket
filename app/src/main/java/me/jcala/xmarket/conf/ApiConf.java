@@ -6,10 +6,10 @@ public interface ApiConf {
     String BASE_URL="http://127.0.0.1:8090/xmarket/";
     String login_url="user/login";
     String register_url="user/register";
-    String school_url="deal/school";
-    String sort_url="deal/sort";
+    String school_url="items/school";
+    String sort_url="items/sort";
+
 
     String common_err="网络错误";
     int req_success=1;
-
 }
