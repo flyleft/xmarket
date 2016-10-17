@@ -14,6 +14,6 @@
         android:scrollbars="none"
         android:horizontalSpacing="3dp"
         android:gravity="center"
-        android:numColumns="2"
+        android:numColumns="3"
         />
 </LinearLayout>

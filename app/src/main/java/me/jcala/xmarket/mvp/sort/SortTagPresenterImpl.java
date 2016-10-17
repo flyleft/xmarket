@@ -6,11 +6,7 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-
 import java.util.List;
-
-import javax.inject.Inject;
-
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.entity.SortTag;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;

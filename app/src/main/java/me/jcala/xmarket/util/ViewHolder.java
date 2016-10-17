@@ -35,12 +35,12 @@ public class ViewHolder {
         mConvertView.setTag(this);
     }
 
-    public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
+    public static ViewHolder get(Context context, View convertView,
+                                 ViewGroup parent, int layoutId, int position) {
         if (convertView == null) {
             return new ViewHolder(context, parent, layoutId, position);
         }else {
             ViewHolder holder = (ViewHolder) convertView.getTag();
-            //更新position
             holder.mPosition=position;
             return holder;
         }
@@ -95,12 +95,6 @@ public class ViewHolder {
         iv.setImageBitmap(bitmap);
         return this;
     }
-   /* public ViewHolder setImageURIWithXutils(int viewId,String uri){
-        ImageView iv= getView(viewId);
-        x.image().bind(iv,uri);
-        return this;
-    }
-*/
     public ViewHolder setImageDrawable(int viewId, Drawable drawable)
     {
         ImageView view = getView(viewId);
@@ -127,7 +121,6 @@ public class ViewHolder {
             getView(viewId).setAlpha(value);
         } else
         {
-            // Pre-honeycomb hack to set Alpha value
             AlphaAnimation alpha = new AlphaAnimation(value, value);
             alpha.setDuration(0);
             alpha.setFillAfter(true);
