@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import me.jcala.xmarket.data.entity.UserBean;
 
-public interface LoginRegisterModel {
+interface LoginRegisterModel {
     interface onLoginRegisterListener{
         void loginSuccess();
         void loginPwErr();

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.entity.UserBean;
 
-public class LoginRegisterModelImpl implements LoginRegisterModel {
+ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public void loginRequest(@NotNull UserBean userBean, onLoginRegisterListener listener) {

@@ -15,6 +15,5 @@ public class TeamFragment extends BaseFragment {
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-
     }
 }

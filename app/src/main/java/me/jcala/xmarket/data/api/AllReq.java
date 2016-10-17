@@ -2,9 +2,7 @@ package me.jcala.xmarket.data.api;
 
 
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
-
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.entity.Result;
 import me.jcala.xmarket.data.entity.SortTag;
