@@ -2,10 +2,7 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.sdsmdg.tastytoast.TastyToast;
-
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;

@@ -20,9 +20,7 @@ public class SortTagModule {
         this.view = view;
     }
 
-    @Singleton
-    @Provides
-    public SortTagPresenter providePre(){
+    @Singleton @Provides SortTagPresenter providePresenter(){
         return new SortTagPresenterImpl(context,view);
     }
 }

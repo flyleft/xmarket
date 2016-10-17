@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.entity.SortTag;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
@@ -19,6 +21,7 @@ public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.OnGet
     private SortTagModel mModel;
     private SortTagView mView;
     private Context mContext;
+
     public SortTagPresenterImpl(Context context, SortTagView view){
         mContext=context;
         mView = view;
