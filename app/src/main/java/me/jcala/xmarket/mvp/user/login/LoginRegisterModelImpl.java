@@ -7,7 +7,6 @@ import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.entity.UserBean;
 
  class LoginRegisterModelImpl implements LoginRegisterModel {
-
     @Override
     public void loginRequest(@NotNull UserBean userBean, onLoginRegisterListener listener) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
