@@ -11,6 +11,7 @@ public abstract  class BaseActivity extends AppCompatActivity {
 
     protected abstract void initViews(Bundle savedInstanceState);
 
+    protected  void initVariables(){}
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {

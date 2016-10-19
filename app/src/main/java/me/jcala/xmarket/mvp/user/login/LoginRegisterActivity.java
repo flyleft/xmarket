@@ -13,6 +13,8 @@ import me.jcala.xmarket.di.components.DaggerLoginRegisterComponent;
 import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.LoginRegisterModule;
 import me.jcala.xmarket.di.modules.SortTagModule;
+import me.jcala.xmarket.di.qualifier.LoginProgress;
+import me.jcala.xmarket.di.qualifier.RegisterProgress;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import shem.com.materiallogin.MaterialLoginView;
@@ -22,21 +24,32 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
     @Inject
     LoginRegisterPresenter presenter;
 
+    @LoginProgress
+    @Inject
+    MaterialDialog loginProgress;
+
+    @RegisterProgress
+    @Inject
+    MaterialDialog registerProgress;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.login_activity);
-        final MaterialLoginView loginRegister = (MaterialLoginView) findViewById(R.id.login_register);
+        initVariables();
+    }
+    @Override
+    protected  void initVariables(){
         DaggerLoginRegisterComponent
                 .builder()
-                .loginRegisterModule(new LoginRegisterModule(this))
+                .loginRegisterModule(new LoginRegisterModule(this,this))
                 .build()
                 .inject(this);
+        final MaterialLoginView loginRegister = (MaterialLoginView) findViewById(R.id.login_register);
         if (loginRegister!=null){
             presenter.login(loginRegister);
             presenter.register(loginRegister);
         }
     }
-
     @Override
     public void whenSuccess() {
         Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
@@ -51,19 +64,12 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
         /*Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
         startActivity(intent);
         finish();*/
+        showProgress(true);
     }
 
     @Override
     public void showProgress(boolean login) {
-       final MaterialDialog.Builder progress = new MaterialDialog.Builder(this)
-                .content(R.string.login_dialog_content)
-                .progress(true, 0)
-                .progressIndeterminateStyle(false)
-                .title(R.string.dialog_wait);
-        if (!login){
-            progress.content(R.string.register_dialog_content);
-        }
-        progress.show();
+
     }
     @Override
     public void hideProgress() {
