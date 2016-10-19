@@ -24,7 +24,7 @@
         tools:ignore="UnusedAttribute"
         android:largeHeap="true">
         <activity
-            android:name=".mvp.user.login.LoginRegisterActivity"
+            android:name=".mvp.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mvp.user.login.LoginRegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".mvp.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

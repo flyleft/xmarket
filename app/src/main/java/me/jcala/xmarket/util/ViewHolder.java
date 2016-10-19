@@ -85,9 +85,9 @@ public class ViewHolder {
         iv.setImageResource(resId);
         return this;
     }
-    public ViewHolder setImageResourcewithFresco(int viewId,Uri uri){
-        SimpleDraweeView draweeView=getView(viewId);
-        draweeView.setImageURI(uri);
+    public ViewHolder setImageResithFresco(int viewId,Uri uri){
+        SimpleDraweeView view=getView(viewId);
+        view.setImageURI(uri);
         return this;
     }
     public ViewHolder setImageBitmap(int viewId,Bitmap bitmap){

@@ -35,7 +35,7 @@ public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.OnGet
             @Override
             public void convert(ViewHolder viewHolder, SortTag dataEntity) {
                 viewHolder.setText(R.id.grid_tv, dataEntity.getName());
-                viewHolder.setImageResourcewithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
+                viewHolder.setImageResithFresco(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{

@@ -36,6 +36,7 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
     //------------------图片加载-----------------------------
     compile "com.facebook.fresco:fresco:${frescoVersion}"
+    compile "com.facebook.fresco:animated-gif:${frescoVersion}"
     //--------------------工具-------------------------------
     compile 'org.projectlombok:lombok:1.16.10'
     compile 'com.intellij:annotations:12.0'
