@@ -9,8 +9,11 @@ import lombok.Setter;
 @Getter
 public class DealItem {
     private String id;//商品ID
-    private String name;//商品名字
+    private String title;//商品名字
+    private String description;//商品描述
+    private List<String> imags;//商品图片
     private UserBean author;//商品所属者
+    private int price;
     private List<UserBean> wait_trades;//商品待交易者名单
     private UserBean trade;//商品交易者
     private String create_time;//商品创建时间

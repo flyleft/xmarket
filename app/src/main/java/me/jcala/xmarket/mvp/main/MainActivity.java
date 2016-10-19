@@ -16,6 +16,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.school.SchoolFragment;
 import me.jcala.xmarket.mvp.sort.SortTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
 
@@ -30,6 +31,7 @@ public class MainActivity  extends BaseActivity
     private TeamFragment teamFragment;
     private FragmentManager fm;
     private SortTagFragment sortTagFragment;
+    private SchoolFragment schoolFragment;
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
@@ -118,6 +120,13 @@ public class MainActivity  extends BaseActivity
         FragmentTransaction ft = fm.beginTransaction();
         hideAllFragment(ft);
         switch (position) {
+            case 0 : if (schoolFragment != null) {
+                ft.show(schoolFragment);
+            } else {
+                schoolFragment = new SchoolFragment();
+                ft.add(R.id.frame_layout, schoolFragment);
+            }
+                break;
             case 1 : if (sortTagFragment != null) {
                 ft.show(sortTagFragment);
             } else {
@@ -142,15 +151,9 @@ public class MainActivity  extends BaseActivity
     }
 
     private void hideAllFragment(FragmentTransaction ft) {
-        /*if (mNewsListFragment != null) {
-            ft.hide(mNewsListFragment);
+        if (schoolFragment != null) {
+            ft.hide(schoolFragment);
         }
-        if (mGirlsFragment != null) {
-            ft.hide(mGirlsFragment);
-        }
-        if (mFeatureListFragment != null) {
-            ft.hide(mFeatureListFragment);
-        }*/
         if (sortTagFragment != null) {
             ft.hide(sortTagFragment);
         }

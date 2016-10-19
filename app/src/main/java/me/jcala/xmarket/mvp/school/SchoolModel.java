@@ -1,8 +1,12 @@
 package me.jcala.xmarket.mvp.school;
 
+import java.util.List;
+
+import me.jcala.xmarket.data.entity.DealItem;
+
 public interface SchoolModel {
     interface onGainListener{
-        void success();
+        void success(List<DealItem> itemList);
         void fail();
     }
     void getSchoolDeals(int page,final onGainListener listener);
