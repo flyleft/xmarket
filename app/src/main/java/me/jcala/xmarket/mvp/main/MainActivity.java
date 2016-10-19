@@ -17,7 +17,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.sort.SortTagFragment;
-import me.jcala.xmarket.mvp.team.TeamFragment;
+import me.jcala.xmarket.mvp.donate.DonateFragment;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -27,7 +27,7 @@ public class MainActivity  extends BaseActivity
     BottomNavigationBar mBottomNavigationBar;
     DrawerLayout drawer;
     NavigationView navigationView;
-    private TeamFragment teamFragment;
+    private DonateFragment donateFragment;
     private FragmentManager fm;
     private SortTagFragment sortTagFragment;
     @Override
@@ -40,7 +40,7 @@ public class MainActivity  extends BaseActivity
         drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
         navigationView=(NavigationView)findViewById(R.id.nav_view);
         initSlide();
-        initButtomMenu();
+        initBottomMenu();
     }
     private void initSlide(){
         setSupportActionBar(toolbar);
@@ -51,12 +51,12 @@ public class MainActivity  extends BaseActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
-    private void initButtomMenu(){
+    private void initBottomMenu(){
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.menu_donation, "捐赠").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_message, "消息").setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
@@ -125,11 +125,11 @@ public class MainActivity  extends BaseActivity
                 ft.add(R.id.frame_layout, sortTagFragment);
             }
                 break;
-            case 3 : if (teamFragment != null) {
-                        ft.show(teamFragment);
+            case 3 : if (donateFragment != null) {
+                        ft.show(donateFragment);
                     } else {
-                teamFragment = new TeamFragment();
-                        ft.add(R.id.frame_layout, teamFragment);
+                donateFragment = new DonateFragment();
+                        ft.add(R.id.frame_layout, donateFragment);
                     }
                 break;
         }
@@ -154,8 +154,8 @@ public class MainActivity  extends BaseActivity
         if (sortTagFragment != null) {
             ft.hide(sortTagFragment);
         }
-        if (teamFragment != null) {
-            ft.hide(teamFragment);
+        if (donateFragment != null) {
+            ft.hide(donateFragment);
         }
     }
 

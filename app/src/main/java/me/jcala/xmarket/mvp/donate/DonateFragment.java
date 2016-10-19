@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.team;
+package me.jcala.xmarket.mvp.donate;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.View;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
-public class TeamFragment extends BaseFragment {
+public class DonateFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
