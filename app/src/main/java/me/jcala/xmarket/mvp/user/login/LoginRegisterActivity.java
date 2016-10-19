@@ -57,22 +57,4 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
         finish();
     }
 
-    @Override
-    public void whenErr(String errorMsg) {
-        /*TastyToast.makeText(getApplicationContext(), errorMsg,
-                TastyToast.LENGTH_SHORT, TastyToast.ERROR);*/
-        /*Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
-        startActivity(intent);
-        finish();*/
-        showProgress(true);
-    }
-
-    @Override
-    public void showProgress(boolean login) {
-
-    }
-    @Override
-    public void hideProgress() {
-
-    }
 }

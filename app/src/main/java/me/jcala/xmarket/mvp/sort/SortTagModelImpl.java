@@ -44,7 +44,7 @@ public class SortTagModelImpl implements SortTagModel {
 
                     @Override
                     public void onNext(Result<List<SortTag>> listResult) {
-                        if (listResult.getCode()== ApiConf.req_success){
+                        if (listResult.getCode()== ApiConf.action_success){
                             listener.onSuccess(listResult.getData());
                         }else {
                             listener.onFailure(listResult.getMsg());

@@ -11,5 +11,12 @@ public interface ApiConf {
 
 
     String common_err="网络错误";
-    int req_success=1;
+    int action_success=1;
+    int action_fail=-1;
+
+    int login_um_err=2;
+    int login_pass_err=3;
+
+    int register_um_exist=2;
+    int register_phone_exist=3;
 }

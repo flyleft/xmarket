@@ -3,57 +3,61 @@ package me.jcala.xmarket.mvp.user.login;
 
 import org.jetbrains.annotations.NotNull;
 
+import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.conf.AppConf;
+import me.jcala.xmarket.data.entity.Result;
 import me.jcala.xmarket.data.entity.UserBean;
 
  class LoginRegisterModelImpl implements LoginRegisterModel {
     @Override
-    public void loginRequest(@NotNull UserBean userBean,final onLoginRegisterListener listener) {
+    public Result<String> loginRequest(@NotNull UserBean userBean) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
-            executeLogin(userBean,listener);
+           return executeLogin(userBean);
         }else {
-            executeLoginLocal(userBean,listener);
+           return executeLoginLocal(userBean);
         }
 
     }
 
     @Override
-    public void registerRequest(@NotNull UserBean userBean,final onLoginRegisterListener listener) {
+    public Result<String> registerRequest(@NotNull UserBean user) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
-            executeRegister(userBean,listener);
+           return executeRegister(user);
         }else {
-            executeRegisterLocal(userBean,listener);
+           return executeRegisterLocal(user);
         }
 
-
     }
 
-    private void executeLogin(UserBean userBean,final onLoginRegisterListener listener){
+    private Result<String> executeLogin(UserBean userBean){
 
-
+         return null;
     }
-     private void executeRegister(UserBean userBean,  onLoginRegisterListener listener){
+     private Result<String> executeRegister(UserBean userBean){
 
-
+       return null;
      }
-    private void executeLoginLocal(UserBean userBean,final onLoginRegisterListener listener){
+    private Result<String> executeLoginLocal(UserBean userBean){
+        Result<String> result=new Result<>();
         if ("jcala".equals(userBean.getUsername())&&"123".equals(userBean.getPassword())){
-            listener.loginSuccess();
+            result.setCode(ApiConf.action_success);
         }else if ("jcala".equals(userBean.getUsername())){
-            listener.loginPwErr();
+            result.setCode(ApiConf.login_pass_err);
         }else{
-            listener.loginUmErr();
+            result.setCode(ApiConf.login_um_err);
         }
-
+        return result;
     }
-    private void executeRegisterLocal(UserBean userBean,final  onLoginRegisterListener listener){
+    private Result<String> executeRegisterLocal(UserBean userBean){
+        Result<String> result=new Result<>();
         if ("jcala".equals(userBean.getUsername())){
-            listener.regUmExist();
+            result.setCode(ApiConf.register_um_exist);
         }else if ("187".equals(userBean.getPhone())){
-            listener.regPhoneExist();
+            result.setCode(ApiConf.register_phone_exist);
         }else{
-            listener.registerSuccess();
+            result.setCode(ApiConf.action_success);
         }
+        return result;
     }
 
 }

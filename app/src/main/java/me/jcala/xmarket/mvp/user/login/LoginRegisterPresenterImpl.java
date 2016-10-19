@@ -5,6 +5,9 @@ import android.support.design.widget.TextInputLayout;
 import com.orhanobut.logger.Logger;
 
 import org.jetbrains.annotations.NotNull;
+
+import me.jcala.xmarket.conf.ApiConf;
+import me.jcala.xmarket.data.entity.Result;
 import me.jcala.xmarket.data.entity.UserBean;
 import me.jcala.xmarket.util.CheckUtils;
 import shem.com.materiallogin.DefaultLoginView;
@@ -36,13 +39,28 @@ public class LoginRegisterPresenterImpl implements
                         username.setErrorEnabled(true);
                         username.setError("用户名不可以为空");
                     }else if (CheckUtils.isEmpty(bean.getPassword())){
-                        username.setErrorEnabled(false);
                         password.setErrorEnabled(true);
                         password.setError("密码不可以为空");
                     }else{
                         username.setErrorEnabled(false);
                         password.setErrorEnabled(false);
-                        model.loginRequest(bean,this);
+                        Result<String> result= model.loginRequest(bean);
+                        switch (result.getCode()){
+                            case ApiConf.action_success:
+                                success();break;
+                            case ApiConf.login_pass_err:
+                                password.setErrorEnabled(true);
+                                password.setError("密码错误");
+                                break;
+                            case ApiConf.login_um_err:
+                                username.setErrorEnabled(true);
+                                username.setError("该用户不存在");
+                                break;
+                            default:username.setErrorEnabled(true);
+                                username.setError("网络错误,请稍后再试");
+                                break;
+                        }
+
                     }
             });
 
@@ -61,64 +79,44 @@ public class LoginRegisterPresenterImpl implements
                     if (CheckUtils.isEmpty(bean.getUsername())){
                         username.setErrorEnabled(true);
                         username.setError("用户名不可以为空");
-                        Logger.e("username is empty");
                     }else if (CheckUtils.isEmpty(bean.getPhone())){
                         username.setErrorEnabled(false);
                         phone.setErrorEnabled(true);
                         phone.setError("手机号不可以为空");
-                        Logger.e("phone is empty");
 
                     }else if (!CheckUtils.isNumber(bean.getPhone())){
                         phone.setErrorEnabled(true);
                         phone.setError("不合法的手机号");
-                        Logger.e("username is illegal");
                     }else if (CheckUtils.isEmpty(bean.getPassword())){
-                        phone.setErrorEnabled(false);
-                        username.setErrorEnabled(false);
                         password.setErrorEnabled(true);
                         password.setError("密码不可以为空");
-                        Logger.e("password is empty");
                     }else{
                         username.setErrorEnabled(false);
                         phone.setErrorEnabled(false);
                         password.setErrorEnabled(false);
-                        model.registerRequest(bean,this);
+                        Result<String> result= model.registerRequest(bean);
+                        switch (result.getCode()){
+                            case ApiConf.action_success:
+                                success();break;
+                            case ApiConf.register_um_exist:
+                                username.setErrorEnabled(true);
+                                username.setError("该用户名已存在");
+                                break;
+                            case ApiConf.register_phone_exist:
+                                phone.setErrorEnabled(true);
+                                phone.setError("该手机号已被注册");
+                                break;
+                            default:username.setErrorEnabled(true);
+                                username.setError("网络错误,请稍后再试");
+                                break;
+                        }
+
                     }
             });
     }
 
     @Override
-    public void hasNull() {
-        view.whenErr("输入的值不可以为空");
-    }
-
-    @Override
-    public void registerSuccess() {
+    public void success() {
         view.whenSuccess();
-    }
-
-    @Override
-    public void regPhoneExist() {
-        view.whenErr("该手机号已经被注册");
-    }
-
-    @Override
-    public void regUmExist() {
-        view.whenErr("该用户名已存在");
-    }
-
-    @Override
-    public void loginSuccess() {
-       view.whenSuccess();
-    }
-
-    @Override
-    public void loginPwErr() {
-        view.whenErr("密码错误");
-    }
-
-    @Override
-    public void loginUmErr() {
-        view.whenErr("该用户名不存在");
     }
 }
