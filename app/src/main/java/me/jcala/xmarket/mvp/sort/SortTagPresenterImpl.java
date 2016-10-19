@@ -13,7 +13,7 @@ import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
 
-public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.OnGetSortTagListener{
+public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.onGainListener {
     private SortTagModel mModel;
     private SortTagView mView;
     private Context mContext;

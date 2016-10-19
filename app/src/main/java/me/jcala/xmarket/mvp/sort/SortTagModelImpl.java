@@ -17,7 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class SortTagModelImpl implements SortTagModel {
     @Override
-    public void getSortTag(final OnGetSortTagListener listener) {
+    public void getSortTag(final onGainListener listener) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
             execute(listener);
         }else {
@@ -25,7 +25,7 @@ public class SortTagModelImpl implements SortTagModel {
         }
 
     }
-    public void execute(final OnGetSortTagListener listener){
+    public void execute(final onGainListener listener){
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -53,7 +53,7 @@ public class SortTagModelImpl implements SortTagModel {
                 });
 
     }
-    public void executeLocal(final OnGetSortTagListener listener){
+    public void executeLocal(final onGainListener listener){
          String jsonStr="[\n" +
                 "  {\n" +
                 "    \"id\": \"26\",\n" +

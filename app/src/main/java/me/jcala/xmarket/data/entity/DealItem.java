@@ -2,6 +2,11 @@ package me.jcala.xmarket.data.entity;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class DealItem {
     private String id;//商品ID
     private String name;//商品名字

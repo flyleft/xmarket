@@ -5,9 +5,9 @@ import java.util.List;
 import me.jcala.xmarket.data.entity.SortTag;
 
 interface SortTagModel {
-    interface OnGetSortTagListener{
+    interface onGainListener {
         void onSuccess(List<SortTag> sortTagList);
         void onFailure(String errMsg);
     }
-    void getSortTag(OnGetSortTagListener listener);
+    void getSortTag(final onGainListener listener);
 }
