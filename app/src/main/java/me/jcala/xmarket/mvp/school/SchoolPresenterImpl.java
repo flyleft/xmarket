@@ -28,15 +28,14 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
 
     @Override
     public void success(List<DealItem> itemList) {
-        BaseAdapter adapter=new CommonAdapter<DealItem>(context,itemList, R.layout.shcool_item) {
+        BaseAdapter adapter=new CommonAdapter<DealItem>(context,itemList, R.layout.school_item_one) {
             @Override
             public void convert(ViewHolder viewHolder, DealItem item) {
                 viewHolder.setText(R.id.deal_title,item.getTitle());
                 viewHolder.setImageResithFresco(R.id.deal_img, Uri.parse(item.getImags().get(0)));
                 viewHolder.setImageResithFresco(R.id.author_img,Uri.parse(item.getAuthor().getAvatar_url()));
                 viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
-                viewHolder.setText(R.id.deal_price,item.getPrice()+"");
-                viewHolder.setText(R.id.deal_desc,item.getDescription());
+                viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{

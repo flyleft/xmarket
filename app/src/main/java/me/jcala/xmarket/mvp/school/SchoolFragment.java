@@ -17,7 +17,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     private Unbinder unbinder;
     @BindView(R.id.school_deal_list)
-    private ListView dealList;
+    protected ListView dealList;
 
     @Override
     protected int getLayoutResId() {

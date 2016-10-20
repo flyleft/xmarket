@@ -4,15 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.sdsmdg.tastytoast.TastyToast;
 
 import javax.inject.Inject;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerLoginRegisterComponent;
-import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.LoginRegisterModule;
-import me.jcala.xmarket.di.modules.SortTagModule;
 import me.jcala.xmarket.di.qualifier.LoginProgress;
 import me.jcala.xmarket.di.qualifier.RegisterProgress;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;

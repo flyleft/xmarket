@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.dd.ShadowLayout
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:sl_shadowRadius="4dp"
-        app:sl_shadowColor="#AA000000"
-        app:sl_dx="0dp"
-        app:sl_dy="0dp"
-        app:sl_cornerRadius="56dp">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +14,7 @@
             android:id="@+id/deal_title"
             android:layout_width="match_parent"
             android:gravity="center"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:text=""/>
 
@@ -45,7 +38,7 @@
             android:layout_alignTop="@+id/deal_img"
             android:layout_toEndOf="@id/deal_img"
             android:layout_toRightOf="@id/deal_img"
-            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:layout_marginRight="15dp"/>
 
 
@@ -82,5 +75,4 @@
             android:text=""/>
 
     </RelativeLayout>
-    </com.dd.ShadowLayout>
 </LinearLayout>

@@ -1,10 +1,12 @@
 package me.jcala.xmarket.mvp.school;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.util.List;
+
 import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.entity.DealItem;
-import me.jcala.xmarket.data.entity.UserBean;
 
 public class SchoolModelImpl implements SchoolModel{
 
@@ -18,19 +20,33 @@ public class SchoolModelImpl implements SchoolModel{
     }
 
     private void executeLocal(final onGainListener listener){
-        List<DealItem> itemList=new ArrayList<>();
-        UserBean bean=new UserBean();
-        bean.setAvatar_url("https://jcalaz.github.io/img/sort_book.jpg");
-        bean.setUsername("jcala");
-        DealItem item=new DealItem();
-        item.setAuthor(bean);
-        item.setPrice(999);
-        item.setTitle("JAVA编程思想");
-        item.setDescription("马勒戈壁的");
-        List<String> imags=new ArrayList<>();
-        imags.add("https://jcalaz.github.io/img/sort_life.jpg");
-        item.setImags(imags);
-        itemList.add(item);
+        String jsonStr="[\n" +
+                "  {\n" +
+                "    \"author\": {\n" +
+                "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\",\n" +
+                "      \"username\": \"安琪\"\n" +
+                "    },\n" +
+                "    \"imags\": [\n" +
+                "      \"https://jcalaz.github.io/img/sort_body.jpg\"\n" +
+                "    ],\n" +
+                "    \"price\": 9,\n" +
+                "    \"status\": 0,\n" +
+                "    \"title\": \"3瓶脉动饮料\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"author\": {\n" +
+                "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_avater_cluo.jpg\",\n" +
+                "      \"username\": \"jcala\"\n" +
+                "    },\n" +
+                "    \"imags\": [\n" +
+                "      \"https://jcalaz.github.io/img/sort_phone.jpg\"\n" +
+                "    ],\n" +
+                "    \"price\": 1899,\n" +
+                "    \"status\": 0,\n" +
+                "    \"title\": \"华为荣耀13\"\n" +
+                "  }\n" +
+                "]";
+        List<DealItem> itemList=new Gson().fromJson(jsonStr, new TypeToken<List<DealItem>>(){}.getType());
         listener.success(itemList);
     }
 
