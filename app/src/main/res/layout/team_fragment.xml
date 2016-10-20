@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <ListView
-        android:id="@+id/school_deal_list"
+        android:id="@+id/team_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"

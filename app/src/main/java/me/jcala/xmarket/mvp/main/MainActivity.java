@@ -134,7 +134,7 @@ public class MainActivity  extends BaseActivity
                 ft.add(R.id.frame_layout, sortTagFragment);
             }
                 break;
-            case 3 : if (teamFragment != null) {
+            case 2 : if (teamFragment != null) {
                         ft.show(teamFragment);
                     } else {
                 teamFragment = new TeamFragment();
