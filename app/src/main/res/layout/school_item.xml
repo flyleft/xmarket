@@ -6,7 +6,8 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="34dp"
+        android:background="@color/white"
         android:orientation="vertical">
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/author_img"
@@ -15,7 +16,7 @@
             fresco:roundedCornerRadius="30dp"
             fresco:roundBottomLeft="true"
             fresco:roundBottomRight="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:layout_marginLeft="5dp"/>
 
         <TextView
@@ -67,7 +68,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:text="￥ 52"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/md_red_50" />
 
             </RelativeLayout>
 
@@ -75,5 +76,4 @@
 
 
     </FrameLayout>
-
 </LinearLayout>

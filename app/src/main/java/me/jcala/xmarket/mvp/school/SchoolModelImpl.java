@@ -44,6 +44,18 @@ public class SchoolModelImpl implements SchoolModel{
                 "    \"price\": 32,\n" +
                 "    \"status\": 0,\n" +
                 "    \"title\": \"盆栽\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"author\": {\n" +
+                "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\",\n" +
+                "      \"username\": \"nice\"\n" +
+                "    },\n" +
+                "    \"imags\": [\n" +
+                "      \"https://jcalaz.github.io/img/sort_computer.jpg\"\n" +
+                "    ],\n" +
+                "    \"price\": 3659,\n" +
+                "    \"status\": 0,\n" +
+                "    \"title\": \"三星笔记本\"\n" +
                 "  }\n" +
                 "]";
         List<DealItem> itemList=new Gson().fromJson(jsonStr, new TypeToken<List<DealItem>>(){}.getType());

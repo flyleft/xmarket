@@ -19,4 +19,6 @@
     <color name="black">#000000</color>
     <color name="material_login_register_color">#000000</color>
     <color name="appFontColor">#000000</color>
+
+    <color name="deal_page_bg">#e6e6e6</color>
 </resources>
