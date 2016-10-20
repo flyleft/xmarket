@@ -28,7 +28,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
 
     @Override
     public void success(List<DealItem> itemList) {
-        BaseAdapter adapter=new CommonAdapter<DealItem>(context,itemList, R.layout.school_item_one) {
+        BaseAdapter adapter=new CommonAdapter<DealItem>(context,itemList, R.layout.school_item) {
             @Override
             public void convert(ViewHolder viewHolder, DealItem item) {
                 viewHolder.setText(R.id.deal_title,item.getTitle());

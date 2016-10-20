@@ -1,78 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bg_card">
-        <TextView
-            android:id="@+id/deal_title"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text=""/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_card">
-
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/deal_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginRight="15dp"/>
-
+        android:layout_height="40dp"
+        android:orientation="vertical">
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/author_img"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignTop="@+id/deal_img"
-            android:layout_toEndOf="@id/deal_img"
-            android:layout_toRightOf="@id/deal_img"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:layout_marginRight="15dp"/>
-
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            fresco:roundedCornerRadius="30dp"
+            fresco:roundBottomLeft="true"
+            fresco:roundBottomRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:id="@+id/author_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/info_phone"
-            android:textSize="@dimen/font_size_small"
-            android:layout_alignBottom="@+id/author_img"
-            android:layout_toEndOf="@+id/author_img"
-            android:layout_marginBottom="20dp" />
-
-        <TextView
-            android:id="@+id/deal_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/font_size_small"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"/>
-
+            android:layout_height="20dp"
+            android:text=""
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/author_img" />
     </RelativeLayout>
-
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_card">
-        <TextView
-            android:id="@+id/deal_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:text=""/>
+        android:layout_height="250dp">
 
-    </RelativeLayout>
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/deal_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/sort_pic_selector"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/deal_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="jcala书籍"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/deal_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/deal_title"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="￥ 52"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
 </LinearLayout>
