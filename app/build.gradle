@@ -31,7 +31,6 @@ dependencies {
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
-    compile 'com.github.gabrielemariotti.cards:cardslib-core:2.1.0'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
     //------------------图片加载-----------------------------

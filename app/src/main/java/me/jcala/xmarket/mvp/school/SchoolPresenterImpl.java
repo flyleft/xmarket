@@ -44,7 +44,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             intent.putExtra("sortId",item.getId());
             context.startActivity(intent);
         };
-        view.whenLoadDataSuc(adapter);
+        view.whenLoadDataSuc(adapter,listener);
 
     }
 
