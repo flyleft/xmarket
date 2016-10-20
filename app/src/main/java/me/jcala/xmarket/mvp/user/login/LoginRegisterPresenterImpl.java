@@ -2,13 +2,11 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.support.design.widget.TextInputLayout;
 
-import com.orhanobut.logger.Logger;
-
 import org.jetbrains.annotations.NotNull;
 
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.entity.Result;
-import me.jcala.xmarket.data.entity.UserBean;
+import me.jcala.xmarket.data.entity.User;
 import me.jcala.xmarket.util.CheckUtils;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
@@ -32,7 +30,7 @@ public class LoginRegisterPresenterImpl implements
     public void login(@NotNull MaterialLoginView loginView) {
         ((DefaultLoginView)loginView.getLoginView()).setListener(
                 (TextInputLayout username, TextInputLayout password)->{
-                    UserBean bean=new UserBean();
+                    User bean=new User();
                     bean.setUsername(username.getEditText().getText().toString());
                     bean.setPassword(password.getEditText().getText().toString());
                     if (CheckUtils.isEmpty(bean.getUsername())){
@@ -71,7 +69,7 @@ public class LoginRegisterPresenterImpl implements
         ((DefaultRegisterView)registerView.getRegisterView()).setListener(
                 (TextInputLayout username, TextInputLayout phone,
                  TextInputLayout password)-> {
-                    UserBean bean=new UserBean();
+                    User bean=new User();
                     bean.setUsername(username.getEditText().getText().toString());
                     bean.setPhone(phone.getEditText().getText().toString());
                     bean.setPassword(password.getEditText().getText().toString());

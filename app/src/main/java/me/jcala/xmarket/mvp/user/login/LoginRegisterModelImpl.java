@@ -6,11 +6,11 @@ import org.jetbrains.annotations.NotNull;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.entity.Result;
-import me.jcala.xmarket.data.entity.UserBean;
+import me.jcala.xmarket.data.entity.User;
 
  class LoginRegisterModelImpl implements LoginRegisterModel {
     @Override
-    public Result<String> loginRequest(@NotNull UserBean userBean) {
+    public Result<String> loginRequest(@NotNull User userBean) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
            return executeLogin(userBean);
         }else {
@@ -20,7 +20,7 @@ import me.jcala.xmarket.data.entity.UserBean;
     }
 
     @Override
-    public Result<String> registerRequest(@NotNull UserBean user) {
+    public Result<String> registerRequest(@NotNull User user) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
            return executeRegister(user);
         }else {
@@ -29,15 +29,15 @@ import me.jcala.xmarket.data.entity.UserBean;
 
     }
 
-    private Result<String> executeLogin(UserBean userBean){
+    private Result<String> executeLogin(User userBean){
 
          return null;
     }
-     private Result<String> executeRegister(UserBean userBean){
+     private Result<String> executeRegister(User userBean){
 
        return null;
      }
-    private Result<String> executeLoginLocal(UserBean userBean){
+    private Result<String> executeLoginLocal(User userBean){
         Result<String> result=new Result<>();
         if ("jcala".equals(userBean.getUsername())&&"123".equals(userBean.getPassword())){
             result.setCode(ApiConf.action_success);
@@ -48,7 +48,7 @@ import me.jcala.xmarket.data.entity.UserBean;
         }
         return result;
     }
-    private Result<String> executeRegisterLocal(UserBean userBean){
+    private Result<String> executeRegisterLocal(User userBean){
         Result<String> result=new Result<>();
         if ("jcala".equals(userBean.getUsername())){
             result.setCode(ApiConf.register_um_exist);

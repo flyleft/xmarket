@@ -26,7 +26,7 @@ public class SchoolModelImpl implements SchoolModel{
                 "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\",\n" +
                 "      \"username\": \"安琪\"\n" +
                 "    },\n" +
-                "    \"imags\": [\n" +
+                "    \"imgs\": [\n" +
                 "      \"https://jcalaz.github.io/img/sort_body.jpg\"\n" +
                 "    ],\n" +
                 "    \"price\": 9,\n" +
@@ -38,7 +38,7 @@ public class SchoolModelImpl implements SchoolModel{
                 "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_avater_cluo.jpg\",\n" +
                 "      \"username\": \"jcala\"\n" +
                 "    },\n" +
-                "    \"imags\": [\n" +
+                "    \"imgs\": [\n" +
                 "      \"https://jcalaz.github.io/img/bg.jpg\"\n" +
                 "    ],\n" +
                 "    \"price\": 32,\n" +
@@ -50,7 +50,7 @@ public class SchoolModelImpl implements SchoolModel{
                 "      \"avatar_url\": \"https://jcalaz.github.io/img/sort_clothes.jpeg\",\n" +
                 "      \"username\": \"nice\"\n" +
                 "    },\n" +
-                "    \"imags\": [\n" +
+                "    \"imgs\": [\n" +
                 "      \"https://jcalaz.github.io/img/sort_computer.jpg\"\n" +
                 "    ],\n" +
                 "    \"price\": 3659,\n" +

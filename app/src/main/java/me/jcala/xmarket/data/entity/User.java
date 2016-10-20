@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserBean {
+public class User {
     private String username;//用户名
     private String password;//用户密码
     private String school;//所在学校名称
