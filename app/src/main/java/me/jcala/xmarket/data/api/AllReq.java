@@ -6,9 +6,9 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.dao.DealItem;
+import me.jcala.xmarket.data.pojo.DealItem;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.dao.SortTag;
+import me.jcala.xmarket.data.pojo.SortTag;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;

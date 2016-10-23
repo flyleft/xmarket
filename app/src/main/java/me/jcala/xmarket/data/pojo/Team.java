@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.dao;
+package me.jcala.xmarket.data.pojo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

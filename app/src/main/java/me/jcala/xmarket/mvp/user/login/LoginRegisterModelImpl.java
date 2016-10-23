@@ -5,7 +5,7 @@ package me.jcala.xmarket.mvp.user.login;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.dao.User;
+import me.jcala.xmarket.data.pojo.User;
 
  class LoginRegisterModelImpl implements LoginRegisterModel {
     @Override

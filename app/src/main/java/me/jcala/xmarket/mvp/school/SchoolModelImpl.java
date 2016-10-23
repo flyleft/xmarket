@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import me.jcala.xmarket.conf.AppConf;
-import me.jcala.xmarket.data.dao.DealItem;
+import me.jcala.xmarket.data.pojo.DealItem;
 
 public class SchoolModelImpl implements SchoolModel{
 

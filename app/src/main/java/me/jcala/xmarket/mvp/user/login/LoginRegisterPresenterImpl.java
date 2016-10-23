@@ -3,7 +3,7 @@ package me.jcala.xmarket.mvp.user.login;
 import android.support.design.widget.TextInputLayout;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.dao.User;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.CheckUtils;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;

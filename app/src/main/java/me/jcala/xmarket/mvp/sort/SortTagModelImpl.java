@@ -10,7 +10,7 @@ import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.dao.SortTag;
+import me.jcala.xmarket.data.pojo.SortTag;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

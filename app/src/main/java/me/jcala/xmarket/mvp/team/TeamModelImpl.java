@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.jcala.xmarket.conf.AppConf;
-import me.jcala.xmarket.data.dao.Team;
+import me.jcala.xmarket.data.pojo.Team;
 
 public class TeamModelImpl implements TeamModel{
 
