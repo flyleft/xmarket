@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * 封装服务器返回数据的javaBean
+ * 返回给client的json对应的javabean
  */
 @Setter
 @Getter

@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -36,7 +37,7 @@ public class SplashActivity extends BaseActivity {
     }
     private void splashAction(){
         new Handler().postDelayed(() ->{
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginRegisterActivity.class);
                 startActivity(intent);
                 finish();
         }, 3000);

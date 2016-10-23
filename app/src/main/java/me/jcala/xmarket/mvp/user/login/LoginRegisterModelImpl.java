@@ -1,7 +1,6 @@
 package me.jcala.xmarket.mvp.user.login;
 
 
-import org.jetbrains.annotations.NotNull;
 
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.conf.AppConf;
@@ -10,7 +9,7 @@ import me.jcala.xmarket.data.entity.User;
 
  class LoginRegisterModelImpl implements LoginRegisterModel {
     @Override
-    public Result<String> loginRequest(@NotNull User userBean) {
+    public Result<String> loginRequest(User userBean) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
            return executeLogin(userBean);
         }else {
@@ -20,7 +19,7 @@ import me.jcala.xmarket.data.entity.User;
     }
 
     @Override
-    public Result<String> registerRequest(@NotNull User user) {
+    public Result<String> registerRequest(User user) {
         if (AppConf.reqExcute==AppConf.reqExcuteNormal){
            return executeRegister(user);
         }else {

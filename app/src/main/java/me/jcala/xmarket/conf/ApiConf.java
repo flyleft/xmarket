@@ -3,7 +3,8 @@ package me.jcala.xmarket.conf;
 public interface ApiConf {
     int DEFAULT_TIMEOUT = 5;
 
-    String BASE_URL="http://127.0.0.1:8090/xmarket/";
+    String BASE_URL="http://127.0.0.1:8090/api/";
+    String token_url="token";
     String login_url="user/login";
     String register_url="user/register";
     String school_url="items/school";

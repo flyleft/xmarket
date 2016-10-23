@@ -1,9 +1,6 @@
 package me.jcala.xmarket.mvp.user.login;
 
 import android.support.design.widget.TextInputLayout;
-
-import org.jetbrains.annotations.NotNull;
-
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.entity.Result;
 import me.jcala.xmarket.data.entity.User;
@@ -27,7 +24,7 @@ public class LoginRegisterPresenterImpl implements
     }
 
     @Override
-    public void login(@NotNull MaterialLoginView loginView) {
+    public void login(MaterialLoginView loginView) {
         ((DefaultLoginView)loginView.getLoginView()).setListener(
                 (TextInputLayout username, TextInputLayout password)->{
                     User bean=new User();
@@ -65,7 +62,7 @@ public class LoginRegisterPresenterImpl implements
     }
 
     @Override
-    public void register(@NotNull MaterialLoginView registerView) {
+    public void register(MaterialLoginView registerView) {
         ((DefaultRegisterView)registerView.getRegisterView()).setListener(
                 (TextInputLayout username, TextInputLayout phone,
                  TextInputLayout password)-> {
