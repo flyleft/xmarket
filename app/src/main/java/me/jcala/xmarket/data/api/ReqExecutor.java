@@ -2,9 +2,12 @@ package me.jcala.xmarket.data.api;
 
 import java.util.concurrent.TimeUnit;
 
+import me.jcala.xmarket.BuildConfig;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,8 +25,15 @@ public class ReqExecutor {
     public static ReqExecutor INSTANCE() {
         return ReqExecutorBuilder.instance;
     }
-    private Retrofit getRetrofit(){
+    private Retrofit getRetrofit(Converter.Factory factory){
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            //设置 Debug Log 模式
+            httpClientBuilder.addInterceptor(loggingInterceptor);
+        }
+
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor((Interceptor.Chain chain) -> {
                 Request request = chain.request();
@@ -34,14 +44,17 @@ public class ReqExecutor {
             });
         return new Retrofit.Builder()
                 .client(httpClientBuilder.build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(factory)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
     }
+    private Retrofit getGsonRetrofit(){
+        return getRetrofit(GsonConverterFactory.create());
+    }
    public AllReq allReq(){
        if (allReq==null){
-           allReq=getRetrofit().create(AllReq.class);
+           allReq=getGsonRetrofit().create(AllReq.class);
        }
       return allReq;
    }

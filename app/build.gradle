@@ -17,6 +17,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -33,6 +36,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'//retrofit日志打印
     //------------------图片加载-----------------------------
     compile "com.facebook.fresco:fresco:${frescoVersion}"
     compile "com.facebook.fresco:animated-gif:${frescoVersion}"

@@ -1,10 +1,9 @@
 package me.jcala.xmarket.data.api;
 
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import java.util.List;
-
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.entity.DealItem;
 import me.jcala.xmarket.data.entity.Result;
@@ -21,18 +20,18 @@ public interface AllReq {
     /**
      * 用户登录请求
      */
-    @POST(ApiConf.login_url+"/{username}")
+    @POST(ApiConf.login_url)
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Observable<Result<String>> login(
-            @Path("username")@Nullable String username,
-            @Field("password")  String password);
+            @Field("username")@NonNull String username,
+            @Field("password")@NonNull String password);
 
     /**
      * 用户注册请求
      */
-    @POST(ApiConf.register_url+"/{username}")
+    @POST(ApiConf.register_url)
     Observable<Result<String>> register(
-            @Path("username")  String username,
+            @Field("username")  String username,
             @Field("phone")  String phone,
             @Field("password")  String password);
 

@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.jcala.xmarket.BuildConfig;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.qualifier.LoginProgress;
 import me.jcala.xmarket.di.qualifier.RegisterProgress;
