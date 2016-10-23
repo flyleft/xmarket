@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.entity;
+package me.jcala.xmarket.data.dao;
 
 
 import lombok.Getter;

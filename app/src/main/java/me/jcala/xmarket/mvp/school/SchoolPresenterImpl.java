@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.entity.DealItem;
+import me.jcala.xmarket.data.dao.DealItem;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;

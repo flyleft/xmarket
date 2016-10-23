@@ -1,8 +1,8 @@
 package me.jcala.xmarket.mvp.user.login;
 
 
-import me.jcala.xmarket.data.entity.Result;
-import me.jcala.xmarket.data.entity.User;
+import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.dao.User;
 
 interface LoginRegisterModel {
     interface onLoginRegisterListener{

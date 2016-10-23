@@ -2,7 +2,7 @@ package me.jcala.xmarket.mvp.team;
 
 import java.util.List;
 
-import me.jcala.xmarket.data.entity.Team;
+import me.jcala.xmarket.data.dao.Team;
 
 public interface TeamModel {
     interface onGainTeamListener{
