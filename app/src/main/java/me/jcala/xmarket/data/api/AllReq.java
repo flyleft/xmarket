@@ -2,15 +2,16 @@ package me.jcala.xmarket.data.api;
 
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import java.util.List;
+
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.entity.DealItem;
 import me.jcala.xmarket.data.entity.Result;
 import me.jcala.xmarket.data.entity.SortTag;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -21,7 +22,6 @@ public interface AllReq {
      * 用户登录请求
      */
     @POST(ApiConf.login_url)
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     Observable<Result<String>> login(
             @Field("username")@NonNull String username,
             @Field("password")@NonNull String password);

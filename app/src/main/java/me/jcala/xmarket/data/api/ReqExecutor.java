@@ -27,21 +27,23 @@ public class ReqExecutor {
     }
     private Retrofit getRetrofit(Converter.Factory factory){
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {//打印http日志
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            //设置 Debug Log 模式
             httpClientBuilder.addInterceptor(loggingInterceptor);
         }
 
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                .addInterceptor((Interceptor.Chain chain) -> {
-                Request request = chain.request();
-                Request newReq = request.newBuilder()
-                        .addHeader("Authorization",token)
-                        .build();
-                return chain.proceed(newReq);
-            });
+                .addInterceptor((Interceptor.Chain chain)-> {
+                    Request originalRequest = chain.request();
+                    Request.Builder requestBuilder = originalRequest.newBuilder()
+                            .header("Content-Type", "application/json;charset=UTF-8")
+                            .header("Accept", "application/json")
+                            .addHeader("Authorization",token)
+                            .method(originalRequest.method(), originalRequest.body());
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+                });
         return new Retrofit.Builder()
                 .client(httpClientBuilder.build())
                 .addConverterFactory(factory)
