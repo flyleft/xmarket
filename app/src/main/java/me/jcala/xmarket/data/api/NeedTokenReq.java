@@ -1,10 +1,7 @@
 package me.jcala.xmarket.data.api;
 
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
-
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.DealItem;
 import me.jcala.xmarket.data.dto.Result;
@@ -15,20 +12,20 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
-public interface AllReq {
+public interface NeedTokenReq {
 
     /**
-     * 用户登录请求
+     * 用户登录并获取用户信息和token
      */
-    @POST(ApiConf.login_url)
+    @POST(ApiConf.auth)
     Observable<Result<String>> login(
-            @Field("username")@NonNull String username,
-            @Field("password")@NonNull String password);
+            @Field("username") String username,
+            @Field("password") String password);
 
     /**
      * 用户注册请求
      */
-    @POST(ApiConf.register_url)
+    @POST(ApiConf.register)
     Observable<Result<String>> register(
             @Field("username")  String username,
             @Field("phone")  String phone,
@@ -37,13 +34,13 @@ public interface AllReq {
     /**
      * 获取分类列表请求
      */
-    @GET(ApiConf.sort_url)
+    @GET(ApiConf.get_trade_sort)
     Observable<Result<List<SortTag>>> sortTag();
 
     /**
      *获取本校在售商品列表
      */
-    @GET(ApiConf.school_url+"/{school}/{page}")
+    @GET(ApiConf.get_school_trades)
     Observable<Result<List<DealItem>>> schoolDeals(
             @Path("school")  String school,
             @Path("page") int page

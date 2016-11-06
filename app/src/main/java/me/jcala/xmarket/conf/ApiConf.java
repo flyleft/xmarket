@@ -1,23 +1,18 @@
 package me.jcala.xmarket.conf;
 
 public interface ApiConf {
+
     int DEFAULT_TIMEOUT = 5;
 
-    String BASE_URL="http://127.0.0.1:8090/api/";
-    String token_url="token";
-    String login_url="user/login";
-    String register_url="user/register";
-    String school_url="items/school";
-    String sort_url="items/sort";
+    String BASE_URL="http://127.0.0.1:80/api/v1";
+    String auth="/auth";
+    String register="/users/register";
+    String get_school_list="/school_list";
+    String update_user_school="/users/{user_id}/update_school";
+    String update_user_avatar="/{user_id}/pass";
+    String update_user_pass="/users/{user_id}/avatar";
+    String update_user_team="/users/{user_id}/team";
+    String get_trade_sort="/trades/sort";
+    String get_school_trades="/schools/{school_name}/{page}/trade_list";
 
-
-    String common_err="网络错误";
-    int action_success=1;
-    int action_fail=-1;
-
-    int login_um_err=2;
-    int login_pass_err=3;
-
-    int register_um_exist=2;
-    int register_phone_exist=3;
 }

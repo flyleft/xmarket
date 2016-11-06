@@ -16,7 +16,7 @@ import static me.jcala.xmarket.conf.ApiConf.BASE_URL;
 import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
-    private AllReq allReq;
+    private NeedTokenReq needTokenReq;
     private String token="";
     private ReqExecutor(){}
     private static class ReqExecutorBuilder {
@@ -54,10 +54,10 @@ public class ReqExecutor {
     private Retrofit getGsonRetrofit(){
         return getRetrofit(GsonConverterFactory.create());
     }
-   public AllReq allReq(){
-       if (allReq==null){
-           allReq=getGsonRetrofit().create(AllReq.class);
+   public NeedTokenReq allReq(){
+       if (needTokenReq==null){
+           needTokenReq=getGsonRetrofit().create(NeedTokenReq.class);
        }
-      return allReq;
+      return needTokenReq;
    }
 }
