@@ -2,17 +2,16 @@ package me.jcala.xmarket.mvp.school;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.List;
 
-import me.jcala.xmarket.conf.AppConf;
+import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.DealItem;
 
 public class SchoolModelImpl implements SchoolModel{
 
     @Override
     public void getSchoolDeals(int page,final onGainListener listener) {
-        if (AppConf.reqExcute==AppConf.reqExcuteNormal){
+        if (ApiConf.excute==1){
             execute(listener);
         }else {
             executeLocal(listener);

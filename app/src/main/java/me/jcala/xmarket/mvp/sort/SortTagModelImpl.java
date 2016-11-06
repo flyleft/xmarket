@@ -3,11 +3,9 @@ package me.jcala.xmarket.mvp.sort;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.List;
 
 import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.conf.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.SortTag;
@@ -18,14 +16,14 @@ import rx.schedulers.Schedulers;
 public class SortTagModelImpl implements SortTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
-        if (AppConf.reqExcute==AppConf.reqExcuteNormal){
+        if (ApiConf.excute==1){
             execute(listener);
         }else {
             executeLocal(listener);
         }
 
     }
-    public void execute(final onGainListener listener){
+    private void execute(final onGainListener listener){
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -39,12 +37,12 @@ public class SortTagModelImpl implements SortTagModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(ApiConf.common_err);
+                        listener.onFailure("");
                     }
 
                     @Override
                     public void onNext(Result<List<SortTag>> listResult) {
-                        if (listResult.getCode()== ApiConf.action_success){
+                        if (listResult.getCode()== 1){
                             listener.onSuccess(listResult.getData());
                         }else {
                             listener.onFailure(listResult.getMsg());
@@ -53,7 +51,7 @@ public class SortTagModelImpl implements SortTagModel {
                 });
 
     }
-    public void executeLocal(final onGainListener listener){
+    private void executeLocal(final onGainListener listener){
          String jsonStr="[\n" +
                 "  {\n" +
                 "    \"id\": \"26\",\n" +

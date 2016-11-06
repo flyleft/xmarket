@@ -1,7 +1,6 @@
 package me.jcala.xmarket.mvp.user.login;
 
 import android.support.design.widget.TextInputLayout;
-import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.CheckUtils;
@@ -41,13 +40,13 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(false);
                         Result<String> result= model.loginRequest(bean);
                         switch (result.getCode()){
-                            case ApiConf.action_success:
+                            case 1:
                                 success();break;
-                            case ApiConf.login_pass_err:
+                            case 2:
                                 password.setErrorEnabled(true);
                                 password.setError("密码错误");
                                 break;
-                            case ApiConf.login_um_err:
+                            case 3:
                                 username.setErrorEnabled(true);
                                 username.setError("该用户不存在");
                                 break;
@@ -91,13 +90,13 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(false);
                         Result<String> result= model.registerRequest(bean);
                         switch (result.getCode()){
-                            case ApiConf.action_success:
+                            case 1:
                                 success();break;
-                            case ApiConf.register_um_exist:
+                            case 2:
                                 username.setErrorEnabled(true);
                                 username.setError("该用户名已存在");
                                 break;
-                            case ApiConf.register_phone_exist:
+                            case 3:
                                 phone.setErrorEnabled(true);
                                 phone.setError("该手机号已被注册");
                                 break;
