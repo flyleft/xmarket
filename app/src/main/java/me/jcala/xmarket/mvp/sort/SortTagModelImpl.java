@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
@@ -37,12 +38,12 @@ public class SortTagModelImpl implements SortTagModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure("");
+                        listener.onFailure(Api.SERVER_ERROR.msg());
                     }
 
                     @Override
                     public void onNext(Result<List<SortTag>> listResult) {
-                        if (listResult.getCode()== 1){
+                        if (listResult.getCode()== Api.SUCCESS.code()){
                             listener.onSuccess(listResult.getData());
                         }else {
                             listener.onFailure(listResult.getMsg());

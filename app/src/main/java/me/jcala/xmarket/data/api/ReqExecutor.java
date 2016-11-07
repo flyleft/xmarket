@@ -17,7 +17,7 @@ import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
     private NeedTokenReq needTokenReq;
-    private String token="";
+    private static String token="";
     private ReqExecutor(){}
     private static class ReqExecutorBuilder {
         private static ReqExecutor instance = new ReqExecutor();
@@ -39,7 +39,7 @@ public class ReqExecutor {
                     Request.Builder requestBuilder = originalRequest.newBuilder()
                             .header("Content-Type", "application/json;charset=UTF-8")
                             .header("Accept", "application/json")
-                            .addHeader("Authorization",token)
+                            .addHeader("x-access-token",token)
                             .method(originalRequest.method(), originalRequest.body());
                     Request request = requestBuilder.build();
                     return chain.proceed(request);

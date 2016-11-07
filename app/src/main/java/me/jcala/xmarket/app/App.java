@@ -20,6 +20,7 @@ public class App extends Application {
     private void initialize(){
         Fresco.initialize(this);
     }
+
     public AppComponent getComponent() {
         return appComponent;
     }

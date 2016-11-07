@@ -1,6 +1,6 @@
 package me.jcala.xmarket.conf;
 
-public enum ApiCode {
+public enum Api {
     //普通操作相关
     SUCCESS(100,"操作成功"),
     SERVER_ERROR(101,"服务器异常"),
@@ -18,7 +18,7 @@ public enum ApiCode {
     private int code;
     private String msg;
 
-    ApiCode(int code, String msg) {
+    Api(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
