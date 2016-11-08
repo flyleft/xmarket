@@ -49,7 +49,7 @@ public class TokenUtils {
         return sp.getString("token", "");
     }
 
-    public User getUserPass(final Context context){
+    public User getUser(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         return new User(sp.getString("username",""),sp.getString("password",""));
     }
