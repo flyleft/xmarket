@@ -27,7 +27,7 @@ public class LoginRegisterModule {
         this.context=context;
     }
     @Singleton @Provides LoginRegisterPresenter provideLoginRegisterPre(){
-       return new LoginRegisterPresenterImpl(view);
+       return new LoginRegisterPresenterImpl(view,context);
     }
 
     @LoginProgress
