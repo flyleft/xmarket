@@ -34,7 +34,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
         BaseAdapter adapter=new CommonAdapter<Team>(context,teamList, R.layout.team_item) {
             @Override
             public void convert(ViewHolder viewHolder, Team item) {
-                viewHolder.setImageResithFresco(R.id.team_img, Uri.parse(item.getImg()));
+                viewHolder.setFrescoImg(R.id.team_img, Uri.parse(item.getImg()));
                 viewHolder.setText(R.id.team_name,item.getName());
                 viewHolder.setText(R.id.team_description,item.getDescription());
             }
