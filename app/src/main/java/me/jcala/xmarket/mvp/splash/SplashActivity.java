@@ -11,9 +11,11 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
+import me.jcala.xmarket.util.TokenUtils;
 
 public class SplashActivity extends BaseActivity {
 
@@ -35,11 +37,25 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.splash_activity);
         splashAction();
     }
+
     private void splashAction(){
-        new Handler().postDelayed(() ->{
+
+        String token=TokenUtils.instance.getToken(SplashActivity.this);//从SharedPreferences中获取token的值
+
+        if(token==null||"".equals(token)){
+            new Handler().postDelayed(() ->{
                 Intent intent = new Intent(SplashActivity.this, LoginRegisterActivity.class);
                 startActivity(intent);
                 finish();
-        }, 3000);
+            }, 2500);
+        }else {
+            ReqExecutor.INSTANCE().setToken(token);//设置retrofit发起HTTP的x-access-token的头部值
+
+            new Handler().postDelayed(() ->{//如果已经有token则直接进入MainActivity,否则跳转到登录界面
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }, 2500);
+        }
     }
 }

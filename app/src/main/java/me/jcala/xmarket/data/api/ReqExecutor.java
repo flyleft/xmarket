@@ -16,12 +16,21 @@ import static me.jcala.xmarket.conf.ApiConf.BASE_URL;
 import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
+
     private NeedTokenReq needTokenReq;
-    private static String token="";
+
+    private String token="";
+
     private ReqExecutor(){}
+
     private static class ReqExecutorBuilder {
         private static ReqExecutor instance = new ReqExecutor();
     }
+
+    public void setToken(String token) {
+       this.token = token;
+    }
+
     public static ReqExecutor INSTANCE() {
         return ReqExecutorBuilder.instance;
     }

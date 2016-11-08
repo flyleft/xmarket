@@ -12,11 +12,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class TokenUtils {
 
-    private final String SP="token";
-
-    private final String key="jwt";
-
-    private String token="";//用于存储token的值
+    private  final String SP="user";
 
     private static class TokenHolder{
         private static TokenUtils tokenUtils=new TokenUtils();
@@ -24,22 +20,46 @@ public class TokenUtils {
 
     public static TokenUtils instance=TokenHolder.tokenUtils;
 
-    private void saveData(final Context context,final String string){
+    private void saveUser(final Context context,final String username,final String password){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString(key, string);
+        editor.putString("username", username);
+        editor.putString("password", password);
         editor.apply();
     }
 
-    private void clear(Context context){
+    private void saveToken(final Context context,final String token){
+        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("token", token);
+        editor.apply();
+    }
+
+    private void clear(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         editor.apply();
     }
 
-    private String getToken(Context context){
+    public String getToken(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
-        return sp.getString(key, "");
+        return sp.getString("token", "");
     }
+
+    public UserPass getUserPass(final Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
+        return new UserPass(sp.getString("username",""),sp.getString("password",""));
+    }
+
+    static class UserPass{
+        final String username;
+        final String password;
+
+        public UserPass(String username, String password) {
+            this.username = username;
+            this.password = password;
+        }
+    }
+
 }
