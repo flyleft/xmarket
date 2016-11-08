@@ -1,9 +1,16 @@
 package me.jcala.xmarket.mvp.user.login;
 
+import android.content.Context;
 import android.support.design.widget.TextInputLayout;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import me.jcala.xmarket.conf.Api;
+import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.CheckUtils;
+import me.jcala.xmarket.util.TokenUtils;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
@@ -13,8 +20,10 @@ public class LoginRegisterPresenterImpl implements
         LoginRegisterModel.onLoginRegisterListener{
     private LoginRegisterView view;
     private LoginRegisterModel model;
+    private Context context;
 
-    public LoginRegisterPresenterImpl(LoginRegisterView view) {
+    public LoginRegisterPresenterImpl(LoginRegisterView view,Context context) {
+        this.context=context;
         this.view = view;
         this.model = new LoginRegisterModelImpl();
     }
@@ -40,18 +49,18 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(false);
                         Result<String> result= model.loginRequest(bean);
                         switch (result.getCode()){
-                            case 1:
-                                success();break;
-                            case 2:
+                            case 100:
+                                success(bean,result.getData());break;
+                            case 202:
                                 password.setErrorEnabled(true);
-                                password.setError("密码错误");
+                                password.setError(Api.USER_PASS_ERR.msg());
                                 break;
-                            case 3:
+                            case 201:
                                 username.setErrorEnabled(true);
-                                username.setError("该用户不存在");
+                                username.setError(Api.USER_NOT_EXIST.msg());
                                 break;
                             default:username.setErrorEnabled(true);
-                                username.setError("网络错误,请稍后再试");
+                                username.setError(Api.SERVER_ERROR.msg());
                                 break;
                         }
 
@@ -90,18 +99,18 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(false);
                         Result<String> result= model.registerRequest(bean);
                         switch (result.getCode()){
-                            case 1:
-                                success();break;
-                            case 2:
+                            case 100:
+                                success(bean,result.getData());break;
+                            case 203:
                                 username.setErrorEnabled(true);
-                                username.setError("该用户名已存在");
+                                username.setError(Api.USER_NAME_EXIST.msg());
                                 break;
-                            case 3:
+                            case 204:
                                 phone.setErrorEnabled(true);
-                                phone.setError("该手机号已被注册");
+                                phone.setError(Api.USER_PHONE_EXIST.msg());
                                 break;
                             default:username.setErrorEnabled(true);
-                                username.setError("网络错误,请稍后再试");
+                                username.setError(Api.SERVER_ERROR.msg());
                                 break;
                         }
 
@@ -110,7 +119,9 @@ public class LoginRegisterPresenterImpl implements
     }
 
     @Override
-    public void success() {
+    public void success(User user,String token) {
+        TokenUtils.instance.saveUserToken(context,user,token);//存储username,password以及token到SharedPreferences中
+        ReqExecutor.INSTANCE().setToken(token);//更新HTTP头部的token值
         view.whenSuccess();
     }
 }
