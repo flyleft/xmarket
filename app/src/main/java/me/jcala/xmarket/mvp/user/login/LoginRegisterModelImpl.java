@@ -20,10 +20,22 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 .login(user.getUsername(),user.getPassword())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((Result<String> resultData) ->{
-                    result.setCode(resultData.getCode());
-                    result.setMsg(resultData.getMsg());
-                    result.setData(resultData.getData());
+                .subscribe(new Subscriber<Result<String>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Result<String> resultData) {
+                        result.setCode(resultData.getCode());
+                        result.setMsg(resultData.getMsg());
+                        result.setData(resultData.getData());
+                    }
                 });
         return result;
     }
@@ -46,7 +58,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                     }
 
                     @Override
-                    public void onNext(Result<String> listResult) {
+                    public void onNext(Result<String> resultData) {
                     }
                 });
         return null;
