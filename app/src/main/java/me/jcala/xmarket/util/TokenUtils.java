@@ -3,6 +3,8 @@ package me.jcala.xmarket.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import me.jcala.xmarket.data.pojo.User;
+
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -47,19 +49,9 @@ public class TokenUtils {
         return sp.getString("token", "");
     }
 
-    public UserPass getUserPass(final Context context){
+    public User getUserPass(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
-        return new UserPass(sp.getString("username",""),sp.getString("password",""));
-    }
-
-    static class UserPass{
-        final String username;
-        final String password;
-
-        public UserPass(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
+        return new User(sp.getString("username",""),sp.getString("password",""));
     }
 
 }

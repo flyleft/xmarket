@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
-public interface NeedTokenReq {
+public interface UserReq {
 
     /**
      * 用户登录并获取用户信息和token

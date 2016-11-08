@@ -17,7 +17,7 @@ import rx.schedulers.Schedulers;
 public class SortTagModelImpl implements SortTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
-        if (ApiConf.excute==1){
+        if (ApiConf.execute==1){
             execute(listener);
         }else {
             executeLocal(listener);

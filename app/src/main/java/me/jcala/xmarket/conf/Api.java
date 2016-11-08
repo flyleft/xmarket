@@ -3,7 +3,7 @@ package me.jcala.xmarket.conf;
 public enum Api {
     //普通操作相关
     SUCCESS(100,"操作成功"),
-    SERVER_ERROR(101,"服务器异常"),
+    SERVER_ERROR(101,"网络异常,请稍后再试!"),
     FORBIDDEN(102,"没有权限"),
     ILLEGAL_PARAMS(103,"请求参数不合法"),
     TOKEN_ILLEGAL(105,"token不合法"),
