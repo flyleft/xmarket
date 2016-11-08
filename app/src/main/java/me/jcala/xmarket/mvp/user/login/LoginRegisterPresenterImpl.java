@@ -59,9 +59,7 @@ public class LoginRegisterPresenterImpl implements
                                 username.setErrorEnabled(true);
                                 username.setError(Api.USER_NOT_EXIST.msg());
                                 break;
-                            default:username.setErrorEnabled(true);
-                                username.setError(Api.SERVER_ERROR.msg());
-                                break;
+                            default:break;
                         }
 
                     }
@@ -109,9 +107,7 @@ public class LoginRegisterPresenterImpl implements
                                 phone.setErrorEnabled(true);
                                 phone.setError(Api.USER_PHONE_EXIST.msg());
                                 break;
-                            default:username.setErrorEnabled(true);
-                                username.setError(Api.SERVER_ERROR.msg());
-                                break;
+                            default:break;
                         }
 
                     }
