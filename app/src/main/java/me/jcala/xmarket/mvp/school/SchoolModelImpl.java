@@ -1,24 +1,12 @@
 package me.jcala.xmarket.mvp.school;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.util.List;
-
-import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.pojo.Trade;
-
 public class SchoolModelImpl implements SchoolModel{
 
     @Override
     public void getSchoolDeals(int page,final onGainListener listener) {
-        if (ApiConf.execute==1){
-            execute(listener);
-        }else {
-            executeLocal(listener);
-        }
     }
 
-    private void executeLocal(final onGainListener listener){
+   /* private void executeLocal(final onGainListener listener){
         String jsonStr="[\n" +
                 "  {\n" +
                 "    \"author\": {\n" +
@@ -64,5 +52,5 @@ public class SchoolModelImpl implements SchoolModel{
 
     private void execute(final onGainListener listener){
 
-    }
+    }*/
 }
