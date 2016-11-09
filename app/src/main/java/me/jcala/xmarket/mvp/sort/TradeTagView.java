@@ -4,7 +4,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 
 
-public interface SortTagView {
+public interface TradeTagView {
     void whenSuccess(BaseAdapter adapter, AdapterView.OnItemClickListener listener);
     void whenFail(String msg);
 }

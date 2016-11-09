@@ -4,7 +4,7 @@ import java.util.List;
 
 import me.jcala.xmarket.data.pojo.TradeTag;
 
-interface SortTagModel {
+interface TradeTagModel {
     interface onGainListener {
         void onSuccess(List<TradeTag> tradeTagList);
         void onFailure(String errMsg);

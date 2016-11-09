@@ -16,11 +16,11 @@ import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.SortTagModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
-public class SortTagFragment extends BaseFragment implements SortTagView{
+public class TradeTagFragment extends BaseFragment implements TradeTagView {
     @BindView(R.id.sort_grid)
     GridView gridView;
     @Inject
-    SortTagPresenter presenter;
+    TradeTagPresenter presenter;
     private Unbinder unbinder;
     @Override
     protected int getLayoutResId() {

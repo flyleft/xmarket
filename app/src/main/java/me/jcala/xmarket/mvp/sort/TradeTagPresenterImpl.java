@@ -13,15 +13,15 @@ import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
 
-public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.onGainListener {
-    private SortTagModel mModel;
-    private SortTagView mView;
+public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.onGainListener {
+    private TradeTagModel mModel;
+    private TradeTagView mView;
     private Context mContext;
 
-    public SortTagPresenterImpl(Context context, SortTagView view){
+    public TradeTagPresenterImpl(Context context, TradeTagView view){
         mContext=context;
         mView = view;
-        mModel = new SortTagModelImpl();
+        mModel = new TradeTagModelImpl();
     }
 
     @Override

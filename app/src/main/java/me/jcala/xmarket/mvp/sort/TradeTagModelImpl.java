@@ -1,12 +1,9 @@
 package me.jcala.xmarket.mvp.sort;
 
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -14,17 +11,10 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class SortTagModelImpl implements SortTagModel {
+public class TradeTagModelImpl implements TradeTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
-        if (ApiConf.execute==1){
-            execute(listener);
-        }else {
-            executeLocal(listener);
-        }
 
-    }
-    private void execute(final onGainListener listener){
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -38,7 +28,7 @@ public class SortTagModelImpl implements SortTagModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(Api.SERVER_ERROR.msg());
+                        listener.onFailure("");
                     }
 
                     @Override
@@ -50,9 +40,8 @@ public class SortTagModelImpl implements SortTagModel {
                         }
                     }
                 });
-
     }
-    private void executeLocal(final onGainListener listener){
+   /* private void executeLocal(final onGainListener listener){
          String jsonStr="[\n" +
                 "  {\n" +
                 "    \"id\": \"26\",\n" +
@@ -107,5 +96,5 @@ public class SortTagModelImpl implements SortTagModel {
                 "]";
         List<TradeTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<TradeTag>>(){}.getType());
         listener.onSuccess(entities);
-    }
+    }*/
 }

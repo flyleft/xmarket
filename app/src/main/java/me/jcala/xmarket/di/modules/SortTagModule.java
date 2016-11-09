@@ -6,21 +6,21 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.jcala.xmarket.mvp.sort.SortTagPresenter;
-import me.jcala.xmarket.mvp.sort.SortTagPresenterImpl;
-import me.jcala.xmarket.mvp.sort.SortTagView;
+import me.jcala.xmarket.mvp.sort.TradeTagPresenter;
+import me.jcala.xmarket.mvp.sort.TradeTagPresenterImpl;
+import me.jcala.xmarket.mvp.sort.TradeTagView;
 
 @Module
 public class SortTagModule {
     private Context context;
-    private SortTagView view;
+    private TradeTagView view;
 
-    public SortTagModule(Context context, SortTagView view) {
+    public SortTagModule(Context context, TradeTagView view) {
         this.context = context;
         this.view = view;
     }
 
-    @Singleton @Provides SortTagPresenter providePresenter(){
-        return new SortTagPresenterImpl(context,view);
+    @Singleton @Provides TradeTagPresenter providePresenter(){
+        return new TradeTagPresenterImpl(context,view);
     }
 }
