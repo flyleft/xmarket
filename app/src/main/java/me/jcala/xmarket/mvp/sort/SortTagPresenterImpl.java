@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import java.util.List;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.pojo.SortTag;
+import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
@@ -30,16 +30,16 @@ public class SortTagPresenterImpl implements SortTagPresenter,SortTagModel.onGai
     }
 
     @Override
-    public void onSuccess(List<SortTag> sortTagList) {
-        BaseAdapter adapter=new CommonAdapter<SortTag>(mContext,sortTagList,R.layout.sort_grid_item) {
+    public void onSuccess(List<TradeTag> tradeTagList) {
+        BaseAdapter adapter=new CommonAdapter<TradeTag>(mContext, tradeTagList,R.layout.sort_grid_item) {
             @Override
-            public void convert(ViewHolder viewHolder, SortTag dataEntity) {
+            public void convert(ViewHolder viewHolder, TradeTag dataEntity) {
                 viewHolder.setText(R.id.grid_tv, dataEntity.getName());
                 viewHolder.setFrescoImg(R.id.grid_iv, Uri.parse(dataEntity.getBgPic()));
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            SortTag entity = sortTagList.get(position);
+            TradeTag entity = tradeTagList.get(position);
             Intent intent=new Intent(mContext,MainActivity.class);
             intent.putExtra("sortId",entity.getId());
             mContext.startActivity(intent);

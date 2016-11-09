@@ -3,9 +3,9 @@ package me.jcala.xmarket.data.api;
 
 import java.util.List;
 import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.pojo.DealItem;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.SortTag;
+import me.jcala.xmarket.data.pojo.TradeTag;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -38,13 +38,13 @@ public interface UserReq {
      * 获取分类列表请求
      */
     @GET(ApiConf.get_trade_sort)
-    Observable<Result<List<SortTag>>> sortTag();
+    Observable<Result<List<TradeTag>>> sortTag();
 
     /**
      *获取本校在售商品列表
      */
     @GET(ApiConf.get_school_trades)
-    Observable<Result<List<DealItem>>> schoolDeals(
+    Observable<Result<List<Trade>>> schoolDeals(
             @Path("school")  String school,
             @Path("page") int page
     );

@@ -9,7 +9,7 @@ import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.SortTag;
+import me.jcala.xmarket.data.pojo.TradeTag;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -31,7 +31,7 @@ public class SortTagModelImpl implements SortTagModel {
                 .sortTag()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<List<SortTag>>>() {
+                .subscribe(new Subscriber<Result<List<TradeTag>>>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -42,7 +42,7 @@ public class SortTagModelImpl implements SortTagModel {
                     }
 
                     @Override
-                    public void onNext(Result<List<SortTag>> listResult) {
+                    public void onNext(Result<List<TradeTag>> listResult) {
                         if (listResult.getCode()== Api.SUCCESS.code()){
                             listener.onSuccess(listResult.getData());
                         }else {
@@ -105,7 +105,7 @@ public class SortTagModelImpl implements SortTagModel {
                 "    \"bgPic\": \"https://jcalaz.github.io/img/sort_other.jpg\"\n" +
                 "  }" +
                 "]";
-        List<SortTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<SortTag>>(){}.getType());
+        List<TradeTag> entities = new Gson().fromJson(jsonStr, new TypeToken<List<TradeTag>>(){}.getType());
         listener.onSuccess(entities);
     }
 }

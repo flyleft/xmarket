@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.pojo.DealItem;
+import me.jcala.xmarket.data.pojo.Trade;
 
 public class SchoolModelImpl implements SchoolModel{
 
@@ -57,7 +57,7 @@ public class SchoolModelImpl implements SchoolModel{
                 "    \"title\": \"三星笔记本\"\n" +
                 "  }\n" +
                 "]";
-        List<DealItem> itemList=new Gson().fromJson(jsonStr, new TypeToken<List<DealItem>>(){}.getType());
+        List<Trade> itemList=new Gson().fromJson(jsonStr, new TypeToken<List<Trade>>(){}.getType());
         listener.success(itemList);
     }
 

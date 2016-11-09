@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class SortTag {
+public class TradeTag {
     private String id;//分类的id
     private String name;//分类的名称
     private String bgPic;//分类的背景图片

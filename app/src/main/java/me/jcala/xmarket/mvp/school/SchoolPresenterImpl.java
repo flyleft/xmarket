@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.pojo.DealItem;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.ViewHolder;
@@ -27,19 +27,19 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void success(List<DealItem> itemList) {
-        BaseAdapter adapter=new CommonAdapter<DealItem>(context,itemList, R.layout.school_item) {
+    public void success(List<Trade> itemList) {
+        BaseAdapter adapter=new CommonAdapter<Trade>(context,itemList, R.layout.school_item) {
             @Override
-            public void convert(ViewHolder viewHolder, DealItem item) {
+            public void convert(ViewHolder viewHolder, Trade item) {
                 viewHolder.setText(R.id.deal_title,item.getTitle());
-                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgs().get(0)));
+                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgUrls().get(0)));
                 viewHolder.setFrescoImg(R.id.author_img,Uri.parse(item.getAuthor().getAvatar_url()));
                 viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
                 viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            DealItem item=itemList.get(position);
+            Trade item=itemList.get(position);
             Intent intent=new Intent(context,MainActivity.class);
             intent.putExtra("sortId",item.getId());
             context.startActivity(intent);
