@@ -6,6 +6,8 @@ public class SchoolModelImpl implements SchoolModel{
     public void getSchoolDeals(int page,final onGainListener listener) {
     }
 
+
+
    /* private void executeLocal(final onGainListener listener){
         String jsonStr="[\n" +
                 "  {\n" +
@@ -53,4 +55,5 @@ public class SchoolModelImpl implements SchoolModel{
     private void execute(final onGainListener listener){
 
     }*/
+
 }
