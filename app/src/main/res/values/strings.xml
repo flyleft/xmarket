@@ -21,7 +21,7 @@
     <string name="registerPasswordHint">手机号</string>
     <string name="registerRepeatPasswordHint">密码</string>
     <string name="registerTitle">加入我们</string>
-    <string name="registerActionText">注册</string>
+    <string name="registerActionText">下一步</string>
     <string name="register_dialog_content">正在注册...</string>
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
