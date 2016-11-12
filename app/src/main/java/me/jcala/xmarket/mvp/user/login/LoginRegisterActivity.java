@@ -2,6 +2,7 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -14,6 +15,8 @@ import me.jcala.xmarket.di.qualifier.LoginProgress;
 import me.jcala.xmarket.di.qualifier.RegisterProgress;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import shem.com.materiallogin.DefaultLoginView;
+import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
 
 public class LoginRegisterActivity extends BaseActivity implements LoginRegisterView {
@@ -42,16 +45,72 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
                 .build()
                 .inject(this);
         final MaterialLoginView loginRegister = (MaterialLoginView) findViewById(R.id.login_register);
-        if (loginRegister!=null){
-            presenter.login(loginRegister);
-            presenter.register(loginRegister);
-        }
+        ((DefaultLoginView)loginRegister.getLoginView()).setListener(
+                (TextInputLayout username, TextInputLayout password) -> {
+                    String name=username.getEditText().getText().toString();
+                    String pass=password.getEditText().getText().toString();
+                  if (name.isEmpty()){
+                      username.setErrorEnabled(true);
+                      username.setError("用户名不可以为空");
+                  }else if (pass.isEmpty()){
+                      password.setErrorEnabled(true);
+                      password.setError("密码不可以为空");
+                  }else{
+                          presenter.login(loginRegister);
+                  }
+                }
+        );
+
+        ((DefaultRegisterView)loginRegister.getRegisterView()).setListener(
+                (TextInputLayout username, TextInputLayout password, TextInputLayout repeatPassword) ->{
+                    String name=username.getEditText().getText().toString();
+                    String pass=password.getEditText().getText().toString();
+                    String repeatPass=password.getEditText().getText().toString();
+                    if (name.isEmpty()){
+                        username.setErrorEnabled(true);
+                        username.setError("用户名不可以为空");
+                    }else if (pass.isEmpty()){
+                        password.setErrorEnabled(true);
+                        password.setError("密码不可以为空");
+                    }else if (repeatPass.isEmpty()){
+                        repeatPassword.setErrorEnabled(true);
+                        repeatPassword.setError("密码不可以为空");
+                    }else if (!pass.equals(repeatPass)){
+                        repeatPassword.setErrorEnabled(true);
+                        repeatPassword.setError("两次密码输入不一致");
+                    }else{
+                        presenter.register(loginRegister);
+                    }
+                }
+        );
     }
+
     @Override
-    public void whenSuccess() {
+    public void whenLoginSuccess() {
         Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
     }
 
+    @Override
+    public void whenRegisterSuccess() {
+         Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
+         startActivity(intent);
+         finish();
+    }
+
+    @Override
+    public void whenAfterFail(String msg) {}
+
+    @Override
+    public void whenStartLoginProgress() {loginProgress.show();}
+
+    @Override
+    public void whenStopLoginProgress() {loginProgress.dismiss();}
+
+    @Override
+    public void whenStartRegisterProgress() {registerProgress.show();}
+
+    @Override
+    public void whenStopRegisterProgress() {registerProgress.dismiss();}
 }

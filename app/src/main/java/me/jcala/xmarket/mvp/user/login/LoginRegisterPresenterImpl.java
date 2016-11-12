@@ -1,15 +1,11 @@
 package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Context;
-import android.support.design.widget.TextInputLayout;
-import me.jcala.xmarket.conf.Api;
+
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.util.CheckUtils;
 import me.jcala.xmarket.util.TokenUtils;
-import shem.com.materiallogin.DefaultLoginView;
-import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
 
 public class LoginRegisterPresenterImpl implements
@@ -28,11 +24,8 @@ public class LoginRegisterPresenterImpl implements
     private LoginRegisterPresenterImpl() {
     }
 
-    @Override
-    public void login(MaterialLoginView loginView) {
-        ((DefaultLoginView)loginView.getLoginView()).setListener(
-                (TextInputLayout username, TextInputLayout password)->{
-                    User bean=new User();
+ /*
+   User bean=new User();
                     bean.setUsername(username.getEditText().getText().toString());
                     bean.setPassword(password.getEditText().getText().toString());
                     if (CheckUtils.isEmpty(bean.getUsername())){
@@ -58,16 +51,9 @@ public class LoginRegisterPresenterImpl implements
                         }
 
                     }
-            });
-
-    }
-
-    @Override
-    public void register(MaterialLoginView registerView) {
-        ((DefaultRegisterView)registerView.getRegisterView()).setListener(
-                (TextInputLayout username, TextInputLayout phone,
-                 TextInputLayout password)-> {
-                    User bean=new User();
+  */
+    /*
+     User bean=new User();
                     bean.setUsername(username.getEditText().getText().toString());
                     bean.setPhone(phone.getEditText().getText().toString());
                     bean.setPassword(password.getEditText().getText().toString());
@@ -88,7 +74,7 @@ public class LoginRegisterPresenterImpl implements
                         password.setError("密码不可以为空");
                     }else{
                         model.registerRequest(bean,this);
-                        /*Logger.i("register",result.toString());
+                        Logger.i("register",result.toString());
                         switch (result.getCode()){
                             case 100:
                                 success(bean,result.getData());break;
@@ -101,10 +87,17 @@ public class LoginRegisterPresenterImpl implements
                                 phone.setError(Api.USER_PHONE_EXIST.msg());
                                 break;
                             default:break;
-                        }*/
+                        }
 
-                    }
-            });
+}
+     */
+    @Override
+    public void login(MaterialLoginView loginView) {
+
+    }
+
+    @Override
+    public void register(MaterialLoginView registerView) {
     }
 
     @Override
@@ -124,6 +117,6 @@ public class LoginRegisterPresenterImpl implements
     public void success(User user,String token) {
         TokenUtils.instance.saveUserToken(context,user,token);//存储username,password以及token到SharedPreferences中
         ReqExecutor.INSTANCE().setToken(token);//更新HTTP头部的token值
-        view.whenSuccess();
+        view.whenLoginSuccess();
     }
 }
