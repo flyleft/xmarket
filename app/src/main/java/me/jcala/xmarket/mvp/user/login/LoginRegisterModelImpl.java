@@ -13,7 +13,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public Result<String> loginRequest(User user) {
-        Result<String>  result= CommonFactory.INSTANCE().errorResult();
+        Result<String>  result=null;
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -63,4 +63,5 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 });
         return null;
     }
+
 }
