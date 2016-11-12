@@ -2,9 +2,10 @@ package me.jcala.xmarket.conf;
 
 public enum Api {
     //普通操作相关
+    SERVRE_ERROR(99,"服务器内部错误"),
     SUCCESS(100,"操作成功"),
-    PARAMS_ERROR(101,"请求参数不合法"),
-    //TOKEN_ILLEGAL(101,"token过期"),
+    TOKEN_EXPIRED(101,"token过期"),
+    //PARAMS_ERROR(102,"请求参数不合法"),
     //用户相关
     USER_NOT_EXIST(201,"用户名错误"),
     USER_PASS_ERR(202,"密码错误"),

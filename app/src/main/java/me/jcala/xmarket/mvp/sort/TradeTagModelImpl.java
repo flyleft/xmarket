@@ -7,6 +7,7 @@ import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
+import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -14,7 +15,7 @@ import rx.schedulers.Schedulers;
 public class TradeTagModelImpl implements TradeTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
-
+        Result<String>  result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .allReq()
