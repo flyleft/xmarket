@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import me.jcala.xmarket.conf.Api;
 
 /**
@@ -13,6 +14,7 @@ import me.jcala.xmarket.conf.Api;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Result<T> {
     private int code;//返回码
     private String msg;//返回信息

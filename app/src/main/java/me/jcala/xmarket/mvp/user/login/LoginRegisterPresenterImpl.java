@@ -3,6 +3,8 @@ package me.jcala.xmarket.mvp.user.login;
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import me.jcala.xmarket.conf.Api;
@@ -95,9 +97,11 @@ public class LoginRegisterPresenterImpl implements
                         username.setErrorEnabled(false);
                         phone.setErrorEnabled(false);
                         password.setErrorEnabled(false);
-                        Result<String> result= model.registerRequest(bean);
+                        model.registerRequest(bean,this);
+                        /*Logger.i("register",result.toString());
                         switch (result.getCode()){
                             case 100:
+
                                 success(bean,result.getData());break;
                             case 203:
                                 username.setErrorEnabled(true);
@@ -108,10 +112,15 @@ public class LoginRegisterPresenterImpl implements
                                 phone.setError(Api.USER_PHONE_EXIST.msg());
                                 break;
                             default:break;
-                        }
+                        }*/
 
                     }
             });
+    }
+
+    @Override
+    public void complete(Result<String> result) {
+
     }
 
     @Override

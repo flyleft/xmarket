@@ -12,7 +12,7 @@ import rx.schedulers.Schedulers;
 class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
-    public Result<String> loginRequest(User user) {
+    public Result<String> loginRequest(final User user) {
         Result<String>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
@@ -41,7 +41,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
     }
 
     @Override
-    public Result<String> registerRequest(User user) {
+    public void registerRequest(final User user,final onLoginRegisterListener listener) {
         Result<String>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
@@ -52,6 +52,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
+                        listener.complete(result);
                     }
 
                     @Override
@@ -65,7 +66,6 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                         result.setData(resultData.getData());
                     }
                 });
-        return result;
     }
 
 }
