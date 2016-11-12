@@ -33,6 +33,7 @@ dependencies {
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.github.johnpersano:supertoasts:2.0'
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
