@@ -63,28 +63,4 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 });
         return null;
     }
-
-/*    private Result<String> executeLoginLocal(User userBean){
-        Result<String> result=new Result<>();
-        if ("jcala".equals(userBean.getUsername())&&"123".equals(userBean.getPassword())){
-            result.setCode(1);
-        }else if ("jcala".equals(userBean.getUsername())){
-            result.setCode(0);
-        }else{
-            result.setCode(2);
-        }
-        return result;
-    }
-    private Result<String> executeRegisterLocal(User userBean){
-        Result<String> result=new Result<>();
-        if ("jcala".equals(userBean.getUsername())){
-            result.setCode(2);
-        }else if ("187".equals(userBean.getPhone())){
-            result.setCode(3);
-        }else{
-            result.setCode(1);
-        }
-        return result;
-    }*/
-
 }
