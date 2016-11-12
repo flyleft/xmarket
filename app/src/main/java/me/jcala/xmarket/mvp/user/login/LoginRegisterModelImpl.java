@@ -42,6 +42,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public Result<String> registerRequest(User user) {
+        Result<String>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .allReq()
@@ -59,9 +60,12 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
                     @Override
                     public void onNext(Result<String> resultData) {
+                        result.setCode(resultData.getCode());
+                        result.setMsg(resultData.getMsg());
+                        result.setData(resultData.getData());
                     }
                 });
-        return null;
+        return result;
     }
 
 }
