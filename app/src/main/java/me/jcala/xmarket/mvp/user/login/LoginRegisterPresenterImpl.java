@@ -2,11 +2,6 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
-
-import com.orhanobut.logger.Logger;
-
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
@@ -47,8 +42,6 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(true);
                         password.setError("密码不可以为空");
                     }else{
-                        username.setErrorEnabled(false);
-                        password.setErrorEnabled(false);
                         Result<String> result= model.loginRequest(bean);
                         switch (result.getCode()){
                             case 100:
@@ -94,14 +87,10 @@ public class LoginRegisterPresenterImpl implements
                         password.setErrorEnabled(true);
                         password.setError("密码不可以为空");
                     }else{
-                        username.setErrorEnabled(false);
-                        phone.setErrorEnabled(false);
-                        password.setErrorEnabled(false);
                         model.registerRequest(bean,this);
                         /*Logger.i("register",result.toString());
                         switch (result.getCode()){
                             case 100:
-
                                 success(bean,result.getData());break;
                             case 203:
                                 username.setErrorEnabled(true);
@@ -120,9 +109,17 @@ public class LoginRegisterPresenterImpl implements
 
     @Override
     public void complete(Result<String> result) {
-
+        switch (result.getCode()) {
+            case 100:
+                break;
+            case 203:
+                break;
+            case 204:
+                break;
+            default:
+                break;
+        }
     }
-
     @Override
     public void success(User user,String token) {
         TokenUtils.instance.saveUserToken(context,user,token);//存储username,password以及token到SharedPreferences中

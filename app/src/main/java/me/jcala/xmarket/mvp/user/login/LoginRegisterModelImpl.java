@@ -23,6 +23,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
+
                     }
 
                     @Override
