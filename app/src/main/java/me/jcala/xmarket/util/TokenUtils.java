@@ -37,12 +37,12 @@ public class TokenUtils {
         editor.apply();
     }
 
-    public void saveUserToken(final Context context,final User user,final String token){
+    public void saveUserToken(final Context context,final String username,String password,final String token){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("token", token);
-        editor.putString("username", user.getUsername());
-        editor.putString("password", user.getPassword());
+        editor.putString("username",username);
+        editor.putString("password",password);
         editor.apply();
     }
 

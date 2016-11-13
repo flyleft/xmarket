@@ -7,10 +7,13 @@ import me.jcala.xmarket.data.pojo.User;
 interface LoginRegisterModel {
 
     interface onLoginRegisterListener{
-        void success(User user,String token);
-        void complete(Result<String> result);
+
+        void loginComplete(Result<String> result,final String username,final String password);
+
+        void registerComplete(Result<String> result,final String username,final String password);
     }
 
-    Result<String> loginRequest(final User userBean);
-    void registerRequest(final User user,final onLoginRegisterListener listener);
+    void loginRequest(final String username,final String password,final onLoginRegisterListener listener);
+
+    void registerRequest(final String username,final String password,final onLoginRegisterListener listener);
 }

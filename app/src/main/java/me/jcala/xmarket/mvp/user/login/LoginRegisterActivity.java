@@ -57,7 +57,7 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
                       password.setErrorEnabled(true);
                       password.setError("密码不可以为空");
                   }else{
-                          presenter.login(loginRegister);
+                          presenter.login(name,pass);
                   }
                 }
         );
@@ -80,7 +80,7 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
                         repeatPassword.setErrorEnabled(true);
                         repeatPassword.setError("两次密码输入不一致");
                     }else{
-                        presenter.register(loginRegister);
+                        presenter.register(name,pass);
                     }
                 }
         );

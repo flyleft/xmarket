@@ -12,24 +12,22 @@ import rx.schedulers.Schedulers;
 class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
-    public Result<String> loginRequest(final User user) {
+    public void loginRequest(final String username,final String password,final onLoginRegisterListener listener) {
         Result<String>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .allReq()
-                .login(user.getUsername(),user.getPassword())
+                .login(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
-
+                        listener.loginComplete(result,username,password);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
-                    }
+                    public void onError(Throwable e) {}
 
                     @Override
                     public void onNext(Result<String> resultData) {
@@ -38,27 +36,26 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                         result.setData(resultData.getData());
                     }
                 });
-        return result;
     }
 
     @Override
-    public void registerRequest(final User user,final onLoginRegisterListener listener) {
+    public void registerRequest(final String username,final String password,final onLoginRegisterListener listener) {
         Result<String>  result=CommonFactory.INSTANCE().server_error();
+
         ReqExecutor
                 .INSTANCE()
                 .allReq()
-                .register(user.getUsername(),user.getPhone(),user.getPassword())
+                .register(username,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
-                        listener.complete(result);
+                        listener.registerComplete(result,username,password);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                    }
+                    public void onError(Throwable e) {}
 
                     @Override
                     public void onNext(Result<String> resultData) {

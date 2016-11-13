@@ -31,7 +31,6 @@ public interface UserReq {
     @FormUrlEncoded
     Observable<Result<String>> register(
             @Field("username")  String username,
-            @Field("phone")  String phone,
             @Field("password")  String password);
 
     /**
