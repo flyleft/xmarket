@@ -17,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class User {
     private String id;
+    private String token;//token值，只用于传输，不存储在数据库中
     private String username;//用户名
     private String password;//用户密码
     private String school;//所在学校名称

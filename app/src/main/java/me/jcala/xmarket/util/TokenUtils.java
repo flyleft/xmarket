@@ -22,27 +22,33 @@ public class TokenUtils {
 
     public static TokenUtils instance=TokenHolder.tokenUtils;
 
-    private void saveUser(final Context context,final String username,final String password){
-        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.apply();
-    }
 
-    private void saveToken(final Context context,final String token){
+   /* private void saveToken(final Context context,final String token){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("token", token);
         editor.apply();
-    }
+    }*/
 
-    public void saveUserToken(final Context context,final String username,String password,final String token){
+    public void saveUserToken(final Context context,final User user,final String token){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("token", token);
-        editor.putString("username",username);
-        editor.putString("password",password);
+        if (user.getUsername()!=null){
+            editor.putString("username",user.getUsername());
+        }
+        if (user.getId()!=null){
+            editor.putString("user_id",user.getId());
+        }
+        if (user.getAvatar_url()!=null){
+            editor.putString("user_avatar",user.getAvatar_url());
+        }
+        if (user.getPassword()!=null){
+            editor.putString("password",user.getPassword());
+        }
+        if (user.getPhone()!=null){
+            editor.putString("phone",user.getPhone());
+        }
         editor.apply();
     }
 

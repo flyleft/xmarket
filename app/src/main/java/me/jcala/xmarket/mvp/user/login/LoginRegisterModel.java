@@ -8,9 +8,9 @@ interface LoginRegisterModel {
 
     interface onLoginRegisterListener{
 
-        void loginComplete(Result<String> result,final String username,final String password);
+        void loginComplete(Result<User> result);
 
-        void registerComplete(Result<String> result,final String username,final String password);
+        void registerComplete(Result<User> result);
     }
 
     void loginRequest(final String username,final String password,final onLoginRegisterListener listener);

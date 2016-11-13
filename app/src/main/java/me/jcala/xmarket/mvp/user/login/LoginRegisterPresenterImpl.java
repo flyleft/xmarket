@@ -5,6 +5,7 @@ import android.content.Context;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.TokenUtils;
 import shem.com.materiallogin.MaterialLoginView;
 
@@ -37,7 +38,7 @@ public class LoginRegisterPresenterImpl implements
     }
 
     @Override
-    public void loginComplete(Result<String> result,final String username,final String password) {
+    public void loginComplete(Result<User> result) {
         if (result==null){
             return;
         }
@@ -46,8 +47,8 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                TokenUtils.instance.saveUserToken(context,username,password,result.getData());
-                ReqExecutor.INSTANCE().setToken(result.getData());
+                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
+                ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenLoginSuccess();
                 break;
             case 203:
@@ -59,7 +60,7 @@ public class LoginRegisterPresenterImpl implements
         }
     }
     @Override
-    public void registerComplete(Result<String> result,final String username,final String password) {
+    public void registerComplete(Result<User> result) {
         //TokenUtils.instance.saveUserToken(context,user,token);//存储username,password以及token到SharedPreferences中
         //ReqExecutor.INSTANCE().setToken(token);//更新HTTP头部的token值
         if (result==null){
@@ -70,8 +71,8 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                TokenUtils.instance.saveUserToken(context,username,password,result.getData());
-                ReqExecutor.INSTANCE().setToken(result.getData());
+                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
+                ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenRegisterSuccess();
                 break;
             case 203:

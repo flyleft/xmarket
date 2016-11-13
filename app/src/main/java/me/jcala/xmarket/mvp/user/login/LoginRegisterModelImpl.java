@@ -13,24 +13,25 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public void loginRequest(final String username,final String password,final onLoginRegisterListener listener) {
-        Result<String>  result=CommonFactory.INSTANCE().server_error();
+        @SuppressWarnings("unchecked")
+        Result<User>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .allReq()
                 .login(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<String>>() {
+                .subscribe(new Subscriber<Result<User>>() {
                     @Override
                     public void onCompleted() {
-                        listener.loginComplete(result,username,password);
+                        listener.loginComplete(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {}
 
                     @Override
-                    public void onNext(Result<String> resultData) {
+                    public void onNext(Result<User> resultData) {
                         result.setCode(resultData.getCode());
                         result.setMsg(resultData.getMsg());
                         result.setData(resultData.getData());
@@ -40,7 +41,8 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public void registerRequest(final String username,final String password,final onLoginRegisterListener listener) {
-        Result<String>  result=CommonFactory.INSTANCE().server_error();
+        @SuppressWarnings("unchecked")
+        Result<User>  result=CommonFactory.INSTANCE().server_error();
 
         ReqExecutor
                 .INSTANCE()
@@ -48,17 +50,17 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 .register(username,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<String>>() {
+                .subscribe(new Subscriber<Result<User>>() {
                     @Override
                     public void onCompleted() {
-                        listener.registerComplete(result,username,password);
+                        listener.registerComplete(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {}
 
                     @Override
-                    public void onNext(Result<String> resultData) {
+                    public void onNext(Result<User> resultData) {
                         result.setCode(resultData.getCode());
                         result.setMsg(resultData.getMsg());
                         result.setData(resultData.getData());
