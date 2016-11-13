@@ -1,17 +1,14 @@
 package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
-import com.github.johnpersano.supertoasts.library.SuperActivityToast;
+import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 
 import javax.inject.Inject;
-
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerLoginRegisterComponent;
 import me.jcala.xmarket.di.modules.LoginRegisterModule;
@@ -104,12 +101,23 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
     }
 
     @Override
-    public void whenAfterFail(String msg) {
-        SuperActivityToast.create(LoginRegisterActivity.this, new Style(), Style.TYPE_BUTTON)
-                .setButtonText(msg)
-                .setDuration(Style.DURATION_LONG)
-                .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_PURPLE))
-                .setAnimations(Style.ANIMATIONS_POP).show();
+    public void whenLoginFail(String msg) {
+        new SuperToast(LoginRegisterActivity.this)
+                .setText(msg)
+                .setDuration(Style.DURATION_SHORT)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.BLACK))
+                .setAnimations(Style.ANIMATIONS_POP)
+                .show();
+    }
+
+    @Override
+    public void whenRegisterFail(String msg) {
+        new SuperToast(LoginRegisterActivity.this)
+                .setText(msg)
+                .setDuration(Style.DURATION_SHORT)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.WHITE))
+                .setAnimations(Style.ANIMATIONS_POP)
+                .show();
     }
 
     @Override

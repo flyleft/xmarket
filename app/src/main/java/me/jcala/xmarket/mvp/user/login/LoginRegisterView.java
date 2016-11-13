@@ -15,5 +15,7 @@ public interface LoginRegisterView {
 
     void whenRegisterSuccess();//注册成功
 
-    void whenAfterFail(String msg);//失败后要Toast的错误信息
+    void whenLoginFail(String msg);//失败后要Toast的错误信息
+
+    void whenRegisterFail(String msg);//失败后要Toast的错误信息
 }
