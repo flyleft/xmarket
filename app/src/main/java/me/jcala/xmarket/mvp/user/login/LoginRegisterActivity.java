@@ -101,21 +101,11 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
     }
 
     @Override
-    public void whenLoginFail(String msg) {
+    public void whenFail(String msg) {
         new SuperToast(LoginRegisterActivity.this)
                 .setText(msg)
-                .setDuration(Style.DURATION_SHORT)
-                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.BLACK))
-                .setAnimations(Style.ANIMATIONS_POP)
-                .show();
-    }
-
-    @Override
-    public void whenRegisterFail(String msg) {
-        new SuperToast(LoginRegisterActivity.this)
-                .setText(msg)
-                .setDuration(Style.DURATION_SHORT)
-                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.WHITE))
+                .setDuration(Style.DURATION_LONG)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
                 .setAnimations(Style.ANIMATIONS_POP)
                 .show();
     }

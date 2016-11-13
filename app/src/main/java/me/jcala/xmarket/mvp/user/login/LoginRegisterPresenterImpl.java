@@ -51,9 +51,9 @@ public class LoginRegisterPresenterImpl implements
                 ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenLoginSuccess();
                 break;
-            case 203:
-            case 204:
-                view.whenLoginFail(result.getMsg());
+            case 201:
+            case 202:
+                view.whenFail(result.getMsg());
                 break;
             default:
                 break;
@@ -77,7 +77,7 @@ public class LoginRegisterPresenterImpl implements
                 break;
             case 203:
             case 204:
-                view.whenRegisterFail(result.getMsg());
+                view.whenFail(result.getMsg());
                 break;
             default:
                 break;
