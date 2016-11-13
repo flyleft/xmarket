@@ -11,14 +11,11 @@ public abstract  class BaseActivity extends AppCompatActivity {
 
     protected abstract void initViews(Bundle savedInstanceState);
 
-    protected  void initVariables(){}
-
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         initViews(savedInstanceState);
-        initVariables();
     }
 
 

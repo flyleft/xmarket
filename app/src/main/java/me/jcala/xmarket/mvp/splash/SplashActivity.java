@@ -20,7 +20,16 @@ import me.jcala.xmarket.util.TokenUtils;
 public class SplashActivity extends BaseActivity {
 
     private SimpleDraweeView view;
+
+
     @Override
+    protected void initViews(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.splash_activity);
+        splashAction();
+        initVariables();
+    }
     protected void initVariables() {
         view=(SimpleDraweeView)findViewById(R.id.loading_gif);
         DraweeController builder = Fresco.newDraweeControllerBuilder()
@@ -29,15 +38,6 @@ public class SplashActivity extends BaseActivity {
                 .build();
         view.setController(builder);
     }
-
-    @Override
-    protected void initViews(Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash_activity);
-        splashAction();
-    }
-
     private void splashAction(){
 
         String token=TokenUtils.instance.getToken(SplashActivity.this);//从SharedPreferences中获取token的值

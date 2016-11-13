@@ -10,4 +10,7 @@ public class RegisterNextActivity extends BaseActivity {
     protected void initViews(Bundle savedInstanceState) {
 
     }
+
+    protected void initVariables() {
+    }
 }

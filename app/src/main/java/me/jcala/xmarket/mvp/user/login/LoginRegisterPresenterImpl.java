@@ -61,12 +61,10 @@ public class LoginRegisterPresenterImpl implements
     }
     @Override
     public void registerComplete(Result<User> result) {
-        //TokenUtils.instance.saveUserToken(context,user,token);//存储username,password以及token到SharedPreferences中
-        //ReqExecutor.INSTANCE().setToken(token);//更新HTTP头部的token值
         if (result==null){
             return;
         }
-
+        
         view.whenStopRegisterProgress();
 
         switch (result.getCode()) {

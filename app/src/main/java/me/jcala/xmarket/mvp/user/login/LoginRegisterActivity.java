@@ -16,6 +16,7 @@ import me.jcala.xmarket.di.qualifier.LoginProgress;
 import me.jcala.xmarket.di.qualifier.RegisterProgress;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.user.login.register.next.RegisterNextActivity;
 import shem.com.materiallogin.DefaultLoginView;
 import shem.com.materiallogin.DefaultRegisterView;
 import shem.com.materiallogin.MaterialLoginView;
@@ -38,7 +39,7 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
         setContentView(R.layout.login_activity);
         initVariables();
     }
-    @Override
+
     protected  void initVariables(){
         DaggerLoginRegisterComponent
                 .builder()
@@ -95,7 +96,7 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
 
     @Override
     public void whenRegisterSuccess() {
-         Intent intent=new Intent(LoginRegisterActivity.this,MainActivity.class);
+         Intent intent=new Intent(LoginRegisterActivity.this,RegisterNextActivity.class);
          startActivity(intent);
          finish();
     }
