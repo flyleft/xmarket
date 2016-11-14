@@ -12,5 +12,5 @@ public interface RegisterNextModel {
 
         void hasGotRegisterResult(Result<?> result);
     }
-
+   void executeSchoolRequest(final onRegisterNextListener listener);
 }
