@@ -67,7 +67,7 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
                 (TextInputLayout username, TextInputLayout password, TextInputLayout repeatPassword) ->{
                     String name=username.getEditText().getText().toString();
                     String pass=password.getEditText().getText().toString();
-                    String repeatPass=password.getEditText().getText().toString();
+                    String repeatPass=repeatPassword.getEditText().getText().toString();
                     if (name.isEmpty()){
                         username.setErrorEnabled(true);
                         username.setError("用户名不可以为空");
