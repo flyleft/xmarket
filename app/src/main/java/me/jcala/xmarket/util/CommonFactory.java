@@ -8,7 +8,7 @@ import me.jcala.xmarket.data.dto.Result;
  */
 public class CommonFactory {
 
-    private Result server_error=new Result().api(Api.SERVRE_ERROR);
+    private Result server_error=new Result().api(Api.SERVER_ERROR);
 
     private CommonFactory(){}
     private static class FactoryHolder{

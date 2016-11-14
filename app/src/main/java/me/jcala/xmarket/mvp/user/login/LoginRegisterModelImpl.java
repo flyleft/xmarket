@@ -28,7 +28,9 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {}
+                    public void onError(Throwable e) {
+                        listener.loginComplete(result);
+                    }
 
                     @Override
                     public void onNext(Result<User> resultData) {
@@ -57,7 +59,9 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {}
+                    public void onError(Throwable e) {
+                        listener.loginComplete(result);
+                    }
 
                     @Override
                     public void onNext(Result<User> resultData) {

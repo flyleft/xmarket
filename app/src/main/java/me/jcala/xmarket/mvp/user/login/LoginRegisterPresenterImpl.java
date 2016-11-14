@@ -51,6 +51,7 @@ public class LoginRegisterPresenterImpl implements
                 ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenLoginSuccess();
                 break;
+            case 99:
             case 201:
             case 202:
                 view.whenFail(result.getMsg());
@@ -73,6 +74,7 @@ public class LoginRegisterPresenterImpl implements
                 ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenRegisterSuccess();
                 break;
+            case 99:
             case 203:
             case 204:
                 view.whenFail(result.getMsg());
