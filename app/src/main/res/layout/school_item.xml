@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:text="jcala书籍"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -67,7 +67,7 @@
                     android:layout_below="@id/deal_title"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:text="￥ 52"
+                    android:text=""
                     android:textColor="@color/md_red_50" />
 
             </RelativeLayout>

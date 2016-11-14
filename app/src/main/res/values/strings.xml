@@ -23,6 +23,9 @@
     <string name="registerTitle">加入我们</string>
     <string name="registerActionText">下一步</string>
     <string name="register_dialog_content">正在注册...</string>
+    <string name="register_next_action">注册</string>
+    <string name="register_next_school">设置学校</string>
+    <string name="register_next_phone">手机号</string>
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
     <string name="info_phone">18200361857</string>
