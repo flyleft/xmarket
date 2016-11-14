@@ -26,7 +26,19 @@ public class RegisterNextPresenterImpl
 
     @Override
     public void hasGotSchoolList(Result<List<String>> result) {
-
+        if (result==null){
+            return;
+        }
+        switch (result.getCode()) {
+            case 100:
+                view.whenGetSchoolListSuccess(result.getData());
+                break;
+            case 99:
+                view.whenFails(result.getMsg());
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

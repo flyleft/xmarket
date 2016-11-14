@@ -19,8 +19,8 @@ import me.jcala.xmarket.mvp.a_base.BaseActivity;
 
 public class RegisterNextActivity extends BaseActivity implements RegisterNextView{
 
-   private List<String> schools=new ArrayList<>();
-
+    private List<String> schools=new ArrayList<>();
+    private String chooseSchool="";
     private RegisterNextPresenter presenter;
 
     @Override
@@ -41,6 +41,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
                 .items(schools)
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
+                        chooseSchool=text.toString();
                         return true;
                 })
                 .positiveText(R.string.register_next_choose)
