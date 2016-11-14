@@ -18,8 +18,8 @@
     <string name="login_dialog_content">正在登录...</string>
     <!-- 注册页面  -->
     <string name="registerHint">用户名</string>
-    <string name="registerPasswordHint">手机号</string>
-    <string name="registerRepeatPasswordHint">密码</string>
+    <string name="registerPasswordHint">密码</string>
+    <string name="registerRepeatPasswordHint">重复密码</string>
     <string name="registerTitle">加入我们</string>
     <string name="registerActionText">下一步</string>
     <string name="register_dialog_content">正在注册...</string>
