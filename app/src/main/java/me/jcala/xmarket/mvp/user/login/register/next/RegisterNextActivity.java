@@ -21,6 +21,8 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
 
    private List<String> schools=new ArrayList<>();
 
+    private RegisterNextPresenter presenter;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.register_next_activity);
@@ -28,6 +30,8 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     }
 
     protected void initVariables() {
+        presenter=new RegisterNextPresenterImpl(this,this);
+        presenter.getSchoolList();
     }
 
     @OnClick(R.id.register_next_school)

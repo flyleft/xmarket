@@ -17,7 +17,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
         Result<User>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .allReq()
+                .userReq()
                 .login(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -48,7 +48,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
         ReqExecutor
                 .INSTANCE()
-                .allReq()
+                .userReq()
                 .register(username,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

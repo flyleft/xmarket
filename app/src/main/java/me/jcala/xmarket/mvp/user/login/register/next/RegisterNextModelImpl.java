@@ -1,4 +1,5 @@
 package me.jcala.xmarket.mvp.user.login.register.next;
 
-public class RegisterNextModelImpl {
+public class RegisterNextModelImpl implements RegisterNextModel{
+
 }

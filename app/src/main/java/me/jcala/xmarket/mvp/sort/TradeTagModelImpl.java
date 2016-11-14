@@ -18,7 +18,7 @@ public class TradeTagModelImpl implements TradeTagModel {
         Result<String>  result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .allReq()
+                .userReq()
                 .sortTag()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -40,14 +40,6 @@ public interface UserReq {
     @GET(ApiConf.get_trade_sort)
     Observable<Result<List<TradeTag>>> sortTag();
 
-    /**
-     *获取本校在售商品列表
-     */
-    @GET(ApiConf.get_school_trades)
-    Observable<Result<List<Trade>>> schoolDeals(
-            @Path("school")  String school,
-            @Path("page") int page
-    );
 
 
 
