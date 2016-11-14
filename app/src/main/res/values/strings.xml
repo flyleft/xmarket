@@ -26,6 +26,8 @@
     <string name="register_next_action">注册</string>
     <string name="register_next_school">设置学校</string>
     <string name="register_next_phone">手机号</string>
+    <string name="register_next_school_choose">请选择学校</string>
+    <string name="register_next_choose">选择</string>
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
     <string name="info_phone">18200361857</string>

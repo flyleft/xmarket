@@ -30,6 +30,7 @@
 
 
         <TextView
+            android:id="@+id/register_next_school"
             style="@style/MaterialLoginTheme.SelectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
         android:background="@drawable/login_back">
 
         <TextView
-            android:id="@+id/register_next_btn"
+            android:id="@+id/register_next_sub"
             style="@style/MaterialLoginTheme.SelectableItemBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
