@@ -7,4 +7,5 @@ public interface RegisterNextView {
     void whenFails(String msg);//当异常发生
     void whenStartSetProgress();//显示进度条
     void whenStopSetProgress();//隐藏进度条
+    void whenRegisterSuccess();
 }

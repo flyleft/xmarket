@@ -4,6 +4,7 @@ import java.util.List;
 
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -39,5 +40,37 @@ public class RegisterNextModelImpl implements RegisterNextModel{
                         result.setData(resultData.getData());
                     }
                 });
+    }
+
+    @Override
+    public void executeSchoolRequest(final String user_id,final String phone,
+                                     final String school,final onRegisterNextListener listener) {
+        @SuppressWarnings("unchecked")
+        Result<User> result= CommonFactory.INSTANCE().server_error();
+        ReqExecutor
+                .INSTANCE()
+                .userReq()
+                .registerNext(user_id,phone,school)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Result<User>>() {
+                    @Override
+                    public void onCompleted() {
+                        listener.hasGotRegisterResult(result);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.hasGotRegisterResult(result);
+                    }
+
+                    @Override
+                    public void onNext(Result<User> resultData) {
+                        result.setCode(resultData.getCode());
+                        result.setMsg(resultData.getMsg());
+                        result.setData(resultData.getData());
+                    }
+                });
+
     }
 }

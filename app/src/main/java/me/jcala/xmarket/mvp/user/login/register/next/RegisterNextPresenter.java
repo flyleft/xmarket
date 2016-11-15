@@ -7,7 +7,7 @@ public interface RegisterNextPresenter {
 
     void getSchoolList();
 
-    void registerNext(String phone,String school);
+    void registerNext(String user_id,String phone,String school);
 
     void checkPhone(TextInputLayout phoneLayout, EditText phone);
 }

@@ -1,5 +1,6 @@
 package me.jcala.xmarket.mvp.user.login.register.next;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
@@ -16,6 +17,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 import me.jcala.xmarket.util.CheckUtils;
 
 public class RegisterNextActivity extends BaseActivity implements RegisterNextView{
@@ -61,8 +64,8 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     @OnClick(R.id.register_next_sub)
     public void registerSub(){
         String phoneData=phone.getText().toString().trim();
-        if ("".equals(phoneData) || phoneData.isEmpty() || !CheckUtils.isNumber(phoneData)){
-            presenter.registerNext(phoneData,chooseSchool);
+        if (phoneData.isEmpty() || !CheckUtils.isNumber(phoneData)){
+            presenter.registerNext("",phoneData,chooseSchool);
         }
     }
 
@@ -89,5 +92,12 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     @Override
     public void whenStopSetProgress() {
 
+    }
+
+    @Override
+    public void whenRegisterSuccess() {
+        Intent intent=new Intent(RegisterNextActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

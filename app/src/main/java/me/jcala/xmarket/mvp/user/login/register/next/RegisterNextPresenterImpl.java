@@ -8,8 +8,11 @@ import android.widget.EditText;
 
 import java.util.List;
 
+import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.util.CheckUtils;
+import me.jcala.xmarket.util.TokenUtils;
 
 public class RegisterNextPresenterImpl
         implements RegisterNextPresenter,RegisterNextModel.onRegisterNextListener{
@@ -47,13 +50,29 @@ public class RegisterNextPresenterImpl
     }
 
     @Override
-    public void hasGotRegisterResult(Result<?> result) {
-
+    public void hasGotRegisterResult(Result<User> result) {
+        view.whenStopSetProgress();
+        if (result==null){
+            return;
+        }
+        switch (result.getCode()) {
+            case 100:
+                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
+                ReqExecutor.INSTANCE().setToken(result.getData().getToken());
+                view.whenRegisterSuccess();
+                break;
+            case 99:
+                view.whenFails(result.getMsg());
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
-    public void registerNext(String phone, String school) {
-
+    public void registerNext(String user_id,String phone, String school) {
+       model.executeSchoolRequest(user_id,phone,school,this);
+        view.whenStartSetProgress();
     }
 
 
@@ -69,7 +88,7 @@ public class RegisterNextPresenterImpl
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //检查实际是否匹配，由自己实现
                 String phoneData=phone.getText().toString().trim();
-                if (phoneData.equals("") || phoneData.isEmpty()) {
+                if (phoneData.isEmpty()) {
                     phoneLayout.setErrorEnabled(true);
                     phoneLayout.setError("输入不可以为空");
                 }else if (!CheckUtils.isNumber(phoneData)){

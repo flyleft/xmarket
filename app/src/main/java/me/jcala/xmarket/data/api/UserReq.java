@@ -11,6 +11,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -33,6 +34,17 @@ public interface UserReq {
     Observable<Result<User>> register(
             @Field("username")  String username,
             @Field("password")  String password);
+
+
+    /**
+     * 注册下一步，设置学校和手机号
+     */
+    @PUT(ApiConf.register_next)
+    @FormUrlEncoded
+    Observable<Result<User>> registerNext(
+            @Path("user_id")  String user_id,
+            @Field("phone")  String phone,
+            @Field("school")  String school);
 
     /**
      * 获取分类列表请求

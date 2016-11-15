@@ -8,7 +8,7 @@ public interface ApiConf {
     String auth="auth";
     String get_school_list="schools/names/get";
     String register="users/register";
-    String update_user_school="users/{user_id}/update_school";
+    String register_next="users/{user_id}/phone_school/update";
     String update_user_avatar="{user_id}/pass";
     String update_user_pass="users/{user_id}/avatar";
     String update_user_team="users/{user_id}/team";

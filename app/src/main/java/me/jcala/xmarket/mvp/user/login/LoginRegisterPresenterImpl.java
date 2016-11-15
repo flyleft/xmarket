@@ -70,8 +70,6 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
-                ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenRegisterSuccess();
                 break;
             case 99:

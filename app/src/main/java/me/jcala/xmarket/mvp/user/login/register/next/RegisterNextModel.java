@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.user.login.register.next;
 import java.util.List;
 
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.User;
 
 public interface RegisterNextModel {
 
@@ -10,7 +11,9 @@ public interface RegisterNextModel {
 
         void hasGotSchoolList(Result<List<String>> result);
 
-        void hasGotRegisterResult(Result<?> result);
+        void hasGotRegisterResult(Result<User> result);
     }
-   void executeSchoolRequest(final onRegisterNextListener listener);
+   void executeSchoolRequest(onRegisterNextListener listener);
+
+    void executeSchoolRequest(String user_id,String phone,String school,onRegisterNextListener listener);
 }
