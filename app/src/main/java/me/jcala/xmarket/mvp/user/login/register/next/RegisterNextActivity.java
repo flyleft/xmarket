@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
@@ -15,8 +17,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.di.components.DaggerRegisterNextComponent;
+import me.jcala.xmarket.di.modules.RegisterNextModule;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.CheckUtils;
@@ -29,9 +34,10 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     @BindView(R.id.register_next_phone)
     TextInputLayout phoneLayout;
 
-    private List<String> schools=new ArrayList<>();
+    @BindView(R.id.register_next_school)
+    private TextView schoolName;
 
-    private String chooseSchool="";
+    private List<String> schools=new ArrayList<>();
 
     private String userId="";
 
@@ -43,14 +49,18 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.register_next_activity);
+        ButterKnife.bind(this);
+        DaggerRegisterNextComponent.builder().registerNextModule(new RegisterNextModule(this,this)).build().inject(this);
         initVariables();
     }
 
     protected void initVariables() {
         Intent intent=new Intent();
         userId=intent.getStringExtra("userId");
-        presenter.getSchoolList();
-        presenter.checkPhone(phoneLayout,phone);
+        if (presenter!=null){
+            presenter.getSchoolList();
+            presenter.checkPhone(phoneLayout,phone);
+        }
     }
 
     @OnClick(R.id.register_next_school)
@@ -60,7 +70,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
                 .items(schools)
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
-                        chooseSchool=text.toString();
+                            schoolName.setText(text);
                         return true;
                 })
                 .positiveText(R.string.register_next_choose)
@@ -69,10 +79,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
 
     @OnClick(R.id.register_next_sub)
     public void registerSub(){
-        String phoneData=phone.getText().toString().trim();
-        if (phoneData.isEmpty() || !CheckUtils.isNumber(phoneData)){
-            presenter.registerNext(userId,phoneData,chooseSchool);
-        }
+         presenter.registerNext(userId,phone.getText().toString().trim(),schoolName.getText().toString().trim());
     }
 
     @Override

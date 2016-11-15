@@ -24,7 +24,7 @@
     <string name="registerActionText">下一步</string>
     <string name="register_dialog_content">正在注册...</string>
     <string name="register_next_action">注册</string>
-    <string name="register_next_school">设置学校</string>
+    <string name="register_next_school">点击设置学校</string>
     <string name="register_next_phone">手机号</string>
     <string name="register_next_school_choose">请选择学校</string>
     <string name="register_next_choose">选择</string>

@@ -71,10 +71,23 @@ public class RegisterNextPresenterImpl
 
     @Override
     public void registerNext(String user_id,String phone, String school) {
-       model.executeSchoolRequest(user_id,phone,school,this);
-        view.whenStartSetProgress();
+        if (checkInput(phone,school)){
+            model.executeSchoolRequest(user_id,phone,school,this);
+            view.whenStartSetProgress();
+        }
     }
 
+    private boolean checkInput(String phone,String school){
+        if (phone.isEmpty()){
+            view.whenFails("电话号码不可以为空");
+            return false;
+        }
+        if ("点击设置学校".equals(school)){
+            view.whenFails("请设置学校名称");
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public void checkPhone(final TextInputLayout phoneLayout,final EditText phone) {
@@ -86,14 +99,10 @@ public class RegisterNextPresenterImpl
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //检查实际是否匹配，由自己实现
                 String phoneData=phone.getText().toString().trim();
                 if (phoneData.isEmpty()) {
                     phoneLayout.setErrorEnabled(true);
                     phoneLayout.setError("输入不可以为空");
-                }else if (!CheckUtils.isNumber(phoneData)){
-                    phoneLayout.setErrorEnabled(true);
-                    phoneLayout.setError("只可以为数字");
                 }else {
                     phoneLayout.setErrorEnabled(false);
                 }

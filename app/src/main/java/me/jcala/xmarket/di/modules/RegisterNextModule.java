@@ -6,12 +6,14 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.user.login.register.next.RegisterNextPresenter;
 import me.jcala.xmarket.mvp.user.login.register.next.RegisterNextPresenterImpl;
 import me.jcala.xmarket.mvp.user.login.register.next.RegisterNextView;
 
+@Module
 public class RegisterNextModule {
     private RegisterNextView view;
     private Context context;
