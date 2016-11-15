@@ -11,6 +11,9 @@ import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.jcala.xmarket.R;
@@ -32,8 +35,11 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
 
     private String userId="";
 
-    private RegisterNextPresenter presenter;
+    @Inject
+     RegisterNextPresenter presenter;
 
+    @Inject
+    MaterialDialog progress;
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.register_next_activity);
@@ -43,7 +49,6 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     protected void initVariables() {
         Intent intent=new Intent();
         userId=intent.getStringExtra("userId");
-        presenter=new RegisterNextPresenterImpl(this,this);
         presenter.getSchoolList();
         presenter.checkPhone(phoneLayout,phone);
     }
@@ -87,12 +92,12 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
 
     @Override
     public void whenStartSetProgress() {
-
+      progress.show();
     }
 
     @Override
     public void whenStopSetProgress() {
-
+      progress.dismiss();
     }
 
     @Override
