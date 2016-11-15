@@ -8,10 +8,10 @@ public interface ApiConf {
     String auth="auth";
     String get_school_list="schools/names/get";
     String register="users/register";
-    String register_next="users/{user_id}/phone_school/update";
-    String update_user_avatar="{user_id}/pass";
-    String update_user_pass="users/{user_id}/avatar";
-    String update_user_team="users/{user_id}/team";
+    String register_next="users/{userId}/phoneSchool/update";
+    String update_user_avatar="{userId}/pass";
+    String update_user_pass="users/{userId}/avatar";
+    String update_user_team="users/{userId}/team";
     String get_trade_sort="trades/sort";
     String get_school_trades="schools/trades/{school_name}/{page}/get";
 

@@ -43,7 +43,7 @@ public class RegisterNextModelImpl implements RegisterNextModel{
     }
 
     @Override
-    public void executeSchoolRequest(final String userId,final String phone,
+    public void executeRegisterRequest(final String userId,final String phone,
                                      final String school,final onRegisterNextListener listener) {
         @SuppressWarnings("unchecked")
         Result<User> result= CommonFactory.INSTANCE().server_error();

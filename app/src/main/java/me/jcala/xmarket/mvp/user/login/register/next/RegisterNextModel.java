@@ -15,5 +15,5 @@ public interface RegisterNextModel {
     }
    void executeSchoolRequest(onRegisterNextListener listener);
 
-    void executeSchoolRequest(String user_id,String phone,String school,onRegisterNextListener listener);
+    void executeRegisterRequest(String user_id,String phone,String school,onRegisterNextListener listener);
 }

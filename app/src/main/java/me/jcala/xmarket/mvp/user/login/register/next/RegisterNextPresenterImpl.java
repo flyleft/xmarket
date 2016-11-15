@@ -70,14 +70,18 @@ public class RegisterNextPresenterImpl
     }
 
     @Override
-    public void registerNext(String user_id,String phone, String school) {
-        if (checkInput(phone,school)){
-            model.executeSchoolRequest(user_id,phone,school,this);
+    public void registerNext(String userId,String phone, String school) {
+        if (checkInput(userId,phone,school)){
+            model.executeRegisterRequest(userId,phone,school,this);
             view.whenStartSetProgress();
         }
     }
 
-    private boolean checkInput(String phone,String school){
+    private boolean checkInput(String user_id,String phone,String school){
+       /* if (user_id==null || user_id.isEmpty()){
+            view.whenFails("APP发生异常,userId为空");
+            return false;
+        }*/
         if (phone.isEmpty()){
             view.whenFails("电话号码不可以为空");
             return false;

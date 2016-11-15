@@ -24,7 +24,6 @@ import me.jcala.xmarket.di.components.DaggerRegisterNextComponent;
 import me.jcala.xmarket.di.modules.RegisterNextModule;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.util.CheckUtils;
 
 public class RegisterNextActivity extends BaseActivity implements RegisterNextView{
 
@@ -35,7 +34,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     TextInputLayout phoneLayout;
 
     @BindView(R.id.register_next_school)
-    private TextView schoolName;
+    TextView schoolName;
 
     private List<String> schools=new ArrayList<>();
 
@@ -55,7 +54,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     }
 
     protected void initVariables() {
-        Intent intent=new Intent();
+        Intent intent=getIntent();
         userId=intent.getStringExtra("userId");
         if (presenter!=null){
             presenter.getSchoolList();

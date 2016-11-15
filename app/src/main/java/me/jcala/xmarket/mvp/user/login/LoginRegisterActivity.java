@@ -96,7 +96,8 @@ public class LoginRegisterActivity extends BaseActivity implements LoginRegister
 
     @Override
     public void whenRegisterSuccess(final String userId) {
-         Intent intent=new Intent(LoginRegisterActivity.this,RegisterNextActivity.class);
+         Intent intent=new Intent();
+         intent.setClass(LoginRegisterActivity.this,RegisterNextActivity.class);
          intent.putExtra("userId",userId);
          startActivity(intent);
          finish();
