@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/register_next_phone"
             android:inputType="phone"
+            android:maxLength="20"
             android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
