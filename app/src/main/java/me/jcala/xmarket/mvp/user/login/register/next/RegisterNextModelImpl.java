@@ -43,14 +43,14 @@ public class RegisterNextModelImpl implements RegisterNextModel{
     }
 
     @Override
-    public void executeSchoolRequest(final String user_id,final String phone,
+    public void executeSchoolRequest(final String userId,final String phone,
                                      final String school,final onRegisterNextListener listener) {
         @SuppressWarnings("unchecked")
         Result<User> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .registerNext(user_id,phone,school)
+                .registerNext(userId,phone,school)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<User>>() {

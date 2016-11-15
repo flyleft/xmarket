@@ -31,7 +31,7 @@ public interface UserReq {
      */
     @POST(ApiConf.register)
     @FormUrlEncoded
-    Observable<Result<User>> register(
+    Observable<Result<String>> register(
             @Field("username")  String username,
             @Field("password")  String password);
 
@@ -42,7 +42,7 @@ public interface UserReq {
     @PUT(ApiConf.register_next)
     @FormUrlEncoded
     Observable<Result<User>> registerNext(
-            @Path("user_id")  String user_id,
+            @Path("userId")  String user_id,
             @Field("phone")  String phone,
             @Field("school")  String school);
 

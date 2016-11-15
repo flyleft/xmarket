@@ -10,7 +10,7 @@ interface LoginRegisterModel {
 
         void loginComplete(Result<User> result);
 
-        void registerComplete(Result<User> result);
+        void registerComplete(Result<String> result);
     }
 
     void loginRequest(final String username,final String password,final onLoginRegisterListener listener);

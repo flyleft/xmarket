@@ -3,8 +3,6 @@ package me.jcala.xmarket.mvp.user.login.register.next;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -18,7 +16,6 @@ import butterknife.OnClick;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 import me.jcala.xmarket.util.CheckUtils;
 
 public class RegisterNextActivity extends BaseActivity implements RegisterNextView{
@@ -33,6 +30,8 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
 
     private String chooseSchool="";
 
+    private String userId="";
+
     private RegisterNextPresenter presenter;
 
     @Override
@@ -42,6 +41,8 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     }
 
     protected void initVariables() {
+        Intent intent=new Intent();
+        userId=intent.getStringExtra("userId");
         presenter=new RegisterNextPresenterImpl(this,this);
         presenter.getSchoolList();
         presenter.checkPhone(phoneLayout,phone);
@@ -65,7 +66,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
     public void registerSub(){
         String phoneData=phone.getText().toString().trim();
         if (phoneData.isEmpty() || !CheckUtils.isNumber(phoneData)){
-            presenter.registerNext("",phoneData,chooseSchool);
+            presenter.registerNext(userId,phoneData,chooseSchool);
         }
     }
 

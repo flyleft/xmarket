@@ -13,7 +13,7 @@ public interface LoginRegisterView {
 
     void whenStopRegisterProgress();//隐藏注册进度条
 
-    void whenRegisterSuccess();//注册成功
+    void whenRegisterSuccess(String userId);//注册成功
 
     void whenFail(String msg);//失败后要Toast的错误信息
 }

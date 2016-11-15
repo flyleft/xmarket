@@ -61,7 +61,7 @@ public class LoginRegisterPresenterImpl implements
         }
     }
     @Override
-    public void registerComplete(Result<User> result) {
+    public void registerComplete(Result<String> result) {
         if (result==null){
             return;
         }
@@ -70,7 +70,7 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                view.whenRegisterSuccess();
+                view.whenRegisterSuccess(result.getData());
                 break;
             case 99:
             case 203:

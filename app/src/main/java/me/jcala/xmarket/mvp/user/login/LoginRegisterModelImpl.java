@@ -44,7 +44,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
     @Override
     public void registerRequest(final String username,final String password,final onLoginRegisterListener listener) {
         @SuppressWarnings("unchecked")
-        Result<User>  result=CommonFactory.INSTANCE().server_error();
+        Result<String>  result=CommonFactory.INSTANCE().server_error();
 
         ReqExecutor
                 .INSTANCE()
@@ -52,7 +52,7 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
                 .register(username,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<User>>() {
+                .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
                         listener.registerComplete(result);
@@ -60,11 +60,11 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.loginComplete(result);
+                        listener.registerComplete(result);
                     }
 
                     @Override
-                    public void onNext(Result<User> resultData) {
+                    public void onNext(Result<String> resultData) {
                         result.setCode(resultData.getCode());
                         result.setMsg(resultData.getMsg());
                         result.setData(resultData.getData());
