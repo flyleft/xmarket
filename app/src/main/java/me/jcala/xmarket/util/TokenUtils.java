@@ -40,8 +40,8 @@ public class TokenUtils {
         if (user.getId()!=null){
             editor.putString("user_id",user.getId());
         }
-        if (user.getAvatar_url()!=null){
-            editor.putString("user_avatar",user.getAvatar_url());
+        if (user.getAvatarUrl()!=null){
+            editor.putString("user_avatar",user.getAvatarUrl());
         }
         if (user.getPassword()!=null){
             editor.putString("password",user.getPassword());
