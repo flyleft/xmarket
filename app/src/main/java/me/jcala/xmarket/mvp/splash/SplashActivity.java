@@ -42,7 +42,7 @@ public class SplashActivity extends BaseActivity {
 
         String token=TokenUtils.instance.getToken(SplashActivity.this);//从SharedPreferences中获取token的值
 
-        if(token==null||"".equals(token)){
+        if(token==null||token.isEmpty()){
             new Handler().postDelayed(() ->{
                 Intent intent = new Intent(SplashActivity.this, LoginRegisterActivity.class);
                 startActivity(intent);
@@ -52,7 +52,7 @@ public class SplashActivity extends BaseActivity {
             ReqExecutor.INSTANCE().setToken(token);//设置retrofit发起HTTP的x-access-token的头部值
 
             new Handler().postDelayed(() ->{//如果已经有token则直接进入MainActivity,否则跳转到登录界面
-                Intent intent = new Intent(SplashActivity.this,LoginRegisterActivity.class);
+                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }, 2500);
