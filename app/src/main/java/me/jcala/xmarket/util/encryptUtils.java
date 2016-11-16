@@ -4,7 +4,7 @@ package me.jcala.xmarket.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class encryptUtils {
+public class EncryptUtils {
 
     public static String SHA1(String decript) {
         try {
