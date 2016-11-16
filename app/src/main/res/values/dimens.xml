@@ -22,7 +22,7 @@
     <dimen name="spacing_normal_high">16dp</dimen>
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_huge">40dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_margin">0dp</dimen>
 
     <dimen name="divider_height">1dp</dimen>
     <dimen name="deal_list_padding">16dp</dimen>
