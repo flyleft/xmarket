@@ -46,14 +46,4 @@ public interface UserReq {
             @Field("phone")  String phone,
             @Field("school")  String school);
 
-    /**
-     * 获取分类列表请求
-     */
-    @GET(ApiConf.get_trade_sort)
-    Observable<Result<List<TradeTag>>> sortTag();
-
-
-
-
-
 }

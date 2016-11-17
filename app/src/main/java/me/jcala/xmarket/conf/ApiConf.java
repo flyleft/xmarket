@@ -12,7 +12,6 @@ public interface ApiConf {
     String update_user_avatar="/users/{userId}/pass";
     String update_user_pass="/users/{userId}/avatar";
     String update_user_team="/users/{userId}/team";
-    String get_trade_sort="/trades/sort";
     String get_school_trades="/schools/trades/{school_name}/{page}/get";
-
+    String get_trade_tag="/tags/get";
 }
