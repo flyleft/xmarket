@@ -15,7 +15,8 @@ import rx.schedulers.Schedulers;
 public class TradeTagModelImpl implements TradeTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
-        Result<String>  result= CommonFactory.INSTANCE().server_error();
+        @SuppressWarnings("unchecked")
+        Result result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .tradeTagReq()
@@ -29,16 +30,14 @@ public class TradeTagModelImpl implements TradeTagModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure("");
+                        listener.onComplete(result);
                     }
 
                     @Override
                     public void onNext(Result<List<TradeTag>> listResult) {
-                        if (listResult.getCode()== Api.SUCCESS.code()){
-                            listener.onSuccess(listResult.getData());
-                        }else {
-                            listener.onFailure(listResult.getMsg());
-                        }
+                        result.setCode(listResult.getCode());
+                        result.setMsg(listResult.getMsg());
+                        result.setData(listResult.getData());
                     }
                 });
     }

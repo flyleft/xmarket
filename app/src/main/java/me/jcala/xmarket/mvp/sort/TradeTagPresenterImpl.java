@@ -6,8 +6,11 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+
 import java.util.List;
+
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
@@ -30,8 +33,11 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
     }
 
     @Override
-    public void onSuccess(List<TradeTag> tradeTagList) {
-        BaseAdapter adapter=new CommonAdapter<TradeTag>(mContext, tradeTagList,R.layout.sort_grid_item) {
+    public void onComplete(Result<List<TradeTag>> result) {
+        if (!resultHandler(result)){
+            return;
+        }
+        BaseAdapter adapter=new CommonAdapter<TradeTag>(mContext, result.getData(),R.layout.sort_grid_item) {
             @Override
             public void convert(ViewHolder viewHolder, TradeTag dataEntity) {
                 viewHolder.setText(R.id.grid_tv, dataEntity.getName());
@@ -39,15 +45,25 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            TradeTag entity = tradeTagList.get(position);
+            TradeTag entity = result.getData().get(position);
             Intent intent=new Intent(mContext,MainActivity.class);
             intent.putExtra("sortId",entity.getId());
             mContext.startActivity(intent);
         };
         mView.whenSuccess(adapter,listener);
     }
-    @Override
-    public void onFailure(String errMsg) {
-        mView.whenFail(errMsg);
+    public boolean resultHandler(Result<List<TradeTag>> result){
+        if (result==null){
+            return false;
+        }
+        switch (result.getCode()) {
+            case 100:
+                return true;
+            case 99:
+                mView.whenFail(result.getMsg());
+                return false;
+            default:
+                return false;
+        }
     }
 }

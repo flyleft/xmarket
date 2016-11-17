@@ -6,6 +6,10 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperToast;
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -15,6 +19,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.SortTagModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 
 public class TradeTagFragment extends BaseFragment implements TradeTagView {
     @BindView(R.id.sort_grid)
@@ -44,6 +49,12 @@ public class TradeTagFragment extends BaseFragment implements TradeTagView {
     }
     @Override
     public void whenFail(String msg) {
+        new SuperToast(getActivity())
+                .setText(msg)
+                .setDuration(Style.DURATION_LONG)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
+                .setAnimations(Style.ANIMATIONS_POP)
+                .show();
     }
 
     @Override
