@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/deal_page_bg"
     android:layout_height="match_parent">
-    <ListView
-        android:id="@+id/school_deal_list"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/message_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="7dp"
-        android:divider="@color/deal_page_bg"
-        android:scrollbars="none"
-        android:focusable="false"/>
-</LinearLayout>
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/school_deal_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:dividerHeight="7dp"
+            android:divider="@color/deal_page_bg"
+            android:scrollbars="none"
+            android:focusable="false" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/message_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_media_previous" />
+</FrameLayout>
