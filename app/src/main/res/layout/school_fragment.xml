@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/deal_page_bg"
@@ -24,10 +25,16 @@
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/message_fab"
+        android:id="@+id/school_deal_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="end|bottom"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:backgroundTint="@color/md_grey_800"
+        app:rippleColor="@color/black"
+        app:elevation="6dp"
+        app:pressedTranslationZ="18dp"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_media_previous" />
+        android:src="@drawable/ic_plus_white" />
 </FrameLayout>

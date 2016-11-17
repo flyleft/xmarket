@@ -17,6 +17,7 @@
     <color name="divider_grey">#eeeeee</color>
 
     <color name="black">#000000</color>
+    <color name="fab">#c9c9c9</color>
     <color name="material_login_register_color">#000000</color>
     <color name="appFontColor">#000000</color>
 

@@ -27,6 +27,8 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     private Unbinder unbinder;
     @BindView(R.id.school_deal_list)
     protected ListView dealList;
+    @BindView(R.id.school_deal_plus)
+    protected FloatingActionButton fab;
 
     @Override
     protected int getLayoutResId() {
@@ -38,6 +40,10 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
         unbinder= ButterKnife.bind(this,view);
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
         presenter.getSchoolDealAgency();
+        fab.setOnClickListener((View v) ->{
+                    Toast.makeText(getActivity(),"fab",Toast.LENGTH_LONG).show();
+                }
+        );
     }
 
     @Override

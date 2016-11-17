@@ -1,10 +1,12 @@
 package me.jcala.xmarket.mvp.team;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +21,8 @@ public class TeamFragment extends BaseFragment implements TeamView {
     protected ListView teamList;
 
     private TeamPresenter presenter;
+    @BindView(R.id.school_deal_plus)
+    protected FloatingActionButton fab;
     @Override
     protected int getLayoutResId() {
         return R.layout.team_fragment;
@@ -29,6 +33,10 @@ public class TeamFragment extends BaseFragment implements TeamView {
         unbinder= ButterKnife.bind(this,view);
         presenter=new TeamPresenterImpl(getActivity(),this);
         presenter.getTeams();
+        fab.setOnClickListener((View v) ->{
+                Toast.makeText(getActivity(),"fab",Toast.LENGTH_LONG).show();
+            }
+        );
     }
 
     @Override
