@@ -3,12 +3,13 @@ package me.jcala.xmarket.mvp.message;
 import android.os.Bundle;
 import android.view.View;
 
+import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 public class MessageFragment extends BaseFragment {
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.message_fragment;
     }
 
 

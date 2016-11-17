@@ -16,6 +16,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.message.MessageFragment;
 import me.jcala.xmarket.mvp.school.SchoolFragment;
 import me.jcala.xmarket.mvp.sort.TradeTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
@@ -32,6 +33,7 @@ public class MainActivity  extends BaseActivity
     private FragmentManager fm;
     private TradeTagFragment tradeTagFragment;
     private SchoolFragment schoolFragment;
+    private MessageFragment messageFragment;
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
@@ -141,6 +143,13 @@ public class MainActivity  extends BaseActivity
                         ft.add(R.id.frame_layout, teamFragment);
                     }
                 break;
+            case 3 : if (messageFragment != null) {
+                ft.show(messageFragment);
+            } else {
+                messageFragment = new MessageFragment();
+                ft.add(R.id.frame_layout, messageFragment);
+            }
+                break;
         }
         ft.commit();
     }
@@ -159,6 +168,9 @@ public class MainActivity  extends BaseActivity
         }
         if (teamFragment != null) {
             ft.hide(teamFragment);
+        }
+        if (messageFragment != null) {
+            ft.hide(messageFragment);
         }
     }
 
