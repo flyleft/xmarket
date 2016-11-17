@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.sort;
+package me.jcala.xmarket.mvp.sort.trades;
 
 import android.os.Bundle;
 
