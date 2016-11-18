@@ -1,5 +1,7 @@
 package me.jcala.xmarket.data.storage;
 
+import android.content.Context;
+
 import me.jcala.xmarket.data.pojo.User;
 
 /**
@@ -7,12 +9,14 @@ import me.jcala.xmarket.data.pojo.User;
  */
 public enum  UserIntermediator {
     instance;
-    public final User user=new User();
+    private User user;
 
-    public void refreshUser(){
-
+    public User getUser(Context context) {
+        if (user==null){
+            user=SharedPreferencesStorage.instance.getUser(context);
+        }
+        return user;
     }
-
 
 
 }
