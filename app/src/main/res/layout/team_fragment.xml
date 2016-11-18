@@ -15,6 +15,10 @@
             android:id="@+id/team_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:dividerHeight="7dp"
+            android:divider="@color/deal_page_bg"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:scrollbars="none"
             android:focusable="false"/>
 
