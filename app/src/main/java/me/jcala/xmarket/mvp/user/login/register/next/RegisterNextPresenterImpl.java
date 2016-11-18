@@ -11,8 +11,7 @@ import java.util.List;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.util.CheckUtils;
-import me.jcala.xmarket.util.TokenUtils;
+import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
 
 public class RegisterNextPresenterImpl
         implements RegisterNextPresenter,RegisterNextModel.onRegisterNextListener{
@@ -57,7 +56,7 @@ public class RegisterNextPresenterImpl
         }
         switch (result.getCode()) {
             case 100:
-                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
+                SharedPreferencesStorage.instance.saveUserToken(context,result.getData());
                 ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenRegisterSuccess();
                 break;

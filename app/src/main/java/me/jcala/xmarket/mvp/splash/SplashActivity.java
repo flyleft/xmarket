@@ -15,7 +15,7 @@ import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
-import me.jcala.xmarket.util.TokenUtils;
+import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
 
 public class SplashActivity extends BaseActivity {
 
@@ -40,7 +40,7 @@ public class SplashActivity extends BaseActivity {
     }
     private void splashAction(){
 
-        String token=TokenUtils.instance.getToken(SplashActivity.this);//从SharedPreferences中获取token的值
+        String token= SharedPreferencesStorage.instance.getToken(SplashActivity.this);//从SharedPreferences中获取token的值
 
         if(token==null||token.isEmpty()){
             new Handler().postDelayed(() ->{

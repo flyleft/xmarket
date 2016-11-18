@@ -2,12 +2,10 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Context;
 
-import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.util.TokenUtils;
-import shem.com.materiallogin.MaterialLoginView;
+import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
 
 public class LoginRegisterPresenterImpl implements
         LoginRegisterPresenter,
@@ -47,7 +45,7 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                TokenUtils.instance.saveUserToken(context,result.getData(),result.getData().getToken());
+                SharedPreferencesStorage.instance.saveUserToken(context,result.getData());
                 ReqExecutor.INSTANCE().setToken(result.getData().getToken());
                 view.whenLoginSuccess();
                 break;
