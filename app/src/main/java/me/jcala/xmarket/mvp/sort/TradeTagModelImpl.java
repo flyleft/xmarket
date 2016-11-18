@@ -26,13 +26,14 @@ public class TradeTagModelImpl implements TradeTagModel {
                 .subscribe(new Subscriber<Result<List<TradeTag>>>() {
                     @Override
                     public void onCompleted() {
+                        listener.onComplete(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onComplete(result);
+                        listener.onFail(result.getMsg());
                     }
-
+                    @SuppressWarnings("unchecked")
                     @Override
                     public void onNext(Result<List<TradeTag>> listResult) {
                         result.setCode(listResult.getCode());

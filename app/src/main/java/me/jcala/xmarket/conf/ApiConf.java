@@ -4,14 +4,14 @@ public interface ApiConf {
 
     int DEFAULT_TIMEOUT = 5;
     int execute=0;
-    String BASE_URL="http://192.168.0.105:80/api/v1/";
-    String auth="auth";
-    String get_school_list="schools/names/get";
-    String register="users/register";
-    String register_next="users/{userId}/phoneSchool/update";
-    String update_user_avatar="/users/{userId}/pass";
-    String update_user_pass="/users/{userId}/avatar";
-    String update_user_team="/users/{userId}/team";
-    String get_school_trades="/schools/trades/{school_name}/{page}/get";
-    String get_trade_tag="/tags/get";
+    String BASE_URL="http://192.168.0.103:80/";
+    String auth="api/v1/auth";
+    String get_school_list="api/v1/schools/names/get";
+    String register="api/v1/users/register";
+    String register_next="api/v1/users/{userId}/phoneSchool/update";
+    String update_user_avatar="api/v1/users/{userId}/pass";
+    String update_user_pass="api/v1/users/{userId}/avatar";
+    String update_user_team="api/v1/users/{userId}/team";
+    String get_school_trades="api/v1/schools/trades/{school_name}/{page}/get";
+    String get_trade_tag="api/v1/tags/get";
 }

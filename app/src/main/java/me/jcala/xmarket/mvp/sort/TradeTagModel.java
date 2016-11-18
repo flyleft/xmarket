@@ -8,6 +8,7 @@ import me.jcala.xmarket.data.pojo.TradeTag;
 interface TradeTagModel {
     interface onGainListener {
         void onComplete(Result<List<TradeTag>> result);
+        void onFail(String msg);
     }
     void getSortTag(final onGainListener listener);
 }

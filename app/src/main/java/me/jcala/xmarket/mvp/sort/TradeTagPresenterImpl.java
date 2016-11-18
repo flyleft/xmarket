@@ -52,7 +52,8 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         };
         mView.whenSuccess(adapter,listener);
     }
-    public boolean resultHandler(Result<List<TradeTag>> result){
+
+    private boolean resultHandler(Result<?> result){
         if (result==null){
             return false;
         }
@@ -65,5 +66,10 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void onFail(String msg) {
+        mView.whenFail(msg);
     }
 }
