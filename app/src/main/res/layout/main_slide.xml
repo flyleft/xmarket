@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,12 +12,15 @@
         android:background="@drawable/bg_card"
         android:layout_marginTop="16dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/info_avatar"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_margin="16dp"
-            android:src="@mipmap/avatar" />
+            fresco:roundedCornerRadius="56dp"
+            fresco:roundBottomLeft="true"
+            fresco:roundBottomRight="true"
+            android:src="@mipmap/avatar"
+            android:layout_margin="16dp"/>
 
         <TextView
             android:id="@+id/info_username"
