@@ -41,6 +41,9 @@
         <activity
             android:name=".mvp.user.login.register.next.RegisterNextActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".mvp.user.trades.add.TradeAddActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <!-- 注册广播 -->
         <receiver android:name=".util.NetState">
             <intent-filter>
