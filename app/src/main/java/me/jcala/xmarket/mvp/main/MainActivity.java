@@ -30,6 +30,12 @@ import me.jcala.xmarket.mvp.school.SchoolFragment;
 import me.jcala.xmarket.mvp.sort.TradeTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
+import me.jcala.xmarket.mvp.user.team.UserTeamActivity;
+import me.jcala.xmarket.mvp.user.trades.bought.TradeBoughtActivity;
+import me.jcala.xmarket.mvp.user.trades.donate.TradeDonateActivity;
+import me.jcala.xmarket.mvp.user.trades.sell.TradeSellActivity;
+import me.jcala.xmarket.mvp.user.trades.sold.TradeSoldActivity;
+import me.jcala.xmarket.mvp.user.trades.uncomplete.TradeUnCompleteActivity;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -135,17 +141,35 @@ public class MainActivity  extends BaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
-           case R.id.info_uncomplete: break;
+           case R.id.info_uncomplete:
+               Intent unCompleteIntent=new Intent(MainActivity.this, TradeUnCompleteActivity.class);
+               startActivity(unCompleteIntent);
+               break;
 
-            case R.id.info_sell: break;
+            case R.id.info_sell:
+                Intent sellIntent=new Intent(MainActivity.this, TradeSellActivity.class);
+                startActivity(sellIntent);
+                break;
 
-            case R.id.info_bought: break;
+            case R.id.info_bought:
+                Intent bought=new Intent(MainActivity.this, TradeBoughtActivity.class);
+                startActivity(bought);
+                break;
 
-            case R.id.info_sold: break;
+            case R.id.info_sold:
+                Intent soldIntent=new Intent(MainActivity.this, TradeSoldActivity.class);
+                startActivity(soldIntent);
+                break;
 
-            case R.id.info_donation: break;
+            case R.id.info_donation:
+                Intent donateIntent=new Intent(MainActivity.this, TradeDonateActivity.class);
+                startActivity(donateIntent);
+                break;
 
-            case R.id.info_team: break;
+            case R.id.info_team:
+                Intent teamIntent=new Intent(MainActivity.this, UserTeamActivity.class);
+                startActivity(teamIntent);
+                break;
 
             case R.id.info_logout:
                 UserIntermediator.instance.logOut(MainActivity.this);
