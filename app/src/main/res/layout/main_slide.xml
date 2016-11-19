@@ -19,7 +19,7 @@
             fresco:roundedCornerRadius="56dp"
             fresco:roundBottomLeft="true"
             fresco:roundBottomRight="true"
-            android:src="@mipmap/avatar"
+            fresco:placeholderImage="@mipmap/person"
             android:layout_margin="16dp"/>
 
         <TextView
