@@ -34,13 +34,13 @@
     <item android:title="@string/info_others">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/info_logout"
+                android:icon="@mipmap/menu_logout"
+                android:title="@string/info_logout" />
+            <item
+                android:id="@+id/info_author"
                 android:icon="@mipmap/menu_author"
                 android:title="@string/info_author" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@mipmap/menu_description"
-                android:title="@string/info_about_app" />
         </menu>
     </item>
 </menu>

@@ -39,7 +39,7 @@
     <string name="info_donation">捐赠</string>
     <string name="info_team">志愿队</string>
     <string name="info_others">其他</string>
-    <string name="info_author">作者</string>
-    <string name="info_about_app">说明</string>
+    <string name="info_author">关于作者</string>
+    <string name="info_logout">退出登录</string>
 
 </resources>
