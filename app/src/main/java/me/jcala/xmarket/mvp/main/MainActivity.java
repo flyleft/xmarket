@@ -10,10 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.message.MessageFragment;
@@ -24,10 +24,15 @@ import me.jcala.xmarket.mvp.team.TeamFragment;
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
+    @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mBottomNavigationBar;
+    @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
+    @BindView(R.id.nav_view)
     NavigationView navigationView;
     private TeamFragment teamFragment;
     private FragmentManager fm;
@@ -37,14 +42,10 @@ public class MainActivity  extends BaseActivity
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
+        ButterKnife.bind(this);
         fm = getFragmentManager();
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        mBottomNavigationBar=(BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);
-        drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
-        navigationView=(NavigationView)findViewById(R.id.nav_view);
         initSlide();
-        initButtomMenu();
+        initBottomMenu();
     }
     private void initSlide(){
         setSupportActionBar(toolbar);
@@ -55,7 +56,7 @@ public class MainActivity  extends BaseActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
-    private void initButtomMenu(){
+    private void initBottomMenu(){
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
@@ -100,6 +101,10 @@ public class MainActivity  extends BaseActivity
         });
         toolbarTitle.setText(R.string.MainActivity_title_school);
         showFragment(0);
+    }
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
     @Override
@@ -152,11 +157,6 @@ public class MainActivity  extends BaseActivity
                 break;
         }
         ft.commit();
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        return false;
     }
 
     private void hideAllFragment(FragmentTransaction ft) {

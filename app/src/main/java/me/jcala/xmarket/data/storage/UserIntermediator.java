@@ -18,5 +18,4 @@ public enum  UserIntermediator {
         return user;
     }
 
-
 }
