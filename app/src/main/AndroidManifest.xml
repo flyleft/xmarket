@@ -56,6 +56,12 @@
         <activity
             android:name=".mvp.user.trades.sold.TradeSoldActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".mvp.user.trades.uncomplete.TradeUnCompleteActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".mvp.user.team.UserTeamActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <!-- 注册广播 -->
         <receiver android:name=".util.NetState">
             <intent-filter>
