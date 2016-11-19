@@ -1,8 +1,13 @@
 package me.jcala.xmarket.mvp.user.trades.sold;
 
-/**
- * Created by Administrator on 2016/11/19.
- */
+import android.os.Bundle;
 
-public class TradeSoldActivity {
+import me.jcala.xmarket.R;
+import me.jcala.xmarket.mvp.a_base.BaseActivity;
+
+public class TradeSoldActivity extends BaseActivity implements TradeSoldView{
+    @Override
+    protected void initViews(Bundle savedInstanceState) {
+      setContentView(R.layout.trade_sold_activity);
+    }
 }
