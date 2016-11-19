@@ -50,6 +50,9 @@
         <activity
             android:name=".mvp.user.trades.bought.TradeBoughtActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".mvp.user.trades.donate.TradeDonateActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <!-- 注册广播 -->
         <receiver android:name=".util.NetState">
             <intent-filter>
