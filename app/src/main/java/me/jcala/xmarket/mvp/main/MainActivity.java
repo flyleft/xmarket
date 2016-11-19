@@ -2,6 +2,7 @@ package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -52,6 +53,7 @@ public class MainActivity  extends BaseActivity
     private TradeTagFragment tradeTagFragment;
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
@@ -132,7 +134,25 @@ public class MainActivity  extends BaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
+           case R.id.info_uncomplete: break;
 
+            case R.id.info_sell: break;
+
+            case R.id.info_bought: break;
+
+            case R.id.info_sold: break;
+
+            case R.id.info_donation: break;
+
+            case R.id.info_team: break;
+
+            case R.id.info_logout: break;
+
+            case R.id.info_author:
+            Uri uri=Uri.parse("https://github.com/jcalaz");
+            Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+            startActivity(intent);break;
+            default:break;
         }
 
         return false;
