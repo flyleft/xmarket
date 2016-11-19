@@ -29,6 +29,7 @@ import me.jcala.xmarket.mvp.message.MessageFragment;
 import me.jcala.xmarket.mvp.school.SchoolFragment;
 import me.jcala.xmarket.mvp.sort.TradeTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
+import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -146,12 +147,17 @@ public class MainActivity  extends BaseActivity
 
             case R.id.info_team: break;
 
-            case R.id.info_logout: break;
-
+            case R.id.info_logout:
+                UserIntermediator.instance.logOut(MainActivity.this);
+                Intent loginIntent=new Intent(MainActivity.this, LoginRegisterActivity.class);
+                startActivity(loginIntent);
+                finish();
+                break;
             case R.id.info_author:
-            Uri uri=Uri.parse("https://github.com/jcalaz");
-            Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-            startActivity(intent);break;
+                Uri uri=Uri.parse("https://github.com/jcalaz");
+                Intent uriIntent=new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(uriIntent);
+                break;
             default:break;
         }
 

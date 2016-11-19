@@ -2,6 +2,7 @@ package me.jcala.xmarket.data.storage;
 
 import android.content.Context;
 
+import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.pojo.User;
 
 /**
@@ -16,6 +17,12 @@ public enum  UserIntermediator {
             user=SharedPreferencesStorage.instance.getUser(context);
         }
         return user;
+    }
+
+    public void logOut(Context context){
+        this.user=null;
+        SharedPreferencesStorage.instance.clear(context);
+        ReqExecutor.INSTANCE().setToken("");
     }
 
 }

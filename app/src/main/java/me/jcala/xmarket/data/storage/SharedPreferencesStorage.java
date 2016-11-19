@@ -49,7 +49,7 @@ public class SharedPreferencesStorage {
         editor.apply();
     }
 
-    private void clear(final Context context){
+     void clear(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
@@ -61,7 +61,7 @@ public class SharedPreferencesStorage {
         return sp.getString("token", "");
     }
 
-    public User getUser(final Context context){
+     User getUser(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         final User user=new User();
         user.setToken(sp.getString("token",""));
