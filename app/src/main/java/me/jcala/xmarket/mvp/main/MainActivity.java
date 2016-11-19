@@ -2,6 +2,7 @@ package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -9,12 +10,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.conf.Api;
+import me.jcala.xmarket.conf.ApiConf;
+import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.data.storage.UserIntermediator;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.message.MessageFragment;
 import me.jcala.xmarket.mvp.school.SchoolFragment;
@@ -34,6 +42,11 @@ public class MainActivity  extends BaseActivity
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+
+    private TextView username;
+    private TextView phone;
+    private SimpleDraweeView avatar;
+
     private TeamFragment teamFragment;
     private FragmentManager fm;
     private TradeTagFragment tradeTagFragment;
@@ -54,7 +67,18 @@ public class MainActivity  extends BaseActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        View headerLayout= navigationView.inflateHeaderView(R.layout.main_slide);
+        username=(TextView) headerLayout.findViewById(R.id.info_username);
+        phone=(TextView) headerLayout.findViewById(R.id.info_phone);
+        avatar=(SimpleDraweeView) headerLayout.findViewById(R.id.info_avatar);
         navigationView.setNavigationItemSelectedListener(this);
+        initSlideHeader();
+    }
+    private void initSlideHeader(){
+        User user=UserIntermediator.instance.getUser(MainActivity.this);
+        username.setText(user.getUsername());
+        phone.setText(user.getPhone());
+        avatar.setImageURI(Uri.parse(ApiConf.BASE_URL+user.getAvatarUrl()));
     }
     private void initBottomMenu(){
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
@@ -102,8 +126,12 @@ public class MainActivity  extends BaseActivity
         toolbarTitle.setText(R.string.MainActivity_title_school);
         showFragment(0);
     }
+
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
         return false;
     }
 
