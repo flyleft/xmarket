@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
