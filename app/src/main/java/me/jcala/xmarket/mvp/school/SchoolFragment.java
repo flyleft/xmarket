@@ -1,11 +1,11 @@
 package me.jcala.xmarket.mvp.school;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,6 +15,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.user.trades.add.TradeAddView;
 
 
 public class SchoolFragment extends BaseFragment implements SchoolView{
@@ -51,7 +52,8 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @OnClick(R.id.school_deal_plus)
      void jumpTradeAddActivity(){
-        Toast.makeText(getActivity(),"fab",Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(getActivity(), TradeAddView.class);
+        startActivity(intent);
     }
 
 }
