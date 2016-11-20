@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/trade_add_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:errorTextAppearance="@style/MaterialLoginTheme.TextAppearanceLoginError"
+        app:theme="@style/MaterialLoginTheme.TextAppearanceLogin">
 
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/trade_add_title"
+            android:inputType="phone"
+            android:maxLength="20"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/trade_add_desp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:errorTextAppearance="@style/MaterialLoginTheme.TextAppearanceLoginError"
+        app:theme="@style/MaterialLoginTheme.TextAppearanceLogin">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/trade_add_desp"
+            android:inputType="phone"
+            android:maxLength="20"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>

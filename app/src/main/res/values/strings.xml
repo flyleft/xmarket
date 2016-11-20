@@ -1,6 +1,7 @@
 <resources>
     <!-- APP名称 -->
     <string name="app_name">xmarket</string>
+
     <!-- 主页面的bottom menu -->
     <string name="MainActivity_title_school">本校</string>
     <string name="MainActivity_title_sort">分类</string>
@@ -16,6 +17,7 @@
     <string name="loginActionText">GO</string>
     <string name="dialog_wait">请稍等</string>
     <string name="login_dialog_content">正在登录...</string>
+
     <!-- 注册页面  -->
     <string name="registerHint">用户名</string>
     <string name="registerPasswordHint">密码</string>
@@ -28,6 +30,7 @@
     <string name="register_next_phone">手机号</string>
     <string name="register_next_school_choose">请选择学校</string>
     <string name="register_next_choose">选择</string>
+
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
     <string name="info_phone">18200361857</string>
@@ -41,5 +44,11 @@
     <string name="info_others">其他</string>
     <string name="info_author">关于作者</string>
     <string name="info_logout">退出登录</string>
+
+    <!--添加商品页面-->
+    <string name="trade_add_title">标题</string>
+    <string name="trade_add_desp">描述</string>
+    <string name="trade_add_price">价格</string>
+    <string name="trade_add_tag">分类</string>
 
 </resources>
