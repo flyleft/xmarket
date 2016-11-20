@@ -1,39 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/trade_add_title"
+
+
+    <TextView
+        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:errorTextAppearance="@style/MaterialLoginTheme.TextAppearanceLoginError"
-        app:theme="@style/MaterialLoginTheme.TextAppearanceLogin">
+        android:id="@+id/textView" />
 
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/trade_add_title"
-            android:inputType="text"
-            android:maxLength="20"
-            android:textSize="20sp" />
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/trade_add_desp"
+    <TextView
+        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:errorTextAppearance="@style/MaterialLoginTheme.TextAppearanceLoginError"
-        app:theme="@style/MaterialLoginTheme.TextAppearanceLogin">
+        android:id="@+id/textView2" />
 
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="59dp">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/trade_add_desp"
-            android:inputType="textMultiLine"
-            android:textSize="20sp" />
-    </android.support.design.widget.TextInputLayout>
+            android:id="@+id/textView4"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="59dp">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </GridLayout>
 </LinearLayout>
