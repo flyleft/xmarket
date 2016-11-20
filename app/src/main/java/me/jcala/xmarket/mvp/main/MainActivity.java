@@ -61,6 +61,8 @@ public class MainActivity  extends BaseActivity
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
 
+    private String userId;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
@@ -85,6 +87,7 @@ public class MainActivity  extends BaseActivity
     }
     private void initSlideHeader(){
         User user=UserIntermediator.instance.getUser(MainActivity.this);
+        userId=user.getId();
         username.setText(user.getUsername());
         phone.setText(user.getPhone());
         avatar.setImageURI(Uri.parse(ApiConf.BASE_URL+user.getAvatarUrl()));
@@ -139,35 +142,42 @@ public class MainActivity  extends BaseActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         int id = item.getItemId();
         switch (id){
            case R.id.info_uncomplete:
                Intent unCompleteIntent=new Intent(MainActivity.this, TradeUnCompleteActivity.class);
+               unCompleteIntent.putExtra("userId",userId);
                startActivity(unCompleteIntent);
                break;
 
             case R.id.info_sell:
                 Intent sellIntent=new Intent(MainActivity.this, TradeSellActivity.class);
+                sellIntent.putExtra("userId",userId);
                 startActivity(sellIntent);
                 break;
 
             case R.id.info_bought:
-                Intent bought=new Intent(MainActivity.this, TradeBoughtActivity.class);
-                startActivity(bought);
+                Intent boughtIntent=new Intent(MainActivity.this, TradeBoughtActivity.class);
+                boughtIntent.putExtra("userId",userId);
+                startActivity(boughtIntent);
                 break;
 
             case R.id.info_sold:
                 Intent soldIntent=new Intent(MainActivity.this, TradeSoldActivity.class);
+                soldIntent.putExtra("userId",userId);
                 startActivity(soldIntent);
                 break;
 
             case R.id.info_donation:
                 Intent donateIntent=new Intent(MainActivity.this, TradeDonateActivity.class);
+                donateIntent.putExtra("userId",userId);
                 startActivity(donateIntent);
                 break;
 
             case R.id.info_team:
                 Intent teamIntent=new Intent(MainActivity.this, UserTeamActivity.class);
+                teamIntent.putExtra("userId",userId);
                 startActivity(teamIntent);
                 break;
 
