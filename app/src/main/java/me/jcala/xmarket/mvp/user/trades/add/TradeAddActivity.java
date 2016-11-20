@@ -5,10 +5,12 @@ import android.os.Bundle;
 import com.jph.takephoto.app.TakePhotoActivity;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.pojo.Trade;
 
 public class TradeAddActivity extends TakePhotoActivity implements TradeAddView{
 
     TradeAddPresenter presenter;
+    Trade trade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,7 @@ public class TradeAddActivity extends TakePhotoActivity implements TradeAddView{
     }
     private void initData(){
         presenter=new TradeAddPresenterImpl(this,this);
-        
+        presenter.tradeAdd();
     }
 
     @Override
