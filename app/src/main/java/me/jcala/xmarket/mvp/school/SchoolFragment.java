@@ -15,6 +15,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.user.trades.add.TradeAddActivity;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddView;
 
 
@@ -52,7 +53,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @OnClick(R.id.school_deal_plus)
      void jumpTradeAddActivity(){
-        Intent intent=new Intent(getActivity(), TradeAddView.class);
+        Intent intent=new Intent(getActivity(), TradeAddActivity.class);
         startActivity(intent);
     }
 

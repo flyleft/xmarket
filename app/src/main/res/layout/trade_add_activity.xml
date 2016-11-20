@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/trade_add_title"
-            android:inputType="phone"
+            android:inputType="text"
             android:maxLength="20"
             android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
@@ -33,8 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/trade_add_desp"
-            android:inputType="phone"
-            android:maxLength="20"
+            android:inputType="textMultiLine"
             android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

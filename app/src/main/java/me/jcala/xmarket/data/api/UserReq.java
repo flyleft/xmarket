@@ -1,15 +1,12 @@
 package me.jcala.xmarket.data.api;
 
 
-import java.util.List;
 import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.TradeTag;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -45,5 +42,14 @@ public interface UserReq {
             @Path("userId")  String user_id,
             @Field("phone")  String phone,
             @Field("school")  String school);
+
+    /**
+     * 发布商品
+     */
+    @POST(ApiConf.create_user_trade)
+    @FormUrlEncoded
+    Observable<Result<String>> addTrade(
+            @Path("userId")String userId,
+            @Field("trade") Trade trade);
 
 }
