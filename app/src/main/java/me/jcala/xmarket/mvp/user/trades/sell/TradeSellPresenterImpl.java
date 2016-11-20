@@ -5,7 +5,7 @@ import android.content.Context;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddPresenter;
 
 public class TradeSellPresenterImpl
-        implements TradeAddPresenter,TradeSellModel.onTradeSellLisener {
+        implements TradeAddPresenter,TradeSellModel.onTradeSellListener {
     private Context context;
     private TradeSellView view;
     private TradeSellModel model;
