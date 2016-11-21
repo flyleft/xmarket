@@ -36,6 +36,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
     compile 'com.zhy:base-rvadapter:3.0.3'
     compile 'com.jph.takephoto:takephoto_library:4.0.0'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'//retrofit日志打印
