@@ -61,6 +61,8 @@ public class MainActivity  extends BaseActivity
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
 
+    private String userId;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
@@ -85,6 +87,7 @@ public class MainActivity  extends BaseActivity
     }
     private void initSlideHeader(){
         User user=UserIntermediator.instance.getUser(MainActivity.this);
+        userId=user.getId();
         username.setText(user.getUsername());
         phone.setText(user.getPhone());
         avatar.setImageURI(Uri.parse(ApiConf.BASE_URL+user.getAvatarUrl()));
