@@ -2,7 +2,6 @@ package me.jcala.xmarket.mvp.user.trades.sell;
 
 import android.content.Context;
 
-import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddPresenter;
 
 public class TradeSellPresenterImpl
@@ -15,10 +14,5 @@ public class TradeSellPresenterImpl
         this.context = context;
         this.view = view;
         this.model=new TradeSellModelImpl();
-    }
-
-    @Override
-    public void tradeAdd(Trade trade) {
-
     }
 }
