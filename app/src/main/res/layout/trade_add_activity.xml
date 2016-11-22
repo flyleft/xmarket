@@ -9,33 +9,67 @@
         android:id="@+id/trade_add_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginRight="@dimen/spacing_huge"
+        android:layout_marginLeft="@dimen/spacing_huge">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/trade_add_title"
             android:inputType="text"
-            android:maxLength="20"
+            android:maxLength="30"
             android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/trade_add_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_huge"
+        android:layout_marginLeft="@dimen/spacing_huge">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/trade_add_price"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/trade_add_desp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginRight="@dimen/spacing_huge"
+        android:layout_marginLeft="@dimen/spacing_huge">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minLines="2"
             android:maxLines="4"
-            android:maxLength="144"
+            android:maxLength="128"
             android:hint="@string/trade_add_desp"
             android:inputType="textMultiLine"/>
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/trade_add_tag_select"
+        style="@style/MaterialLoginTheme.SelectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/register_next_school"
+        android:textColor="@color/material_login_register_color"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/trade_add_tag_submit"
+        style="@style/MaterialLoginTheme.SelectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/register_next_school"
+        android:textColor="@color/material_login_register_color"
+        android:textSize="20sp" />
 
 </LinearLayout>

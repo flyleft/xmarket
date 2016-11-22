@@ -48,7 +48,7 @@
     <!--添加商品页面-->
     <string name="trade_add_title">标题</string>
     <string name="trade_add_desp">描述</string>
-    <string name="trade_add_price">价格</string>
+    <string name="trade_add_price">价格(元)</string>
     <string name="trade_add_tag">分类</string>
 
 </resources>
