@@ -27,7 +27,14 @@
     <style name="AppTheme.NoStatusBarAndActionBar" parent="AppTheme.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
-    
+
+    <style name="TradeAdd">
+        <item name="android:textColor">@color/grey_font</item>
+        <item name="colorControlNormal">@color/grey_font</item>
+        <item name="android:textColorHint">@color/grey_font</item>
+        <item name="colorControlActivated">@color/grey_font</item>
+        <item name="colorControlHighlight">@color/grey_font</item>
+    </style>
 
 
 </resources>

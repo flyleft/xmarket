@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#9e9e9e</color>
     <color name="colorAccent">#e91e63</color>
 
+
     <color name="grey">#607D8B</color>
     <color name="red">#e91e63</color>
     <color name="pink">#f48fb1</color>
@@ -22,4 +23,6 @@
     <color name="appFontColor">#000000</color>
 
     <color name="deal_page_bg">#e6e6e6</color>
+
+    <color name="grey_font">#c8c8c8</color>
 </resources>

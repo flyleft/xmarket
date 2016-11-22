@@ -25,7 +25,7 @@ public class TradeAddActivity extends TakePhotoActivity implements TradeAddView{
     }
     private void initData(){
         presenter=new TradeAddPresenterImpl(this,this);
-        presenter.tradeAdd(trade);
+       // presenter.tradeAdd(trade);
     }
 
     @Override
