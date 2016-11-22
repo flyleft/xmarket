@@ -57,9 +57,9 @@
         style="@style/MaterialLoginTheme.SelectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/register_next_school"
-        android:textColor="@color/material_login_register_color"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/trade_add_tag"
+        android:gravity="center_horizontal"
         android:textSize="20sp" />
 
     <TextView
@@ -67,8 +67,9 @@
         style="@style/MaterialLoginTheme.SelectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/register_next_school"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/trade_add_submit"
         android:textColor="@color/material_login_register_color"
         android:textSize="20sp" />
 
