@@ -34,7 +34,7 @@
             android:hint="@string/trade_add_price"
             android:maxLines="1"
             android:maxLength="8"
-            android:inputType="numberDecimal"/>
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -61,6 +61,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_normal"
         android:text="@string/trade_add_tag"
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/trade_add_photo_take"
+        style="@style/MaterialLoginTheme.SelectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/trade_add_photo"
         android:gravity="center_horizontal"
         android:textSize="20sp" />
 

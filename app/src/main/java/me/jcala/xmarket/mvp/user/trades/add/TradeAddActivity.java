@@ -6,23 +6,23 @@ import android.os.Bundle;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-import com.jph.takephoto.app.TakePhotoActivity;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 
-public class TradeAddActivity extends TakePhotoActivity implements TradeAddView{
+public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     TradeAddPresenter presenter;
     Trade trade;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_activity);
         initData();
     }
+
     private void initData(){
         presenter=new TradeAddPresenterImpl(this,this);
        // presenter.tradeAdd(trade);

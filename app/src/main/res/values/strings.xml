@@ -50,6 +50,7 @@
     <string name="trade_add_desp">描述</string>
     <string name="trade_add_price">价格(元)</string>
     <string name="trade_add_tag">点击设置分类</string>
+    <string name="trade_add_photo">点击上传图片</string>
     <string name="trade_add_submit">提交</string>
 
 </resources>
