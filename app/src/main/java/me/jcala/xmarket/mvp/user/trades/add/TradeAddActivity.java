@@ -8,11 +8,16 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
+import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
+import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
+import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -67,6 +72,27 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                         })
                 .positiveText(R.string.register_next_choose)
                 .show();
+    }
+
+    @OnClick(R.id.trade_add_photo_take)
+     void picSelector(){
+        try {
+            RxGalleryFinal
+                    .with(TradeAddActivity.this)
+                    .image()
+                    .radio()
+                    .crop()
+                    .imageLoader(ImageLoaderType.FRESCO)
+                    .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
+                        @Override
+                        protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
+                            //图片选择结果
+                        }
+                    })
+                    .openGallery();
+        } catch (Exception e) {
+            Logger.w("TradeAddActivity","图片选择器发生异常:"+e.getLocalizedMessage());
+        }
     }
 
 }
