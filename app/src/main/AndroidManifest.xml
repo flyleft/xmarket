@@ -63,6 +63,15 @@
         <activity
             android:name=".mvp.user.team.UserTeamActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/Theme_Light.White"/>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_Light.White"/>
         <!-- 注册广播 -->
         <receiver android:name=".util.NetState">
             <intent-filter>
