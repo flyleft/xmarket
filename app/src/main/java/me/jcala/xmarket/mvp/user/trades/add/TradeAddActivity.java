@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
@@ -17,6 +18,7 @@ import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
+import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
@@ -80,13 +82,13 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
             RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
-                    .radio()
-                    .crop()
-                    .imageLoader(ImageLoaderType.FRESCO)
-                    .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
+                    .multiple()
+                    .maxSize(8)
+                    .imageLoader(ImageLoaderType.GLIDE)
+                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
-                        protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
-                            //图片选择结果
+                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
+                            Toast.makeText(getBaseContext(), "已选择" + imageMultipleResultEvent.getResult().size() +"张图片", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .openGallery();
