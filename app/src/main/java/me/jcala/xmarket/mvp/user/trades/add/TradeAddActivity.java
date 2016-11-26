@@ -122,7 +122,8 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
                             for (MediaBean mediaBean: imageMultipleResultEvent.getResult()){
-                                picUrls.add(mediaBean.getOriginalPath());
+                                Logger.d(mediaBean.getOriginalPath());
+                                picUrls.add("file://"+mediaBean.getOriginalPath());
                             }
                             adapter.notifyDataSetChanged();
                         }
