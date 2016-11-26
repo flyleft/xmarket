@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
@@ -10,6 +11,8 @@ import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.orhanobut.logger.Logger;
 import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
@@ -28,6 +31,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     Trade trade;
 
     private List<TradeTag> tags;
+
+    @BindView(R.id.trade_add_pics_select)
+    GridView selectPics;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
