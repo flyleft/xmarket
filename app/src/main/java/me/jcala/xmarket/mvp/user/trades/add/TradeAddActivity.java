@@ -1,8 +1,10 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +13,8 @@ import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.orhanobut.logger.Logger;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,7 +28,9 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.util.ViewHolder;
 
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
@@ -34,7 +40,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     private List<TradeTag> tags;
 
-    private List<String> picUrls;
+    private List<String> picUrls=new ArrayList<>();
 
     @BindView(R.id.trade_add_pics_select)
     GridView selectPics;
@@ -86,6 +92,17 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .show();
     }
 
+   private void picSet(){
+
+       BaseAdapter adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {
+           @Override
+           public void convert(ViewHolder viewHolder, String picUrl) {
+               viewHolder.setFrescoImg(R.id.grid_iv, Uri.parse(picUrl));
+           }
+       };
+
+   }
+
     @OnClick(R.id.trade_add_photo_take)
      void picSelector(){
         try {
@@ -99,6 +116,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
                             Toast.makeText(getBaseContext(), "已选择" + imageMultipleResultEvent.getResult().size() +"张图片", Toast.LENGTH_SHORT).show();
+
                         }
                     })
                     .openGallery();
