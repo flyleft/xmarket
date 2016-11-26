@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/grid_iv"
-            android:layout_width="140dp"
-            android:layout_height="140dp"/>
-        <ImageView
-            android:id="@+id/grid_iv_bg"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:alpha="0.6"
-            android:background="@drawable/sort_pic_selector"/>
-    </FrameLayout>
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="140dp"
+    android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/grid_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/grid_iv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="@drawable/sort_pic_selector"/>
+        </FrameLayout>
+        <Button
+            android:id="@+id/bt_del"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/icon_pic_del" />
+</RelativeLayout>
