@@ -28,9 +28,12 @@ import me.jcala.xmarket.mvp.main.MainActivity;
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     TradeAddPresenter presenter;
+    
     Trade trade;
 
     private List<TradeTag> tags;
+
+    private List<String> picUrls;
 
     @BindView(R.id.trade_add_pics_select)
     GridView selectPics;
