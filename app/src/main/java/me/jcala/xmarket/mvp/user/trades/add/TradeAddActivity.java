@@ -26,6 +26,7 @@ import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
+import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -99,7 +100,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
    private void picSet(){
 
-       adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {
+       adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.sort_grid_item) {
            @Override
            public void convert(ViewHolder viewHolder, String picUrl) {
                viewHolder.setFrescoImg(R.id.grid_iv, Uri.parse(picUrl));
@@ -115,22 +116,20 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
             RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
-                    .multiple()
-                    .maxSize(8)
+                    .radio()
+                    .crop()
                     .imageLoader(ImageLoaderType.FRESCO)
-                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
+                    .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
                         @Override
-                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
-                            for (MediaBean mediaBean: imageMultipleResultEvent.getResult()){
-                                Logger.d(mediaBean.getOriginalPath());
-                                picUrls.add("file://"+mediaBean.getOriginalPath());
-                            }
+                        protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
+                            //图片选择结果
+                            picUrls.add("file://"+imageRadioResultEvent.getResult().getCropPath());
                             adapter.notifyDataSetChanged();
                         }
                     })
                     .openGallery();
         } catch (Exception e) {
-            Logger.w("TradeAddActivity","图片选择器发生异常:"+e.getLocalizedMessage());
+            //Logger.w("TradeAddActivity","图片选择器发生异常:"+e.getLocalizedMessage());
         }
     }
 
