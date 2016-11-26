@@ -15,12 +15,14 @@ import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
+import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
@@ -47,6 +49,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @BindView(R.id.trade_add_tag_select)
     TextView selectTag;
+    BaseAdapter adapter;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -58,6 +61,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     private void initData(){
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
+        picSet();
        // presenter.tradeAdd(trade);
     }
 
@@ -95,12 +99,13 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
    private void picSet(){
 
-       BaseAdapter adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {
+       adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {
            @Override
            public void convert(ViewHolder viewHolder, String picUrl) {
                viewHolder.setFrescoImg(R.id.grid_iv, Uri.parse(picUrl));
            }
        };
+       selectPics.setAdapter(adapter);
 
    }
 
@@ -116,8 +121,10 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                     .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
-                            Toast.makeText(getBaseContext(), "已选择" + imageMultipleResultEvent.getResult().size() +"张图片", Toast.LENGTH_SHORT).show();
-
+                            for (MediaBean mediaBean: imageMultipleResultEvent.getResult()){
+                                picUrls.add(mediaBean.getOriginalPath());
+                            }
+                            adapter.notifyDataSetChanged();
                         }
                     })
                     .openGallery();
