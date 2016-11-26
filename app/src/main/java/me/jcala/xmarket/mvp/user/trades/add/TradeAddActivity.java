@@ -38,7 +38,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     Trade trade;
 
-    private List<TradeTag> tags;
+    private List<TradeTag> tags=new ArrayList<>();
 
     private List<String> picUrls=new ArrayList<>();
 
@@ -112,7 +112,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                     .image()
                     .multiple()
                     .maxSize(8)
-                    .imageLoader(ImageLoaderType.GLIDE)
+                    .imageLoader(ImageLoaderType.FRESCO)
                     .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {

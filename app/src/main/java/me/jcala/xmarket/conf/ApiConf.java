@@ -4,7 +4,7 @@ public interface ApiConf {
 
     int DEFAULT_TIMEOUT = 5;
     int execute=0;
-    String BASE_URL="http://192.168.0.103:80/";
+    String BASE_URL="http://192.168.0.100:80/";
     String auth="api/v1/auth";
     String get_school_list="api/v1/schools/names/get";
     String register="api/v1/users/register";
