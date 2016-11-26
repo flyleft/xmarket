@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
@@ -28,7 +29,7 @@ import me.jcala.xmarket.mvp.main.MainActivity;
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     TradeAddPresenter presenter;
-    
+
     Trade trade;
 
     private List<TradeTag> tags;
@@ -37,6 +38,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @BindView(R.id.trade_add_pics_select)
     GridView selectPics;
+
+    @BindView(R.id.trade_add_tag_select)
+    TextView selectTag;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -75,6 +79,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
                             //schoolName.setText(text);
+                            selectTag.setText(text);
                             return true;
                         })
                 .positiveText(R.string.register_next_choose)
