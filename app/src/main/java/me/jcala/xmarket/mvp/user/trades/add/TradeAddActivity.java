@@ -7,17 +7,12 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,7 +21,6 @@ import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
-import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -90,7 +84,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .items(tags)
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
-                            //schoolName.setText(text);
                             selectTag.setText(text);
                             return true;
                         })
@@ -116,15 +109,20 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
             RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
-                    .radio()
-                    .crop()
+                    .multiple()
+                    .cropWithAspectRatio(500,500)
+                    .maxSize(8)
                     .imageLoader(ImageLoaderType.FRESCO)
-                    .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
+                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
-                        protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
-                            //图片选择结果
-                            picUrls.add("file://"+imageRadioResultEvent.getResult().getCropPath());
+                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
+                            for (MediaBean media:imageMultipleResultEvent.getResult()){
+
+                                picUrls.add("file://"+media.getOriginalPath());
+                            }
+
                             adapter.notifyDataSetChanged();
+//                            Toast.makeText(getBaseContext(), "已选择" + imageMultipleResultEvent.getResult().size() +"张图片", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .openGallery();
