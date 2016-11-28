@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:background="@color/colorPrimary"
+       android:id="@+id/trade_add_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <LinearLayout
@@ -67,6 +68,17 @@
         android:gravity="center_horizontal"
         android:textSize="20sp" />
 
+    <GridView
+        android:id="@+id/trade_add_pics_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:verticalSpacing="2dp"
+        android:scrollbars="none"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        />
+
+
     <TextView
         android:id="@+id/trade_add_photo_take"
         style="@style/MaterialLoginTheme.SelectableItemBackground"
@@ -87,17 +99,6 @@
         android:text="@string/trade_add_submit"
         android:textColor="@color/material_login_register_color"
         android:textSize="20sp" />
-
-    <GridView
-        android:id="@+id/trade_add_pics_select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:verticalSpacing="2dp"
-        android:scrollbars="none"
-        android:horizontalSpacing="2dp"
-        android:numColumns="3"
-        />
-
 
 </LinearLayout>
 

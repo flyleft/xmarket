@@ -15,6 +15,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.test.TestActivity;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddActivity;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddView;
 

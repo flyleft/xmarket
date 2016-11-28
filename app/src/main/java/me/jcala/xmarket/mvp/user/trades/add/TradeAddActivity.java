@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
@@ -44,8 +45,8 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @BindView(R.id.trade_add_tag_select)
     TextView selectTag;
-    BaseAdapter adapter;
 
+    BaseAdapter adapter;
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_activity);
@@ -92,7 +93,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     }
 
    private void picSet(){
-
        adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.sort_grid_item) {
            @Override
            public void convert(ViewHolder viewHolder, String picUrl) {
