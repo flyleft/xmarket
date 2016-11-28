@@ -6,7 +6,7 @@ import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddPresenter;
 
 public class TradeSellPresenterImpl
-        implements TradeAddPresenter,TradeSellModel.onTradeSellListener {
+        implements TradeSellPresenter,TradeSellModel.onTradeSellListener {
     private Context context;
     private TradeSellView view;
     private TradeSellModel model;
@@ -17,8 +17,4 @@ public class TradeSellPresenterImpl
         this.model=new TradeSellModelImpl();
     }
 
-    @Override
-    public void tradeAdd(Trade trade) {
-
-    }
 }

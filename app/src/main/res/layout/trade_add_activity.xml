@@ -79,17 +79,6 @@
         android:numColumns="3"
         />
 
-
-    <TextView
-        android:id="@+id/trade_add_photo_take"
-        style="@style/MaterialLoginTheme.SelectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:text="@string/trade_add_photo"
-        android:gravity="center_horizontal"
-        android:textSize="20sp" />
-
 </LinearLayout>
 
 </ScrollView>

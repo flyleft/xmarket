@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ScrollView;
@@ -15,6 +16,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -116,17 +119,23 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
            }
        };
        selectPics.setAdapter(adapter);
+       AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
+           Logger.e("点击位置:"+position);
+         if (position == 0){
+             picSelector();
+             return;
+         }
+       };
+       selectPics.setOnItemClickListener(listener);
 
    }
 
-    @OnClick(R.id.trade_add_photo_take)
      void picSelector(){
         try {
             RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
                     .multiple()
-                    .cropWithAspectRatio(500,500)
                     .maxSize(8)
                     .imageLoader(ImageLoaderType.FRESCO)
                     .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
