@@ -44,7 +44,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".mvp.user.trades.add.TradeAddActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".mvp.user.trades.sell.TradeSellActivity"
             android:theme="@style/AppTheme.NoActionBar"/>

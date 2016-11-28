@@ -120,14 +120,11 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
                                 picUrls.add("file://"+media.getOriginalPath());
                             }
-
                             adapter.notifyDataSetChanged();
-//                            Toast.makeText(getBaseContext(), "已选择" + imageMultipleResultEvent.getResult().size() +"张图片", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .openGallery();
         } catch (Exception e) {
-            //Logger.w("TradeAddActivity","图片选择器发生异常:"+e.getLocalizedMessage());
         }
     }
 
