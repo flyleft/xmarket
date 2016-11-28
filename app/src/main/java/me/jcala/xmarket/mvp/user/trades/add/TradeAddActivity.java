@@ -26,6 +26,7 @@ import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
@@ -42,7 +43,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
 
-    private List<TradeTag> tags=new ArrayList<>();
+    private List<TradeTag> tags;
 
     private List<String> picUrls=new ArrayList<>();
 
@@ -86,19 +87,26 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .show();
     }
 
+    @Override
     @OnClick(R.id.trade_add_tag_select)
-    public void showSchoolChoice() {
+    public void whenGetTagListSuccess() {
+        if (tags==null){
+            whenFail(Api.SERVER_ERROR.msg());
+            return;
+        }
         new MaterialDialog.Builder(this)
                 .title(R.string.register_next_school_choose)
                 .items(tags)
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
+
                             selectTag.setText(text);
                             return true;
                         })
                 .positiveText(R.string.register_next_choose)
                 .show();
     }
+
 
    private void picSet(){
        adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.sort_grid_item) {

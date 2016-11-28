@@ -2,9 +2,12 @@ package me.jcala.xmarket.mvp.user.trades.add;
 
 import android.content.Context;
 
+import java.util.List;
+
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.storage.UserIntermediator;
 
 public class TradeAddPresenterImpl
@@ -20,6 +23,11 @@ public class TradeAddPresenterImpl
     }
 
     @Override
+    public void gainTagList() {
+
+    }
+
+    @Override
     public void hasGotAddTradeResult(Result<?> result) {
         if (result==null){
             view.whenFail(Api.SERVER_ERROR.msg());
@@ -28,6 +36,21 @@ public class TradeAddPresenterImpl
         switch (result.getCode()) {
             case 100:
                 view.whenAddSuccess();
+            case 99:
+                view.whenFail(Api.SERVER_ERROR.msg());
+            default:
+        }
+    }
+
+    @Override
+    public void hasGoTagsResult(Result<List<TradeTag>> result) {
+        if (result==null){
+            view.whenFail(Api.SERVER_ERROR.msg());
+        }
+
+        switch (result.getCode()) {
+            case 100:
+                view.whenGetTagListSuccess();
             case 99:
                 view.whenFail(Api.SERVER_ERROR.msg());
             default:
