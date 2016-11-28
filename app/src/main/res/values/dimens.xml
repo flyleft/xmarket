@@ -27,4 +27,6 @@
     <dimen name="divider_height">1dp</dimen>
     <dimen name="deal_list_padding">16dp</dimen>
 
+    <dimen name="trade_add_top">70dp</dimen>
+
 </resources>

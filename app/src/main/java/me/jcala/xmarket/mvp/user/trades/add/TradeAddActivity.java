@@ -112,20 +112,19 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
 
    private void picSet(){
-       adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.sort_grid_item) {
+       adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {
            @Override
            public void convert(ViewHolder viewHolder, String picUrl) {
                viewHolder.setFrescoImg(R.id.grid_iv, Uri.parse(picUrl));
            }
        };
-       selectPics.setAdapter(adapter);
        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-           Logger.e("点击位置:"+position);
          if (position == 0){
              picSelector();
              return;
          }
        };
+       selectPics.setAdapter(adapter);
        selectPics.setOnItemClickListener(listener);
 
    }
