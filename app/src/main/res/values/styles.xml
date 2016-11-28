@@ -28,8 +28,21 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="Theme_Light" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/TextAppearance.Holo.Widget.ActionBar.Title.Own</item>
+    </style>
+    <style name="TextAppearance.Holo.Widget.ActionBar.Title.Own"
+        parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#000000</item>
+    </style>
 
+    <style name="Theme_Light" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="Theme_Light.White">
         <item name="gallery_toolbar_bg">@color/colorPrimary</item>
         <item name="gallery_toolbar_close_color">#2A2A2F</item>

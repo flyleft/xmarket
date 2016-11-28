@@ -52,5 +52,7 @@
     <string name="trade_add_tag">点击设置分类</string>
     <string name="trade_add_photo">点击上传图片</string>
     <string name="trade_add_submit">提交</string>
+    <string name="trade_add_action_title">发布</string>
+
 
 </resources>

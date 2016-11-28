@@ -1,8 +1,11 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -36,6 +39,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     Trade trade;
 
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+
     private List<TradeTag> tags=new ArrayList<>();
 
     private List<String> picUrls=new ArrayList<>();
@@ -49,12 +55,13 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     BaseAdapter adapter;
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.trade_add_activity);
+        setContentView(R.layout.trade_add_bar);
         ButterKnife.bind(this);
         initData();
     }
 
     private void initData(){
+        toolbarTitle.setText(R.string.trade_add_action_title);
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();
@@ -67,6 +74,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         startActivity(intent);
         finish();
     }
+
 
     @Override
     public void whenFail(String errorMsg) {
