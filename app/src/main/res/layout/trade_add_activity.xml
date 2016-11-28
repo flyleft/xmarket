@@ -68,7 +68,7 @@
         android:gravity="center_horizontal"
         android:textSize="20sp" />
 
-    <GridView
+    <me.jcala.xmarket.view.ScrollGridView
         android:id="@+id/trade_add_pics_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
