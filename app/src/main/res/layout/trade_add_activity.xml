@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/colorPrimary"
-       android:id="@+id/trade_add_scroll_view"
+        android:id="@+id/trade_add_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".mvp.user.trades.add.TradeAddActivity"
+        tools:showIn="@layout/trade_add_bar">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
