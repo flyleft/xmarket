@@ -13,9 +13,7 @@
         <ImageView
             android:id="@+id/grid_iv_bg"
             android:layout_width="@dimen/trade_add_pic_width"
-            android:layout_height="@dimen/trade_add_pic_height"
-            android:alpha="0.8"
-            android:background="@drawable/sort_pic_selector"/>
+            android:layout_height="@dimen/trade_add_pic_height" />
     </FrameLayout>
 </LinearLayout>
     <!--
