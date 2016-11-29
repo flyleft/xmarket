@@ -7,16 +7,17 @@
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/trade_add_top">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/trade_add_top"
         android:background="@color/white"
         android:layout_marginBottom="@dimen/spacing_large"
         android:paddingBottom="@dimen/spacing_large"
         android:paddingTop="@dimen/spacing_large"
+        android:elevation="@dimen/trade_add_card_elevation"
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginRight="@dimen/spacing_large"
         android:layout_height="match_parent">
@@ -69,19 +70,22 @@
                 android:inputType="textMultiLine"/>
         </android.support.design.widget.TextInputLayout>
 
-        <TextView
+        <Button
             android:id="@+id/trade_add_tag_select"
             style="@style/MaterialLoginTheme.SelectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:text="@string/trade_add_tag"
-            android:gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp" />
     </LinearLayout>
 
 
         <me.jcala.xmarket.view.ScrollGridView
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:id="@+id/trade_add_pics_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

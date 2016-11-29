@@ -1,23 +1,17 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -119,10 +113,12 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
            }
        };
        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
+
          if (position == 0){
              picSelector();
              return;
          }
+
        };
        selectPics.setAdapter(adapter);
        selectPics.setOnItemClickListener(listener);
