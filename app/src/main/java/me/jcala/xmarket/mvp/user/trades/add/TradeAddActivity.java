@@ -37,9 +37,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     Trade trade;
 
-    @BindView(R.id.toolbar_title)
-    TextView toolbarTitle;
-
     private List<TradeTag> tags;
 
     private List<String> picUrls=new ArrayList<>();
@@ -59,7 +56,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     }
 
     private void initData(){
-        toolbarTitle.setText(R.string.trade_add_action_title);
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();

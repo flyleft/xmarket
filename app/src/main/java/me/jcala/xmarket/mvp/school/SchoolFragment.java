@@ -54,7 +54,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @OnClick(R.id.school_deal_plus)
      void jumpTradeAddActivity(){
-        Intent intent=new Intent(getActivity(), TradeAddActivity.class);
+        Intent intent=new Intent(getActivity(), TestActivity.class);
         startActivity(intent);
     }
 
