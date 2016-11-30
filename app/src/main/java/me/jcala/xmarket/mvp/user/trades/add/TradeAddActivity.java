@@ -128,6 +128,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
    }
 
      void picSelector(){
+         if (picUrls.size()>8){
+             return;
+         }
         try {
             RxGalleryFinal
                     .with(TradeAddActivity.this)
