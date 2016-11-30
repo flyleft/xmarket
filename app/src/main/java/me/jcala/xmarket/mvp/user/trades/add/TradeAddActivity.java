@@ -49,6 +49,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     TextView selectTag;
 
     BaseAdapter adapter;
+
+    MaterialDialog progress;
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_bar);
@@ -57,6 +60,12 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     }
 
     private void initData(){
+        progress=new MaterialDialog.Builder(TradeAddActivity.this)
+                .content(R.string.trade_add_dialog_content)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .title(R.string.dialog_wait)
+                .build();
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();
@@ -150,4 +159,13 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         }
     }
 
+    @Override
+    public void whenStartProgress() {
+        progress.show();
+    }
+
+    @Override
+    public void whenStopProgress() {
+        progress.dismiss();
+    }
 }
