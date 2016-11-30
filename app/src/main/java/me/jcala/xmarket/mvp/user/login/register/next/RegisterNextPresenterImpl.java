@@ -94,28 +94,6 @@ public class RegisterNextPresenterImpl
 
     @Override
     public void checkPhone(final TextInputLayout phoneLayout,final EditText phone) {
-        phone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String phoneData=phone.getText().toString().trim();
-                if (phoneData.isEmpty()) {
-                    phoneLayout.setErrorEnabled(true);
-                    phoneLayout.setError("输入不可以为空");
-                }else {
-                    phoneLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
+        boolean checkPass=true;
     }
 }
