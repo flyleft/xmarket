@@ -14,7 +14,7 @@ public interface TradeAddModel {
         void hasGoTagsResult(Result<List<TradeTag>> result);//执行HTTP请求得到分类列表
     }
 
-    void executeAddTradeReq(String userId,Trade trade,onTradeAddListener listener);
+    void executeAddTradeReq(Trade trade,onTradeAddListener listener);
 
     void executeGetTagsReq(onTradeAddListener listener);
 }

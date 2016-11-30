@@ -41,11 +41,11 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @BindView(R.id.trade_add_tag_select)
     TextView selectTag;
     @BindView(R.id.trade_add_title_content)
-    EditText tradeTitleContent;
+    EditText tradeTitle;
     @BindView(R.id.trade_add_price_content)
-    EditText tradePriceContent;
+    EditText tradePrice;
     @BindView(R.id.trade_add_desp_content)
-    EditText tradeDespContent;
+    EditText tradeDesc;
     BaseAdapter adapter;
     MaterialDialog progress;
     TradeAddPresenter presenter;
@@ -164,8 +164,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         if (tradeTag.isEmpty() || tradeTag.equals(textViewContent)){
             return;
         }
-        presenter.releaseTrade(null,tradeTitleContent,
-                tradePriceContent,tradeDespContent,tradeTag);
+        presenter.releaseTrade(null,tradeTitle,tradePrice,tradeDesc,selectTag);
     }
 
     @OnClick(R.id.trade_add_cancel)
