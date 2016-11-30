@@ -55,15 +55,10 @@ public interface UserReq {
     /**
      * 发布商品
      */
-    @POST(ApiConf.create_user_trade)
-    @FormUrlEncoded
-    Observable<Result<String>> addTrade(
-            @Path("userId")String userId,
-            @Field("trade") Trade trade);
-
-
     @Multipart
     @POST("upload")
-    Observable<Result<String>> uploadMultiPic(
+    Observable<Result<String>> addTrade(
+            @Path("userId")String userId,
+            @Part() Trade trade,
             @Part() List<MultipartBody.Part> parts);
 }

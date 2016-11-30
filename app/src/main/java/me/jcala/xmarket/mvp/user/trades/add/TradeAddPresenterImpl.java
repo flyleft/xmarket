@@ -15,6 +15,7 @@ import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.util.FileUtils;
+import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
 import retrofit2.http.Multipart;
 
@@ -75,9 +76,10 @@ public class TradeAddPresenterImpl
         if (!trade.isReleaseCheck()){
             return;
         }
-        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
 
-        model.executeAddTradeReq(trade,null,this);
+        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
+        List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
+        model.executeAddTradeReq(trade,pics,this);
 
     }
 

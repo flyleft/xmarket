@@ -21,7 +21,7 @@ public class TradeAddModelImpl implements TradeAddModel{
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .addTrade(trade.getAuthor().getId(),trade)
+                .addTrade(trade.getAuthor().getId(),trade,pics)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<String>>() {
