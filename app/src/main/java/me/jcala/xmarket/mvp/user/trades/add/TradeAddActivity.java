@@ -159,11 +159,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @OnClick(R.id.trade_add_submit)
     public void whenClickSubmit() {
-        String tradeTag=selectTag.getText().toString();
-        String textViewContent=getResources().getString(R.string.trade_add_tag);
-        if (tradeTag.isEmpty() || tradeTag.equals(textViewContent)){
-            return;
-        }
         presenter.releaseTrade(picUrls,tradeTitle,tradePrice,tradeDesc,selectTag);
     }
 

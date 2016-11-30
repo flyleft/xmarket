@@ -67,7 +67,7 @@ public class TradeAddPresenterImpl
                              EditText price, EditText desc, TextView tag) {
         Trade trade=checkForm(picUrls,title,price,desc,tag);
 
-        if (trade.isReleaseCheck()){
+        if (!trade.isReleaseCheck()){
             return;
         }
         model.executeAddTradeReq(trade,this);
@@ -76,6 +76,7 @@ public class TradeAddPresenterImpl
 
     private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){
         Trade trade=new Trade();
+        trade.setReleaseCheck(false);
         if (picUrls.size() < 2){
             view.whenFail("请选择至少一张配图");
             return trade;
