@@ -1,6 +1,8 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
 import android.content.Context;
+import android.support.design.widget.TextInputLayout;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -9,6 +11,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.storage.UserIntermediator;
+import okhttp3.MultipartBody;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -58,8 +61,10 @@ public class TradeAddPresenterImpl
     }
 
     @Override
-    public void tradeAdd(Trade trade) {
+    public void releaseTrade(List<MultipartBody.Part> parts, TextInputLayout title,
+                             TextInputLayout price, TextInputLayout desc, EditText titleContent,
+                             EditText priceContent, EditText descContent, String tag) {
         String userId= UserIntermediator.instance.getUser(context).getId();
-        model.executeAddTradeReq(userId,trade,this);
+        model.executeAddTradeReq(userId,null,this);
     }
 }

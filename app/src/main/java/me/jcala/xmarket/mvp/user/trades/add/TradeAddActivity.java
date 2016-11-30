@@ -3,9 +3,11 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -34,24 +36,28 @@ import me.jcala.xmarket.util.ViewHolder;
 
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
-    TradeAddPresenter presenter;
-
-    Trade trade;
-
-    private List<TradeTag> tags;
-
-    private LinkedList<String> picUrls=new LinkedList<>();
-
     @BindView(R.id.trade_add_pics_select)
     GridView selectPics;
-
     @BindView(R.id.trade_add_tag_select)
     TextView selectTag;
-
+    @BindView(R.id.trade_add_title_content)
+    EditText tradeTitleContent;
+    @BindView(R.id.trade_add_price_content)
+    EditText tradePriceContent;
+    @BindView(R.id.trade_add_desp_content)
+    EditText tradeDespContent;
+    @BindView(R.id.trade_add_title)
+    TextInputLayout tradeTitle;
+    @BindView(R.id.trade_add_price)
+    TextInputLayout tradePrice;
+    @BindView(R.id.trade_add_desp)
+    TextInputLayout tradeDesp;
     BaseAdapter adapter;
-
     MaterialDialog progress;
-
+    TradeAddPresenter presenter;
+    Trade trade;
+    private List<TradeTag> tags;
+    private LinkedList<String> picUrls=new LinkedList<>();
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_bar);
@@ -69,7 +75,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();
-       // presenter.tradeAdd(trade);
     }
 
     @Override
@@ -157,6 +162,24 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                     .openGallery();
         } catch (Exception e) {
         }
+    }
+
+    @OnClick(R.id.trade_add_submit)
+    public void whenClickSubmit() {
+        String tradeTag=selectTag.getText().toString();
+        String textViewContent=getResources().getString(R.string.trade_add_tag);
+        if (tradeTag.isEmpty() || tradeTag.equals(textViewContent)){
+            return;
+        }
+        presenter.releaseTrade(null,tradeTitle,tradePrice,tradeDesp,tradeTitleContent,
+                tradePriceContent,tradeDespContent,tradeTag);
+    }
+
+    @OnClick(R.id.trade_add_cancel)
+    public void whenClickCancel(){
+        Intent intent=new Intent(TradeAddActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

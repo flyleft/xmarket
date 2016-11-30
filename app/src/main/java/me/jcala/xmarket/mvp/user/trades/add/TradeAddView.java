@@ -11,4 +11,5 @@ public interface TradeAddView {
     void whenStartProgress();//显示进度条
 
     void whenStopProgress();//隐藏进度条
+
 }

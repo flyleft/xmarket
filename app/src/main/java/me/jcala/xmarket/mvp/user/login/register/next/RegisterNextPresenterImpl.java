@@ -77,10 +77,10 @@ public class RegisterNextPresenterImpl
     }
 
     private boolean checkInput(String user_id,String phone,String school){
-       /* if (user_id==null || user_id.isEmpty()){
+        if (user_id.isEmpty()){
             view.whenFails("APP发生异常,userId为空");
             return false;
-        }*/
+        }
         if (phone.isEmpty()){
             view.whenFails("电话号码不可以为空");
             return false;
