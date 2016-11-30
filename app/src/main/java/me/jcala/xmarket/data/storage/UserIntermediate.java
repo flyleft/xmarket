@@ -8,7 +8,7 @@ import me.jcala.xmarket.data.pojo.User;
 /**
  * User,token信息存储的中介
  */
-public enum  UserIntermediator {
+public enum UserIntermediate {
     instance;
     private User user;
 

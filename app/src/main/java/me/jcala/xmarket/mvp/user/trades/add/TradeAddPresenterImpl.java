@@ -12,7 +12,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.data.storage.UserIntermediator;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import okhttp3.MultipartBody;
 
 public class TradeAddPresenterImpl
@@ -63,19 +63,23 @@ public class TradeAddPresenterImpl
     }
 
     @Override
-    public void releaseTrade(List<MultipartBody.Part> parts,EditText title,
+    public void releaseTrade(List<String> picUrls,EditText title,
                              EditText price, EditText desc, TextView tag) {
-        User author= UserIntermediator.instance.getUser(context);
-        Trade trade=checkForm(title,price,desc,tag);
+        Trade trade=checkForm(picUrls,title,price,desc,tag);
+
         if (trade.isReleaseCheck()){
-            trade.setAuthor(author);
-            model.executeAddTradeReq(trade,this);
+            return;
         }
+        model.executeAddTradeReq(trade,this);
 
     }
 
-    private Trade checkForm(EditText title,EditText price,EditText desc,TextView tag){
+    private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){
         Trade trade=new Trade();
+        if (picUrls.size() < 2){
+            view.whenFail("请选择至少一张配图");
+            return trade;
+        }
         String titleData=title.getText().toString().trim();
         if (titleData.isEmpty()){
             view.whenFail("标题不可以为空");
@@ -107,6 +111,11 @@ public class TradeAddPresenterImpl
             return trade;
         }
         trade.setTagId(tagData);
+        User author= UserIntermediate.instance.getUser(context);
+        if (author==null || author.getId()==null){
+            return trade;
+        }
+        trade.setAuthor(author);
         trade.setReleaseCheck(true);
         return trade;
     }

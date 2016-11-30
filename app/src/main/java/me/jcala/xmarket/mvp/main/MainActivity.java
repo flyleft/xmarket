@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.data.storage.UserIntermediator;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.message.MessageFragment;
 import me.jcala.xmarket.mvp.school.SchoolFragment;
@@ -85,7 +85,7 @@ public class MainActivity  extends BaseActivity
         initSlideHeader();
     }
     private void initSlideHeader(){
-        User user=UserIntermediator.instance.getUser(MainActivity.this);
+        User user= UserIntermediate.instance.getUser(MainActivity.this);
         username.setText(user.getUsername());
         phone.setText(user.getPhone());
         avatar.setImageURI(Uri.parse(ApiConf.BASE_URL+user.getAvatarUrl()));
@@ -174,7 +174,7 @@ public class MainActivity  extends BaseActivity
                 break;
 
             case R.id.info_logout:
-                UserIntermediator.instance.logOut(MainActivity.this);
+                UserIntermediate.instance.logOut(MainActivity.this);
                 Intent loginIntent=new Intent(MainActivity.this, LoginRegisterActivity.class);
                 startActivity(loginIntent);
                 finish();

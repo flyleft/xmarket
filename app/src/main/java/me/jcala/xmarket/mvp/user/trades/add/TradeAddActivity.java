@@ -164,7 +164,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         if (tradeTag.isEmpty() || tradeTag.equals(textViewContent)){
             return;
         }
-        presenter.releaseTrade(null,tradeTitle,tradePrice,tradeDesc,selectTag);
+        presenter.releaseTrade(picUrls,tradeTitle,tradePrice,tradeDesc,selectTag);
     }
 
     @OnClick(R.id.trade_add_cancel)
