@@ -59,11 +59,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     private void initData(){
         presenter=new TradeAddPresenterImpl(this,this);
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
-//        picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
-//        picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
-//        picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
-//        picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
-//        picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();
        // presenter.tradeAdd(trade);
     }

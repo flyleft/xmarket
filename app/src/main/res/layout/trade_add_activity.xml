@@ -17,14 +17,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:background="@color/white"
-        android:layout_marginBottom="@dimen/spacing_large"
         android:paddingBottom="@dimen/spacing_small"
-        android:paddingTop="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_small"
         android:elevation="@dimen/trade_add_card_elevation"
         android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_large"
         android:layout_height="match_parent">
         <android.support.design.widget.TextInputLayout
             android:id="@+id/trade_add_title"
@@ -86,6 +86,12 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <View
+       android:layout_height="@dimen/divider_height"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:background="@color/gray_light"/>
 
 
         <me.jcala.xmarket.view.ScrollGridView
