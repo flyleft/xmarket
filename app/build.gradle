@@ -38,6 +38,8 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
     //-----------------图片选择器----------------------------
     compile 'cn.finalteam.rxgalleryfinal:library:0.0.3'
+    //-----------------图片压缩库----------------------------
+    compile 'id.zelory:compressor:1.0.4'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'//retrofit日志打印
