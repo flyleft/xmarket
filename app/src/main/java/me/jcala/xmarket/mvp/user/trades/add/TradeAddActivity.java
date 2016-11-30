@@ -13,6 +13,7 @@ import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +40,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     private List<TradeTag> tags;
 
-    private List<String> picUrls=new ArrayList<>();
+    private LinkedList<String> picUrls=new LinkedList<>();
 
     @BindView(R.id.trade_add_pics_select)
     GridView selectPics;
@@ -115,7 +116,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
        };
        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
 
-         if (position == 0){
+         if (position == picUrls.size()-1){
              picSelector();
              return;
          }
@@ -137,10 +138,12 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                     .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
+                            picUrls.removeLast();
                             for (MediaBean media:imageMultipleResultEvent.getResult()){
 
                                 picUrls.add("file://"+media.getOriginalPath());
                             }
+                            picUrls.addLast("res://drawable/"+R.drawable.trade_add_pic_plus);
                             adapter.notifyDataSetChanged();
                         }
                     })
