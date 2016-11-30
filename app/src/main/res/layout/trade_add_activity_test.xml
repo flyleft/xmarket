@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/trade_add_top"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:background="@color/white"
             android:layout_marginBottom="@dimen/spacing_large"
             android:paddingBottom="@dimen/spacing_large"

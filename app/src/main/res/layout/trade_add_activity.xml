@@ -17,14 +17,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/trade_add_top"
+        android:layout_marginTop="@dimen/spacing_normal"
         android:background="@color/white"
         android:layout_marginBottom="@dimen/spacing_large"
-        android:paddingBottom="@dimen/spacing_large"
+        android:paddingBottom="@dimen/spacing_small"
         android:paddingTop="@dimen/spacing_large"
         android:elevation="@dimen/trade_add_card_elevation"
         android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_small"
         android:layout_height="match_parent">
         <android.support.design.widget.TextInputLayout
             android:id="@+id/trade_add_title"
@@ -97,7 +97,7 @@
             android:verticalSpacing="2dp"
             android:scrollbars="none"
             android:horizontalSpacing="2dp"
-            android:numColumns="3"
+            android:numColumns="4"
             />
 </LinearLayout>
 
