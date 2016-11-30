@@ -3,6 +3,9 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.Api;
@@ -11,6 +14,9 @@ import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.util.FileUtils;
+import okhttp3.MultipartBody;
+import retrofit2.http.Multipart;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -33,6 +39,7 @@ public class TradeAddPresenterImpl
     public void hasGotAddTradeResult(Result<?> result) {
         if (result==null){
             view.whenFail(Api.SERVER_ERROR.msg());
+            return;
         }
 
         switch (result.getCode()) {
@@ -61,14 +68,16 @@ public class TradeAddPresenterImpl
     }
 
     @Override
-    public void releaseTrade(List<String> picUrls,EditText title,
+    public void releaseTrade(LinkedList<String> picUrls, EditText title,
                              EditText price, EditText desc, TextView tag) {
         Trade trade=checkForm(picUrls,title,price,desc,tag);
 
         if (!trade.isReleaseCheck()){
             return;
         }
-        model.executeAddTradeReq(trade,this);
+        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
+
+        model.executeAddTradeReq(trade,null,this);
 
     }
 

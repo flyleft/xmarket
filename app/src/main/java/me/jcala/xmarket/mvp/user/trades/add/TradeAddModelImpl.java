@@ -7,6 +7,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.util.CommonFactory;
+import okhttp3.MultipartBody;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -14,7 +15,7 @@ import rx.schedulers.Schedulers;
 public class TradeAddModelImpl implements TradeAddModel{
 
     @Override
-    public void executeAddTradeReq(final Trade trade,final onTradeAddListener listener) {
+    public void executeAddTradeReq(final Trade trade,final List<MultipartBody.Part> pics,final onTradeAddListener listener) {
         @SuppressWarnings("unchecked")
         Result<String> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
