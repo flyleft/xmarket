@@ -89,12 +89,13 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     }
 
     @Override
+    public void whenGetTagListSuccess(final List<TradeTag> tagList) {
+        tags=tagList;
+    }
+
     @OnClick(R.id.trade_add_tag_select)
-    public void whenGetTagListSuccess() {
-        if (tags==null){
-            whenFail(Api.SERVER_ERROR.msg());
-            return;
-        }
+    public void clickSelectTag(){
+
         new MaterialDialog.Builder(this)
                 .title(R.string.register_next_school_choose)
                 .items(tags)
@@ -107,7 +108,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .positiveText(R.string.register_next_choose)
                 .show();
     }
-
 
    private void picSet(){
        adapter=new CommonAdapter<String>(TradeAddActivity.this,picUrls,R.layout.trade_add_pic_item) {

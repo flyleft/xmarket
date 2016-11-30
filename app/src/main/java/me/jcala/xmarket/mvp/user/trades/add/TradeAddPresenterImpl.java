@@ -3,9 +3,7 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.util.List;
-
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
@@ -13,7 +11,6 @@ import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import okhttp3.MultipartBody;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -29,7 +26,7 @@ public class TradeAddPresenterImpl
 
     @Override
     public void gainTagList() {
-
+       model.executeGetTagsReq(this);
     }
 
     @Override
@@ -49,13 +46,14 @@ public class TradeAddPresenterImpl
 
     @Override
     public void hasGoTagsResult(Result<List<TradeTag>> result) {
-        if (result==null){
+        if (result==null || result.getData() == null){
             view.whenFail(Api.SERVER_ERROR.msg());
+            return;
         }
 
         switch (result.getCode()) {
             case 100:
-                view.whenGetTagListSuccess();
+                view.whenGetTagListSuccess(result.getData());
             case 99:
                 view.whenFail(Api.SERVER_ERROR.msg());
             default:
