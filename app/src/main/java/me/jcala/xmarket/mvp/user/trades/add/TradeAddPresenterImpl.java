@@ -38,6 +38,7 @@ public class TradeAddPresenterImpl
 
     @Override
     public void hasGotAddTradeResult(Result<?> result) {
+        view.whenStopProgress();
         if (result==null){
             view.whenFail(Api.SERVER_ERROR.msg());
             return;
@@ -80,7 +81,7 @@ public class TradeAddPresenterImpl
         List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
         List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
         model.executeAddTradeReq(trade,pics,this);
-
+        view.whenStartProgress();
     }
 
     private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){

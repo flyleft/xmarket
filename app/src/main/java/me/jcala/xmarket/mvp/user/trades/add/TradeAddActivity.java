@@ -72,6 +72,12 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @Override
     public void whenAddSuccess() {
+        new SuperToast(TradeAddActivity.this)
+                .setText("发布成功")
+                .setDuration(Style.DURATION_MEDIUM)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_GREEN))
+                .setAnimations(Style.ANIMATIONS_POP)
+                .show();
         Intent intent=new Intent(TradeAddActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -82,7 +88,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     public void whenFail(String errorMsg) {
         new SuperToast(TradeAddActivity.this)
                 .setText(errorMsg)
-                .setDuration(Style.DURATION_LONG)
+                .setDuration(Style.DURATION_MEDIUM)
                 .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
                 .setAnimations(Style.ANIMATIONS_POP)
                 .show();
