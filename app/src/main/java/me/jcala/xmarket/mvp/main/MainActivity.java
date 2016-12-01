@@ -20,6 +20,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.User;
@@ -88,7 +89,7 @@ public class MainActivity  extends BaseActivity
         User user= UserIntermediate.instance.getUser(MainActivity.this);
         username.setText(user.getUsername());
         phone.setText(user.getPhone());
-        avatar.setImageURI(Uri.parse(ApiConf.BASE_URL+user.getAvatarUrl()));
+        avatar.setImageURI(Uri.parse(AppConf.BASE_URL+user.getAvatarUrl()));
     }
     private void initBottomMenu(){
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);

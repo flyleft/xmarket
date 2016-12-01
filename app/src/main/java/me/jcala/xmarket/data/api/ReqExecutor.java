@@ -2,6 +2,7 @@ package me.jcala.xmarket.data.api;
 
 import java.util.concurrent.TimeUnit;
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.BuildConfig;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import okhttp3.Interceptor;
@@ -12,8 +13,6 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static me.jcala.xmarket.conf.ApiConf.BASE_URL;
 import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
@@ -60,7 +59,7 @@ public class ReqExecutor {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(factory)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_URL)
+                .baseUrl(AppConf.BASE_URL)
                 .build();
     }
     private Retrofit getGsonRetrofit(){

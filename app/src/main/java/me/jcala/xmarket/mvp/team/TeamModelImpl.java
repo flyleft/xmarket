@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.team;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.Team;
 
@@ -10,11 +11,7 @@ public class TeamModelImpl implements TeamModel{
 
     @Override
     public void getTeams(final onGainTeamListener listener) {
-        if (ApiConf.execute==1){
-            execute(listener);
-        }else {
-            executeLocal(listener);
-        }
+
     }
     private void execute(final  onGainTeamListener listener){
 
