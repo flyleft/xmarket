@@ -2,8 +2,6 @@ package me.jcala.xmarket.mvp.sort;
 
 
 import java.util.List;
-
-import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -12,7 +10,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class TradeTagModelImpl implements TradeTagModel {
+class TradeTagModelImpl implements TradeTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
         @SuppressWarnings("unchecked")

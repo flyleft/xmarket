@@ -5,13 +5,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -19,7 +16,6 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.SortTagModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
-import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 
 public class TradeTagFragment extends BaseFragment implements TradeTagView {
     @BindView(R.id.sort_grid)

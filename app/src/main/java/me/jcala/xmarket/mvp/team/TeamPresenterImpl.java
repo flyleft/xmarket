@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.util.ViewHolder;
@@ -30,8 +31,8 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     }
 
     @Override
-    public void onSuccess(List<Team> teamList) {
-        BaseAdapter adapter=new CommonAdapter<Team>(context,teamList, R.layout.team_item) {
+    public void onSuccess(Result<List<Team>> result) {
+        BaseAdapter adapter=new CommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
             @Override
             public void convert(ViewHolder viewHolder, Team item) {
                 viewHolder.setFrescoImg(R.id.team_img, Uri.parse(item.getImg()));
@@ -46,7 +47,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     }
 
     @Override
-    public void onFailure() {
+    public void onFail() {
 
     }
 }
