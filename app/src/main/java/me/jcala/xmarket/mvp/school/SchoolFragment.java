@@ -46,7 +46,6 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
-        Logger.e(UserIntermediate.instance.getUser(getActivity()).toString());
         presenter.getSchoolDealAgency();
     }
 
