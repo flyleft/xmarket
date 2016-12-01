@@ -2,6 +2,8 @@ package me.jcala.xmarket.data.storage;
 
 import android.content.Context;
 
+import com.orhanobut.logger.Logger;
+
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.pojo.User;
 

@@ -1,23 +1,32 @@
 package me.jcala.xmarket.mvp.school;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+
+import com.orhanobut.logger.Logger;
+
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 import me.jcala.xmarket.mvp.test.TestActivity;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddActivity;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddView;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class SchoolFragment extends BaseFragment implements SchoolView{
@@ -37,6 +46,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
+        Logger.e(UserIntermediate.instance.getUser(getActivity()).toString());
         presenter.getSchoolDealAgency();
     }
 
