@@ -36,7 +36,6 @@ public class Encrypt
             try
             {
                 // SHA 加密开始
-                // 创建加密对象 并傳入加密類型
                 MessageDigest messageDigest = MessageDigest.getInstance(strType);
                 // 传入要加密的字符串
                 messageDigest.update(strText.getBytes());

@@ -6,6 +6,7 @@ import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
+import me.jcala.xmarket.util.Encrypt;
 
 public class LoginRegisterPresenterImpl implements
         LoginRegisterPresenter,
@@ -26,12 +27,14 @@ public class LoginRegisterPresenterImpl implements
     @Override
     public void login(String username,String password) {
         view.whenStartLoginProgress();
+        password = new Encrypt().SHA256(password);
         model.loginRequest(username,password,this);
     }
 
     @Override
     public void register(String username,String password) {
         view.whenStartRegisterProgress();
+        password = new Encrypt().SHA256(password);
         model.registerRequest(username,password,this);
     }
 
