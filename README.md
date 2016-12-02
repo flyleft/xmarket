@@ -17,8 +17,6 @@
 - Rxgalleryfnal: 图片选择器
 
 
-![school](screenshot/school.jpg )
-
 ![tag](screenshot/tag.jpg )
 
 ![team](screenshot/team.jpg )
