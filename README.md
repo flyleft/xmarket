@@ -16,13 +16,5 @@
 - Lombok: 注解生成代码小工具
 - Rxgalleryfnal: 图片选择器
 
-![school](screenshot/school.jpg )
-
-![tag](screenshot/tag.jpg )
-
-![team](screenshot/team.jpg )
-
-![slide](screenshot/slide.jpg )
-
-![release](screenshot/release.jpg )
+![screen](screenshot/screen.png )
 
