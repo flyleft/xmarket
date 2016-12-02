@@ -2,6 +2,8 @@
 
 ####[APP的后端  https://github.com/jcalaz/xmarket-server](https://github.com/jcalaz/xmarket-server)
 
+![screen](screenshot/screen.png )
+
 正在开发中。。。
 
 ### 所用技术及模式
@@ -15,6 +17,4 @@
 - Fresco: 图片处理
 - Lombok: 注解生成代码小工具
 - Rxgalleryfnal: 图片选择器
-
-![screen](screenshot/screen.png )
 
