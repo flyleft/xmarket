@@ -6,7 +6,6 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
-import me.jcala.xmarket.mock.TradeTagMock;
 import me.jcala.xmarket.mock.UserInfoMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;

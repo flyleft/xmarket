@@ -7,7 +7,7 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
-import me.jcala.xmarket.mock.TradeTagMock;
+import me.jcala.xmarket.mock.TradeMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -17,7 +17,7 @@ class TradeTagModelImpl implements TradeTagModel {
     @Override
     public void getSortTag(final onGainListener listener) {
         if (AppConf.useMock){
-            listener.onComplete(new TradeTagMock().tradeTag());
+            listener.onComplete(new TradeMock().tradeTag());
             return;
         }
         @SuppressWarnings("unchecked")
