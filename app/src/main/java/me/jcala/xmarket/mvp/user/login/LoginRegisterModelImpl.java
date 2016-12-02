@@ -1,9 +1,11 @@
 package me.jcala.xmarket.mvp.user.login;
 
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.mock.UserInfoMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -13,6 +15,10 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public void loginRequest(final String username,final String password,final onLoginRegisterListener listener) {
+        if (AppConf.useMock){
+            listener.loginComplete(new UserInfoMock().loginOrRegisterNext());
+            return;
+        }
         @SuppressWarnings("unchecked")
         Result<User>  result=CommonFactory.INSTANCE().server_error();
         ReqExecutor
@@ -43,6 +49,12 @@ class LoginRegisterModelImpl implements LoginRegisterModel {
 
     @Override
     public void registerRequest(final String username,final String password,final onLoginRegisterListener listener) {
+
+        if (AppConf.useMock){
+            listener.registerComplete(new UserInfoMock().register());
+            return;
+        }
+
         @SuppressWarnings("unchecked")
         Result<String>  result=CommonFactory.INSTANCE().server_error();
 
