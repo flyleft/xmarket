@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
@@ -27,8 +28,11 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void success(List<Trade> itemList) {
-        BaseAdapter adapter=new CommonAdapter<Trade>(context,itemList, R.layout.school_item) {
+    public void onComplete(Result<List<Trade>> result) {
+        if (!resultHandler(result)){
+            return;
+        }
+        BaseAdapter adapter=new CommonAdapter<Trade>(context,result.getData(), R.layout.school_item) {
             @Override
             public void convert(ViewHolder viewHolder, Trade item) {
                 viewHolder.setText(R.id.deal_title,item.getTitle());
@@ -39,7 +43,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            Trade item=itemList.get(position);
+            Trade item=result.getData().get(position);
             Intent intent=new Intent(context,MainActivity.class);
             intent.putExtra("sortId",item.getId());
             context.startActivity(intent);
@@ -47,9 +51,22 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         view.whenLoadDataSuc(adapter,listener);
 
     }
+    private boolean resultHandler(Result<?> result){
+        if (result==null){
+            return false;
+        }
+        switch (result.getCode()) {
+            case 100:
+                return true;
+            case 99:
+                return false;
+            default:
+                return false;
+        }
+    }
 
     @Override
-    public void fail() {
+    public void onFail() {
 
     }
 
