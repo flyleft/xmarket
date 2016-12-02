@@ -2,9 +2,12 @@ package me.jcala.xmarket.mvp.user.login.register.next;
 
 import java.util.List;
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.mock.TradeTagMock;
+import me.jcala.xmarket.mock.UserInfoMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,6 +17,12 @@ public class RegisterNextModelImpl implements RegisterNextModel{
 
     @Override
     public void executeSchoolRequest(final onRegisterNextListener listener) {
+
+        if(AppConf.useMock){
+            listener.hasGotSchoolList(new UserInfoMock().gainSchoolList());
+            return;
+        }
+
         @SuppressWarnings("unchecked")
         Result<List<String>> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
@@ -45,6 +54,11 @@ public class RegisterNextModelImpl implements RegisterNextModel{
     @Override
     public void executeRegisterRequest(final String userId,final String phone,
                                      final String school,final onRegisterNextListener listener) {
+        if(AppConf.useMock){
+            listener.hasGotRegisterResult(new UserInfoMock().loginOrRegisterNext());
+            return;
+        }
+
         @SuppressWarnings("unchecked")
         Result<User> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
