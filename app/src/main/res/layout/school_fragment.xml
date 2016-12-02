@@ -6,11 +6,6 @@
     android:background="@color/deal_page_bg"
     android:layout_height="match_parent">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/message_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
         <ListView
             android:id="@+id/school_deal_list"
             android:layout_width="match_parent"
@@ -21,8 +16,6 @@
             android:divider="@color/deal_page_bg"
             android:scrollbars="none"
             android:focusable="false" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/school_deal_plus"
