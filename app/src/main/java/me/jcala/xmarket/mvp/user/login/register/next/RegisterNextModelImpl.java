@@ -27,7 +27,7 @@ public class RegisterNextModelImpl implements RegisterNextModel{
         ReqExecutor
                 .INSTANCE()
                 .schoolReq()
-                 .getSchool()
+                 .getSchoolNames()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<List<String>>>() {

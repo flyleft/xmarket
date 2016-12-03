@@ -15,13 +15,13 @@ public interface SchoolReq {
      * 获取所有学校名称列表
      */
     @GET(ApiConf.get_school_list)
-    Observable<Result<List<String>>> getSchool();
+    Observable<Result<List<String>>> getSchoolNames();
 
     /**
      *获取本校在售商品列表
      */
     @GET(ApiConf.get_school_trades)
-    Observable<Result<List<Trade>>> schoolDeals(
+    Observable<Result<List<Trade>>> getSchoolTrades(
             @Path("school")  String school,
             @Path("page") int page
     );
