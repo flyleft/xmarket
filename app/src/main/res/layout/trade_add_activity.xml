@@ -88,7 +88,7 @@
     </LinearLayout>
 
     <View
-       android:layout_height="@dimen/divider_height"
+       android:layout_height="@dimen/line_divider_height"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/spacing_small"
         android:background="@color/gray_light"/>

@@ -8,12 +8,12 @@
 
         <ListView
             android:id="@+id/school_deal_list"
-            android:layout_marginTop="@dimen/school_divider_height"
+            android:layout_marginTop="@dimen/list_divider_height"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/school_divider_margin"
-            android:layout_marginRight="@dimen/school_divider_margin"
-            android:dividerHeight="@dimen/school_divider_height"
+            android:layout_marginLeft="@dimen/list_divider_margin"
+            android:layout_marginRight="@dimen/list_divider_margin"
+            android:dividerHeight="@dimen/list_divider_height"
             android:divider="@color/deal_page_bg"
             android:scrollbars="none"
             android:focusable="false" />
