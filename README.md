@@ -17,4 +17,5 @@
 - Fresco: 图片处理
 - Lombok: 注解生成代码小工具
 - Rxgalleryfnal: 图片选择器
+- Token验证: JWT
 
