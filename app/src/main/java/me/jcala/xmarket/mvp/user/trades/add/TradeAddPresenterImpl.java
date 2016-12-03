@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
@@ -19,6 +20,8 @@ import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.util.FileUtils;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -81,17 +84,19 @@ public class TradeAddPresenterImpl
 
         List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
         List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
-        model.executeAddTradeReq(trade,pics,this);
+        String tradeJsonStr=new Gson().toJson(trade);
+        RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
+        model.executeAddTradeReq(tradeJson,trade.getId(),pics,this);
         view.whenStartProgress();
     }
 
     private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){
         Trade trade=new Trade();
         trade.setReleaseCheck(false);
-        if (picUrls.size() < 2){
+       /* if (picUrls.size() < 2){
             view.whenFail("请选择至少一张配图");
             return trade;
-        }
+        }*/
         String titleData=title.getText().toString().trim();
         if (titleData.isEmpty()){
             view.whenFail("标题不可以为空");
@@ -103,12 +108,7 @@ public class TradeAddPresenterImpl
             view.whenFail("价格不可以为空");
             return trade;
         }
-
         long priceValue=Long.parseLong(priceData);
-        if (priceValue < 0){
-            view.whenFail("价格不可以为负值");
-            return trade;
-        }
         trade.setPrice(priceValue);
         String descData=desc.getText().toString().trim();
         if (descData.isEmpty()){

@@ -8,9 +8,9 @@ public interface ApiConf {
     String get_school_list="api/v1/schools/names/get";
     String register="api/v1/users/register";
     String register_next="api/v1/users/{userId}/phoneSchool/update";
-    String update_user_avatar="api/v1/users/{userId}/pass";
-    String update_user_pass="api/v1/users/{userId}/avatar";
-    String update_user_team="api/v1/users/{userId}/team";
+    String update_user_avatar="api/v1/users/{userId}/pass/update";
+    String update_user_pass="api/v1/users/{userId}/avatar/update";
+    String update_user_team="api/v1/users/{userId}/team/update";
     String create_user_trade="api/v1/users/{userId}/trades/create";
     String get_school_trades="api/v1/schools/trades/{schoolName}/{page}/get";
     String get_trade_tag="api/v1/tags/get";

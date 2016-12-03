@@ -27,7 +27,6 @@ import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
@@ -74,7 +73,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     public void whenAddSuccess() {
         new SuperToast(TradeAddActivity.this)
                 .setText("发布成功")
-                .setDuration(Style.DURATION_MEDIUM)
+                .setDuration(Style.DURATION_LONG)
                 .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_GREEN))
                 .setAnimations(Style.ANIMATIONS_POP)
                 .show();
@@ -88,9 +87,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     public void whenFail(String errorMsg) {
         new SuperToast(TradeAddActivity.this)
                 .setText(errorMsg)
-                .setDuration(Style.DURATION_MEDIUM)
+                .setDuration(Style.DURATION_LONG)
                 .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
-                .setAnimations(Style.ANIMATIONS_POP)
+                .setAnimations(Style.ANIMATIONS_FLY)
                 .show();
     }
 

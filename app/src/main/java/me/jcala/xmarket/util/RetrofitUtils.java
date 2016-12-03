@@ -26,9 +26,9 @@ public class RetrofitUtils {
     }
 
     @NonNull
-    private RequestBody createPartFromString(String descriptionString) {
+    public static RequestBody createPartFromString(String data) {
         return RequestBody.create(
-                MediaType.parse("application/json; charset=utf-8"), descriptionString);
+                MediaType.parse("application/json; charset=utf-8"), data);
     }
 
 }

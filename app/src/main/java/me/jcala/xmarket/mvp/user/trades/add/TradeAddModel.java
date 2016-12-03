@@ -5,6 +5,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public interface TradeAddModel {
 
@@ -14,7 +15,8 @@ public interface TradeAddModel {
         void hasGoTagsResult(Result<List<String>> result);//执行HTTP请求得到分类名称列表
     }
 
-    void executeAddTradeReq(Trade trade,List<MultipartBody.Part> pics,onTradeAddListener listener);
+    void executeAddTradeReq(RequestBody tradeJson, String userId,
+                            List<MultipartBody.Part> pics, onTradeAddListener listener);
 
     void executeGetTagsReq(onTradeAddListener listener);
 }
