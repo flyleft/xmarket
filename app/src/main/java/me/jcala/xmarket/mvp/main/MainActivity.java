@@ -22,7 +22,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;

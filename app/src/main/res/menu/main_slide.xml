@@ -28,7 +28,7 @@
             android:title="@string/info_donation" />
         <item
             android:id="@+id/info_team"
-            android:icon="@mipmap/menu_team"
+            android:icon="@mipmap/menu_volunteer"
             android:title="@string/info_team" />
     </group>
     <item android:title="@string/info_others">
