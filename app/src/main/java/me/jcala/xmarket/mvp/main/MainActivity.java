@@ -92,7 +92,7 @@ public class MainActivity  extends BaseActivity
         avatar.setImageURI(Uri.parse(AppConf.BASE_URL+user.getAvatarUrl()));
     }
     private void initBottomMenu(){
-        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
