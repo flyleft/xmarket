@@ -5,12 +5,11 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-
 import java.util.List;
-
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
 import me.jcala.xmarket.util.ViewHolder;
 
@@ -27,11 +26,14 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
 
     @Override
     public void getTeams() {
-        model.getTeams(this);
+        String schoolName= UserIntermediate.instance.getUser(context).getSchool();
+        if (schoolName!=null){
+            model.getTeams(this,schoolName);
+        }
     }
 
     @Override
-    public void onSuccess(Result<List<Team>> result) {
+    public void onComplete(Result<List<Team>> result) {
         BaseAdapter adapter=new CommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
             @Override
             public void convert(ViewHolder viewHolder, Team item) {
@@ -47,7 +49,6 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     }
 
     @Override
-    public void onFail() {
-
+    public void onFail(String errorMsg) {
     }
 }

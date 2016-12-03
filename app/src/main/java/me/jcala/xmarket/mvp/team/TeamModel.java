@@ -8,9 +8,9 @@ import me.jcala.xmarket.data.pojo.Team;
 public interface TeamModel {
 
     interface onGainTeamListener{
-        void onSuccess(Result<List<Team>> result);
-        void onFail();
+        void onComplete(Result<List<Team>> result);
+        void onFail(String errorMsg);
     }
 
-    void getTeams(final onGainTeamListener listener);
+    void getTeams(onGainTeamListener listener,String schoolName);
 }
