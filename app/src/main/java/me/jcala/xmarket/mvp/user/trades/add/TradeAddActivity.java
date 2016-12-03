@@ -3,20 +3,21 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,8 +27,6 @@ import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.a_base.CommonAdapter;
@@ -49,7 +48,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     BaseAdapter adapter;
     MaterialDialog progress;
     TradeAddPresenter presenter;
-    private List<TradeTag> tags;
+    private List<String> tags;
     private LinkedList<String> picUrls=new LinkedList<>();
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -66,6 +65,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                 .title(R.string.dialog_wait)
                 .build();
         presenter=new TradeAddPresenterImpl(this,this);
+        presenter.gainTagList();
         picUrls.add("res://drawable/"+R.drawable.trade_add_pic_plus);
         picSet();
     }
@@ -95,13 +95,15 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     }
 
     @Override
-    public void whenGetTagListSuccess(final List<TradeTag> tagList) {
+    public void whenGetTagListSuccess(final List<String> tagList) {
         tags=tagList;
     }
 
     @OnClick(R.id.trade_add_tag_select)
     public void clickSelectTag(){
-
+        if (tags==null){
+            return;
+        }
         new MaterialDialog.Builder(this)
                 .title(R.string.register_next_school_choose)
                 .items(tags)

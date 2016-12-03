@@ -5,6 +5,7 @@ import java.util.List;
 
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.data.api.TradeTagReq;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mock.TradeMock;
@@ -25,7 +26,7 @@ class TradeTagModelImpl implements TradeTagModel {
         ReqExecutor
                 .INSTANCE()
                 .tradeTagReq()
-                .tradeTags()
+                .tradeTags(TradeTagReq.GET_TAG)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<List<TradeTag>>>() {

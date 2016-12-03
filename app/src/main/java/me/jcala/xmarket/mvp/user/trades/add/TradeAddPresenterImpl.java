@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +19,6 @@ import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.util.FileUtils;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
-import retrofit2.http.Multipart;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -37,7 +38,7 @@ public class TradeAddPresenterImpl
     }
 
     @Override
-    public void hasGotAddTradeResult(Result<?> result) {
+    public void hasGotAddTradeResult(Result<String> result) {
         view.whenStopProgress();
         if (result==null){
             view.whenFail(Api.SERVER_ERROR.msg());
@@ -46,15 +47,15 @@ public class TradeAddPresenterImpl
 
         switch (result.getCode()) {
             case 100:
-                view.whenAddSuccess();
+                view.whenAddSuccess();break;
             case 99:
-                view.whenFail(Api.SERVER_ERROR.msg());
+                view.whenFail(Api.SERVER_ERROR.msg());break;
             default:
         }
     }
 
     @Override
-    public void hasGoTagsResult(Result<List<TradeTag>> result) {
+    public void hasGoTagsResult(Result<List<String>> result) {
         if (result==null || result.getData() == null){
             view.whenFail(Api.SERVER_ERROR.msg());
             return;
@@ -62,9 +63,9 @@ public class TradeAddPresenterImpl
 
         switch (result.getCode()) {
             case 100:
-                view.whenGetTagListSuccess(result.getData());
+                view.whenGetTagListSuccess(result.getData());break;
             case 99:
-                view.whenFail(Api.SERVER_ERROR.msg());
+                view.whenFail(result.getMsg());break;
             default:
         }
     }
@@ -121,7 +122,7 @@ public class TradeAddPresenterImpl
             view.whenFail("请选择商品分类");
             return trade;
         }
-        trade.setTagId(tagData);
+        trade.setTagName(tagData);
         User author= UserIntermediate.instance.getUser(context);
         if (author==null || author.getId()==null){
             return trade;

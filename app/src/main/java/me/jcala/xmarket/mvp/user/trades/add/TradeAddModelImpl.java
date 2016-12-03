@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.user.trades.add;
 import java.util.List;
 
 import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.data.api.TradeTagReq;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
@@ -46,15 +47,15 @@ public class TradeAddModelImpl implements TradeAddModel{
     @Override
     public void executeGetTagsReq(onTradeAddListener listener) {
         @SuppressWarnings("unchecked")
-        Result<List<TradeTag>> result= CommonFactory.INSTANCE().server_error();
+        Result<List<String>> result= CommonFactory.INSTANCE().server_error();
 
         ReqExecutor
                 .INSTANCE()
                 .tradeTagReq()
-                .tradeTags()
+                .tagNames(TradeTagReq.GET_NAME)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<List<TradeTag>>>() {
+                .subscribe(new Subscriber<Result<List<String>>>() {
                     @Override
                     public void onCompleted() {
                         listener.hasGoTagsResult(result);
@@ -62,13 +63,15 @@ public class TradeAddModelImpl implements TradeAddModel{
 
                     @Override
                     public void onError(Throwable e) {
+//                        result.setMsg("出错了:"+e.getLocalizedMessage());
                         listener.hasGoTagsResult(result);
                     }
 
                     @Override
-                    public void onNext(Result<List<TradeTag>> resultData) {
+                    public void onNext(Result<List<String>> resultData) {
                         result.setCode(resultData.getCode());
                         result.setMsg(resultData.getMsg());
+                        result.setData(resultData.getData());
                     }
                 });
     }

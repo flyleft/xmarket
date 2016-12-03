@@ -13,7 +13,7 @@ public class Trade {
     private User author;//商品所属者
     private long price;
     private String desc;
-    private String tagId;
+    private String tagName;
     private String schoolName;//所属的学校名称
     private List<String> imgUrls;//商品图片
     private String createTime;//商品创建时间

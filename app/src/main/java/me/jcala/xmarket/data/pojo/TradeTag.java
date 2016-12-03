@@ -12,4 +12,5 @@ public class TradeTag {
     private int id;//分类的id
     private String name;//分类的名称
     private String bgPic;//分类的背景图片
+
 }

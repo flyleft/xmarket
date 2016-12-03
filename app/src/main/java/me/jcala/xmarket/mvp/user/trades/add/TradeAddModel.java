@@ -9,9 +9,9 @@ import okhttp3.MultipartBody;
 public interface TradeAddModel {
 
     interface onTradeAddListener{
-        void hasGotAddTradeResult(Result<?> result);//执行发布商品请求，得到请求结果
+        void hasGotAddTradeResult(Result<String> result);//执行发布商品请求，得到请求结果
 
-        void hasGoTagsResult(Result<List<TradeTag>> result);//执行HTTP请求得到分类列表
+        void hasGoTagsResult(Result<List<String>> result);//执行HTTP请求得到分类名称列表
     }
 
     void executeAddTradeReq(Trade trade,List<MultipartBody.Part> pics,onTradeAddListener listener);
