@@ -65,9 +65,6 @@
             android:name=".mvp.user.team.UserTeamActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".mvp.test.TestActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:screenOrientation="portrait"
             android:exported="true"
