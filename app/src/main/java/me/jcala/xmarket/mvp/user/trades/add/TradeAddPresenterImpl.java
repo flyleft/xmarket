@@ -5,23 +5,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.util.FileUtils;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 
 public class TradeAddPresenterImpl
         implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
@@ -86,7 +84,7 @@ public class TradeAddPresenterImpl
         List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
         String tradeJsonStr=new Gson().toJson(trade);
         RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
-        model.executeAddTradeReq(tradeJson,trade.getId(),pics,this);
+        model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),pics,this);
         view.whenStartProgress();
     }
 
