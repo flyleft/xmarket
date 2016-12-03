@@ -65,13 +65,9 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         }
     }
 
-    @Override
-    public void onFail() {
-
-    }
 
     @Override
     public void getSchoolDealAgency() {
-       model.getSchoolDeals(1,this);
+       model.getSchoolTrades(this,"",1);
     }
 }
