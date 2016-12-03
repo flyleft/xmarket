@@ -22,7 +22,7 @@ public interface SchoolReq {
      */
     @GET(ApiConf.get_school_trades)
     Observable<Result<List<Trade>>> getSchoolTrades(
-            @Path("school")  String school,
+            @Path("schoolName")  String school,
             @Path("page") int page
     );
 }
