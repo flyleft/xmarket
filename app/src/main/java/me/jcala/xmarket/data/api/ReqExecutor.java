@@ -20,6 +20,7 @@ public class ReqExecutor {
     private UserReq userReq;
     private SchoolReq schoolReq;
     private TradeTagReq tradeTagReq;
+    private TeamReq teamReq;
 
     private String token="";
 
@@ -83,5 +84,11 @@ public class ReqExecutor {
             tradeTagReq=getGsonRetrofit().create(TradeTagReq.class);
         }
         return tradeTagReq;
+    }
+    public TeamReq teamReq(){
+        if (teamReq==null){
+            teamReq=getGsonRetrofit().create(TeamReq.class);
+        }
+        return teamReq;
     }
 }
