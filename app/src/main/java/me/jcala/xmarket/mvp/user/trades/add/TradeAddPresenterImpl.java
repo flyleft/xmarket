@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -91,10 +92,10 @@ public class TradeAddPresenterImpl
     private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){
         Trade trade=new Trade();
         trade.setReleaseCheck(false);
-       /* if (picUrls.size() < 2){
+        if (picUrls.size() < 2){
             view.whenFail("请选择至少一张配图");
             return trade;
-        }*/
+        }
         String titleData=title.getText().toString().trim();
         if (titleData.isEmpty()){
             view.whenFail("标题不可以为空");

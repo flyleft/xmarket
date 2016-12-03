@@ -11,7 +11,7 @@ public interface ApiConf {
     String update_user_avatar="api/v1/users/{userId}/pass/update";
     String update_user_pass="api/v1/users/{userId}/avatar/update";
     String update_user_team="api/v1/users/{userId}/team/update";
-    String create_user_trade="api/v1/users//{userId}/trades/create";
+    String create_user_trade="api/v1/users/{userId}/trades/create";
     String get_school_trades="api/v1/schools/trades/{schoolName}/{page}/get";
     String get_trade_tag="api/v1/tags/get";
     String get_school_teams="/api/v1/teams/{schoolName}/get";

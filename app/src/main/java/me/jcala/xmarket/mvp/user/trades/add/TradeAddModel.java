@@ -1,9 +1,8 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
 import java.util.List;
+
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.data.pojo.TradeTag;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 

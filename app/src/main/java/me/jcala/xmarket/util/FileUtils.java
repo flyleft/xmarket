@@ -24,7 +24,7 @@ public class FileUtils {
      */
     public static List<File> compressMultiFilesExceptLast(Context context,List<String> picUrls){
         List<File> files=new ArrayList<>();
-        for (int i=0;i < picUrls.size();i++){
+        for (int i=0;i < picUrls.size()-1;i++){
             File img=new File(picUrls.get(i));
             if (img.exists()){
                 Compressor.getDefault(context)

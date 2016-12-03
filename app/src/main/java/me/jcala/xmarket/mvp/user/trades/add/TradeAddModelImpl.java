@@ -8,8 +8,6 @@ import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.api.TradeTagReq;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.util.CommonFactory;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -33,20 +31,17 @@ public class TradeAddModelImpl implements TradeAddModel{
                 .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
-                        Logger.e("four");
                        listener.hasGotAddTradeResult(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Logger.e(e.getLocalizedMessage());
                         result.setCode(Api.SERVER_ERROR.code());
                         listener.hasGotAddTradeResult(result);
                     }
 
                     @Override
                     public void onNext(Result<String> resultData) {
-                        Logger.e("six");
                         result.setCode(resultData.getCode());
                         result.setMsg(resultData.getMsg());
                     }
