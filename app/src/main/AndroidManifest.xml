@@ -74,7 +74,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme_Light.White"/>
         <!-- 注册广播 -->
-        <receiver android:name=".util.NetState">
+        <receiver android:name=".util.BroadUtils">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>

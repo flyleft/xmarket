@@ -1,6 +1,7 @@
 package me.jcala.xmarket.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -85,6 +87,25 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     public RecyclerViewHolder setLineBgColor(int viewId,int resId){
         LinearLayout layout=getView(viewId);
         layout.setBackgroundColor(resId);
+        return this;
+    }
+
+    public RecyclerViewHolder setSendMsgListener(int viewId, String phoneNumber,String username){
+        LinearLayout layout=getView(viewId);
+        layout.setOnClickListener((View v)->{
+            Uri smsToUri = Uri.parse("smsto:"+phoneNumber);
+            Intent intent = new Intent(Intent.ACTION_SENDTO, smsToUri);
+            intent.putExtra("sms_body","你好"+username+",");
+            mContext.startActivity(intent);
+        });
+        return this;
+    }
+
+    public RecyclerViewHolder setConfirmLisener(int viewId){
+        LinearLayout layout=getView(viewId);
+        layout.setOnClickListener((View v)->{
+
+        });
         return this;
     }
 }

@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-public class NetState  extends BroadcastReceiver {
+public class BroadUtils extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

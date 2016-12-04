@@ -55,7 +55,7 @@
     <string name="trade_add_dialog_content">正在发布...</string>
 
     <!--消息页面-->
-    <string name="message_status_sell">收到购买请求</string>
-    <string name="message_status_buy">已确认，请尽快联系卖家</string>
+    <string name="message_status_sell">收到购买请求，点击确认交易</string>
+    <string name="message_status_buy">卖家已确认，点击发送短信</string>
 
 </resources>

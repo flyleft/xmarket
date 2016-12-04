@@ -1,7 +1,10 @@
 package me.jcala.xmarket.mvp.message;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
+import android.widget.Toast;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
@@ -41,8 +44,9 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
                 if (item.getKind()==0){
-                   viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_red_300));
-                    viewHolder.setText(R.id.message_kind_title,"已确认，请尽快联系卖家");
+                    viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_red_300));
+                    viewHolder.setText(R.id.message_kind_title,"卖家已确认，点击发送短信");
+                    viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
                 }
                 viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
@@ -52,6 +56,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         };
         view.whenNeedUpdateMsgList(adapter);
     }
+
     private boolean resultHandler(Result<?> result){
         if (result==null){
             return false;
@@ -65,4 +70,15 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                 return false;
         }
     }
+    /**
+     * 跳转到发送短信页面
+     */
+    private void sendSMS(String phoneNumber,String username)
+    {
+        Uri smsToUri = Uri.parse("smsto:"+phoneNumber);
+        Intent intent = new Intent(Intent.ACTION_SENDTO, smsToUri);
+        intent.putExtra("sms_body","你好"+username);
+        context.startActivity(intent);
+    }
+
 }

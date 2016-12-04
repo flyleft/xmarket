@@ -3,9 +3,7 @@ package me.jcala.xmarket.mvp.school;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -56,6 +54,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         if (result==null){
             return false;
         }
+
         switch (result.getCode()) {
             case 100:
                 return true;
@@ -65,8 +64,6 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
                 return false;
         }
     }
-
-
     @Override
     public void getSchoolDealAgency() {
        model.getSchoolTrades(this,"",1);
