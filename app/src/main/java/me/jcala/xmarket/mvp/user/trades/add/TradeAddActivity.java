@@ -51,7 +51,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     private LinkedList<String> picUrls=new LinkedList<>();
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.trade_add_bar);
+        setContentView(R.layout.trade_add_activity);
         ButterKnife.bind(this);
         initData();
     }
