@@ -74,15 +74,5 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                 return false;
         }
     }
-    /**
-     * 跳转到发送短信页面
-     */
-    private void sendSMS(String phoneNumber,String username)
-    {
-        Uri smsToUri = Uri.parse("smsto:"+phoneNumber);
-        Intent intent = new Intent(Intent.ACTION_SENDTO, smsToUri);
-        intent.putExtra("sms_body","你好"+username);
-        context.startActivity(intent);
-    }
 
 }
