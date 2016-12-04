@@ -9,5 +9,6 @@ public interface MessageModel {
       void onComplete(Result<MsgDto> result);
     }
     void executeMsgReq(onMessageListener listener,int num);
-    void executeConfirmDealReq(onMessageListener listener,String userId,String tradeId);
+
+    void executeConfirmDealReq(onMessageListener listener,String myId,String userId,String tradeId);
 }

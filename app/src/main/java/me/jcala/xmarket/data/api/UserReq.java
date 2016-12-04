@@ -4,6 +4,7 @@ package me.jcala.xmarket.data.api;
 import java.util.List;
 
 import me.jcala.xmarket.conf.ApiConf;
+import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import okhttp3.MultipartBody;
@@ -57,4 +58,11 @@ public interface UserReq {
             @Path("userId")String userId,
             @Part("trade") RequestBody trade,
             @Part List<MultipartBody.Part> parts);
+
+    @PUT(ApiConf.confirm_deal)
+    @FormUrlEncoded
+    Observable<Result<MsgDto>> confirmDeal(
+            @Path("userId")  String user_id,
+            @Field("userId")  String otherUserId,
+            @Field("tradeId")  String tradeId);
 }

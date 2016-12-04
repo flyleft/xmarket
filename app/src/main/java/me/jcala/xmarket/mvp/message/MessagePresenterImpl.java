@@ -1,13 +1,14 @@
 package me.jcala.xmarket.mvp.message;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
+import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -31,7 +32,11 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
 
     @Override
     public void confirmDeal(String userId,String tradeId) {
-
+        User user= UserIntermediate.instance.getUser(context);
+        if (user==null || user.getId()==null){
+            return;
+        }
+       model.executeConfirmDealReq(this,user.getId(),userId,tradeId);
     }
 
     @Override
@@ -50,12 +55,13 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_red_300));
                     viewHolder.setText(R.id.message_kind_title,"卖家已确认，点击发送短信");
                     viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
+                }else if (item.getKind() ==1){
+                    viewHolder.setConfirmDialogListener(R.id.message_item,view,item.getUserId(),item.getTradeId());
                 }
                 viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
                 viewHolder.setText(R.id.message_user_phone,item.getUserPhone());
                 viewHolder.setText(R.id.message_user_name,item.getUsername());
-                viewHolder.setConfirmDialogListener(R.id.message_item,view,item.getUserId(),item.getTradeId());
             }
         };
         view.whenNeedUpdateMsgList(adapter);
