@@ -6,6 +6,6 @@ public interface MessageView {
 
     void whenNeedUpdateMsgList(RecyclerCommonAdapter<?> adapter);
 
-    void whenShowConfirmDialog(String userId, String tradeId);
+    void whenShowConfirmDialog(String userId, String tradeId,String msgId);
 
 }

@@ -102,10 +102,11 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RecyclerViewHolder setConfirmDialogListener(int viewId, MessageView view, String userId, String tradeId){
+    public RecyclerViewHolder setConfirmDialogListener(int viewId, MessageView view, String userId,
+                                                       String tradeId,String msgId){
         LinearLayout layout=getView(viewId);
         layout.setOnClickListener((View v)->{
-            view.whenShowConfirmDialog(userId,tradeId);
+            view.whenShowConfirmDialog(userId,tradeId,msgId);
         });
         return this;
     }

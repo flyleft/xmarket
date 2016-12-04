@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class Message {
+    private String id;
     private String belongId;//消息所属者的id
     private String userId;//交易对方用户的id
     private String username;//交易对方用户的用户名
@@ -20,11 +21,12 @@ public class Message {
     private String tradeImg;//商品的封面
     private int kind;//kind表示信息类型。0表示买到商品的消息；1表示收到购买请求的消息
 
-    public Message(String username,String userAvatar,String userPhone, String tradeImg,int kind) {
+    public Message(String username,String userAvatar,String userPhone, String tradeImg,int kind,String id) {
         this.username=username;
         this.userAvatar=userAvatar;
         this.userPhone=userPhone;
         this.tradeImg=tradeImg;
         this.kind=kind;
+        this.id=id;
     }
 }

@@ -31,7 +31,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     }
 
     @Override
-    public void confirmDeal(String userId,String tradeId) {
+    public void confirmDeal(String userId,String tradeId,String msgId) {
         User user= UserIntermediate.instance.getUser(context);
         if (user==null || user.getId()==null){
             return;
@@ -48,7 +48,8 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
             return;
         }
 
-        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Message>(context,result.getData().getMsgs(), R.layout.message_item) {
+        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Message>(context,
+                result.getData().getMsgs(), R.layout.message_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
                 if (item.getKind()==0){
@@ -56,7 +57,8 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                     viewHolder.setText(R.id.message_kind_title,"卖家已确认，点击发送短信");
                     viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
                 }else if (item.getKind() ==1){
-                    viewHolder.setConfirmDialogListener(R.id.message_item,view,item.getUserId(),item.getTradeId());
+                    viewHolder.setConfirmDialogListener(R.id.message_item,view,
+                            item.getUserId(),item.getTradeId(),item.getId());
                 }
                 viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));

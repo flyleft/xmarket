@@ -69,6 +69,12 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp" />
 
+        <TextView
+            android:id="@+id/message_id"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
     </RelativeLayout>
 

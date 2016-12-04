@@ -64,5 +64,6 @@ public interface UserReq {
     Observable<Result<MsgDto>> confirmDeal(
             @Path("userId")  String user_id,
             @Field("userId")  String otherUserId,
-            @Field("tradeId")  String tradeId);
+            @Field("tradeId")  String tradeId,
+            @Field("id") String id);
 }

@@ -23,8 +23,8 @@ public class MessageModelImpl implements MessageModel{
     }
 
     @Override
-    public void executeConfirmDealReq(final onMessageListener listener,String myId,
-                                      final String userId,final String tradeId) {
+    public void executeConfirmDealReq(final onMessageListener listener,final String myId,
+                                      final String userId,final String tradeId,final String id) {
         if (AppConf.useMock){
             listener.onComplete(new MessageMock().gainMsg());
             return;
@@ -33,7 +33,7 @@ public class MessageModelImpl implements MessageModel{
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .confirmDeal(myId,userId,tradeId)
+                .confirmDeal(myId,userId,tradeId,id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<MsgDto>>() {
