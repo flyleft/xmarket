@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_large"
+        android:background="@color/md_green_300">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_small"
+            android:layout_gravity="center_vertical"
+            android:text="@string/message_status_sell"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_normal_high"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/info_avatar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            fresco:roundedCornerRadius="56dp"
+            fresco:roundBottomLeft="true"
+            fresco:roundBottomRight="true"
+            fresco:placeholderImage="@mipmap/person"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/info_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/info_avatar"
+            android:layout_toEndOf="@id/info_avatar"
+            android:layout_toRightOf="@id/info_avatar"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:text="@string/info_username"
+            android:textSize="@dimen/font_size_normal_high"
+            android:textColor="@color/gray_dark"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/info_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/info_avatar"
+            android:layout_toRightOf="@id/info_avatar"
+            android:layout_alignBottom="@id/info_avatar"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:textSize="@dimen/font_size_small"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignTop="@+id/info_avatar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp" />
+
+
+    </RelativeLayout>
 
 </LinearLayout>

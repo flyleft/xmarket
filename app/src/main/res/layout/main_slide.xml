@@ -43,7 +43,6 @@
             android:layout_toRightOf="@id/info_avatar"
             android:layout_alignBottom="@id/info_avatar"
             android:layout_marginBottom="@dimen/spacing_tiny"
-            android:text="@string/info_phone"
             android:textSize="@dimen/font_size_small"/>
     </RelativeLayout>
 </LinearLayout>

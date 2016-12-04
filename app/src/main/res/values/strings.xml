@@ -33,7 +33,6 @@
 
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
-    <string name="info_phone">18200361857</string>
     <string name="info_school">电子科技大学(沙河校区)</string>
     <string name="info_sell">待售</string>
     <string name="info_bought">已买</string>
@@ -55,5 +54,8 @@
     <string name="trade_add_action_title">发布</string>
     <string name="trade_add_dialog_content">正在发布...</string>
 
+    <!--消息页面-->
+    <string name="message_status_sell">收到购买请求</string>
+    <string name="message_status_buy">已确认，请尽快联系卖家</string>
 
 </resources>

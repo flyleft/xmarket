@@ -1,79 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <RelativeLayout
+    android:background="@color/deal_page_bg"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/messages_refresh"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:background="@color/white"
-        android:orientation="vertical">
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/author_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            fresco:roundedCornerRadius="30dp"
-            fresco:roundBottomLeft="true"
-            fresco:roundBottomRight="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="5dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/list_divider_height"
+        android:layout_marginLeft="@dimen/list_divider_margin"
+        android:layout_marginRight="@dimen/list_divider_margin">
 
-        <TextView
-            android:id="@+id/author_name"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text=""
-            android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:textSize="@dimen/font_size_normal"
-            android:textColor="@color/black"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/author_img" />
-    </RelativeLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp">
-
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/deal_img"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/message_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/sort_pic_selector"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-                <TextView
-                    android:id="@+id/deal_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/deal_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/deal_title"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/md_red_50" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-
-    </FrameLayout>
-</LinearLayout>
+</FrameLayout>

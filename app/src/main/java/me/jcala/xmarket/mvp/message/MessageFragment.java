@@ -7,6 +7,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 
 public class MessageFragment extends BaseFragment implements MessageView {
+
     @Override
     protected int getLayoutResId() {
         return R.layout.message_fragment;
@@ -17,4 +18,5 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected void initViews(View view, Bundle savedInstanceState) {
 
     }
+
 }
