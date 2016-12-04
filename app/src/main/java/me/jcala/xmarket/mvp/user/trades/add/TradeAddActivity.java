@@ -28,9 +28,9 @@ import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
-import me.jcala.xmarket.mvp.a_base.CommonAdapter;
+import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.util.ViewHolder;
+import me.jcala.xmarket.view.ViewHolder;
 
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
 

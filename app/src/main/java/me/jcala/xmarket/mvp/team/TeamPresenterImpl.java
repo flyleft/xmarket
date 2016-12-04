@@ -10,8 +10,8 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.mvp.a_base.CommonAdapter;
-import me.jcala.xmarket.util.ViewHolder;
+import me.jcala.xmarket.view.CommonAdapter;
+import me.jcala.xmarket.view.ViewHolder;
 
 public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamListener {
     private TeamModel model;

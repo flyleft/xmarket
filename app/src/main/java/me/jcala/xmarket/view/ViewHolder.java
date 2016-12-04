@@ -1,4 +1,4 @@
-package me.jcala.xmarket.util;
+package me.jcala.xmarket.view;
 
 import android.content.Context;
 import android.net.Uri;

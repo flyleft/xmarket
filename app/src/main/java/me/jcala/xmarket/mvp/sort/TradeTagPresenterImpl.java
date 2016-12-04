@@ -10,9 +10,9 @@ import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
-import me.jcala.xmarket.mvp.a_base.CommonAdapter;
+import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.util.ViewHolder;
+import me.jcala.xmarket.view.ViewHolder;
 
 public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.onGainListener {
     private TradeTagModel mModel;

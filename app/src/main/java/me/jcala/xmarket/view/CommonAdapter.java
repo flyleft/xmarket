@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.a_base;
+package me.jcala.xmarket.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-import me.jcala.xmarket.util.ViewHolder;
+import me.jcala.xmarket.view.ViewHolder;
 
 public abstract class CommonAdapter<T> extends BaseAdapter {
      LayoutInflater inflater;
