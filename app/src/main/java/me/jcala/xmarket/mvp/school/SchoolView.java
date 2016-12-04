@@ -1,8 +1,7 @@
 package me.jcala.xmarket.mvp.school;
 
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 public interface SchoolView {
-    void whenLoadDataSuc(BaseAdapter adapter,AdapterView.OnItemClickListener listener);//当数据获取成功
+      void whenLoadDataSuc(RecyclerCommonAdapter<?> adapter);//当数据获取成功
 }

@@ -2,10 +2,10 @@ package me.jcala.xmarket.mvp.school;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +16,7 @@ import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 import me.jcala.xmarket.mvp.user.trades.add.TradeAddActivity;
+import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 
 public class SchoolFragment extends BaseFragment implements SchoolView{
@@ -23,25 +24,29 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     protected SchoolPresenter presenter;
 
     private Unbinder unbinder;
+
     @BindView(R.id.school_deal_list)
-    protected ListView dealList;
+    protected RecyclerView recyclerView;
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.school_fragment;
+        return R.layout.school_rc_fragment;
     }
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,
+                StaggeredGridLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
         presenter.getSchoolDealAgency();
     }
 
+
     @Override
-    public void whenLoadDataSuc(BaseAdapter adapter,AdapterView.OnItemClickListener listener) {
-       dealList.setAdapter(adapter);
-        dealList.setOnItemClickListener(listener);
+    public void whenLoadDataSuc(RecyclerCommonAdapter<?> adapter) {
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
