@@ -36,7 +36,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         if (user==null || user.getId()==null){
             return;
         }
-       model.executeConfirmDealReq(this,user.getId(),userId,tradeId);
+       model.executeConfirmDealReq(this,user.getId(),userId,tradeId,msgId);
     }
 
     @Override
@@ -59,6 +59,9 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                 }else if (item.getKind() ==1){
                     viewHolder.setConfirmDialogListener(R.id.message_item,view,
                             item.getUserId(),item.getTradeId(),item.getId());
+                }else {
+                    viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_brown_300));
+                    viewHolder.setText(R.id.message_kind_title,"已完成交易");
                 }
                 viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
