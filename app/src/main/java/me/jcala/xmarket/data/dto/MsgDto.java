@@ -2,6 +2,7 @@ package me.jcala.xmarket.data.dto;
 
 import java.util.List;
 
+import lombok.Getter;
 import lombok.Setter;
 import me.jcala.xmarket.data.pojo.Message;
 
@@ -10,6 +11,7 @@ import me.jcala.xmarket.data.pojo.Message;
  * 对应Result的Data值
  */
 @Setter
+@Getter
 public class MsgDto {
     /**
      * 用户所有消息的总量。

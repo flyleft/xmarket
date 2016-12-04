@@ -21,10 +21,10 @@ public class MessageMock {
         dto.setAllNum(100);
         List<Message> messages=new ArrayList<>();
         //String username,String userAvatar,String userPhone, String tradeImg,int kind
-        Message msg1=new Message("jcala","https://jcalaz.github.io/img/sort_avater_cluo","1856945","https://jcalaz.github.io/img/sort_book",0);
+        Message msg1=new Message("jcala","https://jcalaz.github.io/img/sort_avater_cluo.jpg","1856945","https://jcalaz.github.io/img/sort_book.jpg",0);
         Message msg2=new Message("小明","https://jcalaz.github.io/img/sort_clothes.jpeg","","https://jcalaz.github.io/img/sort_life.jpg",1);
-        Message msg3=new Message("jcala","https://jcalaz.github.io/img/sort_body","1856945","https://jcalaz.github.io/img/sort_phone.jpg",0);
-        Message msg4=new Message("jcala","https://jcalaz.github.io/img/sort_avater_cluo","1856945","https://jcalaz.github.io/img/sort_elec.jpg",0);
+        Message msg3=new Message("jcala","https://jcalaz.github.io/img/sort_body.jpg","1856945","https://jcalaz.github.io/img/sort_phone.jpg",0);
+        Message msg4=new Message("jcala","https://jcalaz.github.io/img/sort_avater_cluo.jpg","1856945","https://jcalaz.github.io/img/sort_elec.jpg",0);
         Message msg5=new Message("jcala","https://jcalaz.github.io/img/sort_clothes.jpeg","","https://jcalaz.github.io/img/sort_parts.jpg",1);
         messages.add(msg1);
         messages.add(msg2);

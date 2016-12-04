@@ -4,13 +4,15 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="120dp">
     <LinearLayout
+        android:id="@+id/message_kind_bg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_large"
         android:background="@color/md_green_300">
 
         <TextView
+            android:id="@+id/message_kind_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/spacing_small"
@@ -26,7 +28,7 @@
         android:background="@drawable/bg_card">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/info_avatar"
+            android:id="@+id/message_user_avatar"
             android:layout_width="56dp"
             android:layout_height="56dp"
             fresco:roundedCornerRadius="56dp"
@@ -36,12 +38,12 @@
             android:layout_margin="16dp"/>
 
         <TextView
-            android:id="@+id/info_username"
+            android:id="@+id/message_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/info_avatar"
-            android:layout_toEndOf="@id/info_avatar"
-            android:layout_toRightOf="@id/info_avatar"
+            android:layout_alignTop="@+id/message_user_avatar"
+            android:layout_toEndOf="@id/message_user_avatar"
+            android:layout_toRightOf="@id/message_user_avatar"
             android:layout_marginTop="@dimen/spacing_tiny"
             android:text="@string/info_username"
             android:textSize="@dimen/font_size_normal_high"
@@ -49,19 +51,20 @@
             tools:ignore="HardcodedText"/>
 
         <TextView
-            android:id="@+id/info_phone"
+            android:id="@+id/message_user_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/info_avatar"
-            android:layout_toRightOf="@id/info_avatar"
-            android:layout_alignBottom="@id/info_avatar"
+            android:layout_toEndOf="@id/message_user_avatar"
+            android:layout_toRightOf="@id/message_user_avatar"
+            android:layout_alignBottom="@id/message_user_avatar"
             android:layout_marginBottom="@dimen/spacing_tiny"
             android:textSize="@dimen/font_size_small"/>
 
         <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/message_trade_img"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_alignTop="@+id/info_avatar"
+            android:layout_alignTop="@+id/message_user_avatar"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp" />
 

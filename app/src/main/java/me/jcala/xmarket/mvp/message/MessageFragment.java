@@ -37,7 +37,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
 
     @Override
     public void whenNeedUpdateMsgList(RecyclerCommonAdapter<?> adapter) {
-
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
