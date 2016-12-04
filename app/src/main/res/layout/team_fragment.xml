@@ -6,15 +6,18 @@
     android:background="@color/deal_page_bg"
     android:layout_height="match_parent">
 
-        <ListView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/team_list_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/list_divider_height">
+
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/team_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/line_divider_height"
-            android:dividerHeight="@dimen/list_divider_height"
-            android:divider="@color/deal_page_bg"
-            android:scrollbars="none"
-            android:focusable="false"/>
+            android:layout_height="50dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/school_deal_plus"

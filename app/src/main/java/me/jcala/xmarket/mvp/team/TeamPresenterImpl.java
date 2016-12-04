@@ -9,8 +9,11 @@ import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.view.CommonAdapter;
+import me.jcala.xmarket.view.RecyclerCommonAdapter;
+import me.jcala.xmarket.view.RecyclerViewHolder;
 import me.jcala.xmarket.view.ViewHolder;
 
 public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamListener {
@@ -34,18 +37,15 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
 
     @Override
     public void onComplete(Result<List<Team>> result) {
-        BaseAdapter adapter=new CommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
+        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
             @Override
-            public void convert(ViewHolder viewHolder, Team item) {
+            public void convert(RecyclerViewHolder viewHolder, Team item) {
                 viewHolder.setFrescoImg(R.id.team_img, Uri.parse(item.getImg()));
                 viewHolder.setText(R.id.team_name,item.getName());
                 viewHolder.setText(R.id.team_description,item.getDescription());
             }
         };
-        AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-        };
-        view.whenGetTeamSuc(adapter,listener);
-
+        view.whenGetTeamSuc(adapter);
     }
 
     @Override
