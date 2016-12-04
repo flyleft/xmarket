@@ -32,16 +32,6 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         if (!resultHandler(result)){
             return;
         }
-      /*  BaseAdapter adapter=new CommonAdapter<Trade>(context,result.getData(), R.layout.school_item) {
-            @Override
-            public void convert(ViewHolder viewHolder, Trade item) {
-                viewHolder.setText(R.id.deal_title,item.getTitle());
-                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgUrls().get(0)));
-                viewHolder.setFrescoImg(R.id.author_img,Uri.parse(item.getAuthor().getAvatarUrl()));
-                viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
-                viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
-            }
-        };*/
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Trade>(context,result.getData(), R.layout.school_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Trade item) {
@@ -52,12 +42,6 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
                 viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
             }
         };
-        /*AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            Trade item=result.getData().get(position);
-            Intent intent=new Intent(context,MainActivity.class);
-            intent.putExtra("sortId",item.getId());
-            context.startActivity(intent);
-        };*/
         RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
             Trade item=result.getData().get(position);
             Intent intent=new Intent(context,MainActivity.class);

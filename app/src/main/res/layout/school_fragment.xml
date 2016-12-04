@@ -6,17 +6,21 @@
     android:background="@color/deal_page_bg"
     android:layout_height="match_parent">
 
-        <ListView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/list_divider_height"
+        android:layout_marginLeft="@dimen/list_divider_margin"
+        android:layout_marginRight="@dimen/list_divider_margin">
+
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/school_deal_list"
-            android:layout_marginTop="@dimen/list_divider_height"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/list_divider_margin"
-            android:layout_marginRight="@dimen/list_divider_margin"
-            android:dividerHeight="@dimen/list_divider_height"
-            android:divider="@color/deal_page_bg"
-            android:scrollbars="none"
-            android:focusable="false" />
+            android:layout_height="50dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/school_deal_plus"

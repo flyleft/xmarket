@@ -24,7 +24,7 @@
     <dimen name="spacing_huge">40dp</dimen>
     <dimen name="fab_margin">0dp</dimen>
 
-    <dimen name="list_divider_height">7dp</dimen>
+    <dimen name="list_divider_height">6dp</dimen>
     <dimen name="list_divider_margin">30dp</dimen>
     <dimen name="deal_list_padding">16dp</dimen>
 

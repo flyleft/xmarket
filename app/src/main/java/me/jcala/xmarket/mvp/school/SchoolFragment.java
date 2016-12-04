@@ -2,11 +2,13 @@ package me.jcala.xmarket.mvp.school;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,15 +32,15 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.school_rc_fragment;
+        return R.layout.school_fragment;
     }
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,
-                StaggeredGridLayoutManager.HORIZONTAL);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
         presenter.getSchoolDealAgency();
     }
