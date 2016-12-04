@@ -18,6 +18,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     private MessageModel model;
     private MessageView view;
     private int allMsgNum=96;
+    private RecyclerCommonAdapter<?> adapter;
 
     public MessagePresenterImpl(Context context, MessageView view) {
         this.context = context;
@@ -31,12 +32,16 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     }
 
     @Override
-    public void confirmDeal(String userId,String tradeId,String msgId) {
+    public void confirmDeal(Message message) {
         User user= UserIntermediate.instance.getUser(context);
         if (user==null || user.getId()==null){
             return;
         }
-       model.executeConfirmDealReq(this,user.getId(),userId,tradeId,msgId);
+        model.executeConfirmDealReq(this,message);
+        message.setKind(2);
+        if (adapter!=null){
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -48,7 +53,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
             return;
         }
 
-        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Message>(context,
+         adapter=new RecyclerCommonAdapter<Message>(context,
                 result.getData().getMsgs(), R.layout.message_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
@@ -57,8 +62,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                     viewHolder.setText(R.id.message_kind_title,"卖家已确认，点击发送短信");
                     viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
                 }else if (item.getKind() ==1){
-                    viewHolder.setConfirmDialogListener(R.id.message_item,view,
-                            item.getUserId(),item.getTradeId(),item.getId());
+                    viewHolder.setConfirmDialogListener(R.id.message_item,view,item);
                 }else {
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_brown_300));
                     viewHolder.setText(R.id.message_kind_title,"已完成交易");

@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
@@ -52,14 +53,14 @@ public class MessageFragment extends BaseFragment implements MessageView {
     }
 
     @Override
-    public void whenShowConfirmDialog(String userId, String tradeId,String msgId) {
+    public void whenShowConfirmDialog(Message item) {
         new MaterialDialog.Builder(getActivity())
                     .title(R.string.message_dialog_title)
                     .content(R.string.message_dialog_content)
                     .positiveText(R.string.message_dialog_agree)
                     .negativeText(R.string.message_dialog_disagree)
                     .onPositive((MaterialDialog dialog,DialogAction which) ->{
-                        presenter.confirmDeal(userId,tradeId,msgId);
+                        presenter.confirmDeal(item);
                     })
                     .show();
     }

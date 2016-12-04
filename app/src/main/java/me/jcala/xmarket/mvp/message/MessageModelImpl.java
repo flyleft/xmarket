@@ -4,6 +4,7 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.mock.MessageMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
@@ -23,8 +24,7 @@ public class MessageModelImpl implements MessageModel{
     }
 
     @Override
-    public void executeConfirmDealReq(final onMessageListener listener,final String myId,
-                                      final String userId,final String tradeId,final String id) {
+    public void executeConfirmDealReq(final onMessageListener listener,final Message item) {
         if (AppConf.useMock){
             listener.onComplete(new MessageMock().gainMsg());
             return;
@@ -33,7 +33,7 @@ public class MessageModelImpl implements MessageModel{
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .confirmDeal(myId,userId,tradeId,id)
+                .confirmDeal(item.getBelongId(),item.getUserId(),item.getTradeId(),item.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<MsgDto>>() {
