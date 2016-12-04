@@ -50,12 +50,12 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     public void whenLoadDataSuc(RecyclerCommonAdapter<?> adapter) {
         recyclerView.setAdapter(adapter);
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
     }
+
 
     @OnClick(R.id.school_deal_plus)
      void jumpTradeAddActivity(){

@@ -13,4 +13,10 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         this.view = view;
         this.model=new MessageModelImpl();
     }
+
+    @Override
+    public void gainMessages() {
+
+    }
+
 }
