@@ -27,6 +27,7 @@ public class TeamFragment extends BaseFragment implements TeamView {
     private TeamPresenter presenter;
     @BindView(R.id.school_deal_plus)
     protected FloatingActionButton fab;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.team_fragment;
