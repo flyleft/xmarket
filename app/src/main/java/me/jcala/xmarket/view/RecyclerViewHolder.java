@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.mvp.message.MessageView;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -101,10 +102,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RecyclerViewHolder setConfirmLisener(int viewId){
+    public RecyclerViewHolder setConfirmDialogListener(int viewId, MessageView view, String userId, String tradeId){
         LinearLayout layout=getView(viewId);
         layout.setOnClickListener((View v)->{
-
+            view.whenShowConfirmDialog(userId,tradeId);
         });
         return this;
     }

@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -46,4 +48,14 @@ public class MessageFragment extends BaseFragment implements MessageView {
         unbinder.unbind();
     }
 
+    @Override
+    public void whenShowConfirmDialog(String userId, String tradeId) {
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.message_dialog_title)
+                    .content(R.string.message_dialog_content)
+                    .positiveText(R.string.message_dialog_agree)
+                    .negativeText(R.string.message_dialog_disagree)
+                    .show();
+        presenter.confirmDeal(userId,tradeId);
+    }
 }

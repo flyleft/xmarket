@@ -57,5 +57,9 @@
     <!--消息页面-->
     <string name="message_status_sell">收到购买请求，点击确认交易</string>
     <string name="message_status_buy">卖家已确认，点击发送短信</string>
+    <string name="message_dialog_title">确认交易？</string>
+    <string name="message_dialog_content">确认之后，对方将看到你的手机号</string>
+    <string name="message_dialog_agree">确认</string>
+    <string name="message_dialog_disagree">返回</string>
 
 </resources>

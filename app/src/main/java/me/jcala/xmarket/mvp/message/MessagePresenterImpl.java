@@ -3,8 +3,6 @@ package me.jcala.xmarket.mvp.message;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.view.View;
-import android.widget.Toast;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
@@ -32,6 +30,11 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     }
 
     @Override
+    public void confirmDeal(String userId,String tradeId) {
+
+    }
+
+    @Override
     public void onComplete(Result<MsgDto> result) {
         if (!resultHandler(result)){
             return;
@@ -52,6 +55,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
                 viewHolder.setText(R.id.message_user_phone,item.getUserPhone());
                 viewHolder.setText(R.id.message_user_name,item.getUsername());
+                viewHolder.setConfirmDialogListener(R.id.message_item,view,item.getUserId(),item.getTradeId());
             }
         };
         view.whenNeedUpdateMsgList(adapter);
