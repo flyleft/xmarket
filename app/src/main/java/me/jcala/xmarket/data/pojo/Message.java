@@ -3,6 +3,7 @@ package me.jcala.xmarket.data.pojo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 封装消息的javabean
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class Message {
     private String id;
     private String belongId;//消息所属者的id

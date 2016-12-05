@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.orhanobut.logger.Logger;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Message;
@@ -103,10 +104,12 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RecyclerViewHolder setConfirmDialogListener(int viewId, MessageView view, Message item){
+    public RecyclerViewHolder setConfirmDialogListener(int viewId, MessageView view, final Message item){
         LinearLayout layout=getView(viewId);
         layout.setOnClickListener((View v)->{
-            view.whenShowConfirmDialog(item);
+            if (item.getKind()==1){
+                view.whenShowConfirmDialog(item);
+            }
         });
         return this;
     }

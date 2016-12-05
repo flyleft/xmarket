@@ -3,6 +3,10 @@ package me.jcala.xmarket.mvp.message;
 import android.content.Context;
 import android.net.Uri;
 
+import com.orhanobut.logger.Logger;
+
+import java.util.List;
+
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
@@ -19,6 +23,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     private MessageView view;
     private int allMsgNum=96;
     private RecyclerCommonAdapter<?> adapter;
+    private List<Message> messages;
 
     public MessagePresenterImpl(Context context, MessageView view) {
         this.context = context;
@@ -37,11 +42,13 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         if (user==null || user.getId()==null){
             return;
         }
-        model.executeConfirmDealReq(this,message);
         message.setKind(2);
+
+        //model.executeConfirmDealReq(this,message);
         if (adapter!=null){
             adapter.notifyDataSetChanged();
         }
+
     }
 
     @Override
@@ -52,7 +59,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         if (result.getData().getAllNum() <= allMsgNum){
             return;
         }
-
+        messages=result.getData().getMsgs();
          adapter=new RecyclerCommonAdapter<Message>(context,
                 result.getData().getMsgs(), R.layout.message_item) {
             @Override
