@@ -72,26 +72,26 @@ public class TradeAddPresenterImpl
     }
 
     @Override
-    public void releaseTrade(LinkedList<String> picUrls, EditText title,
+    public void releaseTrade(LinkedList<String> picUploadUrls, EditText title,
                              EditText price, EditText desc, TextView tag) {
-        Trade trade=checkForm(picUrls,title,price,desc,tag);
+        Trade trade=checkForm(picUploadUrls,title,price,desc,tag);
 
         if (!trade.isReleaseCheck()){
             return;
         }
-
-        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUrls);
+        // TODO: 16-12-05  未完成图片上传
+        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUploadUrls);
         List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
         String tradeJsonStr=new Gson().toJson(trade);
         RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
-        model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),pics,this);
+        //model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),pics,this);
         view.whenStartProgress();
     }
 
-    private Trade checkForm(List<String> picUrls,EditText title,EditText price,EditText desc,TextView tag){
+    private Trade checkForm(List<String> picUploadUrls,EditText title,EditText price,EditText desc,TextView tag){
         Trade trade=new Trade();
         trade.setReleaseCheck(false);
-        if (picUrls.size() < 2){
+        if (picUploadUrls.size() < 1){
             view.whenFail("请选择至少一张配图");
             return trade;
         }

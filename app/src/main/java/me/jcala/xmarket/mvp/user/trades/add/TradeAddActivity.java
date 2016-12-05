@@ -49,6 +49,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     TradeAddPresenter presenter;
     private List<String> tags;
     private LinkedList<String> picUrls=new LinkedList<>();
+    private LinkedList<String> picUploadUrls=new LinkedList<>();
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_activity);
@@ -154,6 +155,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                             for (MediaBean media:imageMultipleResultEvent.getResult()){
 
                                 picUrls.add("file://"+media.getOriginalPath());
+                                picUploadUrls.add(media.getOriginalPath());
                             }
                             picUrls.addLast("res://drawable/"+R.drawable.trade_add_pic_plus);
                             adapter.notifyDataSetChanged();
@@ -166,7 +168,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
 
     @OnClick(R.id.trade_add_submit)
     public void whenClickSubmit() {
-        presenter.releaseTrade(picUrls,tradeTitle,tradePrice,tradeDesc,selectTag);
+        presenter.releaseTrade(picUploadUrls,tradeTitle,tradePrice,tradeDesc,selectTag);
     }
 
     @OnClick(R.id.trade_add_cancel)
