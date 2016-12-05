@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class TradeAddPresenterImpl
-        implements TradeAddPresenter,TradeAddModel.onTradeAddListener{
+        implements TradeAddPresenter,TradeAddModel.onTradeAddListener,FileUtils.CompressListener{
     private TradeAddModel model;
     private TradeAddView view;
     private Context context;
@@ -79,16 +80,25 @@ public class TradeAddPresenterImpl
         if (!trade.isReleaseCheck()){
             return;
         }
-        // TODO: 16-12-05  未完成图片上传
-        List<File> files= FileUtils.compressMultiFilesExceptLast(context,picUploadUrls);
-        List<MultipartBody.Part> pics= RetrofitUtils.filesToMultipartBodyParts(files);
-        String tradeJsonStr=new Gson().toJson(trade);
-        RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
-        //model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),pics,this);
         view.whenStartProgress();
+        // TODO: 16-12-05  未完成图片上传
+        FileUtils.compressMultiFilesExceptLast(context,this,picUploadUrls,trade);
     }
 
-    private Trade checkForm(List<String> picUploadUrls,EditText title,EditText price,EditText desc,TextView tag){
+    @Override
+    public void compressMultiSuccess(List<File> files,Trade trade) {
+        List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(files);
+        String tradeJsonStr=new Gson().toJson(trade);
+        RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
+        model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),parts,this);
+    }
+
+    @Override
+    public void compressMultiFail() {
+
+    }
+
+    private Trade checkForm(List<String> picUploadUrls, EditText title, EditText price, EditText desc, TextView tag){
         Trade trade=new Trade();
         trade.setReleaseCheck(false);
         if (picUploadUrls.size() < 1){
