@@ -14,6 +14,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
+import com.orhanobut.logger.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -22,14 +23,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
-import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
-import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
+import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
-import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.view.ViewHolder;
 
 public class TradeAddActivity extends BaseActivity implements TradeAddView{
@@ -142,18 +142,20 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
              return;
          }
         try {
-            RxGalleryFinal
+           /* RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
                     .multiple()
                     .maxSize(8)
+                    .cropropCompressionQuality(40)
+                    .cropWithAspectRatio(1,1)
                     .imageLoader(ImageLoaderType.FRESCO)
                     .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
                         @Override
                         protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
                             picUrls.removeLast();
                             for (MediaBean media:imageMultipleResultEvent.getResult()){
-
+                                Logger.e(media.toString());
                                 picUrls.add("file://"+media.getOriginalPath());
                                 picUploadUrls.add(media.getOriginalPath());
                             }
@@ -161,7 +163,24 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                             adapter.notifyDataSetChanged();
                         }
                     })
+                    .openGallery();*/
+            RxGalleryFinal
+                    .with(TradeAddActivity.this)
+                    .image()
+                    .radio()
+                    .crop()
+                    .cropropCompressionQuality(40)
+                    .cropWithAspectRatio(1,1)
+                    .imageLoader(ImageLoaderType.FRESCO)
+                    .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
+                        @Override
+                        protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
+                             String path=imageRadioResultEvent.getResult().getCropPath();
+                            Logger.e(path);
+                        }
+                    })
                     .openGallery();
+
         } catch (Exception e) {
         }
     }

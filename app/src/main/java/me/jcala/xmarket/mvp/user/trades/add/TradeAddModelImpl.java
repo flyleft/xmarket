@@ -71,7 +71,6 @@ public class TradeAddModelImpl implements TradeAddModel{
 
                     @Override
                     public void onError(Throwable e) {
-//                        result.setMsg("出错了:"+e.getLocalizedMessage());
                         listener.hasGoTagsResult(result);
                     }
 
