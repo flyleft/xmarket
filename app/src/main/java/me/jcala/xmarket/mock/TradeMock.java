@@ -26,6 +26,12 @@ public class TradeMock {
         return new Gson().fromJson(json,  new TypeToken<Result<List<TradeTag>>>() {}.getType());
     }
 
+    public Result<List<String>> tradeTagStrings(){
+        String json="{\"msg\":\"操作成功\",\"data\":[\"学习资料\",\"生活用品\",\"衣物鞋帽\",\"运动健身\"," +
+                "\"手机数码\",\"电脑办公\",\"电器\",\"数码配件\",\"租赁\",\"其他\"],\"code\":100}";
+        return new Gson().fromJson(json,  new TypeToken<Result<List<String>>>() {}.getType());
+    }
+
     public Result<List<Trade>> gainSchoolTrades(){
         String jsonStr="[\n" +
                 "  {\n" +
