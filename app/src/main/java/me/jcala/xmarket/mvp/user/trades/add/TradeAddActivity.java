@@ -176,7 +176,8 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                         @Override
                         protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
                              String path=imageRadioResultEvent.getResult().getCropPath();
-                            Logger.e(path);
+                             Logger.e(path);
+
                         }
                     })
                     .openGallery();
