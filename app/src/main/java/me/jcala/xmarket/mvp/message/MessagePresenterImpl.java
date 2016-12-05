@@ -3,8 +3,6 @@ package me.jcala.xmarket.mvp.message;
 import android.content.Context;
 import android.net.Uri;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.List;
 
 import me.jcala.xmarket.R;
@@ -72,7 +70,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                     viewHolder.setConfirmDialogListener(R.id.message_item,view,item);
                 }else {
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_brown_300));
-                    viewHolder.setText(R.id.message_kind_title,"已完成交易");
+                    viewHolder.setText(R.id.message_kind_title,"已确认，等待对方联系");
                 }
                 viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
