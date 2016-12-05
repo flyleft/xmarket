@@ -1,8 +1,5 @@
 package me.jcala.xmarket.mvp.user.trades.add;
 
-import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
-
 import java.util.List;
 
 import me.jcala.xmarket.AppConf;
@@ -23,9 +20,6 @@ public class TradeAddModelImpl implements TradeAddModel{
     @Override
     public void executeAddTradeReq(final RequestBody tradeJson, final String userId,
                                    final List<MultipartBody.Part> pics, final onTradeAddListener listener) {
-        if (AppConf.useMock){
-            return;
-        }
         @SuppressWarnings("unchecked")
         Result<String> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor

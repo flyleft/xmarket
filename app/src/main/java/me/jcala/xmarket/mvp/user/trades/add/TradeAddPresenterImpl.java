@@ -81,7 +81,7 @@ public class TradeAddPresenterImpl
             return;
         }
         view.whenStartProgress();
-        // TODO: 16-12-05  未完成图片上传
+
         FileUtils.compressMultiFilesExceptLast(context,this,picUploadUrls,trade);
     }
 
