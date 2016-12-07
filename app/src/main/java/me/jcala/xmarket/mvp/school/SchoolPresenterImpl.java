@@ -10,7 +10,7 @@ import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.trade.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -42,7 +42,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         };
         RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
             Trade item=result.getData().get(position);
-            Intent intent=new Intent(context,MainActivity.class);
+            Intent intent=new Intent(context,TradeDetailActivity.class);
             intent.putExtra("sortId",item.getId());
             context.startActivity(intent);
         };
