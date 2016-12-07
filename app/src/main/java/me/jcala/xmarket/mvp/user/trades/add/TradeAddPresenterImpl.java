@@ -78,8 +78,8 @@ public class TradeAddPresenterImpl
         if (!trade.isReleaseCheck()){
             return;
         }
-        trade.setStatus(0);
-        trade.setCreateTime(new Date().toString());
+        trade.setStatus(0);//状态,0代表商品待售
+        trade.setCreateTime(new Date().toString());//设置商品发布时间
         view.whenStartProgress();
         List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(picUploadUrls);
         String tradeJsonStr=new Gson().toJson(trade);
