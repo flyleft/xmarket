@@ -23,8 +23,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
+import cn.finalteam.rxgalleryfinal.bean.ImageCropBean;
+import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
+import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
@@ -142,28 +145,6 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
              return;
          }
         try {
-           /* RxGalleryFinal
-                    .with(TradeAddActivity.this)
-                    .image()
-                    .multiple()
-                    .maxSize(8)
-                    .cropropCompressionQuality(40)
-                    .cropWithAspectRatio(1,1)
-                    .imageLoader(ImageLoaderType.FRESCO)
-                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
-                        @Override
-                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
-                            picUrls.removeLast();
-                            for (MediaBean media:imageMultipleResultEvent.getResult()){
-                                Logger.e(media.toString());
-                                picUrls.add("file://"+media.getOriginalPath());
-                                picUploadUrls.add(media.getOriginalPath());
-                            }
-                            picUrls.addLast("res://drawable/"+R.drawable.trade_add_pic_plus);
-                            adapter.notifyDataSetChanged();
-                        }
-                    })
-                    .openGallery();*/
             RxGalleryFinal
                     .with(TradeAddActivity.this)
                     .image()
@@ -175,14 +156,15 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                     .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
                         @Override
                         protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
-                             String path=imageRadioResultEvent.getResult().getCropPath();
-                             Logger.e(path);
-
+                            String path=imageRadioResultEvent.getResult().getCropPath();
+                             picUrls.addFirst("file://"+path);
+                             picUploadUrls.add(path);
+                             adapter.notifyDataSetChanged();
                         }
                     })
                     .openGallery();
-
         } catch (Exception e) {
+            Logger.w("图片选择器出现异常:"+e.getLocalizedMessage());
         }
     }
 
@@ -208,3 +190,27 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         progress.dismiss();
     }
 }
+ /*   RxGalleryFinal
+                    .with(TradeAddActivity.this)
+                    .image()
+                    .multiple()
+                    .maxSize(8)
+                    .cropropCompressionQuality(40)
+                    .cropWithAspectRatio(1,1)
+                    .imageLoader(ImageLoaderType.FRESCO)
+                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
+                        @Override
+                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
+                            picUrls.removeLast();
+                            for (MediaBean media:imageMultipleResultEvent.getResult()){
+
+                                picUrls.add("file://"+media.getOriginalPath());
+
+                                picUploadUrls.add(media.getOriginalPath());
+                                Logger.e(picUrls.toString());
+                            }
+                            picUrls.addLast("res://drawable/"+R.drawable.trade_add_pic_plus);
+                            adapter.notifyDataSetChanged();
+                        }
+                    })
+                    .openGallery();*/
