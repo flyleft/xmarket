@@ -39,6 +39,7 @@ dependencies {
     //-----------------图片选择器----------------------------
     compile 'cn.finalteam.rxgalleryfinal:library:0.0.3'
     //-----------------图片轮播------------------------------
+    compile 'com.jude:rollviewpager:1.4.5'
     //------------------日志工具-----------------------------
     compile 'com.orhanobut:logger:1.15'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'//retrofit日志打印
