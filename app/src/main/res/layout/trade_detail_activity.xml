@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.jude.rollviewpager.RollPagerView
         android:id="@+id/trade_detail_banner"
@@ -13,5 +13,31 @@
         android:layout_gravity="center"
         app:rollviewpager_play_delay="3000"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundedCornerRadius="56dp"
+        fresco:roundBottomLeft="true"
+        fresco:roundBottomRight="true"
+        fresco:placeholderImage="@mipmap/person"
+        android:id="@+id/trade_detail_author_img"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/trade_detail_author_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/font_size_normal"
+        android:textColor="@color/black"
+        />
+</LinearLayout>
 
 </LinearLayout>
