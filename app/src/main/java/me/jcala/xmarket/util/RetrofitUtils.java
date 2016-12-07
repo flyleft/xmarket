@@ -14,9 +14,13 @@ public class RetrofitUtils {
     /**
      * 根据多个文件生成retrofit多文件上传所需的MultipartBody.Part列表
      */
-    public static List<MultipartBody.Part> filesToMultipartBodyParts(List<File> files) {
+    public static List<MultipartBody.Part> filesToMultipartBodyParts(List<String> files) {
         List<MultipartBody.Part> parts = new ArrayList<>(files.size());
-        for (File file : files) {
+        for (String fileName : files) {
+            File file=new File(fileName);
+            if (!file.exists()){
+                continue;
+            }
             // TODO: 16-11-30  没有判断file的类型
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
             MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
