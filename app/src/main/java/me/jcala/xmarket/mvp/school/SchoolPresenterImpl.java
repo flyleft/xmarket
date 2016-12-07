@@ -43,7 +43,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
             Trade item=result.getData().get(position);
             Intent intent=new Intent(context,TradeDetailActivity.class);
-            intent.putExtra("sortId",item.getId());
+            intent.putExtra("tradeId",item.getId());
             context.startActivity(intent);
         };
         view.whenLoadDataSuc(adapter);

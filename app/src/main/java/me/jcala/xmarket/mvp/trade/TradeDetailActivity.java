@@ -1,5 +1,6 @@
 package me.jcala.xmarket.mvp.trade;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,10 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @SuppressWarnings("unchecked")
     private void initData(){
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        String tradeId=bundle.getString("tradeId");
+        Logger.e(tradeId);
         List<String> imgList=new ArrayList<>();
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
         imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
