@@ -44,7 +44,9 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     private void initData(){
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
+
         String tradeId=bundle.getString("tradeId");
+
         List<String> imgList=new ArrayList<>();
         avatarName.setText("jcala");
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
