@@ -36,8 +36,10 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     @SuppressWarnings("unchecked")
     private void initData(){
         List<String> imgList=new ArrayList<>();
-        imgList.add("https://jcalaz.github.io/img/sort_team_lunhua.jpg");
-        imgList.add("https://jcalaz.github.io/img/sort_team_students.jpg");
+        imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
+        imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
+        imgList.add("https://jcalaz.github.io/img/sort_computer.jpg");
+        imgList.add("https://jcalaz.github.io/img/sort_book.jpg");
         banner.setPlayDelay(2000);
         //设置透明度
         banner.setAnimationDurtion(500);
@@ -67,6 +69,8 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         @Override
         public View getView(ViewGroup container, int position) {
             SimpleDraweeView view=new SimpleDraweeView(container.getContext());
+            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             view.setImageURI(imgList.get(position));
             return view;
         }
