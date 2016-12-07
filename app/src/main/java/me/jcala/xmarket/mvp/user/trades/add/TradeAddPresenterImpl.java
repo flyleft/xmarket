@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -77,6 +78,8 @@ public class TradeAddPresenterImpl
         if (!trade.isReleaseCheck()){
             return;
         }
+        trade.setStatus(0);
+        trade.setCreateTime(new Date().toString());
         view.whenStartProgress();
         List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(picUploadUrls);
         String tradeJsonStr=new Gson().toJson(trade);

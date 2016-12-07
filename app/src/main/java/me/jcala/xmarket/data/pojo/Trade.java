@@ -19,8 +19,6 @@ public class Trade {
     private String createTime;//商品创建时间
     private String donateTime;//商品捐赠时间
     private int status;//商品状态。0:在售，1:售出,2:捐赠
-    private List<User> waitTrades;//商品待交易者名单
-    private User trade;//商品交易者
     private boolean releaseCheck;//为了在发布时方便检查数据完整性，不存储在数据库中
 
 }
