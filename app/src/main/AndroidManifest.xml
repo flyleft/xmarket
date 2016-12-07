@@ -65,6 +65,9 @@
             android:name=".mvp.user.team.UserTeamActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:name=".mvp.trade.TradeDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:screenOrientation="portrait"
             android:exported="true"
