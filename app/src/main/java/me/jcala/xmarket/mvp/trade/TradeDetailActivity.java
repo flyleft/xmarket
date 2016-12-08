@@ -1,7 +1,6 @@
 package me.jcala.xmarket.mvp.trade;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
-import me.jcala.xmarket.util.FastBlurUtil;
 
 public class TradeDetailActivity extends BaseActivity implements TradeDetailView{
 
@@ -60,15 +58,6 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         banner.setAdapter(new TestNormalAdapter(imgList));
         banner.setHintView(new ColorPointHintView(this, Color.BLACK,Color.WHITE));
         avatarImg.setImageURI(Uri.parse("https://jcalaz.github.io/img/sort_rent.jpg"));
-        int scaleRatio = 10;
-        int blurRadius = 8;
-//        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originBitmap,
-//                originBitmap.getWidth() / scaleRatio,
-//                originBitmap.getHeight() / scaleRatio,
-//                false);
-//        Bitmap blurBitmap = FastBlurUtil.doBlur(scaledBitmap, blurRadius, true);
-//        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//        imageView.setImageBitmap(blurBitmap);
     }
 
     @Override
