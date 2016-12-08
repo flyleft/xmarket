@@ -27,11 +27,11 @@
     <dimen name="list_divider_height">6dp</dimen>
     <dimen name="list_divider_margin">30dp</dimen>
     <dimen name="deal_list_padding">16dp</dimen>
-
     <dimen name="line_divider_height">1dp</dimen>
 
     <dimen name="trade_add_card_elevation">4dip</dimen>
     <dimen name="trade_add_pic_width">70dp</dimen>
     <dimen name="trade_add_pic_height">70dp</dimen>
 
+    <dimen name="tool_bar_height">55dp</dimen>
 </resources>

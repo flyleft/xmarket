@@ -62,4 +62,7 @@
     <string name="message_dialog_agree">确认</string>
     <string name="message_dialog_disagree">返回</string>
 
+    <!--商品页面-->
+    <string name="trade_detail_button">我要购买</string>
+
 </resources>

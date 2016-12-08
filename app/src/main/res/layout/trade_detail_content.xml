@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
-    android:layout_marginTop="55dp"
+    android:layout_marginTop="@dimen/tool_bar_height"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -30,22 +30,22 @@
                 android:layout_height="40dp"
                 android:src="@mipmap/ic_school"/>
             <TextView
+                android:id="@+id/trade_detail_school"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical|start"
                 android:textSize="@dimen/font_size_small"
-                android:text="西南交通大学(犀浦校区)"
                 android:textColor="@color/light_grey_font"/>
             <TextView
+                android:id="@+id/trade_detail_time"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|end"
                 android:paddingEnd="10dp"
                 android:textSize="@dimen/font_size_small"
-                android:textColor="@color/dark_grey_font"
-                android:text="8 minutes ago"/>
+                android:textColor="@color/dark_grey_font"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -89,12 +89,11 @@
                 />
 
             <TextView
-                android:id="@+id/trade_detail_author_price"
+                android:id="@+id/trade_detail_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_gravity="center_vertical|start"
                 android:gravity="center_vertical|start"
-                android:text="  去年京东买的mac pro，自用六个月，因为最近花钱较多，低价转出"
                 android:maxLines="4"
                 android:textSize="@dimen/font_size_small"
                 android:textColor="@color/dark_grey_font"
@@ -109,7 +108,7 @@
          android:layout_marginStart="20dp"
          android:layout_marginEnd="20dp"
          android:layout_height="50dp"
-         android:text="我要购买"
+         android:text="@string/trade_detail_button"
          android:gravity="center"
          android:textColor="@color/white"
          android:textSize="@dimen/font_size_xlarge"
