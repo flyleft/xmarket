@@ -28,12 +28,12 @@
                 android:layout_width="40dp"
                 android:scaleType="center"
                 android:layout_height="40dp"
-                android:src="@mipmap/ic_color_school"/>
+                android:src="@mipmap/ic_school"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|start"
                 android:textSize="@dimen/font_size_small"
                 android:text="西南交通大学(犀浦校区)"
                 android:textColor="@color/light_grey_font"/>
