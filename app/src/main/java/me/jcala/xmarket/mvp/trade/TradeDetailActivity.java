@@ -37,6 +37,8 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView avatarName;
     @BindView(R.id.trade_detail_toolbar_title)
     TextView tradeName;
+    @BindView(R.id.trade_detail_toolbar_price)
+    TextView tradePrice;
 
 
     @Override
@@ -56,6 +58,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         List<String> imgList=new ArrayList<>();
         tradeName.setText("Mac 电脑");
         avatarName.setText("jcala");
+        tradePrice.setText("￥ "+"55");
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
         imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
         imgList.add("https://jcalaz.github.io/img/sort_computer.jpg");
