@@ -54,6 +54,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         String tradeId=bundle.getString("tradeId");
 
         List<String> imgList=new ArrayList<>();
+        tradeName.setText("Mac 电脑");
         avatarName.setText("jcala");
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
         imgList.add("https://jcalaz.github.io/img/sort_body.jpg");

@@ -7,12 +7,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jude.rollviewpager.RollPagerView
-        android:id="@+id/trade_detail_banner"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_gravity="center"
-        app:rollviewpager_play_delay="3000"/>
+        android:orientation="vertical"
+        android:layout_height="320dp">
+        <com.jude.rollviewpager.RollPagerView
+            android:id="@+id/trade_detail_banner"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:gravity="fill_vertical"
+            android:layout_gravity="center"
+            app:rollviewpager_play_delay="3000"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/light_grey"
+            android:layout_height="40dp">
+            <ImageView
+                android:layout_width="40dp"
+                android:scaleType="center"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_color_school"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/font_size_small"
+                android:text="西南交通大学(犀浦校区)"
+                android:textColor="@color/light_grey_font"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="10dp"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/dark_grey_font"
+                android:text="8 minutes ago"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
