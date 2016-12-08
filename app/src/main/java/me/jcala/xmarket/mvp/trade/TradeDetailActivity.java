@@ -39,6 +39,12 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView tradeName;
     @BindView(R.id.trade_detail_toolbar_price)
     TextView tradePrice;
+    @BindView(R.id.trade_detail_desc)
+    TextView tradeDesc;
+    @BindView(R.id.trade_detail_time)
+    TextView time;
+    @BindView(R.id.trade_detail_school)
+    TextView school;
 
 
     @Override
@@ -59,6 +65,9 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         tradeName.setText("Mac 电脑");
         avatarName.setText("jcala");
         tradePrice.setText("￥ "+"55");
+        time.setText("8 minute ago");
+        school.setText("西南交通大学犀浦校区");
+        tradeDesc.setText("    2014年在京东购买，还在保修期，I7CPU，独立显卡，8成新");
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
         imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
         imgList.add("https://jcalaz.github.io/img/sort_computer.jpg");
