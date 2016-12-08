@@ -52,50 +52,68 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:orientation="horizontal"
-        android:layout_height="40dp">
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:layout_height="80dp">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/trade_detail_author_img"
-            fresco:roundedCornerRadius="40dp"
-            fresco:roundBottomLeft="true"
-            fresco:roundBottomRight="true"
-            fresco:placeholderImage="@mipmap/person"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_width="40dp"
-            android:layout_height="40dp"/>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_gravity="center"
+                android:id="@+id/trade_detail_author_img"
+                fresco:roundedCornerRadius="80dp"
+                fresco:roundBottomLeft="true"
+                fresco:roundBottomRight="true"
+                fresco:placeholderImage="@mipmap/person"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/trade_detail_author_name"
-                android:paddingTop="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="start"
+                android:gravity="center_vertical"
+                android:layout_height="20dp"
+                android:textStyle="bold"
                 android:textSize="@dimen/font_size_normal"
                 android:textColor="@color/black"
                 />
 
             <TextView
                 android:id="@+id/trade_detail_author_price"
-                android:paddingTop="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:paddingRight="10dp"
-                android:textSize="@dimen/font_size_normal"
-                android:text="￥ 50"
-                android:textColor="@color/md_red_400"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical|start"
+                android:gravity="center_vertical|start"
+                android:text="  去年京东买的mac pro，自用六个月，因为最近花钱较多，低价转出"
+                android:maxLines="4"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/dark_grey_font"
                 />
         </LinearLayout>
-
     </LinearLayout>
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_marginStart="20dp"
+         android:layout_marginEnd="20dp"
+         android:layout_height="50dp"
+         android:text="我要购买"
+         android:gravity="center"
+         android:textColor="@color/white"
+         android:textSize="@dimen/font_size_xlarge"
+         android:background="@color/trade_detail_button"/>
+ </LinearLayout>
 
 </LinearLayout>

@@ -29,5 +29,6 @@
     <color name="light_grey">#e6e6e6</color>
     <color name="light_grey_font">#b2b2b2</color>
     <color name="dark_grey_font">#525252</color>
+    <color name="trade_detail_button">#ff7878</color>
 
 </resources>
