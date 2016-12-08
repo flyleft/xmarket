@@ -19,8 +19,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
+import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.view.BannerAdapter;
 
 public class TradeDetailActivity extends BaseActivity implements TradeDetailView{
 
@@ -32,6 +35,9 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     SimpleDraweeView avatarImg;
     @BindView(R.id.trade_detail_author_name)
     TextView avatarName;
+    @BindView(R.id.trade_detail_toolbar_title)
+    TextView tradeName;
+
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -55,7 +61,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         imgList.add("https://jcalaz.github.io/img/sort_book.jpg");
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
-        banner.setAdapter(new TestNormalAdapter(imgList));
+        banner.setAdapter(new BannerAdapter(imgList));
         banner.setHintView(new ColorPointHintView(this, Color.BLACK,Color.WHITE));
         avatarImg.setImageURI(Uri.parse("https://jcalaz.github.io/img/sort_rent.jpg"));
     }
@@ -69,26 +75,12 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     public void whenFail(String errorMsg) {
 
     }
-    private class TestNormalAdapter extends StaticPagerAdapter {
 
-        private List<String> imgList;
 
-        public TestNormalAdapter(List<String> imgList) {
-            this.imgList = imgList;
-        }
-
-        @Override
-        public View getView(ViewGroup container, int position) {
-            SimpleDraweeView view=new SimpleDraweeView(container.getContext());
-            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            view.setImageURI(imgList.get(position));
-            return view;
-        }
-
-        @Override
-        public int getCount() {
-            return imgList.size();
-        }
+    @OnClick(R.id.trade_detail_toolbar_back)
+    void clickBack(){
+        Intent intent=new Intent(TradeDetailActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
