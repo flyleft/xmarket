@@ -121,10 +121,15 @@ public class TradeAddPresenterImpl
             return trade;
         }
         trade.setTagName(tagData);
-        User author= UserIntermediate.instance.getUser(context);
-        if (author==null || author.getId()==null){
+        User authorOld= UserIntermediate.instance.getUser(context);
+        if (authorOld==null || authorOld.getId()==null){
             return trade;
         }
+        User author=new User();
+        author.setId(authorOld.getId());
+        author.setUsername(authorOld.getUsername());
+        author.setAvatarUrl(authorOld.getAvatarUrl());
+        trade.setSchoolName(authorOld.getSchool());
         trade.setAuthor(author);
         trade.setReleaseCheck(true);
         return trade;
