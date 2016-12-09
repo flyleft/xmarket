@@ -62,7 +62,7 @@
             android:layout_height="match_parent">
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_gravity="center"
-                android:id="@+id/trade_detail_author_img"
+                android:id="@+id/trade_detail_author_img_url"
                 fresco:roundedCornerRadius="80dp"
                 fresco:roundBottomLeft="true"
                 fresco:roundBottomRight="true"
@@ -108,7 +108,9 @@
          android:layout_marginStart="20dp"
          android:layout_marginEnd="20dp"
          android:layout_height="50dp"
+         android:layout_marginBottom="10dp"
          android:text="@string/trade_detail_button"
+         android:layout_gravity="center_horizontal|bottom"
          android:gravity="center"
          android:textColor="@color/white"
          android:textSize="@dimen/font_size_xlarge"

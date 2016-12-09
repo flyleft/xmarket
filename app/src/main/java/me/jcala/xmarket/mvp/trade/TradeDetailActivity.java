@@ -31,7 +31,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     @BindView(R.id.trade_detail_banner)
     protected RollPagerView banner;
 
-    @BindView(R.id.trade_detail_author_img)
+    @BindView(R.id.trade_detail_author_img_url)
     SimpleDraweeView avatarImg;
     @BindView(R.id.trade_detail_author_name)
     TextView avatarName;
