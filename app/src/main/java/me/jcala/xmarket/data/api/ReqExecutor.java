@@ -78,7 +78,7 @@ public class ReqExecutor {
         }
         return schoolReq;
     }
-    public TradeReq tradeTagReq(){
+    public TradeReq tradeReq(){
         if (tradeTagReq==null){
             tradeTagReq=getGsonRetrofit().create(TradeReq.class);
         }

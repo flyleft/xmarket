@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.view.BannerAdapter;
@@ -61,17 +62,21 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         Bundle bundle=intent.getExtras();
         String tradeId=bundle.getString("tradeId");
         presenter.loadData(tradeId);
-        List<String> imgList=new ArrayList<>();
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
-        banner.setAdapter(new BannerAdapter(imgList));
         banner.setHintView(new ColorPointHintView(this, Color.BLACK,Color.WHITE));
-        //avatarImg.setImageURI(Uri.parse("https://jcalaz.github.io/img/sort_rent.jpg"));
     }
 
     @Override
-    public void whenSuccess() {
-
+    public void whenSuccess(Trade trade) {
+        banner.setAdapter(new BannerAdapter(trade.getImgUrls()));
+        school.setText(trade.getSchoolName());
+        time.setText(trade.getCreateTime());
+        avatarName.setText(trade.getAuthor().getUsername());
+        avatarImg.setImageURI(trade.getAuthor().getAvatarUrl());
+        tradeName.setText(trade.getTitle());
+        tradePrice.setText("￥ "+trade.getPrice());
+        tradeDesc.setText("     "+trade.getDesc());
     }
 
     @Override

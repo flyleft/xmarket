@@ -5,7 +5,7 @@ import android.content.Context;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 
-public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetailModel.onDeailLisener {
+public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetailModel.onDetailListener {
     private Context context;
     private TradeDetailView view;
     private TradeDetailModel model;
@@ -18,12 +18,25 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void onComplete(Result<Trade> result) {
+        if (result==null){
+            return;
+        }
 
+        switch (result.getCode()) {
+            case 100:
+
+                break;
+            case 99:
+                view.whenFail(result.getMsg());
+                break;
+            default:
+        }
     }
+
 
     @Override
     public void loadData(String tradeId) {
-        model.executeDetailReq(tradeId);
+        model.executeDetailReq(this,tradeId);
     }
 
 }

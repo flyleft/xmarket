@@ -5,12 +5,12 @@ import me.jcala.xmarket.data.pojo.Trade;
 
 public interface TradeDetailModel {
 
-    interface onDeailLisener{
+    interface onDetailListener{
 
         void onComplete(Result<Trade> result);
 
     }
 
-    void executeDetailReq(String tradeId);
+    void executeDetailReq(onDetailListener listener,String tradeId);
 
 }

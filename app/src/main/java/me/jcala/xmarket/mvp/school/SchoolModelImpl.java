@@ -47,10 +47,6 @@ class SchoolModelImpl implements SchoolModel{
                         result.setData(listResult.getData());
                     }
                 });
-
-
-
-
     }
 
 }

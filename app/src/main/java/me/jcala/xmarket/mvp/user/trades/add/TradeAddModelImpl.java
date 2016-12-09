@@ -59,7 +59,7 @@ public class TradeAddModelImpl implements TradeAddModel{
 
         ReqExecutor
                 .INSTANCE()
-                .tradeTagReq()
+                .tradeReq()
                 .tagNames(TradeReq.GET_NAME)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
