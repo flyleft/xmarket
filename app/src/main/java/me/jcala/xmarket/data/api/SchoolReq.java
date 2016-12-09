@@ -14,7 +14,7 @@ public interface SchoolReq {
     /**
      * 获取所有学校名称列表
      */
-    @GET(ApiConf.get_school_list)
+    @GET(ApiConf.get_schools)
     Observable<Result<List<String>>> getSchoolNames();
 
     /**

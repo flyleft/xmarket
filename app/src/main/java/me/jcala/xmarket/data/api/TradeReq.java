@@ -22,7 +22,7 @@ public interface TradeReq {
      *
      * kind设置为1
      */
-    @GET(ApiConf.get_trade_tag)
+    @GET(ApiConf.get_tags)
     Observable<Result<List<TradeTag>>> tradeTags(@Query("kind") int kind);
 
 
@@ -31,13 +31,13 @@ public interface TradeReq {
      *
      * kind设置为2
      */
-    @GET(ApiConf.get_trade_tag)
+    @GET(ApiConf.get_tags)
     Observable<Result<List<String>>> tagNames(@Query("kind") int kind);
 
     /**
      * 根据商品Id获取商品详细信息
      */
-    @GET(ApiConf.get_trade_detail)
+    @GET(ApiConf.get_trade)
     Observable<Result<Trade>> tradeDetail(@Path("tradeId") String tradeId);
 
 }
