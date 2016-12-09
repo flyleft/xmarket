@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperToast;
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
@@ -82,12 +85,17 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @Override
     public void whenFail(String errorMsg) {
-
+        new SuperToast(TradeDetailActivity.this)
+                .setText(errorMsg)
+                .setDuration(Style.DURATION_LONG)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
+                .setAnimations(Style.ANIMATIONS_FLY)
+                .show();
     }
 
     @OnClick(R.id.trade_detail_submit)
     void clickSubmit(){
-
+        presenter.buyTrade(tradeId);
     }
 
     @OnClick(R.id.trade_detail_toolbar_back)
@@ -95,5 +103,10 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         Intent intent=new Intent(TradeDetailActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void whenBuySuccess() {
+
     }
 }

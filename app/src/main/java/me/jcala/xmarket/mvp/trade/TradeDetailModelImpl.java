@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.trade;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mock.TradeMock;
 import me.jcala.xmarket.util.CommonFactory;
@@ -12,6 +13,7 @@ import rx.schedulers.Schedulers;
 
 public class TradeDetailModelImpl implements TradeDetailModel {
 
+    @SuppressWarnings("unchecked")
     @Override
     public void executeDetailReq(onDetailListener listener,String tradeId) {
 
@@ -47,8 +49,37 @@ public class TradeDetailModelImpl implements TradeDetailModel {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void executeBuyReq(onDetailListener listener, String userId, String tradeId) {
 
+        if (AppConf.useMock){
+            return;
+        }
+
+        Result<Message> result = CommonFactory.INSTANCE().server_error();
+        ReqExecutor
+                .INSTANCE()
+                .userReq()
+                .createDeal(userId,tradeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Result<Message>>() {
+                    @Override
+                    public void onCompleted() {
+                        listener.onBuyComplete(result);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onBuyComplete(result);
+                    }
+                    @Override
+                    public void onNext(Result<Message> tradeResult) {
+                        result.setCode(tradeResult.getCode());
+                        result.setMsg(tradeResult.getMsg());
+                        result.setData(tradeResult.getData());
+                    }
+                });
     }
 }

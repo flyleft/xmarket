@@ -8,4 +8,6 @@ public interface TradeDetailView {
 
     void whenFail(String errorMsg);
 
+    void whenBuySuccess();
+
 }

@@ -41,13 +41,24 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
     @Override
     public void buyTrade(String tradeId) {
         String userId=UserIntermediate.instance.getUser(context).getId();
-
-
+        model.executeBuyReq(this,userId,tradeId);
     }
 
     @Override
     public void onBuyComplete(Result<Message> result) {
+        if (result==null){
+            return;
+        }
 
+        switch (result.getCode()) {
+            case 100:
+                view.whenBuySuccess();
+                break;
+            case 99:
+                view.whenFail(result.getMsg());
+                break;
+            default:
+        }
     }
 
     @Override
