@@ -57,10 +57,10 @@
         <item name="searchBackground">@color/colorPrimary</item>
 
         <!-- Change clear text icon-->
-        <item name="searchCloseIcon">@mipmap/ic_cancel</item>
+        <item name="searchCloseIcon">@mipmap/ic_small_cancel</item>
 
         <!-- Change up icon-->
-        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+        <item name="searchBackIcon">@mipmap/ic_back</item>
 
         <!-- Change icon for the suggestions-->
         <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
@@ -72,7 +72,7 @@
         <item name="android:textColor">@color/black</item>
 
         <!-- Change hint text color for edit text-->
-        <item name="android:textColorHint">@color/dark_grey_font</item>
+        <item name="android:textColorHint">@color/gray_light</item>
 
         <!-- Hint for edit text-->
         <item name="android:hint">@string/search_hint</item>
