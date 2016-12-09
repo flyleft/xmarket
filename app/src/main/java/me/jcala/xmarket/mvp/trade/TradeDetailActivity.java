@@ -75,7 +75,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     public void whenSuccess(Trade trade) {
         banner.setAdapter(new BannerAdapter(trade.getImgUrls()));
         school.setText(trade.getSchoolName());
-        time.setText(trade.getCreateTime());
+        time.setText(trade.getCreateTime()+"");
         avatarName.setText(trade.getAuthor().getUsername());
         avatarImg.setImageURI(trade.getAuthor().getAvatarUrl());
         tradeName.setText(trade.getTitle());

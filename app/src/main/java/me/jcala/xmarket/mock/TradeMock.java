@@ -85,7 +85,7 @@ public class TradeMock {
     public Result<Trade> gainTradeDetail(){
         Trade trade=new Trade();
         trade.setSchoolName("西南交通大学(犀浦校区)");
-        trade.setCreateTime(new Date().toString());
+        trade.setCreateTime(System.currentTimeMillis());
         List<String> imgList=new ArrayList<>();
         imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
         imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
