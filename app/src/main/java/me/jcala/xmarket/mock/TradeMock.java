@@ -3,11 +3,14 @@ package me.jcala.xmarket.mock;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
+import me.jcala.xmarket.data.pojo.User;
 
 public class TradeMock {
 
@@ -76,6 +79,28 @@ public class TradeMock {
         result.setCode(100);
         result.setMsg("");
         result.setData(trades);
+        return result;
+    }
+
+    public Result<Trade> gainTradeDetail(){
+        Trade trade=new Trade();
+        trade.setSchoolName("西南交通大学(犀浦校区)");
+        trade.setCreateTime(new Date().toString());
+        List<String> imgList=new ArrayList<>();
+        imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
+        imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
+        imgList.add("https://jcalaz.github.io/img/sort_computer.jpg");
+        imgList.add("https://jcalaz.github.io/img/sort_book.jpg");
+        trade.setImgUrls(imgList);
+        User user=new User();
+        user.setUsername("jcala");
+        user.setAvatarUrl("https://jcalaz.github.io/img/sort_rent.jpg");
+        trade.setAuthor(user);
+        trade.setTitle("Mac 电脑");
+        trade.setDesc("2014年在京东购买，还在保修期，I7CPU，独立显卡，8成新");
+        Result<Trade> result=new Result<>();
+        result.setCode(100);
+        result.setMsg("");
         return result;
     }
 }

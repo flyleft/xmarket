@@ -62,21 +62,11 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         String tradeId=bundle.getString("tradeId");
 
         List<String> imgList=new ArrayList<>();
-        tradeName.setText("Mac 电脑");
-        avatarName.setText("jcala");
-        tradePrice.setText("￥ "+"55");
-        time.setText("8 minute ago");
-        school.setText("西南交通大学犀浦校区");
-        tradeDesc.setText("    2014年在京东购买，还在保修期，I7CPU，独立显卡，8成新");
-        imgList.add("https://jcalaz.github.io/img/sort_clothes.jpeg");
-        imgList.add("https://jcalaz.github.io/img/sort_body.jpg");
-        imgList.add("https://jcalaz.github.io/img/sort_computer.jpg");
-        imgList.add("https://jcalaz.github.io/img/sort_book.jpg");
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
         banner.setAdapter(new BannerAdapter(imgList));
         banner.setHintView(new ColorPointHintView(this, Color.BLACK,Color.WHITE));
-        avatarImg.setImageURI(Uri.parse("https://jcalaz.github.io/img/sort_rent.jpg"));
+        //avatarImg.setImageURI(Uri.parse("https://jcalaz.github.io/img/sort_rent.jpg"));
     }
 
     @Override
