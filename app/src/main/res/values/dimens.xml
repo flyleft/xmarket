@@ -34,4 +34,5 @@
     <dimen name="trade_add_pic_height">70dp</dimen>
 
     <dimen name="tool_bar_height">55dp</dimen>
+    <dimen name="large_button">50dp</dimen>
 </resources>
