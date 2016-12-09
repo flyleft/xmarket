@@ -50,16 +50,6 @@ public interface UserReq {
             @Field("phone")  String phone,
             @Field("school")  String school);
 
-    /**
-     * 发布商品
-     */
-    @Multipart
-    @POST(ApiConf.create_trade)
-    Observable<Result<String>> addTrade(
-            // TODO: 16-12-10 没有根据服务器修改
-            @Path("userId")String userId,
-            @Part("trade") RequestBody trade,
-            @Part List<MultipartBody.Part> parts);
 
     @PUT(ApiConf.confirm_deal)
     @FormUrlEncoded

@@ -24,7 +24,7 @@ public class TradeAddModelImpl implements TradeAddModel{
         Result<String> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .userReq()
+                .tradeReq()
                 .addTrade(userId,tradeJson,pics)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -24,7 +24,7 @@ public class TeamModelImpl implements TeamModel{
         Result result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .teamReq()
+                .hybridReq()
                 .getTeams(schoolName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

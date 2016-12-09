@@ -26,7 +26,7 @@ public class RegisterNextModelImpl implements RegisterNextModel{
         Result<List<String>> result= CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .schoolReq()
+                .hybridReq()
                  .getSchoolNames()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

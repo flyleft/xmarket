@@ -17,9 +17,8 @@ import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 public class ReqExecutor {
 
     private UserReq userReq;
-    private SchoolReq schoolReq;
     private TradeReq tradeTagReq;
-    private TeamReq teamReq;
+    private HybridReq hybridReq;
 
     private String token="";
 
@@ -72,22 +71,16 @@ public class ReqExecutor {
        }
       return userReq;
    }
-    public SchoolReq schoolReq(){
-        if (schoolReq==null){
-            schoolReq=getGsonRetrofit().create(SchoolReq.class);
-        }
-        return schoolReq;
-    }
     public TradeReq tradeReq(){
         if (tradeTagReq==null){
             tradeTagReq=getGsonRetrofit().create(TradeReq.class);
         }
         return tradeTagReq;
     }
-    public TeamReq teamReq(){
-        if (teamReq==null){
-            teamReq=getGsonRetrofit().create(TeamReq.class);
+    public HybridReq hybridReq(){
+        if (hybridReq==null){
+            hybridReq=getGsonRetrofit().create(HybridReq.class);
         }
-        return teamReq;
+        return hybridReq;
     }
 }

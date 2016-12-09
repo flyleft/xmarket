@@ -26,7 +26,7 @@ class SchoolModelImpl implements SchoolModel{
         Result result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .schoolReq()
+                .hybridReq()
                 .getSchoolTrades(schoolName,page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
