@@ -23,7 +23,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void loadData(String tradeId) {
-
+        model.executeDetailReq(tradeId);
     }
 
 }

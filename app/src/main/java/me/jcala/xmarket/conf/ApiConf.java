@@ -16,4 +16,5 @@ public interface ApiConf {
     String get_school_trades="api/v1/schools/trades/{schoolName}/{page}/get";
     String get_trade_tag="api/v1/tags/get";
     String get_school_teams="/api/v1/teams/{schoolName}/get";
+    String get_trade_detail="/api/v1/trades/{tradeId}/get";
 }

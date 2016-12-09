@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.BuildConfig;
-import me.jcala.xmarket.data.pojo.TradeTag;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -19,7 +18,7 @@ public class ReqExecutor {
 
     private UserReq userReq;
     private SchoolReq schoolReq;
-    private TradeTagReq tradeTagReq;
+    private TradeReq tradeTagReq;
     private TeamReq teamReq;
 
     private String token="";
@@ -79,9 +78,9 @@ public class ReqExecutor {
         }
         return schoolReq;
     }
-    public TradeTagReq tradeTagReq(){
+    public TradeReq tradeTagReq(){
         if (tradeTagReq==null){
-            tradeTagReq=getGsonRetrofit().create(TradeTagReq.class);
+            tradeTagReq=getGsonRetrofit().create(TradeReq.class);
         }
         return tradeTagReq;
     }

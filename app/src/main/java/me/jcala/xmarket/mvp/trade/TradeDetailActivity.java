@@ -28,9 +28,9 @@ import me.jcala.xmarket.view.BannerAdapter;
 public class TradeDetailActivity extends BaseActivity implements TradeDetailView{
 
 
+    TradeDetailPresenter presenter;
     @BindView(R.id.trade_detail_banner)
-    protected RollPagerView banner;
-
+    RollPagerView banner;
     @BindView(R.id.trade_detail_author_img_url)
     SimpleDraweeView avatarImg;
     @BindView(R.id.trade_detail_author_name)
@@ -51,6 +51,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_detail_activity);
         ButterKnife.bind(this);
+        presenter=new TradeDetailPresenterImpl(this,this);
         initData();
     }
 
@@ -58,9 +59,8 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     private void initData(){
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
-
         String tradeId=bundle.getString("tradeId");
-
+        presenter.loadData(tradeId);
         List<String> imgList=new ArrayList<>();
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
