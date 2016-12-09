@@ -99,7 +99,7 @@ public class MainActivity  extends BaseActivity
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(R.id.toolbar_container), "Query: " + query, Snackbar.LENGTH_LONG)
                         .show();
                 return false;
             }

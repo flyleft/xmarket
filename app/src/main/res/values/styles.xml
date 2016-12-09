@@ -54,13 +54,10 @@
 
     <style name="MaterialSearchViewStyle">
         <!-- Background for the search bar-->
-        <item name="searchBackground">@color/pink</item>
-
-        <!-- Change voice icon-->
-        <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
+        <item name="searchBackground">@color/colorPrimary</item>
 
         <!-- Change clear text icon-->
-        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+        <item name="searchCloseIcon">@mipmap/ic_cancel</item>
 
         <!-- Change up icon-->
         <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
