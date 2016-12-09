@@ -6,6 +6,7 @@ import java.util.List;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.User;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -66,4 +67,10 @@ public interface UserReq {
             @Field("userId")  String otherUserId,
             @Field("tradeId")  String tradeId,
             @Field("id") String id);
+
+    @POST(ApiConf.create_user_deal)
+    Observable<Result<Message>> createDeal(
+            @Path("userId") String userId,
+            @Field("tradeId") String tradeId
+    );
 }

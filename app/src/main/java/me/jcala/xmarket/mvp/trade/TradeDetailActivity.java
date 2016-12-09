@@ -46,6 +46,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView time;
     @BindView(R.id.trade_detail_school)
     TextView school;
+    String tradeId;
 
 
     @Override
@@ -60,7 +61,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     private void initData(){
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
-        String tradeId=bundle.getString("tradeId");
+        tradeId=bundle.getString("tradeId");
         presenter.loadData(tradeId);
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
@@ -84,6 +85,10 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     }
 
+    @OnClick(R.id.trade_detail_submit)
+    void clickSubmit(){
+
+    }
 
     @OnClick(R.id.trade_detail_toolbar_back)
     void clickBack(){

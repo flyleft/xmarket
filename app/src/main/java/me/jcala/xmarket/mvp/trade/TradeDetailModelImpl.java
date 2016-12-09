@@ -16,7 +16,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
     public void executeDetailReq(onDetailListener listener,String tradeId) {
 
         if (AppConf.useMock){
-            listener.onComplete(new TradeMock().gainTradeDetail());
+            listener.onGainDealComplete(new TradeMock().gainTradeDetail());
             return;
         }
 
@@ -30,12 +30,12 @@ public class TradeDetailModelImpl implements TradeDetailModel {
                 .subscribe(new Subscriber<Result<Trade>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onComplete(result);
+                        listener.onGainDealComplete(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onComplete(result);
+                        listener.onGainDealComplete(result);
                     }
                     @Override
                     public void onNext(Result<Trade> tradeResult) {
@@ -47,4 +47,8 @@ public class TradeDetailModelImpl implements TradeDetailModel {
 
     }
 
+    @Override
+    public void executeBuyReq(onDetailListener listener, String userId, String tradeId) {
+
+    }
 }

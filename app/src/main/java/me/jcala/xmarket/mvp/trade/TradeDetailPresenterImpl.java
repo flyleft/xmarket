@@ -5,7 +5,10 @@ import android.content.Context;
 import com.orhanobut.logger.Logger;
 
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.pojo.User;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 
 public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetailModel.onDetailListener {
     private Context context;
@@ -19,7 +22,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
     }
 
     @Override
-    public void onComplete(Result<Trade> result) {
+    public void onGainDealComplete(Result<Trade> result) {
         if (result==null){
             return;
         }
@@ -35,6 +38,17 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
         }
     }
 
+    @Override
+    public void buyTrade(String tradeId) {
+        String userId=UserIntermediate.instance.getUser(context).getId();
+
+
+    }
+
+    @Override
+    public void onBuyComplete(Result<Message> result) {
+
+    }
 
     @Override
     public void loadData(String tradeId) {
