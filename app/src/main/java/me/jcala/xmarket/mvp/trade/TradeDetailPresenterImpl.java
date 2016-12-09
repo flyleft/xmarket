@@ -2,6 +2,8 @@ package me.jcala.xmarket.mvp.trade;
 
 import android.content.Context;
 
+import com.orhanobut.logger.Logger;
+
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 
@@ -24,7 +26,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
         switch (result.getCode()) {
             case 100:
-
+                view.whenSuccess(result.getData());
                 break;
             case 99:
                 view.whenFail(result.getMsg());

@@ -98,9 +98,11 @@ public class TradeMock {
         trade.setAuthor(user);
         trade.setTitle("Mac 电脑");
         trade.setDesc("2014年在京东购买，还在保修期，I7CPU，独立显卡，8成新");
+        trade.setPrice(55);
         Result<Trade> result=new Result<>();
         result.setCode(100);
         result.setMsg("");
+        result.setData(trade);
         return result;
     }
 }
