@@ -27,6 +27,7 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.util.TimeUtils;
 import me.jcala.xmarket.view.BannerAdapter;
 
 public class TradeDetailActivity extends BaseActivity implements TradeDetailView{
@@ -75,7 +76,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     public void whenSuccess(Trade trade) {
         banner.setAdapter(new BannerAdapter(trade.getImgUrls()));
         school.setText(trade.getSchoolName());
-        time.setText(trade.getCreateTime()+"");
+        time.setText(TimeUtils.timeDiff(trade.getCreateTime()));
         avatarName.setText(trade.getAuthor().getUsername());
         avatarImg.setImageURI(trade.getAuthor().getAvatarUrl());
         tradeName.setText(trade.getTitle());
