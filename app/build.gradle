@@ -36,6 +36,7 @@ dependencies {
     compile 'com.github.shem8:material-login:2.1.0'
     compile 'com.github.johnpersano:supertoasts:2.0'
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
     //-----------------图片选择器----------------------------
     compile 'cn.finalteam.rxgalleryfinal:library:0.0.3'
     //-----------------图片轮播------------------------------

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="query_suggestions">
+        <item>Android</item>
+        <item>西南交通大学</item>
+        <item>手机</item>
+        <item>笔记本</item>
+        <item>耳机</item>
+    </string-array>
+</resources>
