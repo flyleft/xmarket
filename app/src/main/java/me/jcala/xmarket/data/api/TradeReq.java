@@ -51,7 +51,6 @@ public interface TradeReq {
     @Multipart
     @POST(ApiConf.create_trade)
     Observable<Result<String>> addTrade(
-            // TODO: 16-12-10 没有根据服务器修改
             @Path("userId")String userId,
             @Part("trade") RequestBody trade,
             @Part List<MultipartBody.Part> parts);
