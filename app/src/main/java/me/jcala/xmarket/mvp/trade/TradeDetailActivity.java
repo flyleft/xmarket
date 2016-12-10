@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
@@ -96,7 +98,15 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @OnClick(R.id.trade_detail_submit)
     void clickSubmit(){
-        presenter.buyTrade(tradeId);
+        new MaterialDialog.Builder(this)
+                .title(R.string.trade_detail_dialog_title)
+                .content(R.string.trade_detail_dialog_content)
+                .positiveText(R.string.trade_detail_dialog_agree)
+                .negativeText(R.string.trade_detail_dialog_disagree)
+                .onPositive((MaterialDialog dialog,DialogAction which) ->{
+                    presenter.buyTrade(tradeId);
+                })
+                .show();
     }
 
     @OnClick(R.id.trade_detail_toolbar_back)

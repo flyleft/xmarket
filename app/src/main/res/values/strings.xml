@@ -68,4 +68,10 @@
     <!--用户志愿队页面-->
     <string name="user_team_title">我的志愿队</string>
 
+    <!--商品细节页面-->
+    <string name="trade_detail_dialog_title">确认购买?</string>
+    <string name="trade_detail_dialog_content">确认之后，对方将收到你的购买请求</string>
+    <string name="trade_detail_dialog_agree">确认</string>
+    <string name="trade_detail_dialog_disagree">返回</string>
+
 </resources>
