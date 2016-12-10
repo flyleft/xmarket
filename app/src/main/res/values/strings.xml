@@ -65,4 +65,7 @@
     <!--商品页面-->
     <string name="trade_detail_button">我要购买</string>
 
+    <!--用户志愿队页面-->
+    <string name="user_team_title">我的志愿队</string>
+
 </resources>

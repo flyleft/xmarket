@@ -1,21 +1,17 @@
 package me.jcala.xmarket.data.api;
 
 
-import java.util.List;
-
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
+import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.User;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Multipart;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -49,6 +45,12 @@ public interface UserReq {
             @Path("userId")  String user_id,
             @Field("phone")  String phone,
             @Field("school")  String school);
+
+
+    @GET(ApiConf.get_user_team)
+    Observable<Result<Team>> getUserTeams(
+            @Path("userId")  String user_id
+    );
 
 
     @PUT(ApiConf.confirm_deal)
