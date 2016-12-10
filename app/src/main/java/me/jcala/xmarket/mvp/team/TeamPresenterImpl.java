@@ -37,6 +37,12 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
 
     @Override
     public void onComplete(Result<List<Team>> result) {
+        if (result.getCode()!=100){
+            return;
+        }
+        if (result.getData()==null){
+            return;
+        }
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Team item) {

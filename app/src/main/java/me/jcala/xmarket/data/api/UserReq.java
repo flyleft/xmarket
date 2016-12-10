@@ -1,6 +1,8 @@
 package me.jcala.xmarket.data.api;
 
 
+import java.util.List;
+
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
@@ -48,7 +50,7 @@ public interface UserReq {
 
 
     @GET(ApiConf.get_user_team)
-    Observable<Result<Team>> getUserTeams(
+    Observable<Result<List<Team>>> getUserTeams(
             @Path("userId")  String user_id
     );
 

@@ -12,6 +12,6 @@ public interface UserTeamModel {
         void onFail(String errorMsg);
     }
 
-    void executeUserTeamReq(String userId);
+    void executeUserTeamReq(onUserTeamListener listener,String userId);
 
 }
