@@ -40,17 +40,29 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         if (user==null || user.getId()==null){
             return;
         }
-        model.executeConfirmDealReq(this,message);
-        message.setKind(2);
 
-        if (adapter!=null){
-            adapter.notifyDataSetChanged();
-        }
+        Message newMsg=new Message();
+        newMsg.setUsername(user.getUsername());
+        newMsg.setUserId(user.getId());
+        newMsg.setUserAvatar(user.getAvatarUrl());
+        newMsg.setUserPhone(user.getPhone());
+        newMsg.setBelongId(message.getUserId());
+        newMsg.setTradeId(message.getTradeId());
+        newMsg.setTradeImg(message.getTradeImg());
 
+        model.executeConfirmDealReq(this,newMsg,message);
     }
 
     @Override
-    public void onComplete(Result<MsgDto> result) {
+    public void onConfirmComplete(Result<MsgDto> result, Message message) {
+        message.setKind(2);
+        if (adapter!=null){
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onGetMsgListComplete(Result<MsgDto> result) {
         if (!resultHandler(result)){
             return;
         }

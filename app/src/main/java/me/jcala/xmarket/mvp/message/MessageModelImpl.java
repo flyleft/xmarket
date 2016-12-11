@@ -13,39 +13,38 @@ import rx.schedulers.Schedulers;
 
 public class MessageModelImpl implements MessageModel{
 
+    @SuppressWarnings("unchecked")
     @Override
     public void executeMsgReq(final onMessageListener listener, int num) {
        if (AppConf.useMock){
-           listener.onComplete(new MessageMock().gainMsg());
+           listener.onGetMsgListComplete(new MessageMock().gainMsg());
            return;
        }
         Result result = CommonFactory.INSTANCE().server_error();
-
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public void executeConfirmDealReq(final onMessageListener listener,final Message item) {
+    public void executeConfirmDealReq(final onMessageListener listener,final Message newMsg,final Message old) {
         if (AppConf.useMock){
-            listener.onComplete(new MessageMock().gainMsg());
             return;
         }
         Result<MsgDto> result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
-                .confirmDeal(item.getId(),item)
+                .confirmDeal(newMsg.getId(),newMsg)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<MsgDto>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onComplete(result);
+                        listener.onConfirmComplete(result,old);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onComplete(result);
+                        listener.onConfirmComplete(result,old);
                     }
                     @Override
                     public void onNext(Result<MsgDto> listResult) {

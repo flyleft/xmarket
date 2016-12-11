@@ -7,9 +7,10 @@ import me.jcala.xmarket.data.pojo.Message;
 public interface MessageModel {
 
     interface onMessageListener {
-      void onComplete(Result<MsgDto> result);
+        void onGetMsgListComplete(Result<MsgDto> result);
+        void onConfirmComplete(Result<MsgDto> result,Message message);
     }
     void executeMsgReq(onMessageListener listener,int num);
 
-    void executeConfirmDealReq(onMessageListener listener, Message item);
+    void executeConfirmDealReq(onMessageListener listener, Message newMsg,Message old);
 }
