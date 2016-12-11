@@ -11,7 +11,7 @@ public interface TradeDetailModel {
 
         void onGainDealComplete(Result<Trade> result);
 
-        void onBuyComplete(Result<Message> result);
+        void onBuyComplete(Result<String> result);
 
     }
 

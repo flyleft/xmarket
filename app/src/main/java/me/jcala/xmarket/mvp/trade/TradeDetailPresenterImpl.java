@@ -45,7 +45,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
     }
 
     @Override
-    public void onBuyComplete(Result<Message> result) {
+    public void onBuyComplete(Result<String> result) {
         if (result==null){
             return;
         }

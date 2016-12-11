@@ -58,14 +58,14 @@ public class TradeDetailModelImpl implements TradeDetailModel {
             return;
         }
 
-        Result<Message> result = CommonFactory.INSTANCE().server_error();
+        Result<String> result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
                 .createDeal(user.getId(),user.getUsername(),user.getAvatarUrl(),tradeId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<Message>>() {
+                .subscribe(new Subscriber<Result<String>>() {
                     @Override
                     public void onCompleted() {
                         listener.onBuyComplete(result);
@@ -76,10 +76,9 @@ public class TradeDetailModelImpl implements TradeDetailModel {
                         listener.onBuyComplete(result);
                     }
                     @Override
-                    public void onNext(Result<Message> tradeResult) {
+                    public void onNext(Result<String> tradeResult) {
                         result.setCode(tradeResult.getCode());
                         result.setMsg(tradeResult.getMsg());
-                        result.setData(tradeResult.getData());
                     }
                 });
     }
