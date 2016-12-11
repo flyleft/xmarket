@@ -54,4 +54,9 @@ public interface UserReq {
             @Path("userId")  String user_id
     );
 
+    @GET(ApiConf.get_user_messages)
+    Observable<Result<List<Team>>> getUserMsgs(
+            @Path("userId")  String user_id
+    );
+
 }

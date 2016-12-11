@@ -45,7 +45,7 @@ public interface HybridReq {
             @Field("tradeId") String tradeId
     );
 
-    @PUT(ApiConf.confirm_deal)
+    @POST(ApiConf.confirm_deal)
     @FormUrlEncoded
     Observable<Result<MsgDto>> confirmDeal(
             @Path("messageId")  String messageId,

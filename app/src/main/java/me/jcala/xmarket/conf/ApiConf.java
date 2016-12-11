@@ -11,6 +11,7 @@ public interface ApiConf {
     String update_user_avatar="api/v1/users/{userId}/pass/update";//修改用户头像
     String get_user_team="api/v1/users/{userId}/teams/get";//获取用户志愿队
     String get_user_trades="api/v1/users/{userId}/trades/get";//获取用户在售，已卖，已买，捐赠，待确认的商品列表
+    String get_user_messages="api/v1/users/{userId}/messages/get";//获取用户交易信息
 
 
     //----------------------------商品相关----------------------------
@@ -31,5 +32,5 @@ public interface ApiConf {
     String get_tags="api/v1/tags/get";//获取商品分类列表
     //------------------------Hybrid 交易相关--------------------------
     String create_deal="api/v1/deals/create";//创建交易
-    String confirm_deal="api/v1/deals/{messageId}/update";
+    String confirm_deal="api/v1/deals/{messageId}/update";//确认进行交易
 }
