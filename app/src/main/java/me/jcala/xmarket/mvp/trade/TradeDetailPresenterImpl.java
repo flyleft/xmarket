@@ -40,8 +40,8 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void buyTrade(String tradeId) {
-        String userId=UserIntermediate.instance.getUser(context).getId();
-        model.executeBuyReq(this,userId,tradeId);
+        User user=UserIntermediate.instance.getUser(context);
+        model.executeBuyReq(this,user,tradeId);
     }
 
     @Override

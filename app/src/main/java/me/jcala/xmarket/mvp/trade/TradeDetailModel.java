@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.trade;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.pojo.User;
 
 public interface TradeDetailModel {
 
@@ -16,6 +17,6 @@ public interface TradeDetailModel {
 
     void executeDetailReq(onDetailListener listener,String tradeId);
 
-    void executeBuyReq(onDetailListener listener,String userId,String tradeId);
+    void executeBuyReq(onDetailListener listener, User user, String tradeId);
 
 }

@@ -5,6 +5,7 @@ import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.mock.TradeMock;
 import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
@@ -51,7 +52,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void executeBuyReq(onDetailListener listener, String userId, String tradeId) {
+    public void executeBuyReq(final onDetailListener listener,final User user,final String tradeId) {
 
         if (AppConf.useMock){
             return;
@@ -61,7 +62,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .createDeal(userId,tradeId)
+                .createDeal(user.getId(),user.getUsername(),user.getAvatarUrl(),tradeId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<Message>>() {
