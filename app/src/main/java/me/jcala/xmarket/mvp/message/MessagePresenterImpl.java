@@ -40,9 +40,9 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         if (user==null || user.getId()==null){
             return;
         }
+        model.executeConfirmDealReq(this,message);
         message.setKind(2);
 
-        //model.executeConfirmDealReq(this,message);
         if (adapter!=null){
             adapter.notifyDataSetChanged();
         }

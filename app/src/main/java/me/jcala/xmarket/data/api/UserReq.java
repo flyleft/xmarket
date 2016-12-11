@@ -54,13 +54,4 @@ public interface UserReq {
             @Path("userId")  String user_id
     );
 
-
-    @PUT(ApiConf.confirm_deal)
-    @FormUrlEncoded
-    Observable<Result<MsgDto>> confirmDeal(
-            @Path("userId")  String user_id,
-            @Field("userId")  String otherUserId,
-            @Field("tradeId")  String tradeId,
-            @Field("id") String id);
-
 }

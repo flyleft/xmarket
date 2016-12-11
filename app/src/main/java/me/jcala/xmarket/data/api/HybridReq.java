@@ -3,13 +3,17 @@ package me.jcala.xmarket.data.api;
 import java.util.List;
 
 import me.jcala.xmarket.conf.ApiConf;
+import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.pojo.User;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -40,4 +44,12 @@ public interface HybridReq {
             @Field("fromAvatar") String fromAvatar,
             @Field("tradeId") String tradeId
     );
+
+    @PUT(ApiConf.confirm_deal)
+    @FormUrlEncoded
+    Observable<Result<MsgDto>> confirmDeal(
+            @Path("messageId")  String messageId,
+            @Field("message") Message message
+            );
+
 }

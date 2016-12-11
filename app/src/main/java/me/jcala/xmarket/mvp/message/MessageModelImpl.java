@@ -23,17 +23,18 @@ public class MessageModelImpl implements MessageModel{
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void executeConfirmDealReq(final onMessageListener listener,final Message item) {
         if (AppConf.useMock){
             listener.onComplete(new MessageMock().gainMsg());
             return;
         }
-        Result result = CommonFactory.INSTANCE().server_error();
+        Result<MsgDto> result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .userReq()
-                .confirmDeal(item.getBelongId(),item.getUserId(),item.getTradeId(),item.getId())
+                .hybridReq()
+                .confirmDeal(item.getId(),item)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<MsgDto>>() {

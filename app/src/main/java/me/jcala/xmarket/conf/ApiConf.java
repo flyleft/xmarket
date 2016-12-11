@@ -31,5 +31,5 @@ public interface ApiConf {
     String get_tags="api/v1/tags/get";//获取商品分类列表
     //------------------------Hybrid 交易相关--------------------------
     String create_deal="api/v1/deals/create";//创建交易
-    String confirm_deal="api/v1/users/{userId}/deal/create";
+    String confirm_deal="api/v1/deals/{messageId}/update";
 }
