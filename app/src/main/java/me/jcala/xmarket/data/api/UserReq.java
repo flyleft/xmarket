@@ -63,11 +63,4 @@ public interface UserReq {
             @Field("tradeId")  String tradeId,
             @Field("id") String id);
 
-    @POST(ApiConf.create_deal)
-    Observable<Result<Message>> createDeal(
-            @Field("fromId") String fromId,
-            @Field("fromName") String fromName,
-            @Field("fromAvatar") String fromAvatar,
-            @Field("tradeId") String tradeId
-    );
 }

@@ -61,7 +61,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
         Result<Message> result = CommonFactory.INSTANCE().server_error();
         ReqExecutor
                 .INSTANCE()
-                .userReq()
+                .hybridReq()
                 .createDeal(user.getId(),user.getUsername(),user.getAvatarUrl(),tradeId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
