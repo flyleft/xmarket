@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.orhanobut.logger.Logger;
+
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.main.MainActivity;
 
@@ -24,7 +26,13 @@ public class MessageService  extends Service {
     }
     @Override
     public void onCreate() {
-        initNotifiManager();
+        Logger.i("开始轮询服务。。。。");
+        mManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        int icon = R.drawable.ic_launcher;
+        mNotification = new Notification.Builder(this)
+                .setSmallIcon(icon)
+                .setContentTitle("xmarket")
+                .setContentText("收到一条消息");
     }
 
     @Override
@@ -33,15 +41,6 @@ public class MessageService  extends Service {
         return START_REDELIVER_INTENT;
     }
 
-    //初始化通知栏配置
-    private void initNotifiManager() {
-        mManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        int icon = R.drawable.ic_launcher;
-        mNotification = new Notification.Builder(this)
-                .setSmallIcon(icon)
-                .setContentTitle("")
-                .setContentText("");
-    }
     //弹出Notification
     private void showNotification() {
         mNotification.setWhen(System.currentTimeMillis());

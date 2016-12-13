@@ -21,6 +21,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 

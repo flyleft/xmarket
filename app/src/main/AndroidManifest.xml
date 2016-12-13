@@ -76,6 +76,11 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_Light.White"/>
+        <service android:name=".mvp.message.MessageService">
+            <intent-filter>
+                <action android:name="me.jcala.xmarket.mvp.message.MessageService"/>
+            </intent-filter>
+        </service>
         <!-- 注册广播 -->
         <receiver android:name=".util.BroadUtils">
             <intent-filter>
