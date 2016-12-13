@@ -32,6 +32,7 @@ import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.message.MessageFragment;
+import me.jcala.xmarket.mvp.message.MessageService;
 import me.jcala.xmarket.mvp.school.SchoolFragment;
 import me.jcala.xmarket.mvp.sort.TradeTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
@@ -42,6 +43,7 @@ import me.jcala.xmarket.mvp.user.trades.donate.TradeDonateActivity;
 import me.jcala.xmarket.mvp.user.trades.sell.TradeSellActivity;
 import me.jcala.xmarket.mvp.user.trades.sold.TradeSoldActivity;
 import me.jcala.xmarket.mvp.user.trades.uncomplete.TradeUnCompleteActivity;
+import me.jcala.xmarket.util.PollingUtils;
 
 public class MainActivity  extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -74,6 +76,7 @@ public class MainActivity  extends BaseActivity
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         fm = getFragmentManager();
+        PollingUtils.startPollingService(this, 5, MessageService.class, MessageService.ACTION);
         initSlide();
         initBottomMenu();
     }
@@ -324,4 +327,9 @@ public class MainActivity  extends BaseActivity
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PollingUtils.stopPollingService(this, MessageService.class, MessageService.ACTION);
+    }
 }

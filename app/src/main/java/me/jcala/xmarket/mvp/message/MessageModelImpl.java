@@ -15,7 +15,7 @@ public class MessageModelImpl implements MessageModel{
 
     @SuppressWarnings("unchecked")
     @Override
-    public void executeMsgReq(final onMessageListener listener,String userId, int num) {
+    public void executeMsgReq(final onMessageListener listener,final String userId, int num) {
        if (AppConf.useMock){
            listener.onGetMsgListComplete(new MessageMock().gainMsg());
            return;
