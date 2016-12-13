@@ -15,12 +15,36 @@ public class MessageModelImpl implements MessageModel{
 
     @SuppressWarnings("unchecked")
     @Override
-    public void executeMsgReq(final onMessageListener listener, int num) {
+    public void executeMsgReq(final onMessageListener listener,String userId, int num) {
        if (AppConf.useMock){
            listener.onGetMsgListComplete(new MessageMock().gainMsg());
            return;
        }
-        Result result = CommonFactory.INSTANCE().server_error();
+        Result<MsgDto> result = CommonFactory.INSTANCE().server_error();
+        ReqExecutor
+                .INSTANCE()
+                .userReq()
+                .getUserMsgs(userId,num)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Result<MsgDto>>() {
+                    @Override
+                    public void onCompleted() {
+                        listener.onGetMsgListComplete(result);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onGetMsgListComplete(result);
+                    }
+                    @Override
+                    public void onNext(Result<MsgDto> listResult) {
+                        result.setCode(listResult.getCode());
+                        result.setMsg(listResult.getMsg());
+                        result.setData(listResult.getData());
+                    }
+                });
+
     }
 
     @SuppressWarnings("unchecked")

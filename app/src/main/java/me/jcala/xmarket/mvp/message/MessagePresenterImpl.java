@@ -31,7 +31,8 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
 
     @Override
     public void gainMessages() {
-        model.executeMsgReq(this,allMsgNum);
+        String userId=UserIntermediate.instance.getUser(context).getId();
+        model.executeMsgReq(this,userId,allMsgNum);
     }
 
     @Override

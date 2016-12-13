@@ -54,9 +54,11 @@ public interface UserReq {
             @Path("userId")  String user_id
     );
 
+    //获取用户所有交易信息。实现使用后台轮询
     @GET(ApiConf.get_user_messages)
-    Observable<Result<List<Team>>> getUserMsgs(
-            @Path("userId")  String user_id
+    Observable<Result<MsgDto>> getUserMsgs(
+            @Path("userId")  String user_id,
+            @Field("msgNum") int msgNum
     );
 
 }
