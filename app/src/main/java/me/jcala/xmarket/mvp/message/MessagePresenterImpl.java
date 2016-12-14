@@ -23,8 +23,6 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     private MessageModel model;
     private MessageView view;
     private volatile RecyclerCommonAdapter<?> adapter;
-    @Setter @Getter
-    private volatile List<Message> messageList=new ArrayList<>();
 
     public MessagePresenterImpl(Context context, MessageView view) {
         this.context = context;
@@ -59,10 +57,9 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         }
     }
 
-   /* public void updateMessageList(List<Message> messageList){
-
+    public void updateMessageList(){
         adapter=new RecyclerCommonAdapter<Message>(context,
-                messageList, R.layout.message_item) {
+                MessageIntermediate.instance.getMessageList(), R.layout.message_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
                 if (item.getKind()==0){
@@ -82,7 +79,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
             }
         };
         view.whenNeedUpdateMsgList(adapter);
-    }*/
+    }
 
     private boolean resultHandler(Result<?> result){
         if (result==null){

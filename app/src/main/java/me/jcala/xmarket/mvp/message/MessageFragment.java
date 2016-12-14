@@ -1,5 +1,9 @@
 package me.jcala.xmarket.mvp.message;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +27,8 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected RecyclerView recyclerView;
     private Unbinder unbinder;
     protected MessagePresenter presenter;
+    public static final String ACTION_UPDATE_UI = "action.updateUI";
+    BroadcastReceiver broadcastReceiver;
     @Override
     protected int getLayoutResId() {
         return R.layout.message_fragment;
@@ -35,6 +41,16 @@ public class MessageFragment extends BaseFragment implements MessageView {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new MessagePresenterImpl(getActivity(),this);
+        presenter.updateMessageList();
+        // 动态注册广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_UPDATE_UI);
+        broadcastReceiver = new MessageBroadcastReceiver();
+        getActivity().registerReceiver(broadcastReceiver, filter);
+
+        // 启动服务
+        Intent intent = new Intent(getActivity(), MessageService.class);
+        getActivity().startService(intent);
     }
 
 
@@ -47,6 +63,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        getActivity().unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -60,5 +77,12 @@ public class MessageFragment extends BaseFragment implements MessageView {
                         presenter.confirmDeal(item);
                     })
                     .show();
+    }
+
+    private class MessageBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
     }
 }
