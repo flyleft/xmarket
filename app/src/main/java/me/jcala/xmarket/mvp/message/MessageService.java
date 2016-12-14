@@ -10,8 +10,14 @@ import android.support.annotation.Nullable;
 
 import com.orhanobut.logger.Logger;
 
+import java.util.concurrent.TimeUnit;
+
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MessageService  extends Service {
     public static final String ACTION = "me.jcala.xmarket.mvp.message.MessageService";
@@ -26,7 +32,6 @@ public class MessageService  extends Service {
     }
     @Override
     public void onCreate() {
-        Logger.i("开始轮询服务。。。。");
         mManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         int icon = R.drawable.ic_launcher;
         mNotification = new Notification.Builder(this)
@@ -37,7 +42,26 @@ public class MessageService  extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        new PollingThread().start();
+        Observable.interval(8, 8, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Long>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Logger.e("弹出Notification......"+System.currentTimeMillis()/1000);
+                    }
+                });
+
         return START_REDELIVER_INTENT;
     }
 
@@ -48,21 +72,6 @@ public class MessageService  extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i,Intent.FILL_IN_ACTION);
         mNotification.setContentIntent(pendingIntent);
         mManager.notify(0, mNotification.build());
-    }
-
-
-    int count = 0;
-    class PollingThread extends Thread {
-        @Override
-        public void run() {
-            System.out.println("Polling...");
-            count ++;
-            //当计数能被5整除时弹出通知
-            if (count % 5 == 0) {
-                showNotification();
-                System.out.println("New message!");
-            }
-        }
     }
 
     @Override
