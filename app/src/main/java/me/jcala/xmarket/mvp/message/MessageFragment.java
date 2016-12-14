@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
@@ -41,29 +44,18 @@ public class MessageFragment extends BaseFragment implements MessageView {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new MessagePresenterImpl(getActivity(),this);
-        presenter.updateMessageList();
         // 动态注册广播
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_UPDATE_UI);
+        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
         broadcastReceiver = new MessageBroadcastReceiver();
         getActivity().registerReceiver(broadcastReceiver, filter);
 
-        // 启动服务
-        Intent intent = new Intent(getActivity(), MessageService.class);
-        getActivity().startService(intent);
+        presenter.updateMessageList();
     }
 
 
     @Override
     public void whenNeedUpdateMsgList(RecyclerCommonAdapter<?> adapter) {
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-        getActivity().unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -82,7 +74,17 @@ public class MessageFragment extends BaseFragment implements MessageView {
     private class MessageBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            if (AppConf.useMock){
+                return;
+            }
+            presenter.updateMessageList();
         }
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+        getActivity().unregisterReceiver(broadcastReceiver);
+    }
+
 }

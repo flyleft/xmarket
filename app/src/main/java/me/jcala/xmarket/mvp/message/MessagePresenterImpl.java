@@ -8,12 +8,14 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.mock.MessageMock;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -58,8 +60,14 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     }
 
     public void updateMessageList(){
+        List<Message> messageList;
+        if (AppConf.useMock){
+           messageList = new MessageMock().gainMsg().getData().getMsgs();
+        }else {
+           messageList=MessageIntermediate.instance.getMessageList();
+        }
         adapter=new RecyclerCommonAdapter<Message>(context,
-                MessageIntermediate.instance.getMessageList(), R.layout.message_item) {
+                messageList, R.layout.message_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
                 if (item.getKind()==0){

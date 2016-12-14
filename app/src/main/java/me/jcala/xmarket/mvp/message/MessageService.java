@@ -4,9 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
 import java.util.concurrent.TimeUnit;
-
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
@@ -19,10 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class MessageService  extends Service {
     public static final String ACTION = "me.jcala.xmarket.mvp.message.MessageService";
-
-//    private Notification.Builder mNotification;
-//    private NotificationManager mManager;
-    final Intent intent = new Intent();
+    final Intent messageIntent = new Intent();
 
     @Nullable
     @Override
@@ -32,14 +27,7 @@ public class MessageService  extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        intent.setAction(MessageFragment.ACTION_UPDATE_UI);
-
-       /* mManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        int icon = R.drawable.ic_launcher;
-        mNotification = new Notification.Builder(this)
-                .setSmallIcon(icon)
-                .setContentTitle("xmarket")
-                .setContentText("收到一条消息");*/
+        messageIntent.setAction(MessageFragment.ACTION_UPDATE_UI);
     }
 
     @Override
@@ -50,7 +38,7 @@ public class MessageService  extends Service {
                 .subscribe((Long aLong) ->{
                      String userId= UserIntermediate.instance.getUser(this).getId();
                      int num=MessageIntermediate.instance.getMessageList().size();
-                    execute(userId,num);
+                     execute(userId,num);
                 });
         return START_NOT_STICKY;
     }
@@ -75,7 +63,7 @@ public class MessageService  extends Service {
                         int oldSize=MessageIntermediate.instance.getMessageList().size();
                         int newSize=result.getData().getAllNum();
                         if (newSize >= oldSize){
-                            sendBroadcast(intent);
+                            sendBroadcast(messageIntent);
                         }
                     }
 
@@ -91,16 +79,6 @@ public class MessageService  extends Service {
                     }
                 });
     }
-
-    //弹出Notification
-   /* private void showNotification() {
-        mNotification.setWhen(System.currentTimeMillis());
-        Intent i = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i,Intent.FILL_IN_ACTION);
-        mNotification.setContentIntent(pendingIntent);
-        mManager.notify(0, mNotification.build());
-    }*/
-
     @Override
     public void onDestroy() {
         super.onDestroy();
