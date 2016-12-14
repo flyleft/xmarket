@@ -13,7 +13,7 @@ import rx.schedulers.Schedulers;
 
 public class MessageModelImpl implements MessageModel{
 
-    @SuppressWarnings("unchecked")
+   /* @SuppressWarnings("unchecked")
     @Override
     public void executeMsgReq(final onMessageListener listener,final String userId, int num) {
        if (AppConf.useMock){
@@ -45,7 +45,7 @@ public class MessageModelImpl implements MessageModel{
                     }
                 });
 
-    }
+    }*/
 
     @SuppressWarnings("unchecked")
     @Override

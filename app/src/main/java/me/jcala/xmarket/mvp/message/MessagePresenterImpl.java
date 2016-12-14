@@ -3,8 +3,11 @@ package me.jcala.xmarket.mvp.message;
 import android.content.Context;
 import android.net.Uri;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
@@ -19,20 +22,14 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
     private Context context;
     private MessageModel model;
     private MessageView view;
-    private int allMsgNum=96;
-    private RecyclerCommonAdapter<?> adapter;
-    private List<Message> messages;
+    private volatile RecyclerCommonAdapter<?> adapter;
+    @Setter @Getter
+    private volatile List<Message> messageList=new ArrayList<>();
 
     public MessagePresenterImpl(Context context, MessageView view) {
         this.context = context;
         this.view = view;
         this.model=new MessageModelImpl();
-    }
-
-    @Override
-    public void gainMessages() {
-        String userId=UserIntermediate.instance.getUser(context).getId();
-        model.executeMsgReq(this,userId,allMsgNum);
     }
 
     @Override
@@ -62,17 +59,10 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         }
     }
 
-    @Override
-    public void onGetMsgListComplete(Result<MsgDto> result) {
-        if (!resultHandler(result)){
-            return;
-        }
-        if (result.getData().getAllNum() <= allMsgNum){
-            return;
-        }
-        messages=result.getData().getMsgs();
-         adapter=new RecyclerCommonAdapter<Message>(context,
-                result.getData().getMsgs(), R.layout.message_item) {
+   /* public void updateMessageList(List<Message> messageList){
+
+        adapter=new RecyclerCommonAdapter<Message>(context,
+                messageList, R.layout.message_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Message item) {
                 if (item.getKind()==0){
@@ -92,7 +82,7 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
             }
         };
         view.whenNeedUpdateMsgList(adapter);
-    }
+    }*/
 
     private boolean resultHandler(Result<?> result){
         if (result==null){

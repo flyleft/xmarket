@@ -35,7 +35,6 @@ public class MessageFragment extends BaseFragment implements MessageView {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new MessagePresenterImpl(getActivity(),this);
-        presenter.gainMessages();
     }
 
 
