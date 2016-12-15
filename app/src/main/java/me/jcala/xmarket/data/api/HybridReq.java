@@ -15,6 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface HybridReq {
@@ -27,7 +28,8 @@ public interface HybridReq {
     @GET(ApiConf.get_school_trades)
     Observable<Result<List<Trade>>> getSchoolTrades(
             @Path("schoolName")  String school,
-            @Path("page") int page
+            @Query("page") int page,
+            @Query("size") int size
     );
 
     //根据学校名获取该学校的所有志愿队列表

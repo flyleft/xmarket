@@ -24,7 +24,7 @@ class SchoolModelImpl implements SchoolModel{
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
-                .getSchoolTrades(schoolName,page)
+                .getSchoolTrades(schoolName,page,AppConf.size)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<List<Trade>>>() {

@@ -10,6 +10,7 @@ import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
@@ -66,6 +67,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
     @Override
     public void getSchoolDealAgency() {
-       model.getSchoolTrades(this,"",1);
+        String schoolName= UserIntermediate.instance.getUser(context).getSchool();
+        model.getSchoolTrades(this,schoolName,1);
     }
 }
