@@ -56,7 +56,7 @@ public class MainActivity  extends BaseActivity
         toggle.syncState();
         View headerLayout= navigationView.inflateHeaderView(R.layout.main_slide);
         navigationView.setNavigationItemSelectedListener(this);
-        presenter.init(searchView,headerLayout,mBottomNavigationBar,toolbarTitle);
+        presenter.init(searchView,headerLayout);
     }
 
     @Override

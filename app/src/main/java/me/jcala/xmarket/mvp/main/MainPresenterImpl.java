@@ -16,6 +16,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,20 +45,25 @@ public class MainPresenterImpl implements MainPresenter {
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
     private FragmentManager fm;
-    private BottomNavigationItem messageItem=new BottomNavigationItem(R.mipmap.menu_message, "消息");
-
+    private BottomNavigationItem msgBlack=new BottomNavigationItem(R.mipmap.menu_message, "消息")
+            .setActiveColorResource(R.color.black);
+    private BottomNavigationItem msgred=new BottomNavigationItem(R.mipmap.menu_message, "消息")
+            .setActiveColorResource(R.color.black).setInActiveColor(R.color.red);
+    TextView toolbarTitle;
+    BottomNavigationBar mBottomNavigationBar;
     public MainPresenterImpl(AppCompatActivity context) {
         this.context = context;
         fm = context.getFragmentManager();
-        ButterKnife.bind(context);
+        toolbarTitle=(TextView)context.findViewById(R.id.toolbar_title);
+        mBottomNavigationBar=(BottomNavigationBar)context.findViewById(R.id.bottom_navigation_bar);
     }
 
     @Override
-    public void init(MaterialSearchView searchView, View header, BottomNavigationBar bar, TextView tittle) {
+    public void init(MaterialSearchView searchView, View header) {
         initReceiver();
         initHeader(header);
         initSearchView(searchView);
-        initBottomMenu(bar,tittle);
+        initBottomMenu();
     }
 
     public void initReceiver() {
@@ -68,10 +74,14 @@ public class MainPresenterImpl implements MainPresenter {
     private class MainBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (AppConf.useMock){
-                return;
-            }
+            mBottomNavigationBar.removeItem(msgBlack);
+            mBottomNavigationBar.removeItem(msgred);
+            mBottomNavigationBar.addItem(msgred).setFirstSelectedPosition(0)
+                    .initialise();
+           /* mBottomNavigationBar.removeItem(messageItem);
             messageItem.setInActiveColor(R.color.red);
+            mBottomNavigationBar.addItem(messageItem).setFirstSelectedPosition(0)
+                    .initialise();*/
         }
     }
 
@@ -122,13 +132,13 @@ public class MainPresenterImpl implements MainPresenter {
         avatar.setImageURI(Uri.parse(AppConf.BASE_URL+user.getAvatarUrl()));
     }
 
-    public void initBottomMenu(BottomNavigationBar mBottomNavigationBar,TextView toolbarTitle) {
+    public void initBottomMenu() {
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
-                .addItem(messageItem.setActiveColorResource(R.color.black))
+                .addItem(msgBlack)
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {

@@ -74,10 +74,8 @@ public class MessageFragment extends BaseFragment implements MessageView {
     private class MessageBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (AppConf.useMock){
-                return;
-            }
-            presenter.updateMessageList();
+            Logger.e("消息页面收到广播...");
+//            presenter.updateMessageList();
         }
     }
     @Override

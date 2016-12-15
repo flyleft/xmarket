@@ -4,12 +4,16 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+
+import com.orhanobut.logger.Logger;
+
 import java.util.concurrent.TimeUnit;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.mvp.main.MainPresenter;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -18,6 +22,7 @@ import rx.schedulers.Schedulers;
 public class MessageService  extends Service {
     public static final String ACTION = "me.jcala.xmarket.mvp.message.MessageService";
     final Intent messageIntent = new Intent();
+    final Intent mainIntent =new Intent();
 
     @Nullable
     @Override
@@ -28,6 +33,7 @@ public class MessageService  extends Service {
     public void onCreate() {
         super.onCreate();
         messageIntent.setAction(MessageFragment.ACTION_UPDATE_UI);
+        mainIntent.setAction(MainPresenter.ACTION_UPDATE_UI);
     }
 
     @Override
@@ -64,6 +70,7 @@ public class MessageService  extends Service {
                         int newSize=result.getData().getAllNum();
                         if (newSize >= oldSize){
                             sendBroadcast(messageIntent);
+                            sendBroadcast(mainIntent);
                         }
                     }
 
