@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="@dimen/tool_bar_height"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/deal_page_bg"
+    android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/trade_tag_detail_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_divider_height"
+            android:layout_marginLeft="@dimen/list_divider_margin"
+            android:layout_marginRight="@dimen/list_divider_margin"/>
+
+
+</FrameLayout>

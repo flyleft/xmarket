@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
@@ -12,9 +14,11 @@ import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
-import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
+import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.trade.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 public class TradeTagDetailActivity extends BaseActivity implements TradeTagDetailView{
@@ -23,6 +27,8 @@ public class TradeTagDetailActivity extends BaseActivity implements TradeTagDeta
     protected RecyclerView recyclerView;
     TradeTagDetailPresenter presenter;
     private String tagName;
+    @BindView(R.id.trade_tag_title)
+    TextView title;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -31,6 +37,7 @@ public class TradeTagDetailActivity extends BaseActivity implements TradeTagDeta
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         tagName=bundle.getString("tagName");
+        title.setText(tagName);
         LinearLayoutManager layoutManager = new LinearLayoutManager(TradeTagDetailActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -43,6 +50,13 @@ public class TradeTagDetailActivity extends BaseActivity implements TradeTagDeta
     @Override
     public void whenLoadDataSuc(RecyclerCommonAdapter<?> adapter) {
         recyclerView.setAdapter(adapter);
+    }
+
+    @OnClick(R.id.trade_tag_back)
+    void clickBack(){
+        Intent intent=new Intent(TradeTagDetailActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

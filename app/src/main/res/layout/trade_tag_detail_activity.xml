@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/deal_page_bg"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".mvp.trade.TradeDetailActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/trade_tag_detail_list"
+        <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/list_divider_height"
-            android:layout_marginLeft="@dimen/list_divider_margin"
-            android:layout_marginRight="@dimen/list_divider_margin"/>
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
 
+            <ImageView
+                android:id="@+id/trade_tag_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:scaleType="center"
+                android:layout_gravity="left"
+                android:src="@mipmap/ic_arrow_left"
+                />
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/trade_tag_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/font_size_normal_high"/>
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/trade_tag_detail_content" />
+
+</android.support.design.widget.CoordinatorLayout>

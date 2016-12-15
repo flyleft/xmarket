@@ -10,6 +10,7 @@ import java.util.List;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
+import me.jcala.xmarket.mvp.sort.trades.TradeTagDetailActivity;
 import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.view.ViewHolder;
@@ -44,7 +45,7 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
             TradeTag entity = result.getData().get(position);
-            Intent intent=new Intent(mContext,MainActivity.class);
+            Intent intent=new Intent(mContext,TradeTagDetailActivity.class);
             intent.putExtra("tagName",entity.getName());
             mContext.startActivity(intent);
         };
