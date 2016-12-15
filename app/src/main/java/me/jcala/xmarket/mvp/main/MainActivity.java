@@ -2,7 +2,10 @@ package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -64,23 +67,34 @@ public class MainActivity  extends BaseActivity
     private TextView username;
     private TextView phone;
     private SimpleDraweeView avatar;
-
+    private BottomNavigationItem messageItem=new BottomNavigationItem(R.mipmap.menu_message, "消息");
     private TeamFragment teamFragment;
     private FragmentManager fm;
     private TradeTagFragment tradeTagFragment;
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
-
+    private MainPresenter presenter;
+    public static String ACTION_UPDATE_UI = "main.update.ui";
+    private BroadcastReceiver receiver;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
+        initService();
         ButterKnife.bind(this);
+        presenter=new MainPresenterImpl(this);
         fm = getFragmentManager();
-        PollingUtils.startPollingService(this, 5, MessageService.class, MessageService.ACTION);
         initSlide();
         initBottomMenu();
     }
+
+    private void initService(){
+        PollingUtils.startPollingService(this, 5, MessageService.class, MessageService.ACTION);
+        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
+        receiver=new MainBroadcastReceiver();
+        registerReceiver(receiver, filter);
+    }
+
     private void initSlide(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -140,7 +154,7 @@ public class MainActivity  extends BaseActivity
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.menu_message, "消息").setActiveColorResource(R.color.black))
+                .addItem(messageItem.setActiveColorResource(R.color.black).setInActiveColor(R.color.red))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -327,10 +341,19 @@ public class MainActivity  extends BaseActivity
             ft.hide(messageFragment);
         }
     }
-
+    public class MainBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (AppConf.useMock){
+                return;
+            }
+            messageItem.setInActiveColor(R.color.red);
+        }
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
         PollingUtils.stopPollingService(this, MessageService.class, MessageService.ACTION);
+        unregisterReceiver(receiver);
     }
 }

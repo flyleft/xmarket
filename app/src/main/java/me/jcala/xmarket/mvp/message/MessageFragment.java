@@ -30,7 +30,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected RecyclerView recyclerView;
     private Unbinder unbinder;
     protected MessagePresenter presenter;
-    public static final String ACTION_UPDATE_UI = "action.updateUI";
+    public static final String ACTION_UPDATE_UI = "message.update.ui";
     BroadcastReceiver broadcastReceiver;
     @Override
     protected int getLayoutResId() {
