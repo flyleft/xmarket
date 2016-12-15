@@ -119,6 +119,8 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @Override
     public void whenBuySuccess() {
-
+       Intent intent=new Intent(TradeDetailActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

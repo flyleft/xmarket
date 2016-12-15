@@ -33,6 +33,7 @@ public interface HybridReq {
 
     //创建交易(发起购买商品请求)
     @POST(ApiConf.create_deal)
+    @FormUrlEncoded
     Observable<Result<String>> createDeal(
             @Field("fromId") String fromId,
             @Field("fromName") String fromName,
