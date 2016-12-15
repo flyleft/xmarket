@@ -38,7 +38,6 @@ class TradeTagModelImpl implements TradeTagModel {
                     public void onError(Throwable e) {
                         listener.onFail(result.getMsg());
                     }
-                    @SuppressWarnings("unchecked")
                     @Override
                     public void onNext(Result<List<TradeTag>> listResult) {
                         result.setCode(listResult.getCode());

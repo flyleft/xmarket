@@ -23,7 +23,7 @@ class SchoolModelImpl implements SchoolModel{
         Result<List<Trade>> result = new Result<List<Trade>>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
-                .hybridReq()
+                .tradeReq()
                 .getSchoolTrades(schoolName,page,AppConf.size)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -45,7 +45,7 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
             TradeTag entity = result.getData().get(position);
             Intent intent=new Intent(mContext,MainActivity.class);
-            intent.putExtra("sortId",entity.getId());
+            intent.putExtra("tagName",entity.getName());
             mContext.startActivity(intent);
         };
         mView.whenSuccess(adapter,listener);
