@@ -15,6 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface UserReq {
@@ -58,7 +59,7 @@ public interface UserReq {
     @GET(ApiConf.get_user_messages)
     Observable<Result<MsgDto>> getUserMsgs(
             @Path("userId")  String user_id,
-            @Field("msgNum") int msgNum
+            @Query("msgNum") int msgNum
     );
 
 }

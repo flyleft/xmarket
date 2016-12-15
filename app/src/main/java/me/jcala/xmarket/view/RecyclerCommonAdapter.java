@@ -13,7 +13,7 @@ import lombok.Setter;
 public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
     protected Context mContext;
     protected int mLayoutId;
-    protected List<T> mDatas;
+    protected List<T> data;
     protected LayoutInflater mInflater;
     @Setter
     private OnItemClickListener clickListener;
@@ -33,7 +33,7 @@ public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<Recy
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mLayoutId = layoutId;
-        mDatas = data;
+        this.data = data;
     }
 
     @Override
@@ -61,7 +61,7 @@ public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<Recy
                     return true;
             });
         }
-        convert(holder, mDatas.get(position));
+        convert(holder, data.get(position));
     }
 
     public abstract void convert(RecyclerViewHolder holder, T t);
@@ -69,6 +69,6 @@ public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<Recy
     @Override
     public int getItemCount()
     {
-        return mDatas.size();
+        return data.size();
     }
 }
