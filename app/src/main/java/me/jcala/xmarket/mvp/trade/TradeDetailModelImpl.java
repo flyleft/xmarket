@@ -1,20 +1,18 @@
 package me.jcala.xmarket.mvp.trade;
 
 import me.jcala.xmarket.AppConf;
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.mock.TradeMock;
-import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class TradeDetailModelImpl implements TradeDetailModel {
 
-    @SuppressWarnings("unchecked")
     @Override
     public void executeDetailReq(onDetailListener listener,String tradeId) {
 
@@ -23,7 +21,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
             return;
         }
 
-        Result result = CommonFactory.INSTANCE().server_error();
+        Result<Trade> result = new Result<Trade>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .tradeReq()
@@ -50,7 +48,6 @@ public class TradeDetailModelImpl implements TradeDetailModel {
 
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void executeBuyReq(final onDetailListener listener,final User user,final String tradeId) {
 
@@ -58,7 +55,7 @@ public class TradeDetailModelImpl implements TradeDetailModel {
             return;
         }
 
-        Result<String> result = CommonFactory.INSTANCE().server_error();
+        Result<String> result =new Result<String>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()

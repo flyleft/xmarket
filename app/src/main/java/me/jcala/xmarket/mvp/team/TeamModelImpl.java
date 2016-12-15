@@ -7,7 +7,6 @@ import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.mock.TeamMock;
-import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -20,8 +19,7 @@ public class TeamModelImpl implements TeamModel{
             listener.onComplete(new TeamMock().gainTeamList());
             return;
         }
-        @SuppressWarnings("unchecked")
-        Result result = CommonFactory.INSTANCE().server_error();
+        Result<List<Team>> result = new Result<List<Team>>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()

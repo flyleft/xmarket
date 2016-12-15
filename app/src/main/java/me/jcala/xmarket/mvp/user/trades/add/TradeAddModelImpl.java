@@ -8,7 +8,6 @@ import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.api.TradeReq;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.mock.TradeMock;
-import me.jcala.xmarket.util.CommonFactory;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import rx.Subscriber;
@@ -20,8 +19,7 @@ public class TradeAddModelImpl implements TradeAddModel{
     @Override
     public void executeAddTradeReq(final RequestBody tradeJson, final String userId,
                                    final List<MultipartBody.Part> pics, final onTradeAddListener listener) {
-        @SuppressWarnings("unchecked")
-        Result<String> result= CommonFactory.INSTANCE().server_error();
+        Result<String> result= new Result<String>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .tradeReq()
@@ -54,8 +52,7 @@ public class TradeAddModelImpl implements TradeAddModel{
             listener.hasGoTagsResult(new TradeMock().tradeTagStrings());
             return;
         }
-        @SuppressWarnings("unchecked")
-        Result<List<String>> result= CommonFactory.INSTANCE().server_error();
+        Result<List<String>> result= new Result<List<String>>().api(Api.SERVER_ERROR);
 
         ReqExecutor
                 .INSTANCE()

@@ -1,24 +1,23 @@
 package me.jcala.xmarket.mvp.message;
 
 import me.jcala.xmarket.AppConf;
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
-import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class MessageModelImpl implements MessageModel{
 
-    @SuppressWarnings("unchecked")
     @Override
     public void executeConfirmDealReq(final onMessageListener listener,final Message newMsg,final Message old) {
         if (AppConf.useMock){
             return;
         }
-        Result<MsgDto> result = CommonFactory.INSTANCE().server_error();
+        Result<MsgDto> result = new Result<MsgDto>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()

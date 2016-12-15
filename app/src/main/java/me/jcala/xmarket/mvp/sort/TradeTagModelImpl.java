@@ -4,12 +4,12 @@ package me.jcala.xmarket.mvp.sort;
 import java.util.List;
 
 import me.jcala.xmarket.AppConf;
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.api.TradeReq;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.mock.TradeMock;
-import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -21,8 +21,7 @@ class TradeTagModelImpl implements TradeTagModel {
             listener.onComplete(new TradeMock().tradeTag());
             return;
         }
-        @SuppressWarnings("unchecked")
-        Result result = CommonFactory.INSTANCE().server_error();
+        Result<List<TradeTag>> result = new Result<List<TradeTag>>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .tradeReq()

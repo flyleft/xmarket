@@ -3,11 +3,11 @@ package me.jcala.xmarket.mvp.user.login.register.next;
 import java.util.List;
 
 import me.jcala.xmarket.AppConf;
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.mock.UserInfoMock;
-import me.jcala.xmarket.util.CommonFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -22,8 +22,7 @@ public class RegisterNextModelImpl implements RegisterNextModel{
             return;
         }
 
-        @SuppressWarnings("unchecked")
-        Result<List<String>> result= CommonFactory.INSTANCE().server_error();
+        Result<List<String>> result= new Result<List<String>>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
@@ -58,8 +57,7 @@ public class RegisterNextModelImpl implements RegisterNextModel{
             return;
         }
 
-        @SuppressWarnings("unchecked")
-        Result<User> result= CommonFactory.INSTANCE().server_error();
+        Result<User> result= new Result<User>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .userReq()
