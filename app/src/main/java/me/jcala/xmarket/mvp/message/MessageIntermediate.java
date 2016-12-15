@@ -9,7 +9,8 @@ import me.jcala.xmarket.data.pojo.Message;
 
 public enum MessageIntermediate {
     instance;
-    @Setter
-    @Getter
+    @Setter @Getter
     private List<Message> messageList=new ArrayList<>();
+    @Setter @Getter
+    private int num=0;
 }

@@ -59,7 +59,9 @@ public interface UserReq {
     @GET(ApiConf.get_user_messages)
     Observable<Result<MsgDto>> getUserMsgs(
             @Path("userId")  String user_id,
-            @Query("msgNum") int msgNum
+            @Query("msgNum") int msgNum,
+            @Query("page") int page,
+            @Query("size") int size
     );
 
 }

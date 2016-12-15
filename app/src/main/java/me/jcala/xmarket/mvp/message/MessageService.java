@@ -56,7 +56,7 @@ public class MessageService  extends Service {
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .getUserMsgs(userId,num)
+                .getUserMsgs(userId,num,0,AppConf.size)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<MsgDto>>() {
@@ -66,9 +66,12 @@ public class MessageService  extends Service {
                             return;
                         }
 
-                        int oldSize=MessageIntermediate.instance.getMessageList().size();
+                        MessageIntermediate intermediate=MessageIntermediate.instance;
+                        int oldSize=intermediate.getNum();
                         int newSize=result.getData().getAllNum();
                         if (newSize >= oldSize){
+                            intermediate.setNum(newSize);
+                            intermediate.setMessageList(result.getData().getMsgs());
                             sendBroadcast(messageIntent);
                             sendBroadcast(mainIntent);
                         }
