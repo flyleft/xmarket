@@ -1,6 +1,11 @@
 package me.jcala.xmarket.mvp.main;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +17,16 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.mvp.message.MessageFragment;
+import me.jcala.xmarket.mvp.school.SchoolFragment;
+import me.jcala.xmarket.mvp.sort.TradeTagFragment;
+import me.jcala.xmarket.mvp.team.TeamFragment;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 import me.jcala.xmarket.mvp.user.team.UserTeamActivity;
 import me.jcala.xmarket.mvp.user.trades.bought.TradeBoughtActivity;
@@ -27,14 +38,48 @@ import me.jcala.xmarket.mvp.user.trades.uncomplete.TradeUnCompleteActivity;
 public class MainPresenterImpl implements MainPresenter {
 
     private AppCompatActivity context;
-    private MainView view;
+    private BroadcastReceiver receiver;
+    private TeamFragment teamFragment;
+    private TradeTagFragment tradeTagFragment;
+    private SchoolFragment schoolFragment;
+    private MessageFragment messageFragment;
+    private FragmentManager fm;
+    private BottomNavigationItem messageItem=new BottomNavigationItem(R.mipmap.menu_message, "消息");
 
-    public MainPresenterImpl(AppCompatActivity context, MainView mainView) {
+    public MainPresenterImpl(AppCompatActivity context) {
         this.context = context;
-        this.view = mainView;
+        fm = context.getFragmentManager();
+        ButterKnife.bind(context);
     }
 
     @Override
+    public void init(MaterialSearchView searchView, View header, BottomNavigationBar bar, TextView tittle) {
+        initReceiver();
+        initHeader(header);
+        initSearchView(searchView);
+        initBottomMenu(bar,tittle);
+    }
+
+    public void initReceiver() {
+        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
+        receiver=new MainBroadcastReceiver();
+        context.registerReceiver(receiver, filter);
+    }
+    private class MainBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (AppConf.useMock){
+                return;
+            }
+            messageItem.setInActiveColor(R.color.red);
+        }
+    }
+
+    @Override
+    public void unregisterReceiver() {
+        context.unregisterReceiver(receiver);
+    }
+
     public void initSearchView(MaterialSearchView searchView) {
         searchView.setVoiceSearch(false);
         searchView.setCursorDrawable(R.drawable.color_cursor_white);
@@ -67,7 +112,6 @@ public class MainPresenterImpl implements MainPresenter {
         });
     }
 
-    @Override
     public void initHeader(View headerLayout) {
         User user= UserIntermediate.instance.getUser(context);
         TextView username=(TextView) headerLayout.findViewById(R.id.info_username);
@@ -78,14 +122,13 @@ public class MainPresenterImpl implements MainPresenter {
         avatar.setImageURI(Uri.parse(AppConf.BASE_URL+user.getAvatarUrl()));
     }
 
-    @Override
     public void initBottomMenu(BottomNavigationBar mBottomNavigationBar,TextView toolbarTitle) {
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.menu_message, "消息").setActiveColorResource(R.color.black))
+                .addItem(messageItem.setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -94,19 +137,19 @@ public class MainPresenterImpl implements MainPresenter {
                 switch (position) {
                     case 0:
                         toolbarTitle.setText(R.string.MainActivity_title_school);
-                        view.showFragment(0);
+                        showFragment(0);
                         break;
                     case 1:
                         toolbarTitle.setText(R.string.MainActivity_title_sort);
-                        view.showFragment(1);
+                        showFragment(1);
                         break;
                     case 2:
                         toolbarTitle.setText(R.string.MainActivity_title_team);
-                        view.showFragment(2);
+                       showFragment(2);
                         break;
                     case 3:
                         toolbarTitle.setText(R.string.MainActivity_title_message);
-                        view.showFragment(3);
+                        showFragment(3);
                         break;
                 }
 
@@ -123,7 +166,58 @@ public class MainPresenterImpl implements MainPresenter {
             }
         });
         toolbarTitle.setText(R.string.MainActivity_title_school);
-        view.showFragment(0);
+        showFragment(0);
+    }
+
+    public void showFragment(int position) {
+        FragmentTransaction ft = fm.beginTransaction();
+        hideAllFragment(ft);
+        switch (position) {
+            case 0 : if (schoolFragment != null) {
+                ft.show(schoolFragment);
+            } else {
+                schoolFragment = new SchoolFragment();
+                ft.add(R.id.frame_layout, schoolFragment);
+            }
+                break;
+            case 1 : if (tradeTagFragment != null) {
+                ft.show(tradeTagFragment);
+            } else {
+                tradeTagFragment = new TradeTagFragment();
+                ft.add(R.id.frame_layout, tradeTagFragment);
+            }
+                break;
+            case 2 : if (teamFragment != null) {
+                ft.show(teamFragment);
+            } else {
+                teamFragment = new TeamFragment();
+                ft.add(R.id.frame_layout, teamFragment);
+            }
+                break;
+            case 3 : if (messageFragment != null) {
+                ft.show(messageFragment);
+            } else {
+                messageFragment = new MessageFragment();
+                ft.add(R.id.frame_layout, messageFragment);
+            }
+                break;
+        }
+        ft.commit();
+    }
+
+    public void hideAllFragment(FragmentTransaction ft) {
+        if (schoolFragment != null) {
+            ft.hide(schoolFragment);
+        }
+        if (tradeTagFragment != null) {
+            ft.hide(tradeTagFragment);
+        }
+        if (teamFragment != null) {
+            ft.hide(teamFragment);
+        }
+        if (messageFragment != null) {
+            ft.hide(messageFragment);
+        }
     }
 
     @Override
@@ -172,5 +266,6 @@ public class MainPresenterImpl implements MainPresenter {
                 break;
             default:break;
         }
+
     }
 }
