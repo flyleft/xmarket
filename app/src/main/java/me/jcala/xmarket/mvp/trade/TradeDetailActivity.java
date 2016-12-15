@@ -25,6 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
@@ -80,7 +81,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         school.setText(trade.getSchoolName());
         time.setText(TimeUtils.timeDiff(trade.getCreateTime()));
         avatarName.setText(trade.getAuthor().getUsername());
-        avatarImg.setImageURI(trade.getAuthor().getAvatarUrl());
+        avatarImg.setImageURI(AppConf.BASE_URL+trade.getAuthor().getAvatarUrl());
         tradeName.setText(trade.getTitle());
         tradePrice.setText("￥ "+trade.getPrice());
         tradeDesc.setText("     "+trade.getDesc());
