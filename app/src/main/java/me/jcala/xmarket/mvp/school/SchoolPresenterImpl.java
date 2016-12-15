@@ -7,7 +7,10 @@ import android.view.View;
 
 import java.util.List;
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.conf.Api;
+import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
