@@ -24,13 +24,6 @@ public interface HybridReq {
     @GET(ApiConf.get_schools)
     Observable<Result<List<String>>> getSchoolNames();
 
-    //获取本校在售商品列表
-    @GET(ApiConf.get_school_trades)
-    Observable<Result<List<Trade>>> getSchoolTrades(
-            @Path("schoolName")  String school,
-            @Query("page") int page,
-            @Query("size") int size
-    );
 
     //根据学校名获取该学校的所有志愿队列表
     @GET(ApiConf.get_school_teams)
@@ -46,12 +39,10 @@ public interface HybridReq {
             @Field("fromAvatar") String fromAvatar,
             @Field("tradeId") String tradeId
     );
-
     @POST(ApiConf.confirm_deal)
     @FormUrlEncoded
     Observable<Result<MsgDto>> confirmDeal(
             @Path("messageId")  String messageId,
             @Field("message") Message message
-            );
-
+    );
 }
