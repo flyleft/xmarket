@@ -1,6 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:id="@+id/trade_add_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".mvp.trade.add.TradeAddActivity"
+    tools:showIn="@layout/team_add_activity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_small"
+            android:elevation="@dimen/trade_add_card_elevation"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_height="match_parent">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large">
+
+                <AutoCompleteTextView
+                    android:id="@+id/team_add_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/team_add_name"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:textSize="20sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large">
+
+                <AutoCompleteTextView
+                    android:id="@+id/team_add_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="2"
+                    android:maxLines="4"
+                    android:maxLength="128"
+                    android:hint="@string/team_add_description"
+                    android:inputType="textMultiLine"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/team_img"
+                    android:layout_width="match_parent"
+                    fresco:placeholderImage="@mipmap/person"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sort_pic_selector"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/team_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+        </LinearLayout>
+
+
+        <View
+            android:layout_height="@dimen/line_divider_height"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:background="@color/gray_light"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".mvp.trade.add.TradeAddActivity">
+    tools:context=".mvp.team.add.TeamAddActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:text="@string/add_team_title"
+                android:text="@string/team_add_title"
                 android:textColor="@color/md_black_1000"
                 android:textSize="@dimen/font_size_normal_high"/>
             <ImageView
