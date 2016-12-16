@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
@@ -25,8 +26,6 @@ public class TeamFragment extends BaseFragment implements TeamView {
     protected RecyclerView recyclerView;
 
     private TeamPresenter presenter;
-    @BindView(R.id.school_deal_plus)
-    protected FloatingActionButton fab;
 
     @Override
     protected int getLayoutResId() {
@@ -41,15 +40,16 @@ public class TeamFragment extends BaseFragment implements TeamView {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new TeamPresenterImpl(getActivity(),this);
         presenter.getTeams();
-        fab.setOnClickListener((View v) ->{
-                Toast.makeText(getActivity(),"fab",Toast.LENGTH_LONG).show();
-            }
-        );
     }
 
     @Override
     public void whenGetTeamSuc(RecyclerCommonAdapter<?> adapter) {
        recyclerView.setAdapter(adapter);
+    }
+
+    @OnClick(R.id.school_deal_plus)
+    void clickAddTeam(){
+
     }
 
     @Override

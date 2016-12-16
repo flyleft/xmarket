@@ -66,6 +66,9 @@
             android:name=".mvp.user.team.UserTeamActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:name=".mvp.team.add.TeamAddActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".mvp.trade.TradeDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
