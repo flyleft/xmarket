@@ -1,12 +1,8 @@
-package me.jcala.xmarket.mvp.trade;
+package me.jcala.xmarket.mvp.trade.detail;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -16,7 +12,6 @@ import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperToast;
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.jude.rollviewpager.RollPagerView;
-import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 
 import java.util.ArrayList;
@@ -27,7 +22,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;

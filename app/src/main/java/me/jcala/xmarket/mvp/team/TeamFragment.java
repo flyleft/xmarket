@@ -1,5 +1,6 @@
 package me.jcala.xmarket.mvp.team;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,6 +18,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
+import me.jcala.xmarket.mvp.team.add.TeamAddActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 public class TeamFragment extends BaseFragment implements TeamView {
@@ -49,7 +51,8 @@ public class TeamFragment extends BaseFragment implements TeamView {
 
     @OnClick(R.id.school_deal_plus)
     void clickAddTeam(){
-
+        Intent intent=new Intent(getActivity(), TeamAddActivity.class);
+        startActivity(intent);
     }
 
     @Override

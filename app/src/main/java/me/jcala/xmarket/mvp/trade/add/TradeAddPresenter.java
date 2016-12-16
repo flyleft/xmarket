@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.user.trades.add;
+package me.jcala.xmarket.mvp.trade.add;
 
 import android.widget.EditText;
 import android.widget.TextView;

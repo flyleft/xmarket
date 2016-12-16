@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.user.trades.add;
+package me.jcala.xmarket.mvp.trade.add;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -1,8 +1,6 @@
-package me.jcala.xmarket.mvp.user.trades.add;
+package me.jcala.xmarket.mvp.trade.add;
 
 import java.util.List;
-
-import me.jcala.xmarket.data.pojo.TradeTag;
 
 public interface TradeAddView {
 

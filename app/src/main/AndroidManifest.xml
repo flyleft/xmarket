@@ -44,7 +44,7 @@
             android:name=".mvp.user.login.register.next.RegisterNextActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".mvp.user.trades.add.TradeAddActivity"
+            android:name=".mvp.trade.add.TradeAddActivity"
             android:label="添加商品"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
@@ -69,7 +69,7 @@
             android:name=".mvp.team.add.TeamAddActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".mvp.trade.TradeDetailActivity"
+            android:name=".mvp.trade.detail.TradeDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".mvp.sort.trades.TradeTagDetailActivity"

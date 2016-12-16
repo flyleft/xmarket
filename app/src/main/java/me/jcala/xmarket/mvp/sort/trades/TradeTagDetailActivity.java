@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.johnpersano.supertoasts.library.Style;
@@ -18,7 +17,6 @@ import butterknife.OnClick;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
-import me.jcala.xmarket.mvp.trade.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 public class TradeTagDetailActivity extends BaseActivity implements TradeTagDetailView{

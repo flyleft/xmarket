@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.trade;
+package me.jcala.xmarket.mvp.trade.detail;
 
 public interface TradeDetailPresenter {
 

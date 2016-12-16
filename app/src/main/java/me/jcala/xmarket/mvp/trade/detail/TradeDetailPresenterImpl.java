@@ -1,11 +1,8 @@
-package me.jcala.xmarket.mvp.trade;
+package me.jcala.xmarket.mvp.trade.detail;
 
 import android.content.Context;
 
-import com.orhanobut.logger.Logger;
-
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;

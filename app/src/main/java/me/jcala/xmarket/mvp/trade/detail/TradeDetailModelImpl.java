@@ -1,4 +1,4 @@
-package me.jcala.xmarket.mvp.trade;
+package me.jcala.xmarket.mvp.trade.detail;
 
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;

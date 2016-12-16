@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".mvp.user.trades.add.TradeAddActivity"
+        tools:context=".mvp.trade.add.TradeAddActivity"
         tools:showIn="@layout/trade_add_activity">
 <LinearLayout
     android:orientation="vertical"
