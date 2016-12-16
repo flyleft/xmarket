@@ -29,6 +29,7 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.util.TimeUtils;
@@ -55,6 +56,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     @BindView(R.id.trade_detail_school)
     TextView school;
     String tradeId;
+    String userId;
 
 
     @Override
@@ -70,6 +72,10 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         tradeId=bundle.getString("tradeId");
+        userId=bundle.getString("userId");
+        if (tradeId==null||userId==null){
+            return;
+        }
         presenter.loadData(tradeId);
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
@@ -104,6 +110,11 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @OnClick(R.id.trade_detail_submit)
     void clickSubmit(){
+        String myId= UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
+        if (userId.equals(myId)){
+            whenFail("不可以购买自己发布的商品");
+            return;
+        }
         new MaterialDialog.Builder(this)
                 .title(R.string.trade_detail_dialog_title)
                 .content(R.string.trade_detail_dialog_content)
@@ -124,7 +135,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @Override
     public void whenBuySuccess() {
-       Intent intent=new Intent(TradeDetailActivity.this,MainActivity.class);
+        Intent intent=new Intent(TradeDetailActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
     }

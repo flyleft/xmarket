@@ -74,10 +74,10 @@ public class MainPresenterImpl implements MainPresenter {
     private class MainBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            mBottomNavigationBar.removeItem(msgBlack);
+           /* mBottomNavigationBar.removeItem(msgBlack);
             mBottomNavigationBar.removeItem(msgred);
             mBottomNavigationBar.addItem(msgred).setFirstSelectedPosition(0)
-                    .initialise();
+                    .initialise();*/
            /* mBottomNavigationBar.removeItem(messageItem);
             messageItem.setInActiveColor(R.color.red);
             mBottomNavigationBar.addItem(messageItem).setFirstSelectedPosition(0)
