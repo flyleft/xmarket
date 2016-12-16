@@ -38,7 +38,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             @Override
             public void convert(RecyclerViewHolder viewHolder, Trade item) {
                 viewHolder.setText(R.id.deal_title,item.getTitle());
-                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgUrls().get(0)));
+                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(AppConf.BASE_URL+item.getImgUrls().get(0)));
                 viewHolder.setFrescoImg(R.id.author_img,Uri.parse(AppConf.BASE_URL+item.getAuthor().getAvatarUrl()));
                 viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
                 viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());

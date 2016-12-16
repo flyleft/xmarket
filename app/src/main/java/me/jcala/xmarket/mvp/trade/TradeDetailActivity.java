@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
@@ -77,7 +78,11 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
     @Override
     public void whenSuccess(Trade trade) {
-        banner.setAdapter(new BannerAdapter(trade.getImgUrls()));
+        List<String> imgUrls=new ArrayList<>();
+        for (String str:trade.getImgUrls()){
+            imgUrls.add(AppConf.BASE_URL+str);
+        }
+        banner.setAdapter(new BannerAdapter(imgUrls));
         school.setText(trade.getSchoolName());
         time.setText(TimeUtils.timeDiff(trade.getCreateTime()));
         avatarName.setText(trade.getAuthor().getUsername());

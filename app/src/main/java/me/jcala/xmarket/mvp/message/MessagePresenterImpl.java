@@ -80,8 +80,8 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_brown_300));
                     viewHolder.setText(R.id.message_kind_title,"已确认，等待对方联系");
                 }
-                viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
-                viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
+                viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(AppConf.BASE_URL+item.getUserAvatar()));
+                viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(AppConf.BASE_URL+item.getTradeImg()));
                 viewHolder.setText(R.id.message_user_phone,item.getUserPhone());
                 viewHolder.setText(R.id.message_user_name,item.getUsername());
             }

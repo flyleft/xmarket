@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 
 import com.orhanobut.logger.Logger;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.main.MainPresenter;
 import rx.Observable;
@@ -43,8 +45,11 @@ public class MessageService  extends Service {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((Long aLong) ->{
                      String userId= UserIntermediate.instance.getUser(this).getId();
-                     int num=MessageIntermediate.instance.getMessageList().size();
-                     execute(userId,num);
+                    List<Message> list=MessageIntermediate.instance.getMessageList();
+                    if (list!=null){
+                        int num=list.size();
+                        execute(userId,num);
+                    }
                 });
         return START_NOT_STICKY;
     }
@@ -62,7 +67,8 @@ public class MessageService  extends Service {
                 .subscribe(new Subscriber<Result<MsgDto>>() {
                     @Override
                     public void onCompleted() {
-                        if (result.getCode()!=100||result.getData()==null){
+
+                        if (result.getCode()!=100||result.getData().getMsgs()==null){
                             return;
                         }
 
