@@ -11,6 +11,7 @@ public class Team {
     private String id;
     private String name;
     private String description;
+    private String school;
     private String img;
     private String authorId;
     private transient boolean releaseCheck;

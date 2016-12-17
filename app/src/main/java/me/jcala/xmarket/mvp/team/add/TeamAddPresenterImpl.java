@@ -12,6 +12,7 @@ import java.util.List;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
+import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
@@ -83,8 +84,9 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
             view.whenFail("请上传用于验证的学生证照片");
             return team;
         }
-        String userId= UserIntermediate.instance.getUser(context).getId();
-        team.setAuthorId(userId);
+        User user= UserIntermediate.instance.getUser(context);
+        team.setAuthorId(user.getId());
+        team.setSchool(user.getSchool());
         team.setReleaseCheck(true);
         return team;
     }
