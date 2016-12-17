@@ -84,6 +84,10 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
                 viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(AppConf.BASE_URL+item.getTradeImg()));
                 viewHolder.setText(R.id.message_user_phone,item.getUserPhone());
                 viewHolder.setText(R.id.message_user_name,item.getUsername());
+                if (AppConf.useMock){
+                    viewHolder.setFrescoImg(R.id.message_user_avatar,Uri.parse(item.getUserAvatar()));
+                    viewHolder.setFrescoImg(R.id.message_trade_img,Uri.parse(item.getTradeImg()));
+                }
             }
         };
         view.whenNeedUpdateMsgList(adapter);

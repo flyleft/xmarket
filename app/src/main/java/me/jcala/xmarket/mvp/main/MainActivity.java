@@ -113,6 +113,5 @@ public class MainActivity  extends BaseActivity
     protected void onDestroy() {
         super.onDestroy();
         PollingUtils.stopPollingService(this, MessageService.class, MessageService.ACTION);
-        presenter.unregisterReceiver();
     }
 }
