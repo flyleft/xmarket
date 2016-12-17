@@ -12,6 +12,8 @@ public class Team {
     private String name;
     private String description;
     private String img;
+    private String authorId;
+    private transient boolean releaseCheck;
 
     public Team(String name,String description,String img) {
         this.name=name;

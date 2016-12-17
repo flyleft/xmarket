@@ -9,16 +9,27 @@ import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
 public interface HybridReq {
+
+    //创建志愿队
+    @Multipart
+    @POST(ApiConf.create_team)
+    Observable<Result<String>> createTeam(
+            @Part("team") RequestBody team,
+            @Part List<MultipartBody.Part> parts);
 
     //获取所有学校名称列表
     @GET(ApiConf.get_schools)
@@ -40,6 +51,7 @@ public interface HybridReq {
             @Field("fromAvatar") String fromAvatar,
             @Field("tradeId") String tradeId
     );
+    //确认交易
     @POST(ApiConf.confirm_deal)
     @FormUrlEncoded
     Observable<Result<MsgDto>> confirmDeal(
