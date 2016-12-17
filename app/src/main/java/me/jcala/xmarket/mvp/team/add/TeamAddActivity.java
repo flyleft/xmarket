@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperToast;
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
@@ -18,6 +22,8 @@ import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.mvp.trade.add.TradeAddActivity;
+
 public class TeamAddActivity extends BaseActivity implements TeamAddView{
 
     private Unbinder unbinder;
@@ -30,6 +36,7 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
     SimpleDraweeView teamImg;
     @BindView(R.id.team_id_img)
     SimpleDraweeView idImg;
+    MaterialDialog progress;
     private String teamImgUrl;
     private String idImgUrl;
     @Override
@@ -37,6 +44,12 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
         setContentView(R.layout.team_add_activity);
         unbinder=ButterKnife.bind(this);
         presenter=new TeamAddPresenterImpl(this,this);
+        progress=new MaterialDialog.Builder(TeamAddActivity.this)
+                .content(R.string.trade_add_dialog_content)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .title(R.string.dialog_wait)
+                .build();
     }
 
     @OnClick(R.id.team_add_cancel)
@@ -46,8 +59,9 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
         finish();
     }
 
-    @OnClick(R.id.trade_add_submit)
+    @OnClick(R.id.team_add_submit)
     void clickSubmit(){
+        Logger.e("点击确认添加志愿队");
        presenter.submit(teamTitle,teamDesc,teamImgUrl,idImgUrl);
     }
 
@@ -92,12 +106,29 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
 
     @Override
     public void whenFail(String errorMsg) {
-
+        new SuperToast(TeamAddActivity.this)
+                .setText(errorMsg)
+                .setDuration(Style.DURATION_LONG)
+                .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
+                .setAnimations(Style.ANIMATIONS_FLY)
+                .show();
     }
 
     @Override
     public void whenSuccess() {
+        Intent intent=new Intent(TeamAddActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
+    @Override
+    public void whenStartProgress() {
+       progress.show();
+    }
+
+    @Override
+    public void whenStopProgress() {
+        progress.dismiss();
     }
 
     @Override

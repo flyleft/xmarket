@@ -37,7 +37,7 @@
                 android:textColor="@color/md_black_1000"
                 android:textSize="@dimen/font_size_normal_high"/>
             <ImageView
-                android:id="@+id/trade_add_submit"
+                android:id="@+id/team_add_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary"

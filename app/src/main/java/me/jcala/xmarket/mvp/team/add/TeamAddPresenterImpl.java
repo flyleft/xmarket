@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.List;
 
+import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.storage.UserIntermediate;
@@ -40,7 +41,19 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
 
     @Override
     public void onComplete(Result<String> result) {
+        view.whenStopProgress();
+        if (result==null){
+            view.whenFail(Api.SERVER_ERROR.msg());
+            return;
+        }
 
+        switch (result.getCode()) {
+            case 100:
+                view.whenSuccess();break;
+            case 99:
+                view.whenFail(Api.SERVER_ERROR.msg());break;
+            default:
+        }
     }
 
     private Team checkForm(EditText teamTitle, EditText teamDesc, String teamImg, String idImg){
