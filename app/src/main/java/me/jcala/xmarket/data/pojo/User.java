@@ -3,6 +3,7 @@ package me.jcala.xmarket.data.pojo;
 
 import java.util.List;
 
+import io.realm.RealmObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class User {
+public class User extends RealmObject {
     private String id;
     private String token;//token值，只用于传输，不存储在数据库中
     private String username;//用户名

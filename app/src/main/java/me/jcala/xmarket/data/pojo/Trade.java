@@ -2,6 +2,7 @@ package me.jcala.xmarket.data.pojo;
 
 import java.util.List;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import lombok.Getter;

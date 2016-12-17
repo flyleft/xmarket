@@ -7,10 +7,6 @@ import android.view.View;
 
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmAsyncTask;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
@@ -32,14 +28,14 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void onReqComplete(Result<List<Trade>> result,Realm realmDefault) {
+    public void onReqComplete(Result<List<Trade>> result) {
         if (!resultHandler(result)){
             return;
         }
         initList(result.getData());
-        final RealmResults<Trade> results = realmDefault.where(Trade.class).findAll();
-        realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
-        realmDefault.executeTransaction((Realm realm) -> realm.copyFromRealm(result.getData()));
+        /*final RealmResults<Trade> results = realmDefault.where(Trade.class).findAll();
+        realmDefault.executeTransactionAsync((Realm realm) -> results.deleteAllFromRealm());
+        realmDefault.executeTransactionAsync((Realm realm) -> realm.copyFromRealm(result.getData()));*/
     }
     private boolean resultHandler(Result<?> result){
         if (result==null){
@@ -83,14 +79,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void initView(Realm realm) {
+    public void initView() {
         String schoolName= UserIntermediate.instance.getUser(context).getSchool();
-        RealmQuery<Trade> query =  realm.where(Trade.class);
-        List<Trade> trades =  query.findAll();
-        if (trades.size()>0){
-            initList(trades);
-        }else {
-            model.executeGetTradesReq(this,schoolName,0,realm);
-        }
     }
 }
