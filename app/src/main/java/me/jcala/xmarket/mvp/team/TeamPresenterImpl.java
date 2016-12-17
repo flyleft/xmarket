@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import java.util.List;
+
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
@@ -46,9 +48,12 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Team item) {
-                viewHolder.setFrescoImg(R.id.team_img, Uri.parse(item.getImg()));
+                viewHolder.setFrescoImg(R.id.team_img, Uri.parse(AppConf.BASE_URL+item.getImg()));
                 viewHolder.setText(R.id.team_name,item.getName());
                 viewHolder.setText(R.id.team_description,item.getDescription());
+                if (AppConf.useMock){
+                    viewHolder.setFrescoImg(R.id.team_img, Uri.parse(item.getImg()));
+                }
             }
         };
         view.whenGetTeamSuc(adapter);
