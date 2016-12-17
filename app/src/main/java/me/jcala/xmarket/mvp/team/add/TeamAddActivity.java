@@ -56,14 +56,16 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
                     .radio()
                     .crop()
                     .cropropCompressionQuality(40)
-                    .cropWithAspectRatio(1,1)
+                    .cropWithAspectRatio(16,9)
                     .imageLoader(ImageLoaderType.FRESCO)
                     .subscribe(new RxBusResultSubscriber<ImageRadioResultEvent>() {
                         @Override
                         protected void onEvent(ImageRadioResultEvent imageRadioResultEvent) throws Exception {
                             String path=imageRadioResultEvent.getResult().getCropPath();
                             if (isTeam){
+
                             }else {
+
                             }
                         }
                     })
