@@ -13,19 +13,17 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginBottom="@dimen/spacing_normal"
-            android:background="@color/white"
-            android:paddingBottom="@dimen/spacing_large"
-            android:paddingTop="@dimen/spacing_large"
-            android:elevation="@dimen/trade_add_card_elevation"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginRight="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:paddingTop="@dimen/spacing_normal"
             android:layout_height="match_parent">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -64,9 +62,11 @@
         </LinearLayout>
         <FrameLayout
             android:layout_gravity="center"
-            android:layout_width="260dp"
-            android:layout_height="260dp"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
             android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/white"
             android:id="@+id/team_add_img_click"
             android:elevation="@dimen/trade_add_card_elevation">
@@ -75,11 +75,6 @@
                 android:layout_width="match_parent"
                 fresco:placeholderImage="@drawable/ic_add_team"
                 android:layout_height="match_parent" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/sort_pic_selector"
-                android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -88,30 +83,27 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="点击设置封面"
+                        android:text="@string/team_add_img"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </RelativeLayout>
-            </LinearLayout>
         </FrameLayout>
         <FrameLayout
+            android:layout_marginTop="@dimen/spacing_small"
             android:layout_gravity="center"
-            android:layout_width="260dp"
-            android:layout_height="260dp"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
             android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/white"
             android:id="@+id/team_add_id_click"
             android:elevation="@dimen/trade_add_card_elevation">
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/team_id_img"
                 android:layout_width="match_parent"
-                fresco:placeholderImage="@drawable/ic_add_team"
+                fresco:placeholderImage="@drawable/ic_add_team_id"
                 android:layout_height="match_parent" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/sort_pic_selector"
-                android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -120,18 +112,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="点击设置封面"
+                        android:text="@string/team_add_id"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </RelativeLayout>
-            </LinearLayout>
         </FrameLayout>
 
-      <!--  <View
-            android:layout_height="@dimen/line_divider_height"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="@dimen/spacing_small"
-            android:background="@color/gray_light"/>-->
     </LinearLayout>
 
 </ScrollView>

@@ -72,6 +72,8 @@
     <string name="team_add_title">添加志愿队</string>
     <string name="team_add_name">志愿队名称</string>
     <string name="team_add_description">志愿队描述</string>
+    <string name="team_add_img">点击设置志愿队封面</string>
+    <string name="team_add_id">点击上传学生证照片</string>
     <!--商品细节页面-->
     <string name="trade_detail_dialog_title">确认购买?</string>
     <string name="trade_detail_dialog_content">确认之后，对方将收到你的购买请求</string>
