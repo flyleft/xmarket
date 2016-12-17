@@ -1,9 +1,9 @@
 package me.jcala.xmarket.mvp.school;
 
-import java.util.List;
-
-import me.jcala.xmarket.data.pojo.Trade;
+import io.realm.Realm;
 
 public interface SchoolPresenter {
-    void getSchoolDealAgency();
+
+    void initView(Realm realm);
+
 }

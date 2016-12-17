@@ -17,9 +17,9 @@ import rx.schedulers.Schedulers;
 class SchoolModelImpl implements SchoolModel{
 
     @Override
-    public void executeGetTradesReq(onGainListener listener,String schoolName,int page) {
+    public void executeGetTradesReq(onGainListener listener,String schoolName,int page,Realm realm) {
         if (AppConf.useMock){
-            listener.onReqComplete(new TradeMock().gainSchoolTrades());
+            listener.onReqComplete(new TradeMock().gainSchoolTrades(),realm);
             return;
         }
         Result<List<Trade>> result = new Result<List<Trade>>().api(Api.SERVER_ERROR);
@@ -32,12 +32,12 @@ class SchoolModelImpl implements SchoolModel{
                 .subscribe(new Subscriber<Result<List<Trade>>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onReqComplete(result);
+                        listener.onReqComplete(result,realm);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onReqComplete(result);
+                        listener.onReqComplete(result,realm);
                     }
                     @Override
                     public void onNext(Result<List<Trade>> listResult) {
@@ -48,19 +48,4 @@ class SchoolModelImpl implements SchoolModel{
                 });
     }
 
-    @Override
-    public void readFromRealm(final onGainListener listener,final String schoolName) {
-        Realm realm=Realm.getDefaultInstance();
-        RealmResults<Trade> trades = realm.where(Trade.class)
-                .equalTo("schoolName",schoolName)
-                .findAllAsync();
-        if (trades.isLoaded()){
-             if (trades.size()<1){
-                 executeGetTradesReq(listener,schoolName,0);
-                 return;
-             }
-             listener.onReadComplete(realm.copyFromRealm(trades));
-        }
-
-    }
 }

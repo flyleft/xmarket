@@ -7,6 +7,10 @@ import android.view.View;
 
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmAsyncTask;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
@@ -28,11 +32,14 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void onReqComplete(Result<List<Trade>> result) {
+    public void onReqComplete(Result<List<Trade>> result,Realm realmDefault) {
         if (!resultHandler(result)){
             return;
         }
-        onReadComplete(result.getData());
+        initList(result.getData());
+        final RealmResults<Trade> results = realmDefault.where(Trade.class).findAll();
+        realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
+        realmDefault.executeTransaction((Realm realm) -> realm.copyFromRealm(result.getData()));
     }
     private boolean resultHandler(Result<?> result){
         if (result==null){
@@ -49,8 +56,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         }
     }
 
-    @Override
-    public void onReadComplete(List<Trade> trades) {
+    public void initList(List<Trade> trades) {
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Trade>(context,trades, R.layout.school_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Trade item) {
@@ -76,14 +82,15 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         adapter.setClickListener(listener);
     }
 
-    private void saveTradeToRealm(List<Trade> trades) {
-
-    }
-
     @Override
-    public void getSchoolDealAgency() {
+    public void initView(Realm realm) {
         String schoolName= UserIntermediate.instance.getUser(context).getSchool();
-        model.executeGetTradesReq(this,schoolName,0);
+        RealmQuery<Trade> query =  realm.where(Trade.class);
+        List<Trade> trades =  query.findAll();
+        if (trades.size()>0){
+            initList(trades);
+        }else {
+            model.executeGetTradesReq(this,schoolName,0,realm);
+        }
     }
-
 }

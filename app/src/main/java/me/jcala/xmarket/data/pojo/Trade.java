@@ -12,8 +12,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Trade extends RealmObject {
-    @PrimaryKey
-    private long primaryId;
     private String id;//商品ID
     private String title;//商品名字
     private User author;//商品所属者

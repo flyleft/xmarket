@@ -13,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.realm.Realm;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSchoolComponent;
 import me.jcala.xmarket.di.modules.SchoolModule;
@@ -29,6 +30,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @BindView(R.id.school_deal_list)
     protected RecyclerView recyclerView;
+    private Realm realm;
 
     @Override
     protected int getLayoutResId() {
@@ -38,11 +40,12 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        realm=Realm.getDefaultInstance();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
-        presenter.getSchoolDealAgency();
+        presenter.initView(realm);
     }
 
 
@@ -54,6 +57,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        realm.close();
     }
 
 
