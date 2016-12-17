@@ -21,8 +21,8 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginBottom="@dimen/spacing_small"
             android:background="@color/white"
-            android:paddingBottom="@dimen/spacing_small"
-            android:paddingTop="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_tiny"
+            android:paddingTop="@dimen/spacing_large"
             android:elevation="@dimen/trade_add_card_elevation"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
@@ -60,42 +60,45 @@
                     android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp">
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/team_img"
-                    android:layout_width="match_parent"
-                    fresco:placeholderImage="@mipmap/person"
-                    android:layout_height="match_parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/sort_pic_selector"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/team_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-            </FrameLayout>
         </LinearLayout>
+        <FrameLayout
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:elevation="@dimen/trade_add_card_elevation">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/team_add_img"
+                android:layout_width="match_parent"
+                fresco:placeholderImage="@drawable/ic_add_team"
+                android:layout_height="match_parent" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sort_pic_selector"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="点击设置封面"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
 
         <View
             android:layout_height="@dimen/line_divider_height"

@@ -39,16 +39,11 @@ import me.jcala.xmarket.mvp.user.trades.uncomplete.TradeUnCompleteActivity;
 public class MainPresenterImpl implements MainPresenter {
 
     private AppCompatActivity context;
-    private BroadcastReceiver receiver;
     private TeamFragment teamFragment;
     private TradeTagFragment tradeTagFragment;
     private SchoolFragment schoolFragment;
     private MessageFragment messageFragment;
     private FragmentManager fm;
-    private BottomNavigationItem msgBlack=new BottomNavigationItem(R.mipmap.menu_message, "消息")
-            .setActiveColorResource(R.color.black);
-    private BottomNavigationItem msgred=new BottomNavigationItem(R.mipmap.menu_message, "消息")
-            .setActiveColorResource(R.color.black).setInActiveColor(R.color.red);
     TextView toolbarTitle;
     BottomNavigationBar mBottomNavigationBar;
     public MainPresenterImpl(AppCompatActivity context) {
@@ -60,34 +55,9 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void init(MaterialSearchView searchView, View header) {
-        initReceiver();
         initHeader(header);
         initSearchView(searchView);
         initBottomMenu();
-    }
-
-    public void initReceiver() {
-        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
-        receiver=new MainBroadcastReceiver();
-        context.registerReceiver(receiver, filter);
-    }
-    private class MainBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-           /* mBottomNavigationBar.removeItem(msgBlack);
-            mBottomNavigationBar.removeItem(msgred);
-            mBottomNavigationBar.addItem(msgred).setFirstSelectedPosition(0)
-                    .initialise();*/
-           /* mBottomNavigationBar.removeItem(messageItem);
-            messageItem.setInActiveColor(R.color.red);
-            mBottomNavigationBar.addItem(messageItem).setFirstSelectedPosition(0)
-                    .initialise();*/
-        }
-    }
-
-    @Override
-    public void unregisterReceiver() {
-        context.unregisterReceiver(receiver);
     }
 
     public void initSearchView(MaterialSearchView searchView) {
@@ -138,7 +108,7 @@ public class MainPresenterImpl implements MainPresenter {
                 .addItem(new BottomNavigationItem(R.mipmap.menu_school, "本校").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_sort, "分类").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.menu_team, "志愿队").setActiveColorResource(R.color.black))
-                .addItem(msgBlack)
+                .addItem(new BottomNavigationItem(R.mipmap.menu_message, "消息").setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
