@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,10 +30,13 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
 
     @Override
     public void submit(EditText teamTitle, EditText teamDesc, String teamImg, String idImg) {
-          Team team=checkForm(teamTitle,teamTitle,teamImg,idImg);
+          Team team=checkForm(teamTitle,teamDesc,teamImg,idImg);
         if (!team.isReleaseCheck()){
             return;
         }
+        view.whenStartProgress();
+        Logger.e("teamImg:"+teamImg);
+        Logger.e("idImg:"+idImg);
         List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(Arrays.asList(teamImg,idImg));
         String teamJsonStr=new Gson().toJson(team);
         RequestBody trade=RetrofitUtils.createPartFromString(teamJsonStr);
@@ -76,7 +80,7 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
               return team;
           }
         if (idImg==null||idImg.isEmpty()){
-            view.whenFail("请上传用于验证的学生照");
+            view.whenFail("请上传用于验证的学生证照片");
             return team;
         }
         String userId= UserIntermediate.instance.getUser(context).getId();

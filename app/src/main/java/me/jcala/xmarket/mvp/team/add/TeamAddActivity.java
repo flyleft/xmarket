@@ -61,7 +61,6 @@ public class TeamAddActivity extends BaseActivity implements TeamAddView{
 
     @OnClick(R.id.team_add_submit)
     void clickSubmit(){
-        Logger.e("点击确认添加志愿队");
        presenter.submit(teamTitle,teamDesc,teamImgUrl,idImgUrl);
     }
 
