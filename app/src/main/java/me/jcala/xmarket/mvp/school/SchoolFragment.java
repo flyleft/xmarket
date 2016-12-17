@@ -30,6 +30,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @BindView(R.id.school_deal_list)
     protected RecyclerView recyclerView;
+    private Realm realm;
 
     @Override
     protected int getLayoutResId() {
@@ -39,11 +40,12 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        realm=Realm.getDefaultInstance();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
-        presenter.initView();
+        presenter.initView(realm);
     }
 
 
@@ -55,6 +57,7 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        realm.close();
     }
 
 

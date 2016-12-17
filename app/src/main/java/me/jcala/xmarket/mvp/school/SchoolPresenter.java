@@ -1,8 +1,10 @@
 package me.jcala.xmarket.mvp.school;
 
 
+import io.realm.Realm;
+
 public interface SchoolPresenter {
 
-    void initView();
+    void initView(Realm realm);
 
 }
