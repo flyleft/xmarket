@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,8 @@ public class Trade extends RealmObject {
     private String desc;
     private String tagName;
     private String schoolName;//所属的学校名称
-    private List<String> imgUrls;//商品图片
+    @Ignore private List<String> imgUrls;//商品图片
+    private RealmList<RealmString> realmImgUrls;
     private long createTime;//商品创建时间
     private int status;//商品状态。0:在售，1:售出,2:捐赠
     private boolean releaseCheck;//为了在发布时方便检查数据完整性，不存储在数据库中
