@@ -2,6 +2,8 @@ package me.jcala.xmarket.data.pojo;
 
 import java.util.List;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,7 +11,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Trade {
+public class Trade extends RealmObject {
+    @PrimaryKey
+    private long primaryId;
     private String id;//商品ID
     private String title;//商品名字
     private User author;//商品所属者

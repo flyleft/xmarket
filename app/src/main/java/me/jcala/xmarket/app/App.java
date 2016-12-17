@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import me.jcala.xmarket.di.components.AppComponent;
 import me.jcala.xmarket.di.components.DaggerAppComponent;
 
@@ -19,6 +21,9 @@ public class App extends Application {
     }
     private void initialize(){
         Fresco.initialize(this);
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().build();
+        Realm.setDefaultConfiguration(config);
     }
 
     public AppComponent getComponent() {

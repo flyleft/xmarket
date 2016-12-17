@@ -28,34 +28,11 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     }
 
     @Override
-    public void onComplete(Result<List<Trade>> result) {
+    public void onReqComplete(Result<List<Trade>> result) {
         if (!resultHandler(result)){
             return;
         }
-        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Trade>(context,result.getData(), R.layout.school_item) {
-            @Override
-            public void convert(RecyclerViewHolder viewHolder, Trade item) {
-                viewHolder.setText(R.id.deal_title,item.getTitle());
-                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(AppConf.BASE_URL+item.getImgUrls().get(0)));
-                viewHolder.setFrescoImg(R.id.author_img,Uri.parse(AppConf.BASE_URL+item.getAuthor().getAvatarUrl()));
-                viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
-                viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
-                if (AppConf.useMock){
-                    viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgUrls().get(0)));
-                    viewHolder.setFrescoImg(R.id.author_img,Uri.parse(item.getAuthor().getAvatarUrl()));
-                }
-            }
-        };
-        RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
-            Trade item=result.getData().get(position);
-            Intent intent=new Intent(context,TradeDetailActivity.class);
-            intent.putExtra("tradeId",item.getId());
-            intent.putExtra("userId",item.getAuthor().getId());
-            context.startActivity(intent);
-        };
-        view.whenLoadDataSuc(adapter);
-        adapter.setClickListener(listener);
-
+        onReadComplete(result.getData());
     }
     private boolean resultHandler(Result<?> result){
         if (result==null){
@@ -71,9 +48,42 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
                 return false;
         }
     }
+
+    @Override
+    public void onReadComplete(List<Trade> trades) {
+        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Trade>(context,trades, R.layout.school_item) {
+            @Override
+            public void convert(RecyclerViewHolder viewHolder, Trade item) {
+                viewHolder.setText(R.id.deal_title,item.getTitle());
+                viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(AppConf.BASE_URL+item.getImgUrls().get(0)));
+                viewHolder.setFrescoImg(R.id.author_img,Uri.parse(AppConf.BASE_URL+item.getAuthor().getAvatarUrl()));
+                viewHolder.setText(R.id.author_name,item.getAuthor().getUsername());
+                viewHolder.setText(R.id.deal_price,"￥ "+item.getPrice());
+                if (AppConf.useMock){
+                    viewHolder.setFrescoImg(R.id.deal_img, Uri.parse(item.getImgUrls().get(0)));
+                    viewHolder.setFrescoImg(R.id.author_img,Uri.parse(item.getAuthor().getAvatarUrl()));
+                }
+            }
+        };
+        RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
+            Trade item=trades.get(position);
+            Intent intent=new Intent(context,TradeDetailActivity.class);
+            intent.putExtra("tradeId",item.getId());
+            intent.putExtra("userId",item.getAuthor().getId());
+            context.startActivity(intent);
+        };
+        view.whenLoadDataSuc(adapter);
+        adapter.setClickListener(listener);
+    }
+
+    private void saveTradeToRealm(List<Trade> trades) {
+
+    }
+
     @Override
     public void getSchoolDealAgency() {
         String schoolName= UserIntermediate.instance.getUser(context).getSchool();
-        model.getSchoolTrades(this,schoolName,1);
+        model.executeGetTradesReq(this,schoolName,0);
     }
+
 }
