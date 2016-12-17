@@ -65,7 +65,6 @@ public interface TradeReq {
     @Multipart
     @POST(ApiConf.create_trade)
     Observable<Result<String>> addTrade(
-            @Path("userId")String userId,
             @Part("trade") RequestBody trade,
             @Part List<MultipartBody.Part> parts);
 

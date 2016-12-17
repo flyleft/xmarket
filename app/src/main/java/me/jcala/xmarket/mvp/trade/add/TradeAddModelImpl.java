@@ -17,13 +17,13 @@ import rx.schedulers.Schedulers;
 public class TradeAddModelImpl implements TradeAddModel{
 
     @Override
-    public void executeAddTradeReq(final RequestBody tradeJson, final String userId,
+    public void executeAddTradeReq(final RequestBody tradeJson,
                                    final List<MultipartBody.Part> pics, final onTradeAddListener listener) {
         Result<String> result= new Result<String>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .tradeReq()
-                .addTrade(userId,tradeJson,pics)
+                .addTrade(tradeJson,pics)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<String>>() {

@@ -83,7 +83,7 @@ public class TradeAddPresenterImpl
         List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(picUploadUrls);
         String tradeJsonStr=new Gson().toJson(trade);
         RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
-        model.executeAddTradeReq(tradeJson,trade.getAuthor().getId(),parts,this);
+        model.executeAddTradeReq(tradeJson,parts,this);
     }
 
 
