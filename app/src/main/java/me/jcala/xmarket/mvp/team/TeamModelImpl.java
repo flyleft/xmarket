@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers;
 public class TeamModelImpl implements TeamModel{
 
     @Override
-    public void getTeams(final onGainTeamListener listener,final String schoolName) {
+    public void getTeams(final onGainTeamListener listener,final String schoolName,int page) {
         if (AppConf.useMock){
             listener.onComplete(new TeamMock().gainTeamList());
             return;
@@ -23,7 +23,7 @@ public class TeamModelImpl implements TeamModel{
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
-                .getTeams(schoolName)
+                .getTeams(schoolName,page,AppConf.size)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<List<Team>>>() {

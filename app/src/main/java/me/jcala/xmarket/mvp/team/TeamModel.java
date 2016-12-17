@@ -12,5 +12,5 @@ public interface TeamModel {
         void onFail(String errorMsg);
     }
 
-    void getTeams(onGainTeamListener listener,String schoolName);
+    void getTeams(onGainTeamListener listener,String schoolName,int page);
 }

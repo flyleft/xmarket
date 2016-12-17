@@ -31,7 +31,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     public void getTeams() {
         String schoolName= UserIntermediate.instance.getUser(context).getSchool();
         if (schoolName!=null){
-            model.getTeams(this,schoolName);
+            model.getTeams(this,schoolName,0);
         }
     }
 

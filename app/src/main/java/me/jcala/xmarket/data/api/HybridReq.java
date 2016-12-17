@@ -39,7 +39,9 @@ public interface HybridReq {
     //根据学校名获取该学校的所有志愿队列表
     @GET(ApiConf.get_school_teams)
     Observable<Result<List<Team>>> getTeams(
-            @Path("schoolName") String schoolName
+            @Path("schoolName") String schoolName,
+            @Query("page") int page,
+            @Query("size") int size
     );
 
     //创建交易(发起购买商品请求)
