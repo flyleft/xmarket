@@ -2,8 +2,6 @@ package me.jcala.xmarket.mvp.school;
 
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
@@ -17,9 +15,9 @@ import rx.schedulers.Schedulers;
 class SchoolModelImpl implements SchoolModel{
 
     @Override
-    public void executeGetTradesReq(onGainListener listener,String schoolName,int page,Realm realm) {
+    public void executeGetTradesReq(onGainListener listener,String schoolName,int page) {
         if (AppConf.useMock){
-            listener.onReqComplete(new TradeMock().gainSchoolTrades(),realm);
+            listener.onReqComplete(new TradeMock().gainSchoolTrades());
             return;
         }
         Result<List<Trade>> result = new Result<List<Trade>>().api(Api.SERVER_ERROR);
@@ -32,12 +30,12 @@ class SchoolModelImpl implements SchoolModel{
                 .subscribe(new Subscriber<Result<List<Trade>>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onReqComplete(result,realm);
+                        listener.onReqComplete(result);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onReqComplete(result,realm);
+                        listener.onReqComplete(result);
                     }
                     @Override
                     public void onNext(Result<List<Trade>> listResult) {
