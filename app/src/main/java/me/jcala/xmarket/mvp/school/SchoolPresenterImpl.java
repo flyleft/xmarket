@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +51,14 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             newTrade.setAuthorName(trade.getAuthor().getUsername());
             tradeList.add(newTrade);
         }
+        /*realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(tradeList.get(0)));
+        RealmQuery<RealmTrade> query =  realmDefault.where(RealmTrade.class);
+        List<RealmTrade> data =  query.findAll();
+        Logger.e("data:"+data);*/
         initList(tradeList);
         final RealmResults<RealmTrade> results = realmDefault.where(RealmTrade.class).findAll();
         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
-        realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(tradeList));
+        realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(tradeList));
     }
     private boolean resultHandler(Result<?> result){
         if (result==null){
