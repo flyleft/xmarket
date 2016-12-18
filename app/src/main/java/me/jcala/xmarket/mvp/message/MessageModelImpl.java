@@ -71,7 +71,7 @@ public class MessageModelImpl implements MessageModel{
                         realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
                         MessageIntermediate.instance.setNum(data.size());
                         if (listener!=null){
-                            listener.onGetMsgSuccess(data,realmDefault);
+                            listener.onGetMsgSuccess(data);
                         }
                     }
 

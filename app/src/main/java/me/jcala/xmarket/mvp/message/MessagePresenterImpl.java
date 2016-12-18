@@ -47,6 +47,8 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
         newMsg.setBelongId(message.getUserId());
         newMsg.setTradeId(message.getTradeId());
         newMsg.setTradeImg(message.getTradeImg());
+        newMsg.setReqMsgId(message.getId());
+        newMsg.setKind(0);
 
         model.executeConfirmDealReq(this,newMsg,message);
     }
