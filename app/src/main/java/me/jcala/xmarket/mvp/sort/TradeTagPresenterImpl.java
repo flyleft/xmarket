@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+
+import com.orhanobut.logger.Logger;
+
 import java.util.List;
 
 import io.realm.Realm;
@@ -37,6 +40,7 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         RealmQuery<TradeTag> query =  realm.where(TradeTag.class);
         List<TradeTag> data =  query.findAll();
         if (data.size()>0){
+            Logger.e(data.toString());
             initList(data);
         }else {
             mModel.executeGetTagReq(this,realm);

@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.message;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;
@@ -68,7 +69,11 @@ public class MessageModelImpl implements MessageModel{
                         }
                         final RealmResults<TradeTag> results = realmDefault.where(TradeTag.class).findAll();
                         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
-                        realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
+                        RealmQuery<TradeTag> query =  realmDefault.where(TradeTag.class);
+                        List<TradeTag> queryData =  query.findAll();
+                        if (queryData.size()<1){
+                            realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
+                        }
                         MessageIntermediate.instance.setNum(data.size());
                         if (listener!=null){
                             listener.onGetMsgSuccess(data);
