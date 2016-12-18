@@ -22,13 +22,13 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
     private Context context;
     private MessageModel model;
     private MessageView view;
-    private Realm realm;
+    private Realm realmDefault;
     private volatile RecyclerCommonAdapter<?> adapter;
 
     public MessagePresenterImpl(Context context, MessageView view, Realm realm) {
         this.context = context;
         this.view = view;
-        this.realm = realm;
+        this.realmDefault = realm;
         this.model=new MessageModelImpl();
     }
 
@@ -54,6 +54,14 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
     @Override
     public void onConfirmComplete(Result<MsgDto> result, Message message) {
         message.setKind(2);
+        realmDefault.executeTransaction((Realm realm) ->{
+               Message messageData= realm.where(Message.class).equalTo("id",message.getId()).findFirst();
+                if (messageData==null){
+                    return;
+                }
+                messageData.setKind(2);
+        });
+
         if (adapter!=null){
             adapter.notifyDataSetChanged();
         }
@@ -66,13 +74,13 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
 
     @Override
     public void initView(){
-        RealmQuery<Message> query =  realm.where(Message.class);
+        RealmQuery<Message> query =  realmDefault.where(Message.class);
         List<Message> data =  query.findAll();
         if (data.size()>0){
             initList(data);
         } else {
             String userId=UserIntermediate.instance.getUser(context).getId();
-            model.executeMessageReq(this,0,userId,realm);
+            model.executeMessageReq(this,0,userId,realmDefault);
         }
     }
 
