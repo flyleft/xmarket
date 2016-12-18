@@ -1,6 +1,7 @@
 package me.jcala.xmarket.data.pojo;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Message extends RealmObject{
+    @PrimaryKey
     private String id;
     private String belongId;//消息所属者的id
     private String userId;//交易对方用户的id

@@ -57,7 +57,7 @@ public interface UserReq {
 
     //获取用户所有交易信息。实现使用后台轮询
     @GET(ApiConf.get_user_messages)
-    Observable<Result<MsgDto>> getUserMsgs(
+    Observable<Result<List<Message>>> getUserMsgs(
             @Path("userId")  String user_id,
             @Query("msgNum") int msgNum,
             @Query("page") int page,

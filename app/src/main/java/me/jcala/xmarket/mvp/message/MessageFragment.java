@@ -45,7 +45,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
 //        broadcastReceiver = new MessageBroadcastReceiver();
 //        getActivity().registerReceiver(broadcastReceiver, filter);
 
-        presenter.updateMessageList();
+        presenter.initView(realm);
     }
 
 

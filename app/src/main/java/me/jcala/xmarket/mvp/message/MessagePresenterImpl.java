@@ -6,6 +6,8 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
 import lombok.Getter;
 import lombok.Setter;
 import me.jcala.xmarket.AppConf;
@@ -13,13 +15,14 @@ import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
+import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mock.MessageMock;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
-public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMessageListener {
+public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMessageListener {
 
     private Context context;
     private MessageModel model;
@@ -59,13 +62,31 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         }
     }
 
-    public void updateMessageList(){
-        List<Message> messageList;
-        if (AppConf.useMock){
+    @Override
+    public void onGetMsgSuccess(List<Message> messageList) {
+
+    }
+
+    @Override
+    public void initView(Realm realm){
+        RealmQuery<Message> query =  realm.where(Message.class);
+        List<Message> data =  query.findAll();
+        if (data.size()>0){
+            MessageIntermediate.instance.setNum(data.size());
+            initList(data);
+        }else {
+            String userId= UserIntermediate.instance.getUser(context).getId();
+
+        }
+       /* if (AppConf.useMock){
            messageList = new MessageMock().gainMsg().getData().getMsgs();
         }else {
            messageList=MessageIntermediate.instance.getMessageList();
-        }
+        }*/
+
+    }
+
+    private void initList(List<Message> messageList){
         adapter=new RecyclerCommonAdapter<Message>(context,
                 messageList, R.layout.message_item) {
             @Override
@@ -92,5 +113,4 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         };
         view.whenNeedUpdateMsgList(adapter);
     }
-
 }

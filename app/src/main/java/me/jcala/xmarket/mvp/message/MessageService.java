@@ -9,6 +9,8 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import io.realm.Realm;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.data.api.ReqExecutor;
 import me.jcala.xmarket.data.dto.MsgDto;
@@ -23,6 +25,8 @@ import rx.schedulers.Schedulers;
 
 public class MessageService  extends Service {
     public static final String ACTION = "me.jcala.xmarket.mvp.message.MessageService";
+    private Realm realm;
+    private MessageModel model;
 
     @Nullable
     @Override
@@ -32,66 +36,25 @@ public class MessageService  extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        realm=Realm.getDefaultInstance();
+        model=new MessageModelImpl();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Observable.interval(3, AppConf.Message_Interval, TimeUnit.SECONDS)
+        String userId= UserIntermediate.instance.getUser(this).getId();
+        Observable.interval(1L, AppConf.Message_Interval, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((Long aLong) ->{
-                     String userId= UserIntermediate.instance.getUser(this).getId();
-                    List<Message> list=MessageIntermediate.instance.getMessageList();
-                    if (list!=null){
-                        int num=list.size();
-                        execute(userId,num);
-                    }
+                    int num=MessageIntermediate.instance.getNum();
+                    model.executeMessageReq(null,num,userId,realm);
                 });
         return START_NOT_STICKY;
-    }
-    private void execute(String userId,int num){
-        if (AppConf.useMock){
-            return;
-        }
-        Result<MsgDto> result = new Result<>();
-        ReqExecutor
-                .INSTANCE()
-                .userReq()
-                .getUserMsgs(userId,num,0,AppConf.size)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Result<MsgDto>>() {
-                    @Override
-                    public void onCompleted() {
-
-                        if (result.getCode()!=100||result.getData().getMsgs()==null){
-                            return;
-                        }
-
-                        MessageIntermediate intermediate=MessageIntermediate.instance;
-                        int oldSize=intermediate.getNum();
-                        int newSize=result.getData().getAllNum();
-                        if (newSize >= oldSize){
-                            intermediate.setNum(newSize);
-                            intermediate.setMessageList(result.getData().getMsgs());
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                    @Override
-                    public void onNext(Result<MsgDto> listResult) {
-                        result.setCode(listResult.getCode());
-                        result.setMsg(listResult.getMsg());
-                        result.setData(listResult.getData());
-                    }
-                });
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
+        realm.close();
     }
-
 }

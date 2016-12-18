@@ -6,7 +6,7 @@ public interface AppConf {
 
     String BASE_URL="http://192.168.10.7:80/";//服务器的xmarket-server地址及端口
 
-    int Message_Interval=15000;//轮询获取消息的时间间隔.(秒)
+    long Message_Interval=15L;//轮询获取消息的时间间隔.(秒)
 
     int size=8;//每个页面加载的数据长度
 
