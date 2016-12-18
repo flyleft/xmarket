@@ -7,4 +7,6 @@ public interface SchoolPresenter {
 
     void initView(Realm realm);
 
+    void refreshView(Realm realm);
+
 }

@@ -16,12 +16,9 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.TradeTag;
-import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.sort.trades.TradeTagDetailActivity;
 import me.jcala.xmarket.view.CommonAdapter;
-import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.view.ViewHolder;
 
 public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.onGainListener {
@@ -40,7 +37,6 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         RealmQuery<TradeTag> query =  realm.where(TradeTag.class);
         List<TradeTag> data =  query.findAll();
         if (data.size()>0){
-            Logger.e(data.toString());
             initList(data);
         }else {
             mModel.executeGetTagReq(this,realm);

@@ -2,6 +2,7 @@ package me.jcala.xmarket.mvp.school;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +31,8 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
 
     @BindView(R.id.school_deal_list)
     protected RecyclerView recyclerView;
+    @BindView(R.id.school_trades_refresh)
+    SwipeRefreshLayout refreshLayout;
     private Realm realm;
 
     @Override
@@ -40,14 +43,22 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
         realm=Realm.getDefaultInstance();
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
+        refreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
+                android.R.color.holo_orange_light, android.R.color.holo_green_light);
+        refreshLayout.setOnRefreshListener(()->presenter.refreshView(realm));
         presenter.initView(realm);
     }
 
+    @Override
+    public void whenHideRefresh() {
+        refreshLayout.setRefreshing(false);
+    }
 
     @Override
     public void whenLoadDataSuc(RecyclerCommonAdapter<?> adapter) {

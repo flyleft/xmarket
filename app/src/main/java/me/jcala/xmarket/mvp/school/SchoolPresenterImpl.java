@@ -49,16 +49,13 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             newTrade.setAuthorName(trade.getAuthor().getUsername());
             tradeList.add(newTrade);
         }
-        /*realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(tradeList.get(0)));
-        RealmQuery<RealmTrade> query =  realmDefault.where(RealmTrade.class);
-        List<RealmTrade> data =  query.findAll();
-        Logger.e("data:"+data);*/
         initList(tradeList);
         final RealmResults<RealmTrade> results = realmDefault.where(RealmTrade.class).findAll();
         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
         realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(tradeList));
     }
     private boolean resultHandler(Result<?> result){
+        view.whenHideRefresh();
         if (result==null){
             return false;
         }
@@ -71,6 +68,12 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void refreshView(Realm realm) {
+        String schoolName= UserIntermediate.instance.getUser(context).getSchool();
+        model.executeGetTradesReq(this,schoolName,0,realm);
     }
 
     public void initList(List<RealmTrade> trades) {
