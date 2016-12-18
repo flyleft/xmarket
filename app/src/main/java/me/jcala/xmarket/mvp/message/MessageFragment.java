@@ -24,6 +24,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected RecyclerView recyclerView;
     private Unbinder unbinder;
     protected MessagePresenter presenter;
+
 //    BroadcastReceiver broadcastReceiver;
     //    public static final String ACTION_UPDATE_UI = "message.update.ui";
     private Realm realm;
@@ -39,13 +40,13 @@ public class MessageFragment extends BaseFragment implements MessageView {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        presenter=new MessagePresenterImpl(getActivity(),this);
+        presenter=new MessagePresenterImpl(getActivity(),this,realm);
         // 动态注册广播
 //        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
 //        broadcastReceiver = new MessageBroadcastReceiver();
 //        getActivity().registerReceiver(broadcastReceiver, filter);
 
-        presenter.initView(realm);
+        presenter.initView();
     }
 
 

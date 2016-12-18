@@ -3,22 +3,17 @@ package me.jcala.xmarket.mvp.message;
 import android.content.Context;
 import android.net.Uri;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import lombok.Getter;
-import lombok.Setter;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
-import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.mock.MessageMock;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -27,11 +22,13 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
     private Context context;
     private MessageModel model;
     private MessageView view;
+    private Realm realm;
     private volatile RecyclerCommonAdapter<?> adapter;
 
-    public MessagePresenterImpl(Context context, MessageView view) {
+    public MessagePresenterImpl(Context context, MessageView view, Realm realm) {
         this.context = context;
         this.view = view;
+        this.realm = realm;
         this.model=new MessageModelImpl();
     }
 
@@ -64,26 +61,19 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
 
     @Override
     public void onGetMsgSuccess(List<Message> messageList) {
-
+       initList(messageList);
     }
 
     @Override
-    public void initView(Realm realm){
+    public void initView(){
         RealmQuery<Message> query =  realm.where(Message.class);
         List<Message> data =  query.findAll();
         if (data.size()>0){
-            MessageIntermediate.instance.setNum(data.size());
             initList(data);
-        }else {
-            String userId= UserIntermediate.instance.getUser(context).getId();
-
+        } else {
+            String userId=UserIntermediate.instance.getUser(context).getId();
+            model.executeMessageReq(this,0,userId,realm);
         }
-       /* if (AppConf.useMock){
-           messageList = new MessageMock().gainMsg().getData().getMsgs();
-        }else {
-           messageList=MessageIntermediate.instance.getMessageList();
-        }*/
-
     }
 
     private void initList(List<Message> messageList){

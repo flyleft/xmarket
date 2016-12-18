@@ -66,12 +66,12 @@ public class MessageModelImpl implements MessageModel{
                         if (result.getCode()!=100||data==null){
                             return;
                         }
-                        MessageIntermediate.instance.setNum(data.size());
                         final RealmResults<TradeTag> results = realmDefault.where(TradeTag.class).findAll();
                         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
-                        realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(data));
+                        realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
+                        MessageIntermediate.instance.setNum(data.size());
                         if (listener!=null){
-                            listener.onGetMsgSuccess(data);
+                            listener.onGetMsgSuccess(data,realmDefault);
                         }
                     }
 
