@@ -23,7 +23,6 @@ import rx.schedulers.Schedulers;
 
 public class MessageService  extends Service {
     public static final String ACTION = "me.jcala.xmarket.mvp.message.MessageService";
-    final Intent messageIntent = new Intent();
 
     @Nullable
     @Override
@@ -33,7 +32,6 @@ public class MessageService  extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        messageIntent.setAction(MessageFragment.ACTION_UPDATE_UI);
     }
 
     @Override
@@ -76,7 +74,6 @@ public class MessageService  extends Service {
                         if (newSize >= oldSize){
                             intermediate.setNum(newSize);
                             intermediate.setMessageList(result.getData().getMsgs());
-                            sendBroadcast(messageIntent);
                         }
                     }
 

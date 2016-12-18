@@ -187,27 +187,3 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
         progress.dismiss();
     }
 }
- /*   RxGalleryFinal
-                    .with(TradeAddActivity.this)
-                    .image()
-                    .multiple()
-                    .maxSize(8)
-                    .cropropCompressionQuality(40)
-                    .cropWithAspectRatio(1,1)
-                    .imageLoader(ImageLoaderType.FRESCO)
-                    .subscribe(new RxBusResultSubscriber<ImageMultipleResultEvent>() {
-                        @Override
-                        protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
-                            picUrls.removeLast();
-                            for (MediaBean media:imageMultipleResultEvent.getResult()){
-
-                                picUrls.add("file://"+media.getOriginalPath());
-
-                                picUploadUrls.add(media.getOriginalPath());
-                                Logger.e(picUrls.toString());
-                            }
-                            picUrls.addLast("res://drawable/"+R.drawable.trade_add_pic_plus);
-                            adapter.notifyDataSetChanged();
-                        }
-                    })
-                    .openGallery();*/

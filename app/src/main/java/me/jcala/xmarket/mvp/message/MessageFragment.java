@@ -1,24 +1,18 @@
 package me.jcala.xmarket.mvp.message;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.jcala.xmarket.AppConf;
+import io.realm.Realm;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
@@ -30,8 +24,9 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected RecyclerView recyclerView;
     private Unbinder unbinder;
     protected MessagePresenter presenter;
-    public static final String ACTION_UPDATE_UI = "message.update.ui";
-    BroadcastReceiver broadcastReceiver;
+//    BroadcastReceiver broadcastReceiver;
+    //    public static final String ACTION_UPDATE_UI = "message.update.ui";
+    private Realm realm;
     @Override
     protected int getLayoutResId() {
         return R.layout.message_fragment;
@@ -40,14 +35,15 @@ public class MessageFragment extends BaseFragment implements MessageView {
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        realm=Realm.getDefaultInstance();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new MessagePresenterImpl(getActivity(),this);
         // 动态注册广播
-        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
-        broadcastReceiver = new MessageBroadcastReceiver();
-        getActivity().registerReceiver(broadcastReceiver, filter);
+//        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
+//        broadcastReceiver = new MessageBroadcastReceiver();
+//        getActivity().registerReceiver(broadcastReceiver, filter);
 
         presenter.updateMessageList();
     }
@@ -71,17 +67,18 @@ public class MessageFragment extends BaseFragment implements MessageView {
                     .show();
     }
 
-    private class MessageBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            presenter.updateMessageList();
-        }
-    }
+//    private class MessageBroadcastReceiver extends BroadcastReceiver {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            presenter.updateMessageList();
+//        }
+//    }
     @Override
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-        getActivity().unregisterReceiver(broadcastReceiver);
+        realm.close();
+//        getActivity().unregisterReceiver(broadcastReceiver);
     }
 
 }

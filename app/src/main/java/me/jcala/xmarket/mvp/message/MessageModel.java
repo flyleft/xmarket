@@ -9,7 +9,5 @@ public interface MessageModel {
     interface onMessageListener {
         void onConfirmComplete(Result<MsgDto> result,Message message);
     }
-    //void executeMsgReq(onMessageListener listener,String userId,int num);
-
     void executeConfirmDealReq(onMessageListener listener, Message newMsg,Message old);
 }

@@ -92,4 +92,5 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         };
         view.whenNeedUpdateMsgList(adapter);
     }
+
 }
