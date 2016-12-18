@@ -13,6 +13,7 @@ public interface MessageModel {
     interface OnMessageListener {
         void onConfirmComplete(Result<MsgDto> result,Message message);
         void onGetMsgSuccess(List<Message> messageList);
+        void onHideRefresh();
     }
     void executeConfirmDealReq(OnMessageListener listener, Message newMsg,Message old);
     void executeMessageReq(OnMessageListener listener, int num,String userId, Realm realm);

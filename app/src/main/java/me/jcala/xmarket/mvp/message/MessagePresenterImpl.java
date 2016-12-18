@@ -70,6 +70,17 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
     }
 
     @Override
+    public void refreshView() {
+        String userId=UserIntermediate.instance.getUser(context).getId();
+        model.executeMessageReq(this,0,userId,realmDefault);
+    }
+
+    @Override
+    public void onHideRefresh() {
+        view.whenHideRefresh();
+    }
+
+    @Override
     public void onGetMsgSuccess(List<Message> messageList) {
        initList(messageList);
     }

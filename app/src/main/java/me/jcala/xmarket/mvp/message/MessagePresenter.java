@@ -8,4 +8,6 @@ public interface MessagePresenter {
 
     void confirmDeal(Message item);//确认交易
 
+    void refreshView();
+
 }

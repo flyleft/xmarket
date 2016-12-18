@@ -1,6 +1,7 @@
 package me.jcala.xmarket.mvp.message;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +25,8 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected RecyclerView recyclerView;
     private Unbinder unbinder;
     protected MessagePresenter presenter;
-
+    @BindView(R.id.messages_refresh)
+    SwipeRefreshLayout refreshLayout;
 //    BroadcastReceiver broadcastReceiver;
     //    public static final String ACTION_UPDATE_UI = "message.update.ui";
     private Realm realm;
@@ -37,15 +39,19 @@ public class MessageFragment extends BaseFragment implements MessageView {
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
         realm=Realm.getDefaultInstance();
+        presenter=new MessagePresenterImpl(getActivity(),this,realm);
+
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        presenter=new MessagePresenterImpl(getActivity(),this,realm);
         // 动态注册广播
 //        IntentFilter filter = new IntentFilter(ACTION_UPDATE_UI);
 //        broadcastReceiver = new MessageBroadcastReceiver();
 //        getActivity().registerReceiver(broadcastReceiver, filter);
-
+        refreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
+                android.R.color.holo_orange_light, android.R.color.holo_green_light);
+        refreshLayout.setOnRefreshListener(()->presenter.refreshView());
         presenter.initView();
     }
 
@@ -74,6 +80,13 @@ public class MessageFragment extends BaseFragment implements MessageView {
 //            presenter.updateMessageList();
 //        }
 //    }
+
+
+    @Override
+    public void whenHideRefresh() {
+        refreshLayout.setRefreshing(false);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

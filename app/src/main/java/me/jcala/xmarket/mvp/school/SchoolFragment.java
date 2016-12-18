@@ -43,8 +43,8 @@ public class SchoolFragment extends BaseFragment implements SchoolView{
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
-        DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
         realm=Realm.getDefaultInstance();
+        DaggerSchoolComponent.builder().schoolModule(new SchoolModule(getActivity(),this)).build().inject(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);

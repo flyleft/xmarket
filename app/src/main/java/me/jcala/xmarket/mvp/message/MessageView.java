@@ -9,4 +9,5 @@ public interface MessageView {
 
     void whenShowConfirmDialog(Message item);
 
+    void whenHideRefresh();//隐藏下拉刷新
 }
