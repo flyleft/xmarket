@@ -7,11 +7,15 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.Trade;
+import me.jcala.xmarket.data.realm.RealmTrade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
@@ -30,22 +34,17 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     }
 
     @Override
-    public void getTeams() {
-        String schoolName= UserIntermediate.instance.getUser(context).getSchool();
-        if (schoolName!=null){
-            model.getTeams(this,schoolName,0);
+    public void onComplete(Result<List<Team>> result,Realm realmDefault) {
+        if (!resultHandler(result)){
+            return;
         }
+        initList(result.getData());
+        final RealmResults<Team> results = realmDefault.where(Team.class).findAll();
+        realmDefault.executeTransactionAsync((Realm realm) -> results.deleteAllFromRealm());
+        realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(result.getData()));
     }
-
-    @Override
-    public void onComplete(Result<List<Team>> result) {
-        if (result.getCode()!=100){
-            return;
-        }
-        if (result.getData()==null){
-            return;
-        }
-        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
+    private void initList(List<Team> teams){
+        RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,teams, R.layout.team_item) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Team item) {
                 viewHolder.setFrescoImg(R.id.team_img, Uri.parse(AppConf.BASE_URL+item.getImg()));
@@ -58,8 +57,33 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
         };
         view.whenGetTeamSuc(adapter);
     }
+    private boolean resultHandler(Result<?> result){
+        if (result==null){
+            return false;
+        }
+        if (result.getData()==null){
+            return false;
+        }
+
+        switch (result.getCode()) {
+            case 100:
+                return true;
+            case 99:
+                return false;
+            default:
+                return false;
+        }
+    }
 
     @Override
-    public void onFail(String errorMsg) {
+    public void initView(Realm realm) {
+        RealmQuery<Team> query=realm.where(Team.class);
+        List<Team> data=query.findAll();
+        if (data.size()>0){
+            initList(data);
+        }else {
+            String schoolName= UserIntermediate.instance.getUser(context).getSchool();
+            model.executeGetTeamsReq(this,schoolName,0,realm);
+        }
     }
 }

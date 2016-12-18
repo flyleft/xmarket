@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.realm.Realm;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseFragment;
 import me.jcala.xmarket.mvp.team.add.TeamAddActivity;
@@ -28,6 +29,7 @@ public class TeamFragment extends BaseFragment implements TeamView {
     protected RecyclerView recyclerView;
 
     private TeamPresenter presenter;
+    private Realm realm;
 
     @Override
     protected int getLayoutResId() {
@@ -37,11 +39,12 @@ public class TeamFragment extends BaseFragment implements TeamView {
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder= ButterKnife.bind(this,view);
+        realm=Realm.getDefaultInstance();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         presenter=new TeamPresenterImpl(getActivity(),this);
-        presenter.getTeams();
+        presenter.initView(realm);
     }
 
     @Override
@@ -59,6 +62,7 @@ public class TeamFragment extends BaseFragment implements TeamView {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        realm.close();
     }
 
 }

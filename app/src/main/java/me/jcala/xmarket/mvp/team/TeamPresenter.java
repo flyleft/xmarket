@@ -1,5 +1,7 @@
 package me.jcala.xmarket.mvp.team;
 
+import io.realm.Realm;
+
 public interface TeamPresenter {
-    void getTeams();
+    void initView(Realm realm);
 }

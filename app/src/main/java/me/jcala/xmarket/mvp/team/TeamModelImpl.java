@@ -1,6 +1,8 @@
 package me.jcala.xmarket.mvp.team;
 
 import java.util.List;
+
+import io.realm.Realm;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
@@ -14,9 +16,11 @@ import rx.schedulers.Schedulers;
 public class TeamModelImpl implements TeamModel{
 
     @Override
-    public void getTeams(final onGainTeamListener listener,final String schoolName,int page) {
+    public void executeGetTeamsReq(final onGainTeamListener listener,
+                                   final String schoolName,
+                                   int page,final Realm realm) {
         if (AppConf.useMock){
-            listener.onComplete(new TeamMock().gainTeamList());
+            listener.onComplete(new TeamMock().gainTeamList(),realm);
             return;
         }
         Result<List<Team>> result = new Result<List<Team>>().api(Api.SERVER_ERROR);
@@ -29,14 +33,14 @@ public class TeamModelImpl implements TeamModel{
                 .subscribe(new Subscriber<Result<List<Team>>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onComplete(result);
+                        listener.onComplete(result,realm);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFail(Api.SERVER_ERROR.msg());
+                        result.setCode(Api.SERVER_ERROR.code());
+                        listener.onComplete(result,realm);
                     }
-                    @SuppressWarnings("unchecked")
                     @Override
                     public void onNext(Result<List<Team>> listResult) {
                         result.setCode(listResult.getCode());
