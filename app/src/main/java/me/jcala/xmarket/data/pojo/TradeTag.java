@@ -14,4 +14,6 @@ public class TradeTag extends RealmObject{
     private String name;//分类的名称
     private String bgPic;//分类的背景图片
 
+    public TradeTag() {
+    }
 }
