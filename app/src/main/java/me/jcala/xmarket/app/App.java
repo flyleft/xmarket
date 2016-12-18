@@ -22,8 +22,9 @@ public class App extends Application {
     private void initialize(){
         Fresco.initialize(this);
         Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().build();
-        Realm.setDefaultConfiguration(config);
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder().build();
+        Realm.deleteRealm(realmConfig); // Delete Realm between app restarts.
+        Realm.setDefaultConfiguration(realmConfig);
     }
 
     public AppComponent getComponent() {

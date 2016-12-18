@@ -2,9 +2,7 @@ package me.jcala.xmarket.mvp.team;
 
 import android.content.Context;
 import android.net.Uri;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+
 import java.util.List;
 
 import io.realm.Realm;
@@ -14,13 +12,9 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
-import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.data.realm.RealmTrade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
-import me.jcala.xmarket.view.ViewHolder;
 
 public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamListener {
     private TeamModel model;
@@ -40,7 +34,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
         }
         initList(result.getData());
         final RealmResults<Team> results = realmDefault.where(Team.class).findAll();
-        realmDefault.executeTransactionAsync((Realm realm) -> results.deleteAllFromRealm());
+        realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
         realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(result.getData()));
     }
     private void initList(List<Team> teams){
