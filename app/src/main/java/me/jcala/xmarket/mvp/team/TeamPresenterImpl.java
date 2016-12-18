@@ -70,6 +70,12 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     }
 
     @Override
+    public void refreshView(Realm realm) {
+        String schoolName= UserIntermediate.instance.getUser(context).getSchool();
+        model.executeGetTeamsReq(this,schoolName,0,realm);
+    }
+
+    @Override
     public void initView(Realm realm) {
         RealmQuery<Team> query=realm.where(Team.class);
         List<Team> data=query.findAll();

@@ -4,4 +4,5 @@ import io.realm.Realm;
 
 public interface TeamPresenter {
     void initView(Realm realm);
+    void refreshView(Realm realm);
 }
