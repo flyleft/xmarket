@@ -34,6 +34,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
 
     @Override
     public void onReqComplete(Result<List<Trade>> result,Realm realmDefault) {
+        view.whenHideRefresh();
         if (!resultHandler(result)){
             return;
         }
@@ -55,7 +56,6 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(tradeList));
     }
     private boolean resultHandler(Result<?> result){
-        view.whenHideRefresh();
         if (result==null){
             return false;
         }

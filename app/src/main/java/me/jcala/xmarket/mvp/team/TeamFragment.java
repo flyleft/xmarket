@@ -50,6 +50,11 @@ public class TeamFragment extends BaseFragment implements TeamView {
     }
 
     @Override
+    public void whenHideRefresh() {
+        refreshLayout.setRefreshing(false);
+    }
+
+    @Override
     public void whenGetTeamSuc(RecyclerCommonAdapter<?> adapter) {
        recyclerView.setAdapter(adapter);
     }

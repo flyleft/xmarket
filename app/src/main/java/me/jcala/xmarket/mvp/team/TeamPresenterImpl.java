@@ -29,6 +29,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
 
     @Override
     public void onComplete(Result<List<Team>> result,Realm realmDefault) {
+        view.whenHideRefresh();
         if (!resultHandler(result)){
             return;
         }
