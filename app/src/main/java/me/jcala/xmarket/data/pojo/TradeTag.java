@@ -1,5 +1,6 @@
 package me.jcala.xmarket.data.pojo;
 
+import io.realm.RealmObject;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class TradeTag {
+public class TradeTag extends RealmObject{
     private int id;//分类的id
     private String name;//分类的名称
     private String bgPic;//分类的背景图片

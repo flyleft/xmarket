@@ -5,7 +5,6 @@ import android.app.Application;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import me.jcala.xmarket.di.components.AppComponent;
 import me.jcala.xmarket.di.components.DaggerAppComponent;
 

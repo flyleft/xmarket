@@ -1,5 +1,7 @@
 package me.jcala.xmarket.mvp.sort;
 
+import io.realm.Realm;
+
 public interface TradeTagPresenter {
-    void doGetSortTag();
+    void initView(Realm realm);
 }

@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.sort;
 
 import java.util.List;
 
+import io.realm.Realm;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
@@ -16,9 +17,9 @@ import rx.schedulers.Schedulers;
 
 class TradeTagModelImpl implements TradeTagModel {
     @Override
-    public void getSortTag(final onGainListener listener) {
+    public void executeGetTagReq(final onGainListener listener,final Realm realm) {
         if (AppConf.useMock){
-            listener.onComplete(new TradeMock().tradeTag());
+            listener.onComplete(new TradeMock().tradeTag(),realm);
             return;
         }
         Result<List<TradeTag>> result = new Result<List<TradeTag>>().api(Api.SERVER_ERROR);
@@ -31,12 +32,13 @@ class TradeTagModelImpl implements TradeTagModel {
                 .subscribe(new Subscriber<Result<List<TradeTag>>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onComplete(result);
+                        listener.onComplete(result,realm);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFail(result.getMsg());
+                        result.setCode(Api.SERVER_ERROR.code());
+                        listener.onComplete(result,realm);
                     }
                     @Override
                     public void onNext(Result<List<TradeTag>> listResult) {

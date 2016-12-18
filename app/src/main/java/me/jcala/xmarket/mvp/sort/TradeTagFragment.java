@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.Realm;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.di.components.DaggerSortTagComponent;
 import me.jcala.xmarket.di.modules.SortTagModule;
@@ -23,6 +24,7 @@ public class TradeTagFragment extends BaseFragment implements TradeTagView {
     @Inject
     TradeTagPresenter presenter;
     private Unbinder unbinder;
+    private Realm realm;
     @Override
     protected int getLayoutResId() {
         return R.layout.sort_fragment;
@@ -31,12 +33,13 @@ public class TradeTagFragment extends BaseFragment implements TradeTagView {
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         unbinder=ButterKnife.bind(this,view);
+        realm=Realm.getDefaultInstance();
         DaggerSortTagComponent
                 .builder()
                 .sortTagModule(new SortTagModule(getActivity(),this))
                 .build()
                 .inject(this);
-        presenter.doGetSortTag();
+        presenter.initView(realm);
     }
     @Override
     public void whenSuccess(BaseAdapter adapter,AdapterView.OnItemClickListener listener) {
@@ -57,5 +60,6 @@ public class TradeTagFragment extends BaseFragment implements TradeTagView {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        realm.close();
     }
 }

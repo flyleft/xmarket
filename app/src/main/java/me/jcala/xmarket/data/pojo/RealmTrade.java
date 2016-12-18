@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.realm;
+package me.jcala.xmarket.data.pojo;
 
 import io.realm.RealmObject;
 import lombok.Getter;

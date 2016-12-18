@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
-import me.jcala.xmarket.data.realm.RealmTrade;
+import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;

@@ -7,9 +7,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.TradeTag;
+import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.sort.trades.TradeTagDetailActivity;
 import me.jcala.xmarket.view.CommonAdapter;
 import me.jcala.xmarket.mvp.main.MainActivity;
@@ -27,16 +33,18 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
     }
 
     @Override
-    public void doGetSortTag() {
-        mModel.getSortTag(this);
+    public void initView(final Realm realm) {
+        RealmQuery<TradeTag> query =  realm.where(TradeTag.class);
+        List<TradeTag> data =  query.findAll();
+        if (data.size()>0){
+
+        }else {
+            mModel.executeGetTagReq(this,realm);
+        }
     }
 
-    @Override
-    public void onComplete(Result<List<TradeTag>> result) {
-        if (!resultHandler(result)){
-            return;
-        }
-        BaseAdapter adapter=new CommonAdapter<TradeTag>(mContext, result.getData(),R.layout.sort_grid_item) {
+    private void initList(List<TradeTag> tagList){
+        BaseAdapter adapter=new CommonAdapter<TradeTag>(mContext, tagList,R.layout.sort_grid_item) {
             @Override
             public void convert(ViewHolder viewHolder, TradeTag dataEntity) {
                 viewHolder.setText(R.id.grid_tv, dataEntity.getName());
@@ -44,12 +52,23 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
             }
         };
         AdapterView.OnItemClickListener listener=(AdapterView<?> parent, View view, int position, long id)->{
-            TradeTag entity = result.getData().get(position);
+            TradeTag entity = tagList.get(position);
             Intent intent=new Intent(mContext,TradeTagDetailActivity.class);
             intent.putExtra("tagName",entity.getName());
             mContext.startActivity(intent);
         };
         mView.whenSuccess(adapter,listener);
+    }
+
+    @Override
+    public void onComplete(Result<List<TradeTag>> result,Realm realmDefault) {
+        if (!resultHandler(result)){
+            return;
+        }
+        initList(result.getData());
+        final RealmResults<TradeTag> results = realmDefault.where(TradeTag.class).findAll();
+        realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
+        realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(result.getData()));
     }
 
     private boolean resultHandler(Result<?> result){
@@ -67,8 +86,4 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         }
     }
 
-    @Override
-    public void onFail(String msg) {
-        mView.whenFail(msg);
-    }
 }
