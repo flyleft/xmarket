@@ -37,7 +37,7 @@ public class TradeTagPresenterImpl implements TradeTagPresenter,TradeTagModel.on
         RealmQuery<TradeTag> query =  realm.where(TradeTag.class);
         List<TradeTag> data =  query.findAll();
         if (data.size()>0){
-
+            initList(data);
         }else {
             mModel.executeGetTagReq(this,realm);
         }

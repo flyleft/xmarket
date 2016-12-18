@@ -92,19 +92,4 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.onMes
         };
         view.whenNeedUpdateMsgList(adapter);
     }
-
-    private boolean resultHandler(Result<?> result){
-        if (result==null){
-            return false;
-        }
-        switch (result.getCode()) {
-            case 100:
-                return true;
-            case 99:
-                return false;
-            default:
-                return false;
-        }
-    }
-
 }
