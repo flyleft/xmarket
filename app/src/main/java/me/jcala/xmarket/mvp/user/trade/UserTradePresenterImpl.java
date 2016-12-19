@@ -53,6 +53,7 @@ public class UserTradePresenterImpl implements UserTradePresenter,
            Intent intent=new Intent(context,TradeDetailActivity.class);
            intent.putExtra("tradeId",item.getId());
            intent.putExtra("userId",item.getAuthor().getId());
+           intent.putExtra("status",item.getStatus());
            context.startActivity(intent);
        };
        adapter.setClickListener(listener);

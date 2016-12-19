@@ -57,6 +57,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     private MaterialDialog progress;
     String tradeId;
     String userId;
+    int status;
     private Unbinder unbinder;
 
 
@@ -68,6 +69,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         Bundle bundle=intent.getExtras();
         tradeId=bundle.getString("tradeId");
         userId=bundle.getString("userId");
+        status=bundle.getInt("status",0);
         if (tradeId==null||userId==null){
             return;
         }
@@ -85,7 +87,11 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
         String localUserId=UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
         if (userId.equals(localUserId)){
-            submit.setText("我要捐赠");
+            if (status==0){
+                submit.setText("我要捐赠");
+            }else {
+                submit.setVisibility(View.VISIBLE);
+            }
         }
 
         progress=new MaterialDialog.Builder(TradeDetailActivity.this)
@@ -97,10 +103,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
 
         submit.setOnClickListener((View v) ->{
                 String myId= UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
-                if (userId.equals(myId)){
-                    presenter.loadTeamData();
-                    return;
-                }
+            if (!userId.equals(myId)){
                 new MaterialDialog.Builder(TradeDetailActivity.this)
                         .title(R.string.trade_detail_dialog_title)
                         .content(R.string.trade_detail_dialog_content)
@@ -110,6 +113,9 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
                             presenter.buyTrade(tradeId);
                         })
                         .show();
+            }else if (status==0){
+                presenter.loadTeamData();
+            }
         });
     }
 
