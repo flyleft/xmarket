@@ -44,8 +44,9 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @BindView(R.id.trade_add_price_content)
     EditText tradePrice;
     @BindView(R.id.trade_add_desp_content)
-    private Unbinder unbinder;
     EditText tradeDesc;
+
+    private Unbinder unbinder;
     BaseAdapter adapter;
     MaterialDialog progress;
     TradeAddPresenter presenter;

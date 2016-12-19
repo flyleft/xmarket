@@ -2,6 +2,8 @@ package me.jcala.xmarket.mvp.trade.detail;
 
 import android.content.Context;
 
+import java.util.List;
+
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
@@ -33,6 +35,21 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
                 break;
             default:
         }
+    }
+
+    @Override
+    public void onGainTeamNamesComplete(Result<List<String>> result) {
+
+    }
+
+    @Override
+    public void loadTeamData() {
+
+    }
+
+    @Override
+    public void donateTrade(String tradeId) {
+
     }
 
     @Override

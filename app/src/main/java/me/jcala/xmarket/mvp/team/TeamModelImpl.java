@@ -27,7 +27,7 @@ public class TeamModelImpl implements TeamModel{
         ReqExecutor
                 .INSTANCE()
                 .hybridReq()
-                .getTeams(schoolName,page,AppConf.size)
+                .getTeams(schoolName,0,page,AppConf.size)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<List<Team>>>() {

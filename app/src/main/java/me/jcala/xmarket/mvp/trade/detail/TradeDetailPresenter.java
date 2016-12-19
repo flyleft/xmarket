@@ -6,4 +6,7 @@ public interface TradeDetailPresenter {
 
     void buyTrade(String tradeId);
 
+    void loadTeamData();//获取志愿队名称列表
+
+    void donateTrade(String tradeId);
 }

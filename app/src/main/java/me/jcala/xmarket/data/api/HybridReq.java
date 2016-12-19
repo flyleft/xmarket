@@ -40,6 +40,15 @@ public interface HybridReq {
     @GET(ApiConf.get_school_teams)
     Observable<Result<List<Team>>> getTeams(
             @Path("schoolName") String schoolName,
+            @Query("type") int type,
+            @Query("page") int page,
+            @Query("size") int size
+    );
+
+    @GET(ApiConf.get_school_teams)
+    Observable<Result<List<String>>> getTeamNames(
+            @Path("schoolName") String schoolName,
+            @Query("type") int type,
             @Query("page") int page,
             @Query("size") int size
     );

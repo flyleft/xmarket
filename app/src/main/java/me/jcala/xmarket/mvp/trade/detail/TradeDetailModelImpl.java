@@ -1,5 +1,7 @@
 package me.jcala.xmarket.mvp.trade.detail;
 
+import java.util.List;
+
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.api.ReqExecutor;
@@ -43,6 +45,36 @@ public class TradeDetailModelImpl implements TradeDetailModel {
                         result.setCode(tradeResult.getCode());
                         result.setMsg(tradeResult.getMsg());
                         result.setData(tradeResult.getData());
+                    }
+                });
+
+    }
+
+    @Override
+    public void executeGetTeamNamesReq(onDetailListener listener,String schoolName) {
+        Result<List<String>> result = new Result<List<String>>().api(Api.SERVER_ERROR);
+        ReqExecutor
+                .INSTANCE()
+                .hybridReq()
+                .getTeamNames(schoolName,1,0,AppConf.size)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Result<List<String>>>() {
+                    @Override
+                    public void onCompleted() {
+                       listener.onGainTeamNamesComplete(result);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        result.setCode(Api.SERVER_ERROR.code());
+                        listener.onGainTeamNamesComplete(result);
+                    }
+                    @Override
+                    public void onNext(Result<List<String>> listResult) {
+                        result.setCode(listResult.getCode());
+                        result.setMsg(listResult.getMsg());
+                        result.setData(listResult.getData());
                     }
                 });
 

@@ -23,7 +23,7 @@ public interface ApiConf {
 
     //------------------------Hybrid 志愿队相关------------------------
     String create_team="api/v1/teams/create";//创建志愿队
-    String get_school_teams="/api/v1/teams/{schoolName}/get";//获取该学校下的所有志愿队
+    String get_school_teams="/api/v1/teams/{schoolName}/get";//？type=0获取该学校下的所有志愿队.0获取志愿队列表，1获取志愿队名称列表
     //------------------------Hybrid 学校相关--------------------------
     String get_schools="api/v1/schools/names/get";//获取学校名称列表
     //------------------------Hybrid 文件相关--------------------------
