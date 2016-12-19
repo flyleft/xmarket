@@ -8,5 +8,5 @@ public interface TradeDetailPresenter {
 
     void loadTeamData();//获取志愿队名称列表
 
-    void donateTrade(String tradeId);
+    void donateTrade(String tradeId,String team);
 }

@@ -72,7 +72,7 @@ public class RegisterNextActivity extends BaseActivity implements RegisterNextVi
                             schoolName.setText(text);
                         return true;
                 })
-                .positiveText(R.string.register_next_choose)
+                .positiveText(R.string.choose)
                 .show();
     }
 

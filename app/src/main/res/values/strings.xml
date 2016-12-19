@@ -2,6 +2,9 @@
     <!-- APP名称 -->
     <string name="app_name">xmarket</string>
 
+    <!-- 公共 -->
+    <string name="choose">选择</string>
+
     <!-- 主页面的bottom menu -->
     <string name="MainActivity_title_school">本校</string>
     <string name="MainActivity_title_sort">分类</string>
@@ -29,7 +32,6 @@
     <string name="register_next_school">点击设置学校</string>
     <string name="register_next_phone">手机号</string>
     <string name="register_next_school_choose">请选择学校</string>
-    <string name="register_next_choose">选择</string>
 
     <!-- 个人信息页面  -->
     <string name="info_username">jcala</string>
@@ -79,6 +81,7 @@
     <string name="trade_detail_dialog_content">确认之后，对方将收到你的购买请求</string>
     <string name="trade_detail_dialog_agree">确认</string>
     <string name="trade_detail_dialog_disagree">返回</string>
+    <string name="trade_detail_team_choose">请选择要捐赠给的志愿队</string>
     <!--用户商品列表页面-->
     <string name="user_trade_dialog_content">正在加载数据...</string>
 

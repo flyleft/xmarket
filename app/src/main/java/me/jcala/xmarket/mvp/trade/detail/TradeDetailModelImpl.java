@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers;
 public class TradeDetailModelImpl implements TradeDetailModel {
 
     @Override
-    public void executeDetailReq(onDetailListener listener,String tradeId) {
+    public void executeGetTradeReq(onDetailListener listener, String tradeId) {
 
         if (AppConf.useMock){
             listener.onGainDealComplete(new TradeMock().gainTradeDetail());
@@ -77,7 +77,34 @@ public class TradeDetailModelImpl implements TradeDetailModel {
                         result.setData(listResult.getData());
                     }
                 });
+    }
 
+    @Override
+    public void executeDonateReq(onDetailListener listener, String tradeId, String userId, String teamName) {
+        Result<String> result = new Result<String>().api(Api.SERVER_ERROR);
+        ReqExecutor
+                .INSTANCE()
+                .userReq()
+                .donateUserTrade(userId,tradeId,teamName)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Result<String>>() {
+                    @Override
+                    public void onCompleted() {
+                        listener.onDonateComplete(result);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        result.setCode(Api.SERVER_ERROR.code());
+                        listener.onDonateComplete(result);
+                    }
+                    @Override
+                    public void onNext(Result<String> listResult) {
+                        result.setCode(listResult.getCode());
+                        result.setMsg(listResult.getMsg());
+                    }
+                });
     }
 
     @Override

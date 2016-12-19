@@ -16,11 +16,15 @@ public interface TradeDetailModel {
         void onBuyComplete(Result<String> result);
 
         void onGainTeamNamesComplete(Result<List<String>> result);
+
+        void onDonateComplete(Result<String> result);
     }
 
-    void executeDetailReq(onDetailListener listener,String tradeId);
+    void executeGetTradeReq(onDetailListener listener, String tradeId);
 
     void executeBuyReq(onDetailListener listener, User user, String tradeId);
+
+    void executeDonateReq(onDetailListener listener, String tradeId,String userId,String teamName);
 
     void executeGetTeamNamesReq(onDetailListener listener,String schoolName);
 }

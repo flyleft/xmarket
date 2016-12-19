@@ -116,7 +116,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
                             selectTag.setText(text);
                             return true;
                         })
-                .positiveText(R.string.register_next_choose)
+                .positiveText(R.string.choose)
                 .show();
     }
 

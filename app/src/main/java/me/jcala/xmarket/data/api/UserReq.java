@@ -81,4 +81,15 @@ public interface UserReq {
             @Path("userId")  String user_id,
             @Query("type") int type
     );
+
+    /**
+     * 捐赠用户的商品
+     */
+    @PUT(ApiConf.donate_user_trade)
+    @FormUrlEncoded
+    Observable<Result<String>> donateUserTrade(
+            @Path("userId")  String user_id,
+            @Field("tradeId")  String tradeId,
+            @Field("team")  String team
+    );
 }

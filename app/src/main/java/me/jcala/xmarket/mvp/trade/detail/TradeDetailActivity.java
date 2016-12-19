@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.Trade;
@@ -52,14 +53,17 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView school;
     @BindView(R.id.trade_detail_submit)
     TextView submit;
+
+    private MaterialDialog progress;
     String tradeId;
     String userId;
+    private Unbinder unbinder;
 
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_detail_activity);
-        ButterKnife.bind(this);
+        unbinder=ButterKnife.bind(this);
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         tradeId=bundle.getString("tradeId");
@@ -83,10 +87,18 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         if (userId.equals(localUserId)){
             submit.setText("我要捐赠");
         }
+
+        progress=new MaterialDialog.Builder(TradeDetailActivity.this)
+                .content(R.string.login_dialog_content)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .title(R.string.dialog_wait)
+                .build();
+
         submit.setOnClickListener((View v) ->{
                 String myId= UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
                 if (userId.equals(myId)){
-
+                    presenter.loadTeamData();
                     return;
                 }
                 new MaterialDialog.Builder(TradeDetailActivity.this)
@@ -102,7 +114,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     }
 
     @Override
-    public void whenLoadDataSuccess(Trade trade) {
+    public void whenLoadTradeSuccess(Trade trade) {
         List<String> imgUrls=new ArrayList<>();
         for (String str:trade.getImgUrls()){
             imgUrls.add(AppConf.BASE_URL+str);
@@ -115,6 +127,20 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         tradeName.setText(trade.getTitle());
         tradePrice.setText("￥ "+trade.getPrice());
         tradeDesc.setText("     "+trade.getDesc());
+    }
+
+    @Override
+    public void whenLoadTeamSuccess(List<String> teams) {
+        new MaterialDialog.Builder(this)
+                .title(R.string.trade_detail_team_choose)
+                .items(teams)
+                .itemsCallbackSingleChoice(0,
+                        (MaterialDialog dialog, View view, int which, CharSequence text)->{
+                            presenter.donateTrade(tradeId,text.toString());
+                            return true;
+                        })
+                .positiveText(R.string.choose)
+                .show();
     }
 
     @Override
@@ -135,9 +161,34 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     }
 
     @Override
+    public void whenShowProgress() {
+            progress.show();
+    }
+
+    @Override
+    public void whenHideProgress() {
+           progress.dismiss();
+    }
+
+    @Override
     public void whenBuySuccess() {
+        //toast购买成功
         Intent intent=new Intent(TradeDetailActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void whenDonateSuccess() {
+        //toast捐赠成功
+        Intent intent=new Intent(TradeDetailActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
