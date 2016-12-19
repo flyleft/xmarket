@@ -79,6 +79,8 @@
     <string name="trade_detail_dialog_content">确认之后，对方将收到你的购买请求</string>
     <string name="trade_detail_dialog_agree">确认</string>
     <string name="trade_detail_dialog_disagree">返回</string>
+    <!--用户商品列表页面-->
+    <string name="user_trade_dialog_content">正在加载数据...</string>
 
 
 

@@ -30,6 +30,7 @@ import me.jcala.xmarket.mvp.sort.TradeTagFragment;
 import me.jcala.xmarket.mvp.team.TeamFragment;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 import me.jcala.xmarket.mvp.user.team.UserTeamActivity;
+import me.jcala.xmarket.mvp.user.trade.UserTradeActivity;
 import me.jcala.xmarket.mvp.user.trades.bought.TradeBoughtActivity;
 import me.jcala.xmarket.mvp.user.trades.donate.TradeDonateActivity;
 import me.jcala.xmarket.mvp.user.trades.sell.TradeSellActivity;
@@ -202,32 +203,8 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void slideJump(int id) {
+        int type=-1;
         switch (id){
-            case R.id.info_uncomplete:
-                Intent unCompleteIntent=new Intent(context, TradeUnCompleteActivity.class);
-                context.startActivity(unCompleteIntent);
-                break;
-
-            case R.id.info_sell:
-                Intent sellIntent=new Intent(context, TradeSellActivity.class);
-                context.startActivity(sellIntent);
-                break;
-
-            case R.id.info_bought:
-                Intent boughtIntent=new Intent(context, TradeBoughtActivity.class);
-                context.startActivity(boughtIntent);
-                break;
-
-            case R.id.info_sold:
-                Intent soldIntent=new Intent(context, TradeSoldActivity.class);
-                context.startActivity(soldIntent);
-                break;
-
-            case R.id.info_donation:
-                Intent donateIntent=new Intent(context, TradeDonateActivity.class);
-                context.startActivity(donateIntent);
-                break;
-
             case R.id.info_team:
                 Intent teamIntent=new Intent(context, UserTeamActivity.class);
                 context.startActivity(teamIntent);
@@ -244,8 +221,32 @@ public class MainPresenterImpl implements MainPresenter {
                 Intent uriIntent=new Intent(Intent.ACTION_VIEW,uri);
                 context.startActivity(uriIntent);
                 break;
+            case R.id.info_uncomplete:
+                type=0;
+                break;
+
+            case R.id.info_sell:
+                type=1;
+                break;
+
+            case R.id.info_bought:
+                type=2;
+                break;
+
+            case R.id.info_sold:
+                type=3;
+                break;
+
+            case R.id.info_donation:
+                type=4;
+                break;
             default:break;
         }
-
+        if (type<0){
+            return;
+        }
+        Intent tradeIntent=new Intent(context, UserTradeActivity.class);
+        tradeIntent.putExtra("type",type);
+        context.startActivity(tradeIntent);
     }
 }

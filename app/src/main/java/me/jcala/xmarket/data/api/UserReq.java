@@ -3,11 +3,13 @@ package me.jcala.xmarket.data.api;
 
 import java.util.List;
 
+import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.conf.ApiConf;
 import me.jcala.xmarket.data.dto.MsgDto;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Team;
+import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -49,13 +51,17 @@ public interface UserReq {
             @Field("phone")  String phone,
             @Field("school")  String school);
 
-
+    /**
+     * 获取用户发起的志愿队列表
+     */
     @GET(ApiConf.get_user_team)
     Observable<Result<List<Team>>> getUserTeams(
             @Path("userId")  String user_id
     );
 
-    //获取用户所有交易信息。实现使用后台轮询
+    /**
+     * 获取用户所有交易信息,实现使用后台轮询
+     */
     @GET(ApiConf.get_user_messages)
     Observable<Result<List<Message>>> getUserMsgs(
             @Path("userId")  String user_id,
@@ -64,4 +70,15 @@ public interface UserReq {
             @Query("size") int size
     );
 
+
+    /**
+     * 获取用户所有商品列表
+     * 根据type区分商品类型
+     * 0：待确认；1：待售；2：已买；3：已卖；4：捐赠
+     */
+    @GET(ApiConf.get_user_trades)
+    Observable<Result<List<Trade>>> getUserTrades(
+            @Path("userId")  String user_id,
+            @Query("type") int type
+    );
 }
