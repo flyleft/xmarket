@@ -22,6 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultSubscriber;
@@ -43,6 +44,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @BindView(R.id.trade_add_price_content)
     EditText tradePrice;
     @BindView(R.id.trade_add_desp_content)
+    private Unbinder unbinder;
     EditText tradeDesc;
     BaseAdapter adapter;
     MaterialDialog progress;
@@ -53,7 +55,7 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_add_activity);
-        ButterKnife.bind(this);
+        unbinder=ButterKnife.bind(this);
         initData();
     }
 
@@ -185,5 +187,11 @@ public class TradeAddActivity extends BaseActivity implements TradeAddView{
     @Override
     public void whenStopProgress() {
         progress.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
