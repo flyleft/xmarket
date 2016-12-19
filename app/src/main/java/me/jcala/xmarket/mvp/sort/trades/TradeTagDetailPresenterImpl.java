@@ -66,6 +66,7 @@ public class TradeTagDetailPresenterImpl implements TradeTagDetailPresenter,Trad
             Trade item=result.getData().get(position);
             Intent intent=new Intent(context,TradeDetailActivity.class);
             intent.putExtra("tradeId",item.getId());
+            intent.putExtra("userId",item.getAuthor().getId());
             context.startActivity(intent);
         };
         view.whenLoadDataSuc(adapter);

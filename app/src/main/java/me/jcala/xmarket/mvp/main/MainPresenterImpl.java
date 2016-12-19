@@ -2,10 +2,7 @@ package me.jcala.xmarket.mvp.main;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +13,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
-import com.orhanobut.logger.Logger;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.pojo.User;
@@ -31,11 +25,6 @@ import me.jcala.xmarket.mvp.team.TeamFragment;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;
 import me.jcala.xmarket.mvp.user.team.UserTeamActivity;
 import me.jcala.xmarket.mvp.user.trade.UserTradeActivity;
-import me.jcala.xmarket.mvp.user.trades.bought.TradeBoughtActivity;
-import me.jcala.xmarket.mvp.user.trades.donate.TradeDonateActivity;
-import me.jcala.xmarket.mvp.user.trades.sell.TradeSellActivity;
-import me.jcala.xmarket.mvp.user.trades.sold.TradeSoldActivity;
-import me.jcala.xmarket.mvp.user.trades.uncomplete.TradeUnCompleteActivity;
 
 public class MainPresenterImpl implements MainPresenter {
 

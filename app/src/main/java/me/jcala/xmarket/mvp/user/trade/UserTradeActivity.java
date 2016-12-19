@@ -23,7 +23,7 @@ public class UserTradeActivity extends BaseActivity implements UserTradeView{
     @BindView(R.id.user_trade_toolbar_title)
     TextView textView;
     @BindView(R.id.user_trade_list)
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     UserTradePresenter presenter;
     private MaterialDialog progress;
     private Unbinder unbinder;

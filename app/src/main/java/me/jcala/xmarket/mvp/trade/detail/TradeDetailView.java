@@ -4,7 +4,7 @@ import me.jcala.xmarket.data.pojo.Trade;
 
 public interface TradeDetailView {
 
-    void whenSuccess(Trade trade);
+    void whenLoadDataSuccess(Trade trade);
 
     void whenFail(String errorMsg);
 

@@ -26,7 +26,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
         switch (result.getCode()) {
             case 100:
-                view.whenSuccess(result.getData());
+                view.whenLoadDataSuccess(result.getData());
                 break;
             case 99:
                 view.whenFail(result.getMsg());

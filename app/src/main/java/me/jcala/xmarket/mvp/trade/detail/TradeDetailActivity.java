@@ -3,6 +3,7 @@ package me.jcala.xmarket.mvp.trade.detail;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -49,6 +50,8 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView time;
     @BindView(R.id.trade_detail_school)
     TextView school;
+    @BindView(R.id.trade_detail_submit)
+    TextView submit;
     String tradeId;
     String userId;
 
@@ -57,12 +60,6 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.trade_detail_activity);
         ButterKnife.bind(this);
-        presenter=new TradeDetailPresenterImpl(this,this);
-        initData();
-    }
-
-    @SuppressWarnings("unchecked")
-    private void initData(){
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         tradeId=bundle.getString("tradeId");
@@ -70,14 +67,42 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         if (tradeId==null||userId==null){
             return;
         }
+
+        presenter=new TradeDetailPresenterImpl(this,this);
+        initData();
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initData(){
         presenter.loadData(tradeId);
         banner.setPlayDelay(2000);
         banner.setAnimationDurtion(500);
         banner.setHintView(new ColorPointHintView(this, Color.BLACK,Color.WHITE));
+
+        String localUserId=UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
+        if (userId.equals(localUserId)){
+            submit.setText("我要捐赠");
+        }
+        submit.setOnClickListener((View v) ->{
+                String myId= UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
+                if (userId.equals(myId)){
+
+                    return;
+                }
+                new MaterialDialog.Builder(TradeDetailActivity.this)
+                        .title(R.string.trade_detail_dialog_title)
+                        .content(R.string.trade_detail_dialog_content)
+                        .positiveText(R.string.trade_detail_dialog_agree)
+                        .negativeText(R.string.trade_detail_dialog_disagree)
+                        .onPositive((MaterialDialog dialog,DialogAction which) ->{
+                            presenter.buyTrade(tradeId);
+                        })
+                        .show();
+        });
     }
 
     @Override
-    public void whenSuccess(Trade trade) {
+    public void whenLoadDataSuccess(Trade trade) {
         List<String> imgUrls=new ArrayList<>();
         for (String str:trade.getImgUrls()){
             imgUrls.add(AppConf.BASE_URL+str);
@@ -99,24 +124,6 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
                 .setDuration(Style.DURATION_LONG)
                 .setColor(PaletteUtils.getTransparentColor(PaletteUtils.MATERIAL_RED))
                 .setAnimations(Style.ANIMATIONS_FLY)
-                .show();
-    }
-
-    @OnClick(R.id.trade_detail_submit)
-    void clickSubmit(){
-        String myId= UserIntermediate.instance.getUser(TradeDetailActivity.this).getId();
-        if (userId.equals(myId)){
-            whenFail("不可以购买自己发布的商品");
-            return;
-        }
-        new MaterialDialog.Builder(this)
-                .title(R.string.trade_detail_dialog_title)
-                .content(R.string.trade_detail_dialog_content)
-                .positiveText(R.string.trade_detail_dialog_agree)
-                .negativeText(R.string.trade_detail_dialog_disagree)
-                .onPositive((MaterialDialog dialog,DialogAction which) ->{
-                    presenter.buyTrade(tradeId);
-                })
                 .show();
     }
 
