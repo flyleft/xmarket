@@ -2,6 +2,9 @@ package me.jcala.xmarket.mvp.user.trade;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -11,11 +14,14 @@ import butterknife.Unbinder;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
+import me.jcala.xmarket.view.RecyclerCommonAdapter;
 
 public class UserTradeActivity extends BaseActivity implements UserTradeView{
 
     @BindView(R.id.user_trade_toolbar_title)
     TextView textView;
+    @BindView(R.id.user_trade_list)
+    private RecyclerView recyclerView;
     private Unbinder unbinder;
     private int type;
 
@@ -27,6 +33,10 @@ public class UserTradeActivity extends BaseActivity implements UserTradeView{
     }
 
     private void initData(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(UserTradeActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         type=bundle.getInt("type",0);
@@ -45,6 +55,11 @@ public class UserTradeActivity extends BaseActivity implements UserTradeView{
         Intent intent=new Intent(UserTradeActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void whenLoadDataSuccess(RecyclerCommonAdapter<?> adapter) {
+
     }
 
     @Override

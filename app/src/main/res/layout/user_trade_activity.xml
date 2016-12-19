@@ -38,6 +38,6 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/trade_detail_content" />
+    <include layout="@layout/user_trade_content" />
 
 </android.support.design.widget.CoordinatorLayout>
