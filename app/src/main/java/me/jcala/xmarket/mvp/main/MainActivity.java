@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import io.realm.Realm;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.message.MessageService;
@@ -41,13 +43,18 @@ public class MainActivity  extends BaseActivity
     TextView toolbarTitle;
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar mBottomNavigationBar;
+    private Realm realm;
+    private Unbinder unbinder;
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.main_activity);
+        realm=Realm.getDefaultInstance();
         PollingUtils.startPollingService(this, 5, MessageService.class, MessageService.ACTION);
-        ButterKnife.bind(this);
+        unbinder=ButterKnife.bind(this);
+
         presenter=new MainPresenterImpl(this);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,5 +120,7 @@ public class MainActivity  extends BaseActivity
     protected void onDestroy() {
         super.onDestroy();
         PollingUtils.stopPollingService(this, MessageService.class, MessageService.ACTION);
+        unbinder.unbind();
+        realm.close();
     }
 }

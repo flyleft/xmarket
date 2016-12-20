@@ -14,8 +14,14 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
+import me.jcala.xmarket.data.pojo.Message;
+import me.jcala.xmarket.data.pojo.RealmTrade;
+import me.jcala.xmarket.data.pojo.Team;
+import me.jcala.xmarket.data.pojo.TradeTag;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.message.MessageFragment;
@@ -36,8 +42,10 @@ public class MainPresenterImpl implements MainPresenter {
     private FragmentManager fm;
     TextView toolbarTitle;
     BottomNavigationBar mBottomNavigationBar;
-    public MainPresenterImpl(AppCompatActivity context) {
+    private Realm realmDefault;
+    public MainPresenterImpl(AppCompatActivity context,Realm realm) {
         this.context = context;
+        this.realmDefault=realm;
         fm = context.getFragmentManager();
         toolbarTitle=(TextView)context.findViewById(R.id.toolbar_title);
         mBottomNavigationBar=(BottomNavigationBar)context.findViewById(R.id.bottom_navigation_bar);
@@ -200,10 +208,7 @@ public class MainPresenterImpl implements MainPresenter {
                 break;
 
             case R.id.info_logout:
-                UserIntermediate.instance.logOut(context);
-                Intent loginIntent=new Intent(context, LoginRegisterActivity.class);
-                context.startActivity(loginIntent);
-                context.finish();
+                executeLogout();
                 break;
             case R.id.info_author:
                 Uri uri=Uri.parse("https://github.com/jcalaz");
@@ -237,5 +242,21 @@ public class MainPresenterImpl implements MainPresenter {
         Intent tradeIntent=new Intent(context, UserTradeActivity.class);
         tradeIntent.putExtra("type",type);
         context.startActivity(tradeIntent);
+    }
+    private void executeLogout(){
+        UserIntermediate.instance.logOut(context);
+
+        final RealmResults<RealmTrade> results = realmDefault.where(RealmTrade.class).findAll();//清除school存储
+        realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
+
+        final RealmResults<Team> teamResults = realmDefault.where(Team.class).findAll();//清除志愿队存储
+        realmDefault.executeTransaction((Realm realm) -> teamResults.deleteAllFromRealm());
+
+        final RealmResults<Message> msgResults = realmDefault.where(Message.class).findAll();//清除消息存储
+        realmDefault.executeTransaction((Realm realm) -> msgResults.deleteAllFromRealm());
+
+        Intent loginIntent=new Intent(context, LoginRegisterActivity.class);
+        context.startActivity(loginIntent);
+        context.finish();
     }
 }

@@ -68,13 +68,9 @@ public class MessageModelImpl implements MessageModel{
                         if (result.getCode()!=100||data==null){
                             return;
                         }
-                        final RealmResults<TradeTag> results = realmDefault.where(TradeTag.class).findAll();
+                        final RealmResults<Message> results = realmDefault.where(Message.class).findAll();
                         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
-                        RealmQuery<TradeTag> query =  realmDefault.where(TradeTag.class);
-                        List<TradeTag> queryData =  query.findAll();
-                        if (queryData.size()<1){
-                            realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
-                        }
+                        realmDefault.executeTransaction((Realm realm) -> realm.copyToRealm(data));
                         MessageIntermediate.instance.setNum(data.size());
                         if (listener!=null){
                             listener.onGetMsgSuccess(data);
