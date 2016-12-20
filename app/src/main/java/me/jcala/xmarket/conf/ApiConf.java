@@ -18,6 +18,7 @@ public interface ApiConf {
     //----------------------------商品相关----------------------------
     String get_tag_trades="api/v1/trades/tag/{tagName}/get";//获取该分类下所有商品列表
     String get_school_trades="api/v1/trades/school/{schoolName}/get";//获取该学校的商品列表
+    String get_team_trades="api/v1/trades/team/{teamName}/get";
     String get_trade="api/v1/trades/{tradeId}/get";//通过id获取商品的详细信息
     String create_trade="api/v1/trades/create";//发布商品
 

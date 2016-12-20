@@ -60,6 +60,16 @@ public interface TradeReq {
     );
 
     /**
+     * 根据志愿队名称获取收到捐赠的商品列表
+     */
+    @GET(ApiConf.get_team_trades)
+    Observable<Result<List<Trade>>> getTeamTrades(
+            @Path("teamName")  String school,
+            @Query("page") int page,
+            @Query("size") int size
+    );
+
+    /**
      * 发布商品
      */
     @Multipart
