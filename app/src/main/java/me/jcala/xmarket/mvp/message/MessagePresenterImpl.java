@@ -106,7 +106,11 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_red_300));
                     viewHolder.setText(R.id.message_kind_title,"卖家已确认，点击发送短信");
                     viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
-                }else if (item.getKind() ==1){
+                }else if (item.getKind()==3){
+                    viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_purple_300));
+                    viewHolder.setText(R.id.message_kind_title,"收到捐赠商品，点击给捐赠者发送短信");
+                    viewHolder.setSendMsgListener(R.id.message_item,item.getUserPhone(),item.getUsername());
+                } else if (item.getKind() ==1){
                     viewHolder.setConfirmDialogListener(R.id.message_item,view,item);
                 }else {
                     viewHolder.setLineBgColor(R.id.message_kind_bg,context.getResources().getColor(R.color.md_brown_300));
