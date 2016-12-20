@@ -80,12 +80,13 @@ public class TradeDetailModelImpl implements TradeDetailModel {
     }
 
     @Override
-    public void executeDonateReq(onDetailListener listener, String tradeId, String userId, String teamName) {
+    public void executeDonateReq(onDetailListener listener, String tradeId,String tradeImg,
+                                 String userId, String teamName) {
         Result<String> result = new Result<String>().api(Api.SERVER_ERROR);
         ReqExecutor
                 .INSTANCE()
                 .userReq()
-                .donateUserTrade(userId,tradeId,teamName)
+                .donateUserTrade(userId,tradeId,tradeImg,teamName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Result<String>>() {

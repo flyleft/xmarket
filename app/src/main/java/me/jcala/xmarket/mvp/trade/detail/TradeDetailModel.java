@@ -24,7 +24,8 @@ public interface TradeDetailModel {
 
     void executeBuyReq(onDetailListener listener, User user, String tradeId);
 
-    void executeDonateReq(onDetailListener listener, String tradeId,String userId,String teamName);
+    void executeDonateReq(onDetailListener listener, String tradeId,String tradeImg,
+                          String userId,String teamName);
 
     void executeGetTeamNamesReq(onDetailListener listener,String schoolName);
 }

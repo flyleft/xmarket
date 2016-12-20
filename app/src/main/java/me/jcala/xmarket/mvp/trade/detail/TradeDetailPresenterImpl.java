@@ -31,10 +31,13 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
     }
 
     @Override
-    public void donateTrade(String tradeId,String team) {
+    public void donateTrade(String tradeId,String tradeImg,String team) {
         view.whenShowProgress();
         String userId=UserIntermediate.instance.getUser(context).getId();
-        model.executeDonateReq(this,tradeId,userId,team);
+        if (tradeImg==null||tradeImg.isEmpty()){
+            return;
+        }
+        model.executeDonateReq(this,tradeId,tradeImg,userId,team);
     }
 
     @Override

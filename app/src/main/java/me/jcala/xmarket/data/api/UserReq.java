@@ -90,6 +90,7 @@ public interface UserReq {
     Observable<Result<String>> donateUserTrade(
             @Path("userId")  String user_id,
             @Field("tradeId")  String tradeId,
+            @Field("tradeImg")  String tradeImg,
             @Field("team")  String team
     );
 }

@@ -55,6 +55,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
     TextView submit;
 
     private MaterialDialog progress;
+    private String tradeImg;
     String tradeId;
     String userId;
     int status;
@@ -133,6 +134,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
         tradeName.setText(trade.getTitle());
         tradePrice.setText("￥ "+trade.getPrice());
         tradeDesc.setText("     "+trade.getDesc());
+        tradeImg=trade.getImgUrls().get(0);
     }
 
     @Override
@@ -142,7 +144,7 @@ public class TradeDetailActivity extends BaseActivity implements TradeDetailView
                 .items(teams)
                 .itemsCallbackSingleChoice(0,
                         (MaterialDialog dialog, View view, int which, CharSequence text)->{
-                            presenter.donateTrade(tradeId,text.toString());
+                            presenter.donateTrade(tradeId,tradeImg,text.toString());
                             return true;
                         })
                 .positiveText(R.string.choose)
