@@ -1,7 +1,9 @@
 package me.jcala.xmarket.mvp.team;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
 
 import java.util.List;
 
@@ -11,8 +13,11 @@ import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
+import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.mvp.team.trade.TeamTradeActivity;
+import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -50,6 +55,13 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
                 }
             }
         };
+        RecyclerCommonAdapter.OnItemClickListener listener=(View view, int position) ->{
+            Team item=teams.get(position);
+            Intent intent=new Intent(context,TeamTradeActivity.class);
+            intent.putExtra("team",item.getName());
+            context.startActivity(intent);
+        };
+        adapter.setClickListener(listener);
         view.whenGetTeamSuc(adapter);
     }
     private boolean resultHandler(Result<?> result){
