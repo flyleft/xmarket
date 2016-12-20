@@ -5,8 +5,8 @@ public interface ApiConf {
     int DEFAULT_TIMEOUT = 5;
     //-----------------------------用户相关---------------------------
     String auth="api/v1/auth";//用户登录+
-    String register="api/v1/users/register";//用户注册+
-    String register_next="api/v1/users/{userId}/phoneSchool/update";//用户注册下一步，设置学校，手机号+
+    String register="api/v1/register";//用户注册+
+    String register_next="api/v1/{userId}/phoneSchool/update";//用户注册下一步，设置学校，手机号+
     String update_user_pass="api/v1/users/{userId}/avatar/update";//修改用户密码
     String update_user_avatar="api/v1/users/{userId}/pass/update";//修改用户头像
     String get_user_team="api/v1/users/{userId}/teams/get";//获取用户志愿队
