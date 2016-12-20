@@ -50,12 +50,10 @@
         <activity
             android:name=".mvp.user.trade.UserTradeActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-        android:name=".mvp.user.sell.TradeSellActivity"
+
+        ' <activity
+        android:name=".mvp.team.trade.TeamTradeActivity"
         android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".mvp.user.team.UserTeamActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".mvp.team.add.TeamAddActivity"
             android:theme="@style/AppTheme.NoActionBar"/>

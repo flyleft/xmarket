@@ -1,15 +1,18 @@
-package me.jcala.xmarket.mvp.user.sell;
+package me.jcala.xmarket.mvp.team.trade;
 
 import android.os.Bundle;
 
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 
-public class TradeSellActivity extends BaseActivity implements TradeSellView{
+public class TeamTradeActivity extends BaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-       setContentView(R.layout.trade_sell_activity);
+      setContentView(R.layout.team_trade_activity);
     }
+
+
+
 
 }
