@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import me.jcala.xmarket.conf.Api;
+import me.jcala.xmarket.network.Api;
 
 /**
  * 返回给client的json对应的javabean

@@ -5,21 +5,12 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.orhanobut.logger.Logger;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.realm.Realm;
 import me.jcala.xmarket.AppConf;
-import me.jcala.xmarket.data.api.ReqExecutor;
-import me.jcala.xmarket.data.dto.MsgDto;
-import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.mvp.main.MainPresenter;
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 

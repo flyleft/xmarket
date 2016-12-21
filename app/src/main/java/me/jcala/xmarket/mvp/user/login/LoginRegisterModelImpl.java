@@ -2,8 +2,8 @@ package me.jcala.xmarket.mvp.user.login;
 
 
 import me.jcala.xmarket.AppConf;
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.Api;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.mock.UserInfoMock;

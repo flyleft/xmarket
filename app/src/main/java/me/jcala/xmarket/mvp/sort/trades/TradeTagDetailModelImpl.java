@@ -3,8 +3,8 @@ package me.jcala.xmarket.mvp.sort.trades;
 import java.util.List;
 
 import me.jcala.xmarket.AppConf;
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.Api;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mock.TradeMock;

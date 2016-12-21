@@ -1,11 +1,9 @@
-package me.jcala.xmarket.data.api;
+package me.jcala.xmarket.network;
 
 
 import java.util.List;
 
-import me.jcala.xmarket.AppConf;
-import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.dto.MsgDto;
+import me.jcala.xmarket.network.ApiConf;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Team;

@@ -11,7 +11,7 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import me.jcala.xmarket.R;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.mvp.a_base.BaseActivity;
 import me.jcala.xmarket.mvp.main.MainActivity;
 import me.jcala.xmarket.mvp.user.login.LoginRegisterActivity;

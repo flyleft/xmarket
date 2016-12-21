@@ -1,4 +1,4 @@
-package me.jcala.xmarket.data.api;
+package me.jcala.xmarket.network;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
+import static me.jcala.xmarket.network.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
     private UserReq userReq;

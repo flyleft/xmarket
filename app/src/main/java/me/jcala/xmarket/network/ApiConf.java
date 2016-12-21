@@ -1,4 +1,4 @@
-package me.jcala.xmarket.conf;
+package me.jcala.xmarket.network;
 
 public interface ApiConf {
 

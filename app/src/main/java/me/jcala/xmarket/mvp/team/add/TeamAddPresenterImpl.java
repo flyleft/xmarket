@@ -9,7 +9,7 @@ import com.orhanobut.logger.Logger;
 import java.util.Arrays;
 import java.util.List;
 
-import me.jcala.xmarket.conf.Api;
+import me.jcala.xmarket.network.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.User;

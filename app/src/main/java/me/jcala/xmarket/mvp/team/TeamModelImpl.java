@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.realm.Realm;
 import me.jcala.xmarket.AppConf;
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.Api;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.mock.TeamMock;

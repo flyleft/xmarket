@@ -2,8 +2,8 @@ package me.jcala.xmarket.mvp.user.trade;
 
 import java.util.List;
 
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.Api;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import rx.Subscriber;

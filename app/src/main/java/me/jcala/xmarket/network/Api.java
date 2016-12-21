@@ -1,4 +1,4 @@
-package me.jcala.xmarket.conf;
+package me.jcala.xmarket.network;
 
 public enum Api {
     //普通操作相关

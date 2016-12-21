@@ -3,8 +3,8 @@ package me.jcala.xmarket.mvp.team.add;
 
 import java.util.List;
 
-import me.jcala.xmarket.conf.Api;
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.Api;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

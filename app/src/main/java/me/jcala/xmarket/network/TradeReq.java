@@ -1,18 +1,13 @@
-package me.jcala.xmarket.data.api;
+package me.jcala.xmarket.network;
 
 import java.util.List;
 
-import lombok.Getter;
-import me.jcala.xmarket.conf.ApiConf;
-import me.jcala.xmarket.data.dto.MsgDto;
+import me.jcala.xmarket.network.ApiConf;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.TradeTag;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;

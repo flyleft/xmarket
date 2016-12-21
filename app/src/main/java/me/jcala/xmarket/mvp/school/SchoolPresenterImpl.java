@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,22 +62,6 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
         realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(tradeList));
     }
-/*
-    private boolean resultHandler(Result<?> result){
-        if (result==null){
-            return false;
-        }
-
-        switch (result.getCode()) {
-            case 100:
-                return true;
-            case 99:
-                return false;
-            default:
-                return false;
-        }
-    }
-*/
 
     @Override
     public void refreshView(Realm realm) {

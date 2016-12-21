@@ -2,13 +2,11 @@ package me.jcala.xmarket.mvp.user.login.register.next;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.EditText;
 
 import java.util.List;
 
-import me.jcala.xmarket.data.api.ReqExecutor;
+import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
