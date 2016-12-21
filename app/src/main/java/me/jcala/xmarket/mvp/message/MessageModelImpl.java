@@ -63,7 +63,9 @@ public class MessageModelImpl implements MessageModel{
                 .subscribe(new Subscriber<Result<List<Message>>>() {
                     @Override
                     public void onCompleted() {
-                        listener.onHideRefresh();
+                        if (listener!=null){
+                            listener.onHideRefresh();
+                        }
                         List<Message> data=result.getData();
                         if (result.getCode()!=100||data==null){
                             return;

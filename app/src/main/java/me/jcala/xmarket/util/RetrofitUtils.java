@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.EditText;
 
+import com.orhanobut.logger.Logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -95,9 +97,21 @@ public class RetrofitUtils {
                 for (String host : hostUrls) {
                     if (host.equalsIgnoreCase(hostname)) {
                         ret = true;
+                    }else if (getHostHome(host).equalsIgnoreCase(hostname)){
+                        ret = true;
                     }
                 }
                 return ret;
         };
+    }
+    private static String getHostHome(String home){
+        if (home.startsWith("https://")){
+           home= home.substring(8);
+        }
+        if (home.startsWith("http://")){
+            home= home.substring(7);
+        }
+        int index=home.indexOf(":");
+        return home.substring(0,index);
     }
 }
