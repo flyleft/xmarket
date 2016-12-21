@@ -48,9 +48,11 @@ public class ReqExecutor {
             httpClientBuilder.addInterceptor(loggingInterceptor);
         }
 
-        SSLSocketFactory sslSocketFactory = RetrofitUtils.getSSLSocketFactory(App.getInstance(), new int[]{R.raw.xmarket});
-        httpClientBuilder.sslSocketFactory(sslSocketFactory)
-                .hostnameVerifier(RetrofitUtils.getHostnameVerifier(new String[]{AppConf.BASE_URL}));
+      if (AppConf.enabled_ssl){
+          SSLSocketFactory sslSocketFactory = RetrofitUtils.getSSLSocketFactory(App.getInstance(), new int[]{R.raw.xmarket});
+          httpClientBuilder.sslSocketFactory(sslSocketFactory)
+                  .hostnameVerifier(RetrofitUtils.getHostnameVerifier(new String[]{AppConf.BASE_URL}));
+      }
 
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor((Interceptor.Chain chain)-> {
