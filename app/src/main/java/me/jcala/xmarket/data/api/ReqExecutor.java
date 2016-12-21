@@ -2,8 +2,13 @@ package me.jcala.xmarket.data.api;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.SSLSocketFactory;
+
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.BuildConfig;
+import me.jcala.xmarket.R;
+import me.jcala.xmarket.app.App;
+import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,10 +17,10 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 import static me.jcala.xmarket.conf.ApiConf.DEFAULT_TIMEOUT;
 
 public class ReqExecutor {
-
     private UserReq userReq;
     private TradeReq tradeTagReq;
     private HybridReq hybridReq;
@@ -42,6 +47,10 @@ public class ReqExecutor {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             httpClientBuilder.addInterceptor(loggingInterceptor);
         }
+
+        SSLSocketFactory sslSocketFactory = RetrofitUtils.getSSLSocketFactory(App.getInstance(), new int[]{R.raw.xmarket});
+        httpClientBuilder.sslSocketFactory(sslSocketFactory)
+                .hostnameVerifier(RetrofitUtils.getHostnameVerifier(new String[]{AppConf.BASE_URL}));
 
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor((Interceptor.Chain chain)-> {

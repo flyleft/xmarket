@@ -11,10 +11,14 @@ import me.jcala.xmarket.di.components.DaggerAppComponent;
 public class App extends Application {
     private static final String TAG="App";
     private AppComponent appComponent;
-
+    private static App instance;
+    public static App getInstance() {
+        return instance;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         appComponent = DaggerAppComponent.create();
         initialize();
     }
