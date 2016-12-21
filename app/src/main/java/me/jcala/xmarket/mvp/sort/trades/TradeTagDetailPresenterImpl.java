@@ -14,6 +14,7 @@ import me.jcala.xmarket.conf.Api;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
+import me.jcala.xmarket.util.Interceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -21,6 +22,7 @@ public class TradeTagDetailPresenterImpl implements TradeTagDetailPresenter,Trad
     private Context context;
     private TradeTagDetailView view;
     private TradeTagDetailModel model;
+    private String localTagName;
 
     public TradeTagDetailPresenterImpl(Context context, TradeTagDetailView view) {
         this.context = context;
@@ -30,26 +32,18 @@ public class TradeTagDetailPresenterImpl implements TradeTagDetailPresenter,Trad
 
     @Override
     public void getTradeListByTag(String tagName) {
+        this.localTagName=tagName;
         model.executeTagTradesReq(this,tagName,1);
     }
-    private boolean resultHandler(Result<?> result){
-        if (result==null){
-            return false;
-        }
 
-        switch (result.getCode()) {
-            case 100:
-                return true;
-            case 99:
-                view.whenLoadDataFail(Api.SERVER_ERROR.msg());
-                return false;
-            default:
-                return false;
-        }
-    }
     @Override
     public void onComplete(Result<List<Trade>> result) {
-        if (!resultHandler(result)){
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        
+        if (status==2 && localTagName!=null){
+            getTradeListByTag(localTagName);
+        }
+        if (status!=1){
             return;
         }
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Trade>(context,result.getData(), R.layout.school_item) {

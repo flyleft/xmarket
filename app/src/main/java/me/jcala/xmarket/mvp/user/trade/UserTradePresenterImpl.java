@@ -13,6 +13,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
+import me.jcala.xmarket.util.Interceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -22,6 +23,7 @@ public class UserTradePresenterImpl implements UserTradePresenter,
     private Context context;
     private UserTradeView view;
     private UserTradeModel model;
+    private int type;
 
     public UserTradePresenterImpl(Context context, UserTradeView view) {
         this.context = context;
@@ -32,7 +34,11 @@ public class UserTradePresenterImpl implements UserTradePresenter,
     @Override
     public void onCompleteListener(Result<List<Trade>> result) {
         view.whenStopProgress();
-        if (!resultHandler(result)){
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+         if (status==2){
+           initViewList(type);
+        }
+        if (status!=1){
             return;
         }
         initList(result.getData());
@@ -59,23 +65,10 @@ public class UserTradePresenterImpl implements UserTradePresenter,
        adapter.setClickListener(listener);
        view.whenLoadDataSuccess(adapter);
    }
-    private boolean resultHandler(Result<?> result){
-        if (result==null || result.getData()==null){
-            return false;
-        }
-
-        switch (result.getCode()) {
-            case 100:
-                return true;
-            case 99:
-                return false;
-            default:
-                return false;
-        }
-    }
 
     @Override
     public void initViewList(int type) {
+        this.type=type;
         view.whenStartProgress();
         String userId= UserIntermediate.instance.getUser(context).getId();
         model.executeGetTradesReq(this,userId,type);

@@ -18,6 +18,7 @@ import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
+import me.jcala.xmarket.util.Interceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -35,7 +36,11 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     @Override
     public void onReqComplete(Result<List<Trade>> result,Realm realmDefault) {
         view.whenHideRefresh();
-        if (!resultHandler(result)){
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==2){
+            refreshView(realmDefault);
+        }
+        if (status!=1){
             return;
         }
         List<RealmTrade> tradeList=new ArrayList<>();
@@ -55,6 +60,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
         realmDefault.executeTransaction((Realm realm) -> results.deleteAllFromRealm());
         realmDefault.executeTransactionAsync((Realm realm) -> realm.copyToRealm(tradeList));
     }
+/*
     private boolean resultHandler(Result<?> result){
         if (result==null){
             return false;
@@ -69,6 +75,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
                 return false;
         }
     }
+*/
 
     @Override
     public void refreshView(Realm realm) {

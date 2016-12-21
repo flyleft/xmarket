@@ -14,6 +14,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.util.Interceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -55,6 +56,15 @@ public class MessagePresenterImpl implements MessagePresenter,MessageModel.OnMes
 
     @Override
     public void onConfirmComplete(Result<MsgDto> result, Message message) {
+        int status=Interceptor.instance.tokenResultHandler(result,context);
+        if (status==2){
+            confirmDeal(message);
+        }
+
+        if (status!=1){
+            return;
+        }
+
         message.setKind(2);
         realmDefault.executeTransaction((Realm realm) ->{
                Message messageData= realm.where(Message.class).equalTo("id",message.getId()).findFirst();

@@ -8,11 +8,15 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
+import me.jcala.xmarket.util.Interceptor;
 
 public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetailModel.onDetailListener {
     private Context context;
     private TradeDetailView view;
     private TradeDetailModel model;
+    private volatile String tradeId;
+    private String tradeImg;
+    private String team;
 
     public TradeDetailPresenterImpl(Context context, TradeDetailView view) {
         this.context = context;
@@ -21,6 +25,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
     }
     @Override
     public void loadData(String tradeId) {
+        this.tradeId=tradeId;
         model.executeGetTradeReq(this,tradeId);
     }
     @Override
@@ -32,6 +37,9 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void donateTrade(String tradeId,String tradeImg,String team) {
+        this.tradeId=tradeId;
+        this.tradeImg=tradeImg;
+        this.team=team;
         view.whenShowProgress();
         String userId=UserIntermediate.instance.getUser(context).getId();
         if (tradeImg==null||tradeImg.isEmpty()){
@@ -42,6 +50,7 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void buyTrade(String tradeId) {
+        this.tradeId=tradeId;
         view.whenShowProgress();
         User user=UserIntermediate.instance.getUser(context);
         model.executeBuyReq(this,user,tradeId);
@@ -49,55 +58,53 @@ public class TradeDetailPresenterImpl implements TradeDetailPresenter,TradeDetai
 
     @Override
     public void onGainDealComplete(Result<Trade> result) {
-        if (resultHandler(result)){
+        view.whenHideProgress();
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==1){
             view.whenLoadTradeSuccess(result.getData());
-        }else {
+        }else if (status==0){
             view.whenFail(result.getMsg());
+        }else if (status==2){
+           loadData(tradeId);
         }
     }
     @Override
     public void onGainTeamNamesComplete(Result<List<String>> result) {
-        if (resultHandler(result)){
-              view.whenLoadTeamSuccess(result.getData());
-        }else {
+        view.whenHideProgress();
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==1){
+            view.whenLoadTeamSuccess(result.getData());
+        }else if (status==0){
             view.whenFail(result.getMsg());
         }
     }
 
     @Override
     public void onDonateComplete(Result<String> result) {
-        if (resultHandler(result)){
+        view.whenHideProgress();
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==1){
             view.whenDonateSuccess();
-        }else {
+        }else if (status==0){
             view.whenFail(result.getMsg());
+        }else if (status==2){
+            donateTrade(tradeId,tradeImg,team);
         }
     }
 
 
     @Override
     public void onBuyComplete(Result<String> result) {
-        if (resultHandler(result)){
-            view.whenBuySuccess();
-        }
-        else {
-            view.whenFail(result.getMsg());
-        }
-    }
-
-    private boolean resultHandler(Result<?> result){
         view.whenHideProgress();
-        if (result==null){
-            return false;
-        }
-
-        switch (result.getCode()) {
-            case 100:
-                return true;
-            case 99:
-                return false;
-            default:
-                return false;
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==1){
+            view.whenBuySuccess();
+        }else if (status==0){
+            view.whenFail(result.getMsg());
+        }else if (status==2){
+            buyTrade(tradeId);
         }
     }
+
 
 }

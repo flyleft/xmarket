@@ -9,7 +9,6 @@ public interface UserTeamModel {
 
     interface onUserTeamListener{
         void onComplete(Result<List<Team>> result);
-        void onFail(String errorMsg);
     }
 
     void executeUserTeamReq(onUserTeamListener listener,String userId);

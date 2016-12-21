@@ -35,7 +35,7 @@ public class UserTeamModelImpl implements UserTeamModel{
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFail(Api.SERVER_ERROR.msg());
+                        listener.onComplete(result);
                     }
                     @SuppressWarnings("unchecked")
                     @Override

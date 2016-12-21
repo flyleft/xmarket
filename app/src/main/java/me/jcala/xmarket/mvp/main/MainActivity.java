@@ -53,7 +53,7 @@ public class MainActivity  extends BaseActivity
         PollingUtils.startPollingService(this, 5, MessageService.class, MessageService.ACTION);
         unbinder=ButterKnife.bind(this);
 
-        presenter=new MainPresenterImpl(this);
+        presenter=new MainPresenterImpl(this,realm);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

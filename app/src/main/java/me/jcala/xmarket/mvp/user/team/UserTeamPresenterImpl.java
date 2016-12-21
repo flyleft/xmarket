@@ -12,6 +12,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.team.trade.TeamTradeActivity;
+import me.jcala.xmarket.util.Interceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -35,10 +36,11 @@ public class UserTeamPresenterImpl
 
     @Override
     public void onComplete(Result<List<Team>> result) {
-        if (result.getCode()!=100){
-            return;
+        int status= Interceptor.instance.tokenResultHandler(result,context);
+        if (status==2){
+           gainUserTeamList();
         }
-        if (result.getData()==null){
+        if (status!=1){
             return;
         }
         RecyclerCommonAdapter<?> adapter=new RecyclerCommonAdapter<Team>(context,result.getData(), R.layout.team_item) {
@@ -57,10 +59,5 @@ public class UserTeamPresenterImpl
         };
         adapter.setClickListener(listener);
         view.whenGetUserTeamSuccess(adapter);
-    }
-
-    @Override
-    public void onFail(String errorMsg) {
-
     }
 }

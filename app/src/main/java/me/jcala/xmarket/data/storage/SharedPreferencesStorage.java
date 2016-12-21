@@ -49,6 +49,15 @@ public class SharedPreferencesStorage {
         editor.apply();
     }
 
+    public void updateToken(final Context context,final String token){
+        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        if (token!=null){
+            editor.putString("token", token);
+        }
+        editor.apply();
+    }
+
      void clear(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP,MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
