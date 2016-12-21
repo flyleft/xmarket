@@ -25,7 +25,7 @@ public class ReqExecutor {
     private TradeReq tradeTagReq;
     private HybridReq hybridReq;
 
-    private String token="";
+    private volatile String token="";
 
     private ReqExecutor(){}
 
@@ -64,7 +64,7 @@ public class ReqExecutor {
                             .method(originalRequest.method(), originalRequest.body());
                     Request request = requestBuilder.build();
                     return chain.proceed(request);
-                });
+                }).addInterceptor(new TokenInterceptor());
         return new Retrofit.Builder()
                 .client(httpClientBuilder.build())
                 .addConverterFactory(factory)

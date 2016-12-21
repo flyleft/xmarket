@@ -9,6 +9,7 @@ import me.jcala.xmarket.data.pojo.Message;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,6 +27,12 @@ public interface UserReq {
     @POST(ApiConf.auth)
     @FormUrlEncoded
     Observable<Result<User>> login(
+            @Field("username") String username,
+            @Field("password") String password);
+
+    @POST(ApiConf.token)
+    @FormUrlEncoded
+    Call<String> auth(
             @Field("username") String username,
             @Field("password") String password);
 
