@@ -9,7 +9,7 @@ import io.realm.Realm;
 import me.jcala.xmarket.di.components.AppComponent;
 import me.jcala.xmarket.di.components.DaggerAppComponent;
 import me.jcala.xmarket.network.fresco.FrescoExecutor;
-import me.jcala.xmarket.network.fresco.OkHttpImagePipelineConfigFactory;
+import me.jcala.xmarket.network.fresco.OkHttpNetworkFetcher;
 
 public class App extends Application {
     private static final String TAG="App";
@@ -26,8 +26,9 @@ public class App extends Application {
         initialize();
     }
     private void initialize(){
-        ImagePipelineConfig config= OkHttpImagePipelineConfigFactory
-                .newBuilder(App.this,FrescoExecutor.instance.okHttpClient()).build();
+
+        ImagePipelineConfig config=ImagePipelineConfig.newBuilder(App.this)
+                .setNetworkFetcher(new OkHttpNetworkFetcher(FrescoExecutor.instance.okHttpClient())).build();
         Fresco.initialize(this,config);
         Realm.init(this);
        /* RealmConfiguration realmConfig = new RealmConfiguration.Builder().build();
