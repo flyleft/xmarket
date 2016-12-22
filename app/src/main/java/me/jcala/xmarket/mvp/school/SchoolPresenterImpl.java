@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
-import me.jcala.xmarket.util.Interceptor;
+import me.jcala.xmarket.util.ResultInterceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -38,11 +36,7 @@ public class SchoolPresenterImpl implements SchoolModel.onGainListener,SchoolPre
     @Override
     public void onReqComplete(Result<List<Trade>> result,Realm realmDefault) {
         view.whenHideRefresh();
-        int status= Interceptor.instance.tokenResultHandler(result,context);
-        if (status==2){
-            refreshView(realmDefault);
-        }
-        if (status!=1){
+        if (!ResultInterceptor.instance.resultDataHandler(result)){
             return;
         }
         List<RealmTrade> tradeList=new ArrayList<>();

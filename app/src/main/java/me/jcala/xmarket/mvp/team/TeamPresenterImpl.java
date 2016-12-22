@@ -13,12 +13,10 @@ import io.realm.RealmResults;
 import me.jcala.xmarket.AppConf;
 import me.jcala.xmarket.R;
 import me.jcala.xmarket.data.dto.Result;
-import me.jcala.xmarket.data.pojo.RealmTrade;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.team.trade.TeamTradeActivity;
-import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
-import me.jcala.xmarket.util.Interceptor;
+import me.jcala.xmarket.util.ResultInterceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -36,11 +34,7 @@ public class TeamPresenterImpl implements TeamPresenter,TeamModel.onGainTeamList
     @Override
     public void onComplete(Result<List<Team>> result,Realm realmDefault) {
         view.whenHideRefresh();
-        int status= Interceptor.instance.tokenResultHandler(result,context);
-        if (status==2){
-            refreshView(realmDefault);
-        }
-        if (status!=1){
+        if (!ResultInterceptor.instance.resultDataHandler(result)){
             return;
         }
         initList(result.getData());

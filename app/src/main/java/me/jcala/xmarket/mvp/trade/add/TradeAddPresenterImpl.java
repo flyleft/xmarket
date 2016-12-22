@@ -15,7 +15,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.util.Interceptor;
+import me.jcala.xmarket.util.ResultInterceptor;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -25,8 +25,6 @@ public class TradeAddPresenterImpl
     private TradeAddModel model;
     private TradeAddView view;
     private Context context;
-    private RequestBody tradeJson;
-    private  List<MultipartBody.Part> parts;
 
     public TradeAddPresenterImpl(Context context, TradeAddView view) {
         this.context = context;
@@ -42,17 +40,10 @@ public class TradeAddPresenterImpl
     @Override
     public void hasGotAddTradeResult(Result<String> result) {
         view.whenStopProgress();
-        int status= Interceptor.instance.tokenResultHandler(result,context);
-        if (status==1){
+        if (ResultInterceptor.instance.resultHandler(result)){
             view.whenAddSuccess();
-            return;
-        }
-        if (status==0){
+        }else {
             view.whenFail(Api.SERVER_ERROR.msg());
-            return;
-        }
-        if (status==2 && tradeJson!=null && parts!=null){
-            model.executeAddTradeReq(tradeJson,parts,this);
         }
     }
 
@@ -83,9 +74,9 @@ public class TradeAddPresenterImpl
         trade.setStatus(0);//状态,0代表商品待售
         trade.setCreateTime(System.currentTimeMillis());//设置商品发布时间
         view.whenStartProgress();
-        parts= RetrofitUtils.filesToMultipartBodyParts(picUploadUrls);
+        List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(picUploadUrls);
         String tradeJsonStr=new Gson().toJson(trade);
-        tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
+        RequestBody tradeJson=RetrofitUtils.createPartFromString(tradeJsonStr);
         model.executeAddTradeReq(tradeJson,parts,this);
     }
 

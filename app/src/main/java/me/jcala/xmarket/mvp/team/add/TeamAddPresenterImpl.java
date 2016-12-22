@@ -14,7 +14,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Team;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.UserIntermediate;
-import me.jcala.xmarket.util.Interceptor;
+import me.jcala.xmarket.util.ResultInterceptor;
 import me.jcala.xmarket.util.RetrofitUtils;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -23,8 +23,6 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
     private Context context;
     private TeamAddView view;
     private TeamAddModel model;
-    private List<MultipartBody.Part> parts;
-    private RequestBody trade;
 
     public TeamAddPresenterImpl(Context context, TeamAddView view) {
         this.context = context;
@@ -41,25 +39,18 @@ public class TeamAddPresenterImpl implements TeamAddPresenter,TeamAddModel.OnTea
         view.whenStartProgress();
         Logger.e("teamImg:"+teamImg);
         Logger.e("idImg:"+idImg);
-        parts= RetrofitUtils.filesToMultipartBodyParts(Arrays.asList(teamImg,idImg));
+        List<MultipartBody.Part> parts= RetrofitUtils.filesToMultipartBodyParts(Arrays.asList(teamImg,idImg));
         String teamJsonStr=new Gson().toJson(team);
-        trade=RetrofitUtils.createPartFromString(teamJsonStr);
+        RequestBody trade=RetrofitUtils.createPartFromString(teamJsonStr);
         model.executeTeamAddReq(this,trade,parts);
     }
 
     @Override
     public void onComplete(Result<String> result) {
         view.whenStopProgress();
-        int status= Interceptor.instance.tokenResultHandler(result,context);
-        if (status==1){
+        if (ResultInterceptor.instance.resultHandler(result)){
             view.whenSuccess();
-            return;
-        }
-        if (status==2 && parts!=null && trade!=null){
-            model.executeTeamAddReq(this,trade,parts);
-            return;
-        }
-        if (status==0){
+        }else {
             view.whenFail(Api.SERVER_ERROR.msg());
         }
     }

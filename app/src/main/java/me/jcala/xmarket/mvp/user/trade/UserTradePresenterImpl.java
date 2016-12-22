@@ -13,7 +13,7 @@ import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.Trade;
 import me.jcala.xmarket.data.storage.UserIntermediate;
 import me.jcala.xmarket.mvp.trade.detail.TradeDetailActivity;
-import me.jcala.xmarket.util.Interceptor;
+import me.jcala.xmarket.util.ResultInterceptor;
 import me.jcala.xmarket.view.RecyclerCommonAdapter;
 import me.jcala.xmarket.view.RecyclerViewHolder;
 
@@ -23,7 +23,6 @@ public class UserTradePresenterImpl implements UserTradePresenter,
     private Context context;
     private UserTradeView view;
     private UserTradeModel model;
-    private int type;
 
     public UserTradePresenterImpl(Context context, UserTradeView view) {
         this.context = context;
@@ -34,11 +33,7 @@ public class UserTradePresenterImpl implements UserTradePresenter,
     @Override
     public void onCompleteListener(Result<List<Trade>> result) {
         view.whenStopProgress();
-        int status= Interceptor.instance.tokenResultHandler(result,context);
-         if (status==2){
-           initViewList(type);
-        }
-        if (status!=1){
+        if (!ResultInterceptor.instance.resultDataHandler(result)){
             return;
         }
         initList(result.getData());
@@ -68,7 +63,6 @@ public class UserTradePresenterImpl implements UserTradePresenter,
 
     @Override
     public void initViewList(int type) {
-        this.type=type;
         view.whenStartProgress();
         String userId= UserIntermediate.instance.getUser(context).getId();
         model.executeGetTradesReq(this,userId,type);
