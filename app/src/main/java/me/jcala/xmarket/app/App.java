@@ -31,9 +31,6 @@ public class App extends Application {
                 .setNetworkFetcher(new OkHttpNetworkFetcher(FrescoExecutor.instance.okHttpClient())).build();
         Fresco.initialize(this,config);
         Realm.init(this);
-       /* RealmConfiguration realmConfig = new RealmConfiguration.Builder().build();
-        Realm.deleteRealm(realmConfig); // Delete Realm between app restarts.
-        Realm.setDefaultConfiguration(realmConfig);*/
     }
 
     public AppComponent getComponent() {

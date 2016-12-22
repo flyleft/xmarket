@@ -22,15 +22,18 @@ import rx.Observable;
 public interface UserReq {
 
     /**
-     * 用户登录并获取用户信息和token
+     * 用户登录并获取用户信息
      */
-    @POST(ApiConf.auth)
+    @POST(ApiConf.login)
     @FormUrlEncoded
     Observable<Result<User>> login(
             @Field("username") String username,
             @Field("password") String password);
 
-    @POST(ApiConf.token)
+    /**
+     * 获取token
+     */
+    @POST(ApiConf.auth)
     @FormUrlEncoded
     Call<String> auth(
             @Field("username") String username,
