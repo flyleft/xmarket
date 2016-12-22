@@ -2,7 +2,6 @@ package me.jcala.xmarket.mvp.user.login;
 
 import android.content.Context;
 
-import me.jcala.xmarket.network.ReqExecutor;
 import me.jcala.xmarket.data.dto.Result;
 import me.jcala.xmarket.data.pojo.User;
 import me.jcala.xmarket.data.storage.SharedPreferencesStorage;
@@ -48,8 +47,7 @@ public class LoginRegisterPresenterImpl implements
 
         switch (result.getCode()) {
             case 100:
-                SharedPreferencesStorage.instance.saveUserToken(context,result.getData());
-                ReqExecutor.INSTANCE().setToken(result.getData().getToken());
+                SharedPreferencesStorage.instance.saveUser(context,result.getData());
                 view.whenLoginSuccess();
                 break;
             case 99:

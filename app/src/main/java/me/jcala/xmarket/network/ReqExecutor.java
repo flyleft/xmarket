@@ -25,16 +25,11 @@ public class ReqExecutor {
     private TradeReq tradeTagReq;
     private HybridReq hybridReq;
 
-    private volatile String token="";
 
     private ReqExecutor(){}
 
     private static class ReqExecutorBuilder {
         private static ReqExecutor instance = new ReqExecutor();
-    }
-
-    public void setToken(String token) {
-       this.token = token;
     }
 
     public static ReqExecutor INSTANCE() {
@@ -60,7 +55,6 @@ public class ReqExecutor {
                     Request.Builder requestBuilder = originalRequest.newBuilder()
                             .header("Content-Type", "application/json;charset=UTF-8")
                             .header("Accept", "application/json")
-                            .addHeader("x-access-token",token)
                             .method(originalRequest.method(), originalRequest.body());
                     Request request = requestBuilder.build();
                     return chain.proceed(request);

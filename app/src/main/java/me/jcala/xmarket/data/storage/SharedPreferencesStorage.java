@@ -22,12 +22,9 @@ public class SharedPreferencesStorage {
     public static SharedPreferencesStorage instance=TokenHolder.tokenUtils;
 
 
-    public void saveUserToken(final Context context,final User user){
+    public void saveUser(final Context context, final User user){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        if (user.getToken()!=null){
-            editor.putString("token", user.getToken());
-        }
         if (user.getUsername()!=null){
             editor.putString("username",user.getUsername());
         }
@@ -49,15 +46,6 @@ public class SharedPreferencesStorage {
         editor.apply();
     }
 
-    public void updateToken(final Context context,final String token){
-        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        if (token!=null){
-            editor.putString("token", token);
-        }
-        editor.apply();
-    }
-
      void clear(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP,MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -65,15 +53,9 @@ public class SharedPreferencesStorage {
         editor.apply();
     }
 
-    public String getToken(final Context context){
-        SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
-        return sp.getString("token", "");
-    }
-
      public User getUser(final Context context){
         SharedPreferences sp = context.getSharedPreferences(SP, MODE_PRIVATE);
         final User user=new User();
-        user.setToken(sp.getString("token",""));
         user.setUsername(sp.getString("username",""));
         user.setPassword(sp.getString("password",""));
         user.setAvatarUrl(sp.getString("userAvatar",""));

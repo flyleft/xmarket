@@ -22,14 +22,5 @@ public enum UserIntermediate {
     public void logOut(final Context context){
         this.user=null;
         SharedPreferencesStorage.instance.clear(context);
-        ReqExecutor.INSTANCE().setToken("");
-    }
-
-    public void updateToken(final Context context,final String token){
-        if (user==null){
-            user=SharedPreferencesStorage.instance.getUser(context);
-        }
-        SharedPreferencesStorage.instance.updateToken(context,token);
-        user.setToken(token);
     }
 }
