@@ -22,7 +22,7 @@
 - [fresco加载gif，实现启动动画](https://github.com/jcalaz/xmarket/blob/master/app/src/main/java/me/jcala/xmarket/mvp/splash/SplashActivity.java)
 - [fresco实现圆形头像](https://github.com/jcalaz/xmarket/blob/master/app/src/main/res/layout/main_slide.xml)
 - [RxJava+retrofit实现HTTP访问](https://github.com/jcalaz/xmarket/blob/master/app/src/main/java/me/jcala/xmarket/mvp/school/SchoolModelImpl.java)
-
+- [retrofit实现多图片和javabean同时上传](https://github.com/jcalaz/xmarket/blob/master/app/src/main/java/me/jcala/xmarket/mvp/trade/add/TradeAddModelImpl.java)
 
 ### 所用技术及模式
 - MVP开发模式
@@ -42,17 +42,32 @@
 - fresco自定义了ImagePipeline，并且访问时加上了证书，所以只能加载本服务器的图片。
 
 ### 其他配置
+
+- 服务器端访问路径
+  1. APP，在AppConf中配置BASE_URL为服务器访问路径
+  2. server，在application.yml中配置xmarket.address为服务器访问路径
 - 默认采用HTTPS协议，如果想使用http协议
   1. APP，将AppConf的enabled_ssl设置为false
   2. server，application.yml中将server.ssl.enabled设置为false
 
-- 服务器端跑起来后
-  1. APP，在AppConf中配置BASE_URL为服务器访问路径
-  2. server，在application.yml中配置xmarket.address为服务器访问路径
-
+- 服务器图片存储物理路径：
 - APP轮询频率：设置AppConf中的Message_Interval
 
 - APP每页商品加载的条数：设置AppConf中的size
+
+- 服务器图片存储路径： application.yml中设置xmarket.pic_home
+
+### https证书使用keytool生成,生成命令
+```
+keytool -genkey -alias xmarketkey -keyalg RSA -keysize 1024 -keypass sdjkasl465sd -validity 365 -keystore g:\home\xmarket.keystore -storepass 546sdhjdf  //生成证书
+
+keytool -list  -v -keystore g:\home\xmarket.keystore -storepass 546sdhjdf //查看证书
+
+keytool -export -alias xmarketkey -keystore g:\home\xmarket.keystore -file g:\home\xmarket.crt -storepass 546sdhjdf //导出证书
+
+keytool -printcert -file g:\home\xmarket.crt //查看证书
+
+```
 
 ### API路径
 ```java
